@@ -16,6 +16,8 @@
 
 <main>
 
+<p> Articles </p>
+
 </main>
 
 <?php include("../includes/footer.php"); ?>
