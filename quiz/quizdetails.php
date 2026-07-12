@@ -14,20 +14,53 @@
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
+
+
 <main>
-<h1>Quiz Domain</h1>
-<p>
-    Welcome to the quiz section of this website. Here, you will be tested on the profound knowledge
-    you have accumulated throughout your journey of learning everything there is to know about 
-    the Wildlife.
-</p>
+<form action="" method="post">
+<fieldset>
+<legend></legend>
 
-<p>
-    Which topic would you like to quiz yourself on?
-    <span>(Please select a topic):</span>
-</p>
+Q1:
+<br>
+<hr>
+<br>
+Q2:
+<br>
+<hr>
+<br>
+Q3:
+<br>
+<hr>
+<br>
+Q4:
+<br>
+<hr>
+<br>
+Q5:
+<br>
+<hr>
+<br>
+Q6:
+<br>
+<hr>
+<br>
+Q7:
+<br>
+<hr>
+<br>
+Q8:
+<br>
+<hr>
+<br>
+Q9:
+<br>
+<hr>
+<br>
+Q10:
 
-
+</fieldset>
+</form>
 </main>
 
 <?php include("../includes/footer.php"); ?>
