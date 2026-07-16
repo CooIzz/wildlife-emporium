@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animals</title>
+    <title>Quiz</title>
 
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -14,10 +14,53 @@
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
+
+
 <main>
-<p> abc </p>
-<p> abc123 </p>
-<p> abc1234 </p>
+<form action="" method="post">
+<fieldset>
+<legend></legend>
+
+Q1:
+<br>
+<hr>
+<br>
+Q2:
+<br>
+<hr>
+<br>
+Q3:
+<br>
+<hr>
+<br>
+Q4:
+<br>
+<hr>
+<br>
+Q5:
+<br>
+<hr>
+<br>
+Q6:
+<br>
+<hr>
+<br>
+Q7:
+<br>
+<hr>
+<br>
+Q8:
+<br>
+<hr>
+<br>
+Q9:
+<br>
+<hr>
+<br>
+Q10:
+
+</fieldset>
+</form>
 </main>
 
 <?php include("../includes/footer.php"); ?>

@@ -15,6 +15,31 @@
 <?php include("../includes/navigation.php"); ?>
 
 <main>
+<h1>Quiz Domain</h1>
+<p>
+    Welcome to the quiz section of this website. Here, you will be tested on the profound knowledge
+    you have accumulated throughout your journey of learning everything there is to know about 
+    the Wildlife.
+</p>
+
+<p>
+    Which topic would you like to quiz yourself on?
+    <span>(Please select a topic):</span>
+</p>
+
+<ol>
+
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+
+</ol>
+
 
 </main>
 

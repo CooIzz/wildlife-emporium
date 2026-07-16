@@ -1,0 +1,256 @@
+/* ---------------- Introduction ---------------- */
+
+.home-introduction {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 100px;
+}
+
+.home-logo {
+
+    width: 250px;
+    height: 200px;
+
+    border: 2px dashed black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-title {
+
+    text-align: center;
+
+    font-size: 50px;
+}
+
+.home-description {
+
+    max-width: 900px;
+
+    text-align: center;
+
+    line-height: 1.6;
+
+    font-size: 20px;
+}
+
+
+
+/* ---------------- Featured Animal ---------------- */
+
+.home-featured-animal {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 60px;
+
+    margin-bottom: 120px;
+}
+
+.home-featured-animal-image {
+
+    width: 250px;
+    height: 200px;
+
+    border: 2px dashed black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-featured-animal-content {
+
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.home-featured-animal-content h2 {
+
+    margin: 0;
+}
+
+.home-featured-animal-content p {
+
+    line-height: 1.6;
+}
+
+.home-featured-animal-content a {
+
+    width: fit-content;
+
+    padding: 12px 25px;
+
+    border: 2px solid black;
+
+    text-decoration: none;
+
+    color: black;
+}
+
+
+
+/* ---------------- Shared Section Description ---------------- */
+
+.home-section-description {
+
+    max-width: 850px;
+
+    text-align: center;
+
+    line-height: 1.6;
+
+    font-size: 18px;
+}
+
+
+
+/* ---------------- Encyclopedia ---------------- */
+
+.home-encyclopedia {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 120px;
+}
+
+.home-large-card {
+
+    width: 350px;
+
+    padding: 30px;
+
+    border: 2px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+
+    text-decoration: none;
+
+    color: black;
+}
+
+
+
+/* ---------------- Articles ---------------- */
+
+.home-articles {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 120px;
+}
+
+.home-card-row {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 40px;
+}
+
+.home-article-card {
+
+    width: 280px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 15px;
+
+    text-align: center;
+}
+
+
+
+/* ---------------- Quiz ---------------- */
+
+.home-quiz {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 100px;
+}
+
+.home-leaderboard {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.home-quiz-card {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.home-quiz-button {
+
+    width: 350px;
+
+    padding: 30px;
+
+    border: 2px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+
+    text-decoration: none;
+
+    color: black;
+}
+
+
+
+/* ---------------- Shared Placeholder ---------------- */
+
+.home-placeholder {
+
+    width: 250px;
+    height: 200px;
+
+    border: 2px dashed black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
