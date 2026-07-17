@@ -1,0 +1,410 @@
+
+
+/* ===========================
+   Main
+=========================== */
+
+main{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
+}
+
+/* ===========================
+   Search
+=========================== */
+
+.animal-search{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.animal-search h2{
+    margin-bottom:20px;
+    color:#2d5a27;
+}
+
+.animal-search_bar{
+    width:100%;
+    max-width:550px;
+
+    padding:15px 20px;
+
+    border:none;
+    border-radius:40px;
+
+    font-size:1rem;
+
+    outline:none;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.animal-search_bar:focus{
+    box-shadow:0 5px 20px rgba(76,175,80,.4);
+}
+
+/* ===========================
+   Filters
+=========================== */
+
+.animal-filters{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:40px;
+}
+
+.animal-filters button{
+
+    padding:10px 22px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 3px 8px rgba(0,0,0,.08);
+}
+
+.animal-filters button:hover{
+
+    background:#4CAF50;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   Animal Grid
+=========================== */
+
+.animal-grid{
+
+    /* Use CSS Grid to create a responsive layout for animal cards */
+    /* Apparently the grid will automatically arrange the cards in a grid */
+
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+
+}
+
+/* ===========================
+   Animal Cards
+=========================== */
+
+
+/* To prevent the hyperlink blue underline in animal cards */
+
+.animal-card{
+
+    background:white;
+    border-radius:20px;
+    /* overflow:hidden; */
+    text-align:center;
+    transition:.25s;
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
+
+    text-decoration: none;
+    color: inherit;
+
+}
+
+.animal-card:hover{
+
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,.15);
+
+}
+
+.animal-card img{
+
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+
+}
+
+.animal-card h3{
+
+    margin-top:15px;
+    font-size:1.3rem;
+
+}
+
+.animal-card p{
+
+    margin:10px 0 20px;
+    color:#666;
+
+}
+
+
+
+/* ===========================
+   Responsive
+=========================== */
+
+/* Media query for screens with a maximum width of 700px */
+
+/*
+
+@media(max-width:700px){
+
+    header{
+
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .animal-overview{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+
+
+
+
+
+/* ================================================================================
+   Animal Biography Page
+=================================================================================== */
+
+.animal-biography{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:40px auto;
+
+}
+
+/* ======================================
+   Breadcrumb
+====================================== */
+
+.animal-breadcrumb{
+
+    margin-bottom:20px;
+
+    color:#777;
+
+    font-size:.95rem;
+
+}
+
+/* ======================================
+   Header
+====================================== */
+
+.animal-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+/* ======================================
+   Overview
+====================================== */
+
+.animal-overview{
+
+    display:grid;
+
+    grid-template-columns:400px 1fr;
+
+    gap:40px;
+
+    align-items:start;
+
+    margin-bottom:60px;
+
+}
+
+/* ======================================
+   Image
+====================================== */
+
+.animal-image img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    display:block;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+/* ======================================
+   Information Table
+====================================== */
+
+.animal-information{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.animal-information th{
+
+    width:35%;
+
+    text-align:left;
+
+    padding:15px;
+
+    background:#f6f6f6;
+
+}
+
+.animal-information td{
+
+    padding:15px;
+
+}
+
+.animal-information tr{
+
+    border-bottom:1px solid #ddd;
+
+}
+
+/* ======================================
+   Description
+====================================== */
+
+.animal-description{
+
+    margin-bottom:60px;
+
+}
+
+.animal-description p{
+
+    line-height:1.8;
+
+    color:#555;
+
+}
+
+/* ======================================
+   Facts
+====================================== */
+
+.animal-facts{
+
+    margin-bottom:60px;
+
+}
+
+.animal-facts ul{
+
+    margin-left:20px;
+
+}
+
+.animal-facts li{
+
+    margin-bottom:12px;
+
+    line-height:1.7;
+
+}
+
+/* ======================================
+   Gallery
+====================================== */
+
+.animal-gallery{
+
+    margin-bottom:60px;
+
+}
+
+.animal-gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+    margin-top:20px;
+
+}
+
+.animal-gallery-grid img{
+
+    width:100%;
+
+    aspect-ratio:4/3;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    transition:.2s;
+
+}
+
+.animal-gallery-grid img:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* ======================================
+   Animal YouTube Video
+====================================== */
+
+
+.animal-video{
+
+    width:100%;
+    aspect-ratio:16/9;
+    margin:40px 0;
+
+}
+
+.animal-video iframe{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+
+    border-radius:20px;
+
+}
+
+
+
