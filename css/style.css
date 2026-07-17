@@ -12,6 +12,13 @@ header {
     padding: 20px;
     background: #2f7d32;
     color: white;
+    margin: auto;
+}
+
+header p, h1 {
+
+    text-align: center;
+
 }
 
 nav {
@@ -43,3 +50,25 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
+#quizIndex ol {
+
+    line-height: 50px;
+    padding: 5px 0px 0px 25px;
+
+}
+
+#quizIndex li {
+
+    font-family: "Arial Black", sans-serif;
+    font-weight: 900;
+
+}
+
+#quizIndex span {
+
+    font-weight: 900;
+    text-decoration: underline;
+
+}
+
