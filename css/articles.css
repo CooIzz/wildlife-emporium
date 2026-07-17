@@ -1,0 +1,140 @@
+body{
+    background-color:#dddbdb;
+}
+
+.card{
+    background-color: #402f1d;
+    border-radius: 12px;
+    border: 2px solid #3C280D;
+    display: flex;
+}
+
+.article-header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 2px solid #3C280D;
+}
+
+.article-header{
+    font-family:'Cambria';
+    font-size: 80px;
+    color:#3C280D;
+    letter-spacing: 0.75px;
+    font-weight:bolder;
+    text-align: left;
+}
+
+.article-logo{
+    width: 80px;
+    height: 40px;
+    background-color: #402f1d;
+    text-align: center;
+}
+
+.article-card1{
+    width:250px;
+    height:250px;
+    flex-shrink: 0; /* stop pic from moving down*/
+}
+.article-sum1 p, .article-sum2 p, .article-sum3 p{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+    color:#3C280D;
+    margin-bottom: 10px;
+    line-height: 1;
+    flex-grow:1;
+}
+.article-sum1 a{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 26px;
+    font-weight: bold;
+    color:#3C280D;
+}
+
+.article-frame{
+    background-image: url("../articles/Abackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding:0;
+    max-width:95%;
+    margin: 0 auto;
+    width: 95%;
+    border: 2px solid #3C280D;
+    box-sizing: border-box;
+}
+
+.article-sec1, .article-sec3{
+    display:flex;
+    gap:30px; /* space btwn pic and text */
+    align-items: stretch;
+    padding: 20px;
+    border-bottom: 2px solid #3C280D;
+}
+.article-sec2{
+    display: flex;
+    gap:0;
+    align-items:stretch;
+    border-bottom: 2px solid #3C280D;
+}
+.article-sec3{
+    justify-content: space-between;
+    width:100%;
+    box-sizing: border-box;
+}
+
+.article-dr{
+    flex:60;
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    padding:20px;
+}
+
+.article-sidebar{
+    flex:40;
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+    border-left:2px solid #3C280D;
+    padding: 20px;
+}
+.article-sidebar2{
+     flex:40;
+    display:flex;
+    flex-direction: column;
+    gap: 30px;
+    border-right:2px solid #3C280D;
+    padding: 20px;
+}
+
+.article-textL, .article-textR {
+    display:flex;
+    gap:20px;
+    width:100%;
+}
+.article-textL{
+    justify-content: flex-end;
+}
+.article-textR{
+    justify-content: flex-start;
+}
+
+.article-card2{
+    width: 180px;
+    height: 120px;
+    flex-shrink:0;
+}
+.article-card3{
+    width: 100%;
+    height: 200px;
+    flex-shrink:0;
+}
+.article-card4{
+    width: 100%;
+    height: 150px;
+    flex-shrink:0;
+}
