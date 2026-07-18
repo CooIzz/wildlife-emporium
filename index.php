@@ -30,9 +30,9 @@
         </h1>
 
         <p class="home-description">
-            Welcome to Wildlife Emporium, an interactive learning environment dedicated to wildlife education.
-            Discover fascinating animal species through our encyclopedia, stay informed with the latest wildlife
-            articles, and challenge yourself with engaging quizzes.
+            Welcome to Wildlife Emporium, an interactive learning environment! 
+            <br> 
+            Learn through our expansive encyclopedia and articles or challenge yourself and others with our specially curated quizzes.
         </p>
 
     </section>
@@ -49,7 +49,7 @@
 
         <div class="home-featured-animal-content">
 
-            <h2>Animal of the Day</h2>
+            <h2>Featured Animal</h2>
 
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -71,14 +71,18 @@
 
         <h2>Explore Wildlife</h2>
 
+        <div class="home-encyclopedia-image">
+            <img src="https://thumbs.dreamstime.com/b/generated-image-380998003.jpg">
+        </div>
+
         <p class="home-section-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
 
         <a href="#" class="home-large-card">
 
-            <div class="home-placeholder">
-                Book Icon
+            <div class="home-encyclopedia-icon">
+                <img src="images/home-book-test2.svg">
             </div>
 
             <h3>Animal Encyclopedia</h3>
