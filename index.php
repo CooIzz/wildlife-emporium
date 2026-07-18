@@ -22,7 +22,7 @@
     <section class="home-introduction">
 
         <div class="home-logo">
-            Logo
+            <img src="images/home-logo-test.svg">
         </div>
 
         <h1 class="home-title">
@@ -44,7 +44,7 @@
     <section class="home-featured-animal">
 
         <div class="home-featured-animal-image">
-            Featured Animal
+            <img src="images/tiger.png" alt="Tiger">
         </div>
 
         <div class="home-featured-animal-content">
@@ -196,6 +196,8 @@
     </section>
 
 </main>
+
+
 
 
 
