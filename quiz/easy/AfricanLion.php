@@ -130,20 +130,21 @@ level.
 <li>
 <div>
 <p>What is the name of the habitat of the African Lions?</p>
-<p>What is the current population trend of the African Lions?</p>
-<input type="radio" name="increasing" id="increasing">
-<label for="increasing">Increasing</label>
+<input type="radio" name="tropicaljungle" id="tropicaljungle">
+<label for="tropicaljungle">Tropical Jungle</label>
 <br>
-<input type="radio" name="decreasing" id="decreasing">
-<label for="decreasing">Decreasing</label>
+<input type="radio" name="savannah" id="savannah">
+<label for="savannah">Savanna</label>
 <br>
-<input type="radio" name="unchanged" id="unchanged">
-<label for="unchanged">Unchanged</label>
+<input type="radio" name="riverbank" id="riverbank">
+<label for="riverbank">River Bank</label>
 </div>
 </li>
 
 <li>
-<div></div>
+<div>
+
+</div>
 </li>
 
 <li>

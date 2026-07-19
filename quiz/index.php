@@ -28,7 +28,7 @@
 <hr>
 <br>
 
-<p>
+<p style="text-align: center;">
     <strong>If you wish to partake in our quiz, please login(or register for newcomers) before proceeding.</strong>
 </p>
 
@@ -53,7 +53,10 @@
 </div>
 
 <div id="Topic3" class="QuizTopic">
-<p>Topic 3: </p>
+<a>
+<img src="../images/Penguin.jpeg" alt="A picture of Penguin" class="animal">
+<p>Topic 3: Penguin</p>
+</a>
 </div>
 
 <div id="Topic4" class="QuizTopic">
