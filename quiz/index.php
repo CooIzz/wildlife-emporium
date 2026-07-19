@@ -7,6 +7,7 @@
     <title>Quiz</title>
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
 </head>
 
 <body>
@@ -28,24 +29,63 @@
 <br>
 
 <p>
-    If you wish to partake in our quiz, please login(or register for newcomers) before proceeding.
+    <strong>If you wish to partake in our quiz, please login(or register for newcomers) before proceeding.</strong>
 </p>
 
 <br>
 
-<ol>
-<li><a>Topic 1: </a></li>
-<li><a>Topic 2: </a></li>
-<li><a>Topic 3: </a></li>
-<li><a>Topic 4: </a></li>
-<li><a>Topic 5: </a></li>
-<li><a>Topic 6: </a></li>
-<li><a>Topic 7: </a></li>
-<li><a>Topic 8: </a></li>
-<li><a>Topic 9: </a></li>
-<li><a>Topic 10: </a></li>
-</ol>
+<article>
 
+<section>
+<div id="Topic1" class="QuizTopic">
+<a href="./easy/AfricanLion.php">
+<img src="../images/AfricanLion.jpg" alt="A picture of African Lion" class="animal">
+<p>Topic 1: African Lion</p>
+</a>
+</div>
+
+
+<div id="Topic2" class="QuizTopic">
+<a href="OrangUtan.php">
+<img src="../images/OrangUtan.jpg" alt="A picture of Orang Utan" class="animal">
+<p>Topic 2: Orang Utan</p>
+</a>
+</div>
+
+<div id="Topic3" class="QuizTopic">
+<p>Topic 3: </p>
+</div>
+
+<div id="Topic4" class="QuizTopic">
+<p>Topic 4: </p>
+</div>
+
+<div id="Topic5" class="QuizTopic">
+<p>Topic 5: </p>
+</div>
+
+<div id="Topic6" class="QuizTopic">
+<p>Topic 6: </p>
+</div>
+
+<div id="Topic7" class="QuizTopic">
+<p>Topic 7: </p>
+</div>
+
+<div id="Topic8" class="QuizTopic">
+<p>Topic 8: </p>
+</div>
+
+<div id="Topic9" class="QuizTopic">
+<p>Topic 9: </p>
+</div>
+
+<div id="Topic10" class="QuizTopic">
+<p>Topic 10: </p>
+</div>
+</section>
+
+</article>
 
 </main>
 

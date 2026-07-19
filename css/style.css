@@ -51,24 +51,4 @@ footer {
     padding: 20px;
 }
 
-#quizIndex ol {
-
-    line-height: 50px;
-    padding: 5px 0px 0px 25px;
-
-}
-
-#quizIndex li {
-
-    font-family: "Arial Black", sans-serif;
-    font-weight: 900;
-
-}
-
-#quizIndex span {
-
-    font-weight: 900;
-    text-decoration: underline;
-
-}
 

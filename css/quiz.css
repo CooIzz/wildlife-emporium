@@ -1,0 +1,80 @@
+.QuizTopic {
+
+    text-align: center;
+    font-weight: 900;
+    font-size: x-large;
+    line-height: 1px;
+    margin: 50px 100px 50px;   
+    width: 25rem; 
+    height: 20rem;
+    border: 5px solid black;
+    border-radius: 15px;
+    box-shadow: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+section {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.animal {
+
+    object-fit: contain;
+    width: 350px; 
+    height: 275px;
+
+}
+
+.QuizTopic a, .QuizTopic a:visited {
+
+    text-decoration: none;
+    color: rgb(0, 0, 255);
+
+}
+
+.QuizTopic a:hover {
+
+    color: rgb(255, 0, 0);
+    text-decoration: underline;
+
+}
+
+
+span {
+
+    font-weight: 900;
+    font-size: 18px;
+    color: rgb(0, 0, 255);
+
+}
+
+.mainAnimals {
+
+    /*object-fit: contain;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+ol li {
+
+    margin: 5px 25px 10px;
+
+}
+
+ol li label {
+
+    font-weight: 700;
+
+}
