@@ -17,6 +17,10 @@
 
 <main id="quizIndex">
 <div><h1>Quiz Domain</h1></div>
+
+<!--
+Introduction to the quiz section of the website
+-->
 <p>
     Welcome to the quiz section of this website. Here, you will be tested on the profound knowledge
     you have accumulated throughout your journey of learning everything there is to know about 
@@ -28,6 +32,10 @@
 <hr>
 <br>
 
+<!--
+Alerting users to login/register before partaking in
+the quiz
+-->
 <p style="text-align: center;">
     <strong>If you wish to partake in our quiz, please login(or register for newcomers) before proceeding.</strong>
 </p>
@@ -36,6 +44,10 @@
 
 <article>
 
+<!--
+Displaying the topics available for users to quiz
+themselves on
+-->
 <section>
 <div id="Topic1" class="QuizTopic">
 <a href="./easy/AfricanLion.php">

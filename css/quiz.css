@@ -1,3 +1,7 @@
+
+/*
+This styling is structure within each topical box
+*/
 .QuizTopic {
 
     text-align: center;
@@ -17,6 +21,10 @@
 
 }
 
+/*
+This styling is to arrange all the topical boxes
+in a glass-panel like arrangement structure
+*/
 section {
 
     display: flex;
@@ -27,6 +35,10 @@ section {
 
 }
 
+/*
+This is to style all the images within the index page
+of the quiz section
+*/
 .animal {
 
     object-fit: contain;
@@ -35,6 +47,11 @@ section {
 
 }
 
+/*
+This styling is to fix the color of the hyperlinks
+within the index page of the quiz section regardless
+of whether it has been visited or not
+*/
 .QuizTopic a, .QuizTopic a:visited {
 
     text-decoration: none;
@@ -42,6 +59,11 @@ section {
 
 }
 
+/*
+This styling is for when the user hovers the mouse
+over any of the hyperlinks within the index page 
+of the quiz section
+*/
 .QuizTopic a:hover {
 
     color: rgb(255, 0, 0);
@@ -58,6 +80,10 @@ span {
 
 }
 
+/*
+This styling is to style the images within the animal
+pages for all the 3(easy, medium and difficult) levels
+*/
 .mainAnimals {
 
     /*object-fit: contain;*/
@@ -67,18 +93,29 @@ span {
     align-items: center;
 }
 
+/*
+This styling is to format the questions for all the 
+topics within all the 3 difficulty levels
+*/
 ol li {
 
     margin: 5px 25px 10px;
 
 }
 
+/*
+This styling is to format the labeling of the answers to 
+the questions
+*/
 ol li label {
 
     font-weight: 700;
 
 }
 
+/*
+To style the header of the index page of quiz section
+*/
 h1 {
 
     font-size:40px;
