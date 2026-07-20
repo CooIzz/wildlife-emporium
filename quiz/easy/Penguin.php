@@ -17,16 +17,17 @@
 
 <main>
 <div class="mainAnimals">
-<img src="../../images/OrangUtan.jpg" alt="A picture of Orang Utan">
+<img src="../../images/Penguin.jpeg" alt="A picture of Penguin">
 </div>
 <br>
-<h1>Orang Utan</h1>
+<h1>Penguins</h1>
 <hr>
 <br>
 
 <p>
-Now you will be tested on your knowledge on the great apes native to the
-rainforests of Indonesia and Malaysia, the <span>Orang Utan</span>.
+Now you will be tested on your knowledge on these group of flightless 
+semi-aquatic sea birds, the <span>Penguins</span>. Do not worry as you 
+have chosen the <strong>Easy</strong> level.
 </p>
 </main>
 

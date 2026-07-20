@@ -91,7 +91,7 @@ pages for all the 3(easy, medium and difficult) levels
 */
 .mainAnimals {
 
-    /*object-fit: contain;*/
+    object-fit: contain;
     display: flex;
     flex-direction: row;
     justify-content: center;

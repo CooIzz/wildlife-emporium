@@ -17,16 +17,17 @@
 
 <main>
 <div class="mainAnimals">
-<img src="../../images/OrangUtan.jpg" alt="A picture of Orang Utan">
+<img src="../../images/tiger.jpg" alt="A picture of Tiger">
 </div>
 <br>
-<h1>Orang Utan</h1>
+<h1>Tigers</h1>
 <hr>
 <br>
 
 <p>
-Now you will be tested on your knowledge on the great apes native to the
-rainforests of Indonesia and Malaysia, the <span>Orang Utan</span>.
+Now you will be tested on your knowledge on these members of the 
+genus Panthera native to Asia, the <span>Tigers</span>. Do not 
+worry as you have chosen the <strong>Easy</strong> level.
 </p>
 </main>
 

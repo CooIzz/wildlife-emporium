@@ -58,21 +58,24 @@ themselves on
 
 
 <div id="Topic2" class="QuizTopic">
-<a href="OrangUtan.php">
+<a href="./easy/OrangUtan.php">
 <img src="../images/OrangUtan.jpg" alt="A picture of Orang Utan" class="animal">
 <p>Topic 2: Orang Utan</p>
 </a>
 </div>
 
 <div id="Topic3" class="QuizTopic">
-<a>
+<a href="./easy/Penguin.php">
 <img src="../images/Penguin.jpeg" alt="A picture of Penguin" class="animal">
 <p>Topic 3: Penguin</p>
 </a>
 </div>
 
 <div id="Topic4" class="QuizTopic">
-<p>Topic 4: </p>
+<a href="./easy/Tiger.php">
+<img src="../images/tiger.jpg" alt="A picture of Tiger" class="animal">
+<p>Topic 4: Tiger</p>
+</a>
 </div>
 
 <div id="Topic5" class="QuizTopic">
