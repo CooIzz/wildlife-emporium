@@ -17,16 +17,16 @@
 
 <main>
 <div class="mainAnimals">
-<img src="../../images/Penguin.jpeg" alt="A picture of Penguin">
+<img src="../../images/raccoon.jpg" alt="A picture of Raccoon">
 </div>
 <br>
-<h1>Penguins</h1>
+<h1>Raccoon</h1>
 <hr>
 <br>
 
 <p>
-Now you will be tested on your knowledge on these group of flightless 
-semi-aquatic sea birds, the <span>Penguins</span>.
+Now you will be tested on your knowledge on the largest member 
+of the procyonid family, the <span>Raccoons</span>.
 </p>
 </main>
 

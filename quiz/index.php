@@ -79,11 +79,17 @@ themselves on
 </div>
 
 <div id="Topic5" class="QuizTopic">
-<p>Topic 5: </p>
+<a href="./easy/Panda.php">
+<img src="../images/panda.jpg" alt="A picture of Panda" class="animal">
+<p>Topic 5: Panda</p>
+</a>
 </div>
 
 <div id="Topic6" class="QuizTopic">
-<p>Topic 6: </p>
+<a href="./easy/Raccoon.php">
+<img src="../images/raccoon.jpg" alt="A picture of Raccoon" class="animal">
+<p>Topic 6: Raccoon</p>
+</a>
 </div>
 
 <div id="Topic7" class="QuizTopic">
