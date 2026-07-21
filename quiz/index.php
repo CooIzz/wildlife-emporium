@@ -93,7 +93,10 @@ themselves on
 </div>
 
 <div id="Topic7" class="QuizTopic">
-<p>Topic 7: </p>
+<a href="">
+<img src="../images/SnowLeopard.jpg" alt="A picture of Snow Leopard" class="animal">
+<p>Topic 7: Snow Leopard</p>
+</a>
 </div>
 
 <div id="Topic8" class="QuizTopic">
