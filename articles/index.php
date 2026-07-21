@@ -29,7 +29,7 @@
     <div class="card article-card1"></div>
     <div class="article-sum1">
         <!-- to add link to full article -->
-        <a href="/wildlife-emporium/articles/content/">Spotted Yellow Goldfish Fosters Bullfrog Tadpoles!</a>
+        <a href="/wildlife-emporium/articles/details.php">Spotted Yellow Goldfish Fosters Bullfrog Tadpoles!</a>
         <p>Barney dinosaurus est,Imaginatione!</p>
         <p>Dum est altus, animatus,Visu etiam mirabile!</p>
         <p>Amici et magni et parvi,Illi undique veniunt</p>

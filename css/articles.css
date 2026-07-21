@@ -54,7 +54,7 @@ body{
 }
 
 .article-frame{
-    background-image: url("../articles/Abackground.png");
+    background-image: url("../images/Abackground.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
