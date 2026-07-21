@@ -37,6 +37,7 @@ section {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    background-color: rgb(255, 231, 202);\
 
 }
 
