@@ -15,7 +15,7 @@
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
-<main id="quizIndex">
+<main>
 <div><h1>Quiz Domain</h1></div>
 
 <!--
@@ -80,8 +80,8 @@ themselves on
 
 <div id="Topic5" class="QuizTopic">
 <a href="./easy/Panda.php">
-<img src="../images/panda.jpg" alt="A picture of Panda" class="animal">
-<p>Topic 5: Panda</p>
+<img src="../images/panda.jpg" alt="A picture of Giant Panda" class="animal">
+<p>Topic 5: Giant Panda</p>
 </a>
 </div>
 

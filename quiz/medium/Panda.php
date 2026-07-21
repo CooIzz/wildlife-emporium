@@ -17,21 +17,19 @@
 
 <main>
 <div class="mainAnimals">
-<img src="../../images/OrangUtan.jpg" alt="A picture of Orang Utan">
+<img src="../../images/kfpanda.jpg" alt="A picture of Panda">
 </div>
 <br>
-<h1>Orang Utan</h1>
+<h1>Giant Panda</h1>
 <hr>
 <br>
 
 <p class="animalIntroduction">
-Now you will be tested on your knowledge on the great apes native to the
-rainforests of Indonesia and Malaysia, the <span>Orang Utan</span>.
+Now you will be tested on your knowledge on these bears native to 
+south-central China, the <span>Giant Pandas</span>. 
 </p>
 
 <br>
-
-
 </main>
 
 <?php include("../../includes/footer.php"); ?>

@@ -24,11 +24,15 @@
 <hr>
 <br>
 
-<p>
+<p class="animalIntroduction">
 Now you will be tested on your knowledge on these members of the 
 genus Panthera native to Asia, the <span>Tigers</span>. Do not 
 worry as you have chosen the <strong>Easy</strong> level.
 </p>
+
+<br>
+
+
 </main>
 
 <?php include("../../includes/footer.php"); ?>

@@ -126,3 +126,12 @@ h1 {
     font-size:40px;
 
 }
+
+.animalIntroduction {
+
+    text-align: center;
+    font-style: italic;
+    font-size: larger;
+    font-weight: 600;
+
+}

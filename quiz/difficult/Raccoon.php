@@ -24,10 +24,14 @@
 <hr>
 <br>
 
-<p>
+<p class="animalIntroduction">
 Now you will be tested on your knowledge on the largest member 
 of the procyonid family, the <span>Raccoons</span>.
 </p>
+
+<br>
+
+
 </main>
 
 <?php include("../../includes/footer.php"); ?>

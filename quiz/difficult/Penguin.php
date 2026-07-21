@@ -24,10 +24,14 @@
 <hr>
 <br>
 
-<p>
+<p class="animalIntroduction">
 Now you will be tested on your knowledge on these group of flightless 
 semi-aquatic sea birds, the <span>Penguins</span>.
 </p>
+
+<br>
+
+
 </main>
 
 <?php include("../../includes/footer.php"); ?>

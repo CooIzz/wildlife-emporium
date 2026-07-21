@@ -25,9 +25,13 @@
 <hr>
 <br>
 
-<p>
+<p class="animalIntroduction">
 Now you will be tested on your knowledge on the largest carnivore in Africa, 
 the <span>African Lion<span>.
+
+<br>
+
+
 </p>
 
 <form>

@@ -24,10 +24,12 @@
 <hr>
 <br>
 
-<p>
+<p> class="animalIntroduction"
 Now you will be tested on your knowledge on the great apes native to the
 rainforests of Indonesia and Malaysia, the <span>Orang Utan</span>.
 </p>
+
+<br>
 </main>
 
 <?php include("../../includes/footer.php"); ?>
