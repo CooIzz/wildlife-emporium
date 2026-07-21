@@ -11,7 +11,7 @@
 
 body {
     background: var(--home-background);
-    color: var(--home-primary);
+    color: rgb(50, 22, 5);
     font-family: "Nunito Sans", sans-serif;
 }
 
@@ -101,7 +101,7 @@ body {
 
     line-height: 1.8;
 
-    color: var(--home-primary);
+    color: rgb(50, 22, 5);
 
     opacity: .85;
 
@@ -115,7 +115,7 @@ body {
 
     background: var(--home-primary);
 
-    color: white;
+    color: rgb(74, 36, 8);
 
     border-radius: 999px;
 
@@ -147,7 +147,7 @@ body {
 
     font-size: 18px;
 
-    color: var(--home-primary);
+    color: rgb(50, 22, 5);
 
     opacity: .85;
 
@@ -161,11 +161,12 @@ body {
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-
-    gap: 35px;
-
-    margin-bottom: 160px;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1100px;
+    margin: 0 auto 120px auto;
 
 }
 
@@ -173,7 +174,7 @@ body {
 
     font-size: 38px;
 
-    color: var(--home-primary);
+    color: rgb(115, 51, 129);
 
 }
 
@@ -182,7 +183,7 @@ body {
     height:auto;
 }
 
-.home-large-card {
+.home-large-card { /*flex within a flex*/
 
     display: flex;
     flex-direction: column;
@@ -194,19 +195,14 @@ body {
     margin: 0 auto 120px auto;
 
 
-    background-color: rgb(0, 52, 0);
+    background-color: rgb(115, 51, 129);
     color: rgb(250, 245, 233);
-    border: 1px solid var(--home-border);
     border-radius: 24px;
-    box-shadow: 0 8px 25px var(--home-shadow);
-    text-decoration: none;
-    
-    transition: .25s;
 }
 
 .home-encyclopedia-icon img {
-    width:60px;
-    height:60px;
+    width:120px;
+    height:120px;
 }
 
 .home-large-card:hover {
