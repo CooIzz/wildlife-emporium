@@ -20,6 +20,14 @@ This styling is structure within each topical box
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: width 2.5s 0.5ms linear, height 2.5s 0.5ms linear;
+
+}
+
+.QuizTopic:hover {
+
+    width: 30rem;
+    height: 25rem;
 
 }
 
@@ -37,7 +45,7 @@ section {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background-color: rgb(255, 231, 202);\
+    background-color: rgb(255, 231, 202);
 
 }
 
@@ -50,6 +58,14 @@ of the quiz section
     object-fit: contain;
     width: 350px; 
     height: 275px;
+    transition: width 2.5s 0.5ms linear, height 2.5s 0.5ms linear;
+
+}
+
+.animal:hover {
+
+    width: 435px;
+    height: 360px;
 
 }
 
