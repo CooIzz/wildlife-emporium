@@ -22,7 +22,7 @@
     <section class="home-introduction">
 
         <div class="home-logo">
-            <img src="images/home-logo-test.svg">
+            <img src="images/home-logo-test.svg" alt="Wildlife Emporium Logo">
         </div>
 
         <h1 class="home-title">
@@ -30,21 +30,19 @@
         </h1>
 
         <p class="home-description">
-            Welcome to Wildlife Emporium, an interactive learning environment! 
-            <br> 
-            Learn through our expansive encyclopedia and articles or challenge yourself and others with our specially curated quizzes.
+            Welcome to Wildlife Emporium, an interactive learning environment! Learn through our expansive encyclopedia and articles, or challenge yourself and others with our specially curated quizzes.
         </p>
 
     </section>
 
 
 
-    <!-- Animal of the Day -->
+    <!-- Featured Animal -->
 
     <section class="home-featured-animal">
 
         <div class="home-featured-animal-image">
-            <img src="images/tiger.png" alt="Tiger">
+            <img src="images/tiger.png" alt="Featured Tiger">
         </div>
 
         <div class="home-featured-animal-content">
@@ -72,17 +70,17 @@
         <h2>Explore Wildlife</h2>
 
         <div class="home-encyclopedia-image">
-            <img src="https://thumbs.dreamstime.com/b/generated-image-380998003.jpg">
+            <img src="https://thumbs.dreamstime.com/b/generated-image-380998003.jpg" alt="Wildlife Encyclopedia">
         </div>
 
         <p class="home-section-description">
-            View our vast documentation of animals on our encyclopedia!
+            View our vast documentation of animals through our encyclopedia.
         </p>
 
-        <a href="#" class="home-large-card">
+        <a href="#" class="home-navigation-card">
 
             <div class="home-encyclopedia-icon">
-                <img src="images/home-book-test2.svg">
+                <img src="images/home-book-test2.svg" alt="Animal Encyclopedia Icon">
             </div>
 
             <h3>Animal Encyclopedia</h3>
@@ -107,7 +105,7 @@
 
             <article class="home-article-card">
 
-                <div class="home-placeholder">
+                <div class="home-article-image">
                     Image
                 </div>
 
@@ -121,7 +119,7 @@
 
             <article class="home-article-card">
 
-                <div class="home-placeholder">
+                <div class="home-article-image">
                     Image
                 </div>
 
@@ -135,7 +133,7 @@
 
             <article class="home-article-card">
 
-                <div class="home-placeholder">
+                <div class="home-article-image">
                     Image
                 </div>
 
@@ -149,9 +147,9 @@
 
         </div>
 
-        <a href="#" class="home-large-card">
+        <a href="#" class="home-navigation-card">
 
-            <div class="home-placeholder">
+            <div class="home-articles-icon">
                 Articles Icon
             </div>
 
@@ -163,7 +161,7 @@
 
 
 
-    <!-- Quiz -->
+    <!-- Wildlife Quiz -->
 
     <section class="home-quiz">
 
@@ -177,7 +175,7 @@
 
             <h3>Leaderboard</h3>
 
-            <div class="home-placeholder">
+            <div class="home-leaderboard-content">
                 Leaderboard
             </div>
 
@@ -187,7 +185,7 @@
 
             <a href="#" class="home-quiz-button">
 
-                <div class="home-placeholder">
+                <div class="home-quiz-icon">
                     Quiz Icon
                 </div>
 
