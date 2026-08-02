@@ -27,15 +27,79 @@
 
 <p class="animalIntroduction">
 Now you will be tested on your knowledge on the largest carnivore in Africa, 
-the <span>African Lion<span>.
+the <span>African Lion</span>. Be prepared for the following intermediate tier 
+questions.
 </p>
 
 <br>
 
 <form>
+<fieldset>
+<legend></legend>
+<ol>
 
+<li>
+<div>
+<p></p>
+</div>
+</li>
 
+<li>
+<div>
+<p></p>
+</div>
+</li>
 
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+</div>
+</li>
+
+</ol>
+</fieldset>
 </form>
 
 </main>

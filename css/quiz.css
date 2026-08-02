@@ -34,6 +34,18 @@ This styling is structure within each topical box
 /*
 -----Structure of all topical boxes-----
 */
+
+@keyframes bgColorChange {
+	
+	0% { background-color: rgb(204, 255, 255); }
+	20% { background-color: rgb(243, 174, 190); }
+	40% { background-color: rgb(255, 189, 254); }
+	60% { background-color: rgb(255, 255, 204); }
+	80% { background-color: rgb(254, 216, 122); }
+	100% { background-color: rgb(174, 243, 183); }
+	
+}
+
 /*
 This styling is to arrange all the topical boxes
 in a glass-panel like arrangement structure
@@ -45,7 +57,7 @@ section {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background-color: rgb(255, 231, 202);
+	animation: bgColorChange 20s infinite ease-in-out alternate;
 
 }
 
