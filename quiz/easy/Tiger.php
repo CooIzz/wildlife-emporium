@@ -38,6 +38,7 @@ worry as you have chosen the <strong>Easy</strong> level.
 <?php include("../../includes/footer.php"); ?>
 
 <script src="../../js/script.js"></script>
+<script src="../../js/quiz.js"></script>
 
 </body>
 </html>

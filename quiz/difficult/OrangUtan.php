@@ -37,6 +37,7 @@ rainforests of Indonesia and Malaysia, the <span>Orang Utan</span>.
 <?php include("../../includes/footer.php"); ?>
 
 <script src="../../js/script.js"></script>
+<script src="../../js/quiz.js"></script>
 
 </body>
 </html>

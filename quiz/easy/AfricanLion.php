@@ -145,7 +145,15 @@ level.
 
 <li>
 <div>
-
+<p>What is the current conservation status of the African Lions?</p>
+<input type="radio" name="vulnerable" id="vulnerable">
+<label for="vulnerable">Vulnerable</label>
+<br>
+<input type="radio" name="endangered" id="endangered">
+<label for="endangered">Endangered</label>
+<br>
+<input type="radio" name="leastConcern" id="leastConcern">
+<label for="leastConcern">Least Concern</label>
 </div>
 </li>
 
@@ -166,6 +174,7 @@ level.
 <?php include("../../includes/footer.php"); ?>
 
 <script src="../../js/script.js"></script>
+<script src="../../js/quiz.js"></script>
 
 </body>
 </html>

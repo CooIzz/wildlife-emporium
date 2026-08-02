@@ -35,6 +35,7 @@ semi-aquatic sea birds, the <span>Penguins</span>.
 <?php include("../../includes/footer.php"); ?>
 
 <script src="../../js/script.js"></script>
+<script src="../../js/quiz.js"></script>
 
 </body>
 </html>
