@@ -35,7 +35,7 @@ level.
 
 <form>
 <fieldset>
-<legend></legend>
+<legend>Easy Level</legend>
 <ol>
 
 <li>
@@ -160,12 +160,34 @@ level.
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 

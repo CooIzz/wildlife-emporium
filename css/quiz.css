@@ -35,6 +35,11 @@ This styling is structure within each topical box
 -----Structure of all topical boxes-----
 */
 
+/*
+This styling is for background animation
+in the quiz index page 
+*/
+
 @keyframes bgColorChange {
 	
 	0% { background-color: rgb(204, 255, 255); }
@@ -163,4 +168,14 @@ h1 {
     font-size: larger;
     font-weight: 600;
 
+}
+
+legend {
+	
+	text-align: center;
+	text-decoration: underline;
+	font-weight: 900;
+	font-style: italic;
+	font-size: 40px;
+	
 }

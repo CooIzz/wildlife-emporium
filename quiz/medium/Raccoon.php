@@ -30,6 +30,186 @@ of the procyonid family, the <span>Raccoons</span>.
 </p>
 
 <br>
+
+<form>
+<fieldset>
+<legend>Medium Level</legend>
+<ol>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+</ol>
+</fieldset>
+</form>
+
 </main>
 
 <?php include("../../includes/footer.php"); ?>

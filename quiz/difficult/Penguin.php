@@ -31,6 +31,184 @@ semi-aquatic sea birds, the <span>Penguins</span>.
 
 <br>
 
+<form>
+<fieldset>
+<legend>Medium Level</legend>
+<ol>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+<li>
+<div>
+<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+</div>
+</li>
+
+</ol>
+</fieldset>
+</form>
 
 </main>
 

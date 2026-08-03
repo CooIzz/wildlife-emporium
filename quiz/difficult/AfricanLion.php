@@ -37,66 +37,176 @@ questions.
 
 <form>
 <fieldset>
-<legend></legend>
+<legend>Difficult Level</legend>
 <ol>
 
 <li>
 <div>
-<p></p>
+<p>Ranchers usually kill the African Lions for what reason?</p>
+<input type="radio" name="trade" id="trade">
+<label for="trade">For illegal wildlife trade</label>
+<br>
+<input type="radio" name="sport" id="sport">
+<label for="sport">For sport</label>
+<br>
+<input type="radio" name="livestock" id="livestock">
+<label for="livestock">As a preventative measure to prevent preying on livestock</label>
+<br>
+<input type="radio" name="regulatory" id="regulatory">
+<label for="regulatory">For regulatory purposes</label>
+</div>
+</li>
+
+<li>
+<div>
+<p>How are conservation organizations working to change attitudes of general populace towards African Lions?</p>
+<input type="radio" name="" id="">
+<label for="">Through self-funded seminars</label>
+<br>
+<input type="radio" name="" id="">
+<label for="">Through compensation initiatives</label>
+<br>
+<input type="radio" name="" id="">
+<label for="">Through awareness campaigns</label>
+<br>
+<input type="radio" name="" id="">
+<label for="">Through education</label>
+</div>
+</li>
+
+<li>
+<div>
+<p>What type of predator do African Lions belong to?</p>
+<input type="radio" name="ambush" id="ambush">
+<label for="ambush">Ambush</label>
+<br>
+<input type="radio" name="apex" id="apex">
+<label for="apex">Apex</label>
+<br>
+<input type="radio" name="active" id="active">
+<label for="active">Active</label>
+<br>
+<input type="radio" name="pack" id="pack">
+<label for="pack">Pack</label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
 <li>
 <div>
 <p></p>
-</div>
-</li>
-
-<li>
-<div>
-<p></p>
-</div>
-</li>
-
-<li>
-<div>
-<p></p>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
+<br>
+<input type="radio" name="" id="">
+<label for=""></label>
 </div>
 </li>
 
