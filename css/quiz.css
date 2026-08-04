@@ -153,6 +153,16 @@ ol li label {
 }
 
 /*
+
+*/
+
+ol * {
+	
+	font-size: 20px;
+	
+}
+
+/*
 To style the header of the index page of quiz section
 */
 h1 {
@@ -169,6 +179,10 @@ h1 {
     font-weight: 600;
 
 }
+
+/*
+To style the legend of each form
+*/
 
 legend {
 	

@@ -17,16 +17,15 @@
 
 <main>
 <div class="mainAnimals">
-<img src="../../images/SnowLeopard.jpg" alt="A picture of Snow Leopard">
+<img src="../../images/cheetah.jpg" alt="A picture of Cheetah">
 </div>
 <br>
-<h1>Snow Leopard</h1>
+<h1>Cheetah</h1>
 <hr>
 <br>
 
 <p class="animalIntroduction">
-Now you will be tested on your knowledge on the felid species bative to the mountain
-ranges of Asia, the <span>Snow Leopards</span>. Do not 
+Now you will be tested on your knowledge on  <span></span>. Do not 
 worry as you have chosen the <strong>Easy</strong> level.
 </p>
 

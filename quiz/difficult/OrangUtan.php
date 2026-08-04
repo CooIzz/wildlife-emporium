@@ -33,7 +33,7 @@ rainforests of Indonesia and Malaysia, the <span>Orang Utan</span>.
 
 <form>
 <fieldset>
-<legend>Medium Level</legend>
+<legend>Difficult Level</legend>
 <ol>
 
 <li>

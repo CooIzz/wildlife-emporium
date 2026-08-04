@@ -33,7 +33,7 @@ genus Panthera native to Asia, the <span>Tigers</span>.
 
 <form>
 <fieldset>
-<legend>Medium Level</legend>
+<legend>Difficult Level</legend>
 <ol>
 
 <li>

@@ -17,24 +17,22 @@
 
 <main>
 <div class="mainAnimals">
-<img src="../../images/SnowLeopard.jpg" alt="A picture of Snow Leopard">
+<img src="../../images/PolarBear.jpg" alt="A picture of Polar Bear">
 </div>
 <br>
-<h1>Snow Leopard</h1>
+<h1>Polar Bear</h1>
 <hr>
 <br>
 
 <p class="animalIntroduction">
-Now you will be tested on your knowledge on the felid species bative to the mountain
-ranges of Asia, the <span>Snow Leopards</span>. Do not 
-worry as you have chosen the <strong>Easy</strong> level.
+Now you will be tested on your knowledge on, the <span></span>.
 </p>
 
 <br>
 
 <form>
 <fieldset>
-<legend>Easy Level</legend>
+<legend>Difficult Level</legend>
 <ol>
 
 <li>

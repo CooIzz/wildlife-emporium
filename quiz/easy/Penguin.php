@@ -34,7 +34,7 @@ have chosen the <strong>Easy</strong> level.
 
 <form>
 <fieldset>
-<legend>Medium Level</legend>
+<legend>Easy Level</legend>
 <ol>
 
 <li>

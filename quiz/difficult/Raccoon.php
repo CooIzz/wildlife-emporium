@@ -33,7 +33,7 @@ of the procyonid family, the <span>Raccoons</span>.
 
 <form>
 <fieldset>
-<legend>Medium Level</legend>
+<legend>Difficult Level</legend>
 <ol>
 
 <li>

@@ -100,15 +100,24 @@ themselves on
 </div>
 
 <div id="Topic8" class="QuizTopic">
-<p>Topic 8: </p>
+<a href="javascript:void(0)" id="polarBear">
+<img src="../images/PolarBear.jpg" alt="A picture of Polar Bear" class="animal">
+<p>Topic 8: Polar Bear</p>
+</a>
 </div>
 
 <div id="Topic9" class="QuizTopic">
-<p>Topic 9: </p>
+<a href="javascript:void(0)" id="lynx">
+<img src="../images/lynx.jpg" alt="A picture of Lynx" class="animal">
+<p>Topic 9: Lynx</p>
+</a>
 </div>
 
 <div id="Topic10" class="QuizTopic">
-<p>Topic 10: </p>
+<a href="javascript:void(0)" id="cheetah">
+<img src="../images/cheetah.jpg" alt="A picture of Cheetah" class="animal">
+<p>Topic 10: Cheetah</p>
+</a>
 </div>
 </section>
 

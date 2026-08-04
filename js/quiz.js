@@ -29,7 +29,17 @@ raccoon.addEventListener("click", raccoonLevelDec);
 const snowLeopard = document.getElementById("snowLeopard");
 snowLeopard.addEventListener("click", snowLeopardLevelDec);
 
+//Polar Bear
+const polarBear = document.getElementById("polarBear");
+polarBear.addEventListener("click", polarBearLevelDec);
 
+//Lynx
+const lynx = document.getElementById("lynx");
+lynx.addEventListener("click", lynxLevelDec);
+
+//Cheetah
+const cheetah = document.getElementById("cheetah");
+cheetah.addEventListener("click", cheetahLevelDec);
 
 
 //Functions that facilitate user decision making in choosing
@@ -279,6 +289,105 @@ function snowLeopardLevelDec() {
 		default:
 				alert("Invalid Option!!!");
 				snowLeopard.setAttribute("href", "#snowLeopard");
+				return;
+		
+	}
+	
+}
+
+function polarBearLevelDec() {
+	
+	let choice = parseInt(prompt("Please choose the difficulty level:\n\n1. Easy\n2. Medium\n3. Difficult\n\nEnter 1, 2 or 3:"));
+	
+	if (isNaN(choice)) {
+        alert("No choice made.");
+		polarBear.setAttribute("href", "#spolarBear");
+        return;
+    }
+	
+	switch(choice) {
+		
+		case 1:
+				polarBear.setAttribute("href", "./easy/PolarBear.php");
+				break;
+		
+		case 2:
+				polarBear.setAttribute("href", "./medium/PolarBear.php");
+				break;
+		
+		case 3:
+				polarBear.setAttribute("href", "./difficult/PolarBear.php");
+				break;
+				
+		default:
+				alert("Invalid Option!!!");
+				polarBear.setAttribute("href", "#polarBear");
+				return;
+		
+	}
+	
+}
+
+function lynxLevelDec() {
+	
+	let choice = parseInt(prompt("Please choose the difficulty level:\n\n1. Easy\n2. Medium\n3. Difficult\n\nEnter 1, 2 or 3:"));
+	
+	if (isNaN(choice)) {
+        alert("No choice made.");
+		lynx.setAttribute("href", "#lynx");
+        return;
+    }
+	
+	switch(choice) {
+		
+		case 1:
+				lynx.setAttribute("href", "./easy/Lynx.php");
+				break;
+		
+		case 2:
+				lynx.setAttribute("href", "./medium/Lynx.php");
+				break;
+		
+		case 3:
+				lynx.setAttribute("href", "./difficult/Lynx.php");
+				break;
+				
+		default:
+				alert("Invalid Option!!!");
+				lynx.setAttribute("href", "#lynx");
+				return;
+		
+	}
+	
+}
+
+function cheetahLevelDec() {
+	
+	let choice = parseInt(prompt("Please choose the difficulty level:\n\n1. Easy\n2. Medium\n3. Difficult\n\nEnter 1, 2 or 3:"));
+	
+	if (isNaN(choice)) {
+        alert("No choice made.");
+		cheetah.setAttribute("href", "#cheetah");
+        return;
+    }
+	
+	switch(choice) {
+		
+		case 1:
+				cheetah.setAttribute("href", "./easy/Cheetah.php");
+				break;
+		
+		case 2:
+				cheetah.setAttribute("href", "./medium/Cheetah.php");
+				break;
+		
+		case 3:
+				cheetah.setAttribute("href", "./difficult/Cheetah.php");
+				break;
+				
+		default:
+				alert("Invalid Option!!!");
+				cheetah.setAttribute("href", "#cheetah");
 				return;
 		
 	}

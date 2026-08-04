@@ -33,7 +33,7 @@ ranges of Asia, the <span>Snow Leopards</span>.
 
 <form>
 <fieldset>
-<legend>Medium Level</legend>
+<legend>Difficult Level</legend>
 <ol>
 
 <li>

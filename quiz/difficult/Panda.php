@@ -33,7 +33,7 @@ south-central China, the <span>Giant Pandas</span>.
 
 <form>
 <fieldset>
-<legend>Medium Level</legend>
+<legend>Difficult Level</legend>
 <ol>
 
 <li>
