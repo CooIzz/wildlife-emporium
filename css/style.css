@@ -14,24 +14,24 @@
 
 :root {
 
-    --background: rgb(245, 240, 230); /* always */
+    --background: rgb(245, 240, 230);
 
-    --text: rgb(54, 23, 5); /* text must absolutely be in this color */
+    --text: rgb(54, 23, 5);
 
-    --dark-green: rgb(66, 130, 57); /* ideally the main colors of the website, focus around green or orange if possible */
+    --dark-green: rgb(66, 130, 57);
     --light-green: rgb(123, 182, 98);
 
-    --gold: rgb(251, 177, 73); /* free to use this anywhere */
-    --orange: rgb(245, 128, 36); /* free to use this anywhere */
+    --gold: rgb(251, 177, 73);
+    --orange: rgb(245, 128, 36);
 
-    --dark-purple: rgb(115, 51, 129); /* free to use this anywhere */
-    --light-purple: rgb(153, 79, 178); /* free to use this anywhere */
+    --dark-purple: rgb(115, 51, 129);
+    --light-purple: rgb(153, 79, 178);
 
-    --card: rgb(255, 255, 255); /* only if necessary */
-    --card-background: rgb(248, 238, 219); /* use this for card background always, its meant to be darker than the page background*/
+    --card: rgb(255, 255, 255);
+    --card-background: rgb(248, 238, 219);
 
-    --border: rgb(220, 215, 205); /* only if necessary */
-    --shadow: rgba(0, 0, 0, 0.10); /* only if necessary */
+    --border: rgb(220, 215, 205);
+    --shadow: rgba(0, 0, 0, 0.10);
 
 }
 
@@ -55,20 +55,62 @@ body {
 
 header {
 
-    padding: 20px;
-
-    margin: 0px auto;
-
     background-color: var(--dark-green);
 
     color: var(--card);
 
 }
 
-header p,
-header h1 {
+.header-container {
 
-    text-align: center;
+    display: flex;
+    align-items: center;
+
+    max-width: 1400px;
+
+    margin: 0px auto;
+    padding: 20px 30px;
+
+}
+
+.header-logo {
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    color: var(--card);
+
+    text-decoration: none;
+
+}
+
+.header-logo img {
+
+    width: 70px;
+    height: 70px;
+
+}
+
+.header-logo-text {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+.header-logo-text h1 {
+
+    font-size: 34px;
+
+}
+
+.header-logo-text p {
+
+    font-size: 16px;
 
 }
 
@@ -78,29 +120,158 @@ header h1 {
 
 nav {
 
-    background-color: var(--light-green);
+    background-color: var(--card);
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0px 3px 10px var(--shadow);
 
 }
 
-nav ul {
+.navigation-container {
 
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1400px;
+
+    margin: 0px auto;
+    padding: 0px 30px;
+
+}
+
+.navigation-links {
+
+    display: flex;
+
+    gap: 50px;
 
     list-style: none;
 
 }
 
-nav li {
+.navigation-links a {
 
-    padding: 15px;
+    display: block;
+
+    padding: 22px 0px;
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    border-bottom: 3px solid transparent;
 
 }
 
-nav a {
+.navigation-links a:hover {
 
-    color: var(--card);
+    color: var(--dark-green);
+
+    border-bottom-color: var(--dark-green);
+
+}
+
+
+
+/* ---------------- ACCOUNT ---------------- */
+
+.navigation-dropdown {
+
+    position: relative;
+
+    padding-bottom: 12px;
+
+    margin-bottom: -12px;
+
+}
+
+.navigation-account-button {
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 10px 0px;
+
+    background-color: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    font: inherit;
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+.navigation-avatar {
+
+    width: 46px;
+    height: 46px;
+
+    background-color: var(--card-background);
+
+    border: 2px solid var(--border);
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+}
+
+.navigation-dropdown-menu {
+
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% - 20px);
+    right: 0px;
+
+    min-width: 220px;
+
+    background-color: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    box-shadow: 0px 10px 25px var(--shadow);
+
+    overflow: hidden;
+
+    z-index: 1000;
+
+}
+
+.navigation-dropdown:hover .navigation-dropdown-menu {
+
+    display: block;
+
+}
+
+.navigation-dropdown-menu a {
+
+    display: block;
+
+    padding: 16px 20px;
+
+    color: var(--text);
 
     text-decoration: none;
+
+}
+
+.navigation-dropdown-menu a:hover {
+
+    background-color: var(--card-background);
+
+    color: var(--dark-green);
 
 }
 
