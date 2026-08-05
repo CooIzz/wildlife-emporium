@@ -196,3 +196,22 @@
     font-weight: 600;
 
 }
+
+/* ---------------- ACCOUNT ERROR ---------------- */
+
+.account-error {
+
+    width: 100%;
+
+    padding: 14px;
+
+    background-color: var(--card-background);
+
+    border: 1px solid var(--orange);
+    border-radius: 12px;
+
+    color: var(--orange);
+
+    text-align: center;
+
+}

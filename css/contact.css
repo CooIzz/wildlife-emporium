@@ -1,0 +1,271 @@
+/* ---------------- CONTACT ---------------- */
+
+.contact {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 25px;
+    padding: 60px;
+
+    max-width: 1400px;
+
+    margin: 0px auto 80px auto;
+
+}
+
+.contact-title {
+
+    text-align: center;
+
+    font-size: 52px;
+    font-weight: 700;
+
+    color: var(--dark-green);
+
+}
+
+.contact-description {
+
+    text-align: center;
+
+    line-height: 1.8;
+
+    max-width: 900px;
+
+    color: var(--text);
+
+}
+
+
+
+/* ---------------- CONTACT CONTENT ---------------- */
+
+.contact-information {
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 40px;
+
+    max-width: 1200px;
+
+    margin: 0px auto 100px auto;
+
+}
+
+
+
+/* ---------------- CONTACT CARDS ---------------- */
+
+.contact-information-card,
+.contact-form-card {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+    padding: 40px;
+
+    flex: 1;
+
+    background-color: var(--card-background);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+}
+
+.contact-information-card h2,
+.contact-form-card h2 {
+
+    color: var(--dark-green);
+
+}
+
+
+
+/* ---------------- CONTACT INFORMATION ---------------- */
+
+.contact-information-item {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.contact-information-item h3 {
+
+    color: var(--dark-purple);
+
+}
+
+.contact-information-item p {
+
+    line-height: 1.8;
+
+    color: var(--text);
+
+}
+
+
+
+/* ---------------- CONTACT FORM ---------------- */
+
+.contact-form {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+.contact-input-group {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.contact-input-group label {
+
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+.contact-input-group input,
+.contact-input-group textarea {
+
+    padding: 14px 16px;
+
+    background-color: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    font: inherit;
+
+    color: var(--text);
+
+}
+
+.contact-input-group textarea {
+
+    resize: vertical;
+
+}
+
+
+
+/* ---------------- CONTACT BUTTON ---------------- */
+
+.contact-button {
+
+    padding: 16px;
+
+    background-color: var(--dark-green);
+
+    border: none;
+    border-radius: 12px;
+
+    font: inherit;
+    font-weight: 600;
+
+    color: var(--card);
+
+    cursor: pointer;
+
+}
+
+
+
+/* ---------------- SOCIAL ---------------- */
+
+.contact-social {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+
+    max-width: 1200px;
+
+    margin: 0px auto 100px auto;
+
+}
+
+.contact-social h2 {
+
+    color: var(--dark-green);
+
+}
+
+.contact-social-links {
+
+    display: flex;
+    justify-content: center;
+
+    gap: 25px;
+
+}
+
+.contact-social-links a {
+
+    padding: 14px 24px;
+
+    background-color: var(--card-background);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    color: var(--text);
+
+    text-decoration: none;
+
+}
+
+
+
+/* ---------------- LOCATION ---------------- */
+
+.contact-location {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+
+    max-width: 1200px;
+
+    margin: 0px auto 100px auto;
+
+}
+
+.contact-location h2 {
+
+    color: var(--dark-green);
+
+}
+
+.contact-map {
+
+    width: 100%;
+    height: 450px;
+
+    background-color: var(--card-background);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+}
