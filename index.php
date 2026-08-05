@@ -150,7 +150,7 @@
         <a href="#" class="home-navigation-card">
 
             <div class="home-articles-icon">
-                Articles Icon
+                <img src="images/newspaper2.svg">
             </div>
 
             <h3>Browse Articles</h3>
@@ -186,7 +186,7 @@
             <a href="#" class="home-quiz-button">
 
                 <div class="home-quiz-icon">
-                    Quiz Icon
+                    <img src="images/test67.svg">
                 </div>
 
                 <h3>Take the Quiz</h3>
