@@ -8,84 +8,98 @@
 
     <title>Login | Wildlife Emporium</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/account.css">
 
 </head>
 
 <body>
 
-<?php include("includes/header.php"); ?>
+<?php include("../includes/header.php"); ?>
 
-<?php include("includes/navigation.php"); ?>
+<?php include("../includes/navigation.php"); ?>
 
 <main>
 
     <!-- Login -->
 
-    <section class="login">
+    <section class="account-page">
 
-        <h1 class="login-title">
-            Login
-        </h1>
+        <div class="account-card">
 
-        <p class="login-description">
-            Sign in to access your account, save your favourite animals and participate in quizzes.
-        </p>
+            <div class="account-logo">
+                <img src="../images/home-logo-test.svg" alt="Wildlife Emporium Logo">
+            </div>
 
-        <form class="login-form" action="#" method="post">
+            <h1 class="account-title">
+                Welcome Back
+            </h1>
 
-            <div class="login-field">
+            <p class="account-description">
+                Sign in to continue your Wildlife Emporium adventure.
+            </p>
 
-                <label for="username">
-                    Username
-                </label>
+            <!-- Login Error -->
 
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    required
-                >
+            <form class="account-form" action="" method="post">
+
+                <div class="account-input-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        required
+                    >
+
+                </div>
+
+                <div class="account-input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+                <button type="submit" class="account-button">
+                    Log In
+                </button>
+
+            </form>
+
+            <div class="account-footer">
+
+                <p>
+                    Don't have an account?
+                </p>
+
+                <a href="register.php" class="account-secondary-button">
+                    Create Account
+                </a>
 
             </div>
 
-            <div class="login-field">
-
-                <label for="password">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                >
-
-            </div>
-
-            <button type="submit" class="login-button">
-                Login
-            </button>
-
-        </form>
-
-        <p class="login-register">
-
-            Don't have an account?
-
-            <a href="register.php">
-                Register here
-            </a>
-
-        </p>
+        </div>
 
     </section>
 
 </main>
 
-<?php include("includes/footer.php"); ?>
+<?php include("../includes/footer.php"); ?>
 
 </body>
 

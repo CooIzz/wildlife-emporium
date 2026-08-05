@@ -1,57 +1,133 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900&display=swap');
 
 * {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
+
+
+
+/* ---------------- THEME ---------------- */
+
+:root {
+
+    --background: rgb(245, 240, 230); /* always */
+
+    --text: rgb(54, 23, 5); /* text must absolutely be in this color */
+
+    --dark-green: rgb(66, 130, 57); /* ideally the main colors of the website, focus around green or orange if possible */
+    --light-green: rgb(123, 182, 98);
+
+    --gold: rgb(251, 177, 73); /* free to use this anywhere */
+    --orange: rgb(245, 128, 36); /* free to use this anywhere */
+
+    --dark-purple: rgb(115, 51, 129); /* free to use this anywhere */
+    --light-purple: rgb(153, 79, 178); /* free to use this anywhere */
+
+    --card: rgb(255, 255, 255); /* only if necessary */
+    --card-background: rgb(248, 238, 219); /* use this for card background always, its meant to be darker than the page background*/
+
+    --border: rgb(220, 215, 205); /* only if necessary */
+    --shadow: rgba(0, 0, 0, 0.10); /* only if necessary */
+
+}
+
+
+
+/* ---------------- BODY ---------------- */
 
 body {
+
     font-family: "Work Sans", sans-serif;
+
+    background-color: var(--background);
+
+    color: var(--text);
+
 }
 
+
+
+/* ---------------- HEADER ---------------- */
 
 header {
+
     padding: 20px;
-    background: #2f7d32;
-    color: white;
-    margin: auto;
+
+    margin: 0px auto;
+
+    background-color: var(--dark-green);
+
+    color: var(--card);
+
 }
 
-header p, h1 {
+header p,
+header h1 {
 
     text-align: center;
 
 }
 
+
+
+/* ---------------- NAVIGATION ---------------- */
+
 nav {
-    background: #1f5b24;
+
+    background-color: var(--light-green);
+
 }
 
 nav ul {
-    list-style: none;
+
     display: flex;
+
+    list-style: none;
+
 }
 
 nav li {
+
     padding: 15px;
+
 }
 
 nav a {
-    color: white;
+
+    color: var(--card);
+
     text-decoration: none;
+
 }
+
+
+
+/* ---------------- MAIN ---------------- */
 
 main {
+
     min-height: 600px;
+
     padding: 30px;
+
 }
+
+
+
+/* ---------------- FOOTER ---------------- */
 
 footer {
-    background: #2f7d32;
-    color: white;
-    text-align: center;
+
     padding: 20px;
+
+    background-color: var(--dark-green);
+
+    color: var(--card);
+
+    text-align: center;
+
 }
-
-

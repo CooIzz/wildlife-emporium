@@ -1,0 +1,198 @@
+/* ---------------- LOGIN ---------------- */
+
+.account-page {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 700px;
+
+    padding: 60px;
+
+}
+
+
+
+/* ---------------- ACCOUNT CARD ---------------- */
+
+.account-card {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+    padding: 50px;
+
+    width: 500px;
+
+    background-color: var(--card-background);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+
+}
+
+
+
+/* ---------------- ACCOUNT LOGO ---------------- */
+
+.account-logo img {
+
+    width: 120px;
+    height: 120px;
+
+}
+
+
+
+/* ---------------- ACCOUNT TITLE ---------------- */
+
+.account-title {
+
+    text-align: center;
+
+    font-size: 42px;
+    font-weight: 700;
+
+    color: var(--dark-green);
+
+}
+
+
+
+/* ---------------- ACCOUNT DESCRIPTION ---------------- */
+
+.account-description {
+
+    text-align: center;
+
+    line-height: 1.7;
+
+    color: var(--text);
+
+}
+
+
+
+/* ---------------- ACCOUNT FORM ---------------- */
+
+.account-form {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+
+    width: 100%;
+
+}
+
+
+
+/* ---------------- ACCOUNT INPUT GROUP ---------------- */
+
+.account-input-group {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.account-input-group label {
+
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+.account-input-group input {
+
+    padding: 14px 18px;
+
+    background-color: var(--background);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    color: var(--text);
+
+    font-size: 16px;
+
+}
+
+
+
+/* ---------------- ACCOUNT BUTTON ---------------- */
+
+.account-button {
+
+    padding: 16px;
+
+    background-color: var(--dark-purple);
+
+    border: none;
+    border-radius: 12px;
+
+    color: var(--card);
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+
+/* ---------------- ACCOUNT REGISTER ---------------- */
+
+.account-footer {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 18px;
+
+    width: 100%;
+
+}
+
+.account-footer p {
+
+    color: var(--text);
+
+}
+
+
+
+/* ---------------- ACCOUNT SECONDARY BUTTON ---------------- */
+
+.account-secondary-button {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+
+    width: 100%;
+
+    background-color: var(--card-background);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    color: var(--dark-purple);
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+}

@@ -1,37 +1,10 @@
-/* ---------------- THEME ---------------- */
-
-:root {
-
-    --home-background: rgb(245, 240, 230);
-
-    --home-text: rgb(54, 23, 5);
-
-    --home-dark-green: rgb(66, 130, 57);
-    --home-light-green: rgb(123, 182, 98);
-
-    --home-gold: rgb(251, 177, 73);
-    --home-orange: rgb(245, 128, 36);
-
-    --home-dark-purple: rgb(115, 51, 129);
-    --home-light-purple: rgb(153, 79, 178);
-
-    --home-card: rgb(255, 255, 255);
-    --home-card-background: rgb(251, 235, 206);
-
-    --home-border: rgb(220, 215, 205);
-    --home-shadow: rgba(0, 0, 0, 0.10);
-
-}
-
-
-
 /* ---------------- BODY ---------------- */
 
 body {
 
-    background-color: var(--home-background);
+    background-color: var(--background);
 
-    color: var(--home-text);
+    color: var(--text);
 
 }
 
@@ -69,7 +42,7 @@ body {
     font-size: 58px;
     font-weight: 1000;
 
-    color: var(--home-dark-green);
+    color: var(--dark-green);
 
 }
 
@@ -83,7 +56,7 @@ body {
 
     font-size: 20px;
 
-    color: var(--home-text);
+    color: var(--text);
 
     opacity: 0.85;
 
@@ -107,8 +80,9 @@ body {
 
     margin: 0px auto 120px auto;
 
-    background-color: var(--home-card-background);
+    background-color: var(--card-background);
 
+    border: 1px solid var(--border);
     border-radius: 24px;
 
 }
@@ -137,7 +111,7 @@ body {
 
     margin: 0px;
 
-    color: var(--home-dark-green);
+    color: var(--dark-green);
 
 }
 
@@ -153,15 +127,18 @@ body {
 
     padding: 14px 28px;
 
-    background-color: var(--home-dark-purple);
+    background-color: var(--dark-purple);
 
-    color: var(--home-background);
+    color: var(--background);
 
     border-radius: 999px;
 
     text-decoration: none;
 
 }
+
+
+
 /* ---------------- SHARED ---------------- */
 
 .home-section-description {
@@ -174,7 +151,7 @@ body {
 
     font-size: 18px;
 
-    color: var(--home-text);
+    color: var(--text);
 
     opacity: 0.85;
 
@@ -204,7 +181,7 @@ body {
 
     font-size: 38px;
 
-    color: var(--home-dark-green);
+    color: var(--dark-green);
 
 }
 
@@ -240,9 +217,9 @@ body {
 
     margin: 0px auto 120px auto;
 
-    background-color: var(--home-dark-purple);
+    background-color: var(--dark-purple);
 
-    color: var(--home-background);
+    color: var(--background);
 
     border-radius: 24px;
 
@@ -282,7 +259,7 @@ body {
 
     font-size: 38px;
 
-    color: var(--home-dark-green);
+    color: var(--dark-green);
 
 }
 
@@ -307,12 +284,12 @@ body {
 
     width: 300px;
 
-    background-color: var(--home-card);
+    background-color: var(--card);
 
-    border: 1px solid var(--home-border);
+    border: 1px solid var(--border);
     border-radius: 18px;
 
-    box-shadow: 0px 8px 25px var(--home-shadow);
+    box-shadow: 0px 8px 25px var(--shadow);
 
     text-align: center;
 
@@ -330,7 +307,7 @@ body {
 
     font-size: 24px;
 
-    color: var(--home-dark-green);
+    color: var(--dark-green);
 
 }
 
@@ -338,7 +315,7 @@ body {
 
     line-height: 1.7;
 
-    color: var(--home-text);
+    color: var(--text);
 
     opacity: 0.85;
 
@@ -353,21 +330,25 @@ body {
     width: 250px;
     height: 200px;
 
-    background-color: var(--home-card);
+    background-color: var(--card);
 
-    border: 2px dashed var(--home-border);
+    border: 2px dashed var(--border);
     border-radius: 18px;
 
-    color: var(--home-text);
+    color: var(--text);
 
     opacity: 0.55;
 
 }
 
 .home-articles-icon img {
+
     width: 70px;
     height: 70px;
+
 }
+
+
 
 /* ---------------- QUIZ ---------------- */
 
@@ -387,7 +368,7 @@ body {
 
     font-size: 38px;
 
-    color: var(--home-dark-green);
+    color: var(--dark-green);
 
 }
 
@@ -405,7 +386,7 @@ body {
 
     font-size: 24px;
 
-    color: var(--home-dark-green);
+    color: var(--dark-green);
 
 }
 
@@ -418,12 +399,12 @@ body {
     width: 350px;
     height: 220px;
 
-    background-color: var(--home-card);
+    background-color: var(--card);
 
-    border: 2px dashed var(--home-border);
+    border: 2px dashed var(--border);
     border-radius: 18px;
 
-    color: var(--home-text);
+    color: var(--text);
 
     opacity: 0.55;
 
@@ -448,17 +429,16 @@ body {
 
     width: 350px;
 
-    background-color: var(--home-dark-purple);
+    background-color: var(--dark-purple);
 
-    border: 1px solid var(--home-border);
+    border: 1px solid var(--border);
     border-radius: 18px;
 
-    color: var(--home-card-background);
+    color: var(--card-background);
 
-    text-decoration:none;
+    text-decoration: none;
 
 }
-
 
 .home-quiz-button:hover {
 
@@ -472,8 +452,9 @@ body {
 
 }
 
-.home-quiz-icon img{
-    width:50px;
-    height:50px;
+.home-quiz-icon img {
+
+    width: 50px;
+    height: 50px;
 
 }
