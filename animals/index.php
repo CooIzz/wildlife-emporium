@@ -1,3 +1,4 @@
+<?php require_once("../includes/database.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,6 @@
 <body>
 
 <?php include("../includes/header.php"); ?>
-<?php require_once("../includes/database.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
 <main>

@@ -1,7 +1,8 @@
+<?php require_once("../includes/database.php"); ?>
 <!DOCTYPE html>
 <?php
 
-require_once("../includes/database.php");
+
 
 $error = "";
 

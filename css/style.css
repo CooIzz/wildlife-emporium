@@ -216,10 +216,10 @@ nav {
     width: 46px;
     height: 46px;
 
-    background-color: var(--card-background);
-
     border: 2px solid var(--border);
     border-radius: 50%;
+
+    object-fit: cover;
 
     flex-shrink: 0;
 

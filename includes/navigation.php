@@ -1,5 +1,17 @@
 <nav>
 
+    <?php
+
+    if (session_status() === PHP_SESSION_NONE) {
+
+        session_start();
+
+    }
+
+    ?>
+
+
+
     <div class="navigation-container">
 
         <ul class="navigation-links">
@@ -40,27 +52,81 @@
 
             <button class="navigation-account-button">
 
-                <span>
-                    Account
-                </span>
+                <?php
 
-                <div class="navigation-avatar">
+                if (isset($_SESSION["username"])) {
 
-                </div>
+                    echo htmlspecialchars($_SESSION["username"]);
 
-            </button>
+                } else {
+
+                    echo "Account";
+
+                }
+
+                ?>
+
+                <?php
+
+                if (isset($_SESSION["userID"])) {
+
+                    ?>
+
+                    <img class="navigation-avatar" src="/wildlife-emporium/images/<?php echo htmlspecialchars($_SESSION["profilePicture"]); ?>"
+                    alt="Profile Picture"
+                    >
+
+                    <?php
+
+                } else {
+
+                    ?>
+
+                    <img class="navigation-avatar" src="/wildlife-emporium/images/defaultpfp.svg" alt="Profile Picture">
+
+                    <?php
+
+                }
+
+                ?>
 
             </button>
 
             <div class="navigation-dropdown-menu">
 
-                <a href="/wildlife-emporium/account/login.php">
-                    Login
-                </a>
+                <?php
 
-                <a href="/wildlife-emporium/account/register.php">
-                    Register
-                </a>
+                if (isset($_SESSION["userID"])) {
+
+                    ?>
+
+                    <a href="/wildlife-emporium/account/profile.php">
+                        Profile
+                    </a>
+
+                    <a href="/wildlife-emporium/account/logout.php">
+                        Logout
+                    </a>
+
+                    <?php
+
+                } else {
+
+                    ?>
+
+                    <a href="/wildlife-emporium/account/login.php">
+                        Login
+                    </a>
+
+                    <a href="/wildlife-emporium/account/register.php">
+                        Register
+                    </a>
+
+                    <?php
+
+                }
+
+                ?>
 
             </div>
 
