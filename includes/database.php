@@ -1,5 +1,11 @@
 <?php
 
+// This file_exists check is for Jason's local computer SQL running on port 3308.
+// Jason will use his local file database.local.php that specifies port 3308 instead,
+// without changing the code here in database.php.
+// If you are using the default port 3306,
+// just use database.php normally.
+
 if (file_exists(__DIR__ . '/database.local.php')) {
     include_once __DIR__ . '/database.local.php';
 } else {
