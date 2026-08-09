@@ -116,7 +116,7 @@ VALUES (
 
     'Vulnerable',
     '~20,000–25,000',
-    'Declining',
+    '↓ Population declining',
 
     'Savanna & Grassland',
     'Tropical & Subtropical',

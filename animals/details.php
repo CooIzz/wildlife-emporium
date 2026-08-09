@@ -14,6 +14,20 @@ $animal = $result->fetch_assoc();
 if (!$animal) {
     die("Animal not found.");
 }
+
+
+$fact_sql = "SELECT fact_number, fact
+             FROM animal_facts
+             WHERE animal_id = ?
+             ORDER BY fact_number ASC";
+
+$fact_stmt = $connection->prepare($fact_sql);
+$fact_stmt->bind_param("i", $id);
+$fact_stmt->execute();
+
+$fact_result = $fact_stmt->get_result();
+
+
 ?>
 
 
@@ -284,7 +298,7 @@ if (!$animal) {
                 </span>
 
                 <strong>
-                    Savanna & Grassland
+                    <?= htmlspecialchars($animal['biome']) ?>
                 </strong>
 
             </div>
@@ -297,7 +311,7 @@ if (!$animal) {
                 </span>
 
                 <strong>
-                    Tropical & Subtropical
+                    <?= htmlspecialchars($animal['climate']) ?>
                 </strong>
 
             </div>
@@ -310,7 +324,7 @@ if (!$animal) {
                 </span>
 
                 <strong>
-                    Savanna, Grassland & Woodland
+                    <?= htmlspecialchars($animal['habitat']) ?>
                 </strong>
 
             </div>
@@ -323,10 +337,7 @@ if (!$animal) {
                 </span>
 
                 <p>
-                    Primarily found in sub-Saharan Africa,
-                    with populations occurring in countries
-                    including Kenya, Tanzania, Botswana and
-                    South Africa.
+                    <?= htmlspecialchars($animal['geographic_range']) ?>
                 </p>
 
             </div>
@@ -374,7 +385,7 @@ if (!$animal) {
             </h3>
 
             <p>
-                Carnivore
+                <?= htmlspecialchars($animal['diet']) ?>
             </p>
 
         </div>
@@ -391,7 +402,7 @@ if (!$animal) {
             </h3>
 
             <p>
-                Mostly nocturnal
+                <?= htmlspecialchars($animal['activity']) ?>
             </p>
 
         </div>
@@ -408,7 +419,7 @@ if (!$animal) {
             </h3>
 
             <p>
-                Prides
+                <?= htmlspecialchars($animal['social_structure']) ?>
             </p>
 
         </div>
@@ -467,7 +478,7 @@ if (!$animal) {
             </span>
 
             <strong>
-                Year-round
+                <?= htmlspecialchars($animal['breeding']) ?>
             </strong>
 
         </div>
@@ -484,7 +495,7 @@ if (!$animal) {
             </span>
 
             <strong>
-                ~110 days
+                <?= htmlspecialchars($animal['gestation']) ?>
             </strong>
 
         </div>
@@ -501,7 +512,7 @@ if (!$animal) {
             </span>
 
             <strong>
-                1–4 cubs
+                <?= htmlspecialchars($animal['litter_size']) ?>
             </strong>
 
         </div>
@@ -518,7 +529,7 @@ if (!$animal) {
             </span>
 
             <strong>
-                Raised within the pride
+                <?= htmlspecialchars($animal['young']) ?>
             </strong>
 
         </div>
@@ -563,12 +574,12 @@ if (!$animal) {
                 Conservation Status
             </span>
 
-            <strong class="conservation-status-value">
-                VULNERABLE
+            <strong>
+                <?= htmlspecialchars($animal['conservation_status']) ?>
             </strong>
 
             <span class="conservation-trend">
-                ↓ Population declining
+                <?= htmlspecialchars($animal['population_trend']) ?>
             </span>
 
         </div>
@@ -581,7 +592,7 @@ if (!$animal) {
             </span>
 
             <strong class="population-value">
-                ~20,000–25,000
+                <?= htmlspecialchars($animal['population']) ?>
             </strong>
 
             <span class="population-note">
@@ -651,60 +662,21 @@ if (!$animal) {
 
     <div class="fun-facts-list">
 
-        <div class="fun-fact">
+        <?php while ($fact = $fact_result->fetch_assoc()): ?>
 
-            <span class="fun-fact-number">
-                01
-            </span>
+            <div class="fun-fact">
 
-            <p>
-                Lions are the only big cats that regularly live
-                in large social groups.
-            </p>
+                <span class="fun-fact-number">
+                    <?= str_pad($fact['fact_number'], 2, '0', STR_PAD_LEFT) ?>
+                </span>
 
-        </div>
+                <p>
+                    <?= htmlspecialchars($fact['fact']) ?>
+                </p>
 
+            </div>
 
-        <div class="fun-fact">
-
-            <span class="fun-fact-number">
-                02
-            </span>
-
-            <p>
-                A lion's roar can be heard from several kilometres
-                away under suitable conditions.
-            </p>
-
-        </div>
-
-
-        <div class="fun-fact">
-
-            <span class="fun-fact-number">
-                03
-            </span>
-
-            <p>
-                Lion cubs are born with spots that usually fade
-                as they grow older.
-            </p>
-
-        </div>
-
-
-        <div class="fun-fact">
-
-            <span class="fun-fact-number">
-                04
-            </span>
-
-            <p>
-                Female lions usually do most of the hunting for
-                their pride.
-            </p>
-
-        </div>
+        <?php endwhile; ?>
 
     </div>
 
