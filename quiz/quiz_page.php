@@ -23,6 +23,16 @@
 
 include("../includes/database.php");
 
+require("index.php");
+
+//Get and validate URL parameters
+
+$animal_id = isset($_GET['animal_id']) ? (int)$_GET['animal_id'] : 0;
+$difficulty = isset($_GET['difficulty']) ? trim($_GET['difficulty']) : "";
+
+//Fetch Animal Info
+
+
 ?>
 
 <main>
