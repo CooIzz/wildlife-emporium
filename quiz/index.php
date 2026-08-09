@@ -54,8 +54,10 @@ themselves on
 //Forming connection to the MySQL Database
 include("../includes/database.php");
 
+//Setting up sql query to fetch animal data from database
 $animal_query = "SELECT * FROM quiz_animals ORDER BY topic_num ASC";
 $animal_result = mysqli_query($connection, $animal_query);
+
 
 if(!$animal_result)
 {
@@ -64,6 +66,7 @@ if(!$animal_result)
 
 echo "<section>";
 
+//Looping through the data extracted from the database
 if(mysqli_num_rows($animal_result) > 0)
 {
 	while($row = mysqli_fetch_assoc($animal_result))
@@ -79,6 +82,16 @@ if(mysqli_num_rows($animal_result) > 0)
 
 echo "</section>";
 
+//Reset result pointer to reuse for JS
+mysqli_data_seek($animal_result, 0);
+$animals_array = [];
+while($row = mysqli_fetch_assoc($animal_result))
+{
+	$animals_array[] = $row;
+}
+
+mysqli_free_result($animal_result);
+
 ?>
 
 </article>
@@ -86,6 +99,13 @@ echo "</section>";
 </main>
 
 <?php include("../includes/footer.php"); ?>
+
+<script>
+
+//Passing database data to quiz.js file
+const quizAnimals = <?php echo json_encode($animals_array); ?>;
+
+</script>
 
 <script src="../js/script.js"></script>
 <script src="../js/quiz.js"></script>
