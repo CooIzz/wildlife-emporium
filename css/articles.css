@@ -1,12 +1,11 @@
 body{
-    background-color:#dddbdb;
+    background-color: var(--background);
 }
 
 .card{
     background-color: #402f1d;
     border-radius: 12px;
     border: 2px solid #3C280D;
-    display: flex;
 }
 
 .article-header-container{
@@ -37,6 +36,14 @@ body{
     width:250px;
     height:250px;
     flex-shrink: 0; /* stop pic from moving down*/
+    overflow: hidden;
+    border-radius: 8px;
+}
+.article-card1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops image neatly without stretching or distorting */
+    display: block;
 }
 .article-sum1 p, .article-sum2 p, .article-sum3 p{
     font-family:'Times New Roman', Times, serif;
@@ -54,11 +61,6 @@ body{
 }
 
 .article-frame{
-    background-image: url("../images/Abackground.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     padding:0;
     max-width:95%;
     margin: 0 auto;
