@@ -1,4 +1,22 @@
-<?php require_once("../includes/database.php"); ?>
+<?php require_once("../includes/database.php");
+
+$id = $_GET['id'] ?? 1;
+
+$sql = "SELECT * FROM animals WHERE id = ?";
+$stmt = $connection->prepare($sql);
+// Prepare the statement and bind the parameter to prevent SQL injection
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$animal = $result->fetch_assoc();
+
+if (!$animal) {
+    die("Animal not found.");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +46,17 @@
     <div class="animal-hero-content">
 
         <p class="animal-category">
-            MAMMAL · FELIDAE
+            <?= htmlspecialchars($animal['tax_class']) ?>
+            ·
+            <?= htmlspecialchars($animal['family']) ?>
         </p>
 
-        <h1>African Lion</h1>
+        <h1>
+            <?= htmlspecialchars($animal['common_name']) ?>
+        </h1>
 
         <p class="animal-scientific-name">
-            Panthera leo
+            <?= htmlspecialchars($animal['scientific_name']) ?>
         </p>
 
         <div class="animal-actions">
@@ -55,12 +77,74 @@
     <div class="animal-hero-image">
 
         <img
-            src="../images/lion.jpg"
-            alt="African Lion">
+            src="../images/<?= htmlspecialchars($animal['main_image']) ?>"
+            alt="<?= htmlspecialchars($animal['common_name']) ?>">
 
     </div>
 
 </section>
+
+
+
+<!-- =========================================================
+     TAXONOMY
+     ========================================================= -->
+
+<section class="animal-section">
+
+    <h2 class="section-title">
+        🧬 Taxonomy
+    </h2>
+
+
+    <div class="taxonomy">
+
+
+        <div>
+            <span>Kingdom</span>
+            <?= htmlspecialchars($animal['kingdom']) ?>
+        </div>
+
+
+        <div>
+            <span>Phylum</span>
+            <?= htmlspecialchars($animal['phylum']) ?>
+        </div>
+
+
+        <div>
+            <span>Class</span>
+            <?= htmlspecialchars($animal['tax_class']) ?>
+        </div>
+
+
+        <div>
+            <span>Order</span>
+            <?= htmlspecialchars($animal['tax_order']) ?>
+        </div>
+
+
+        <div>
+            <span>Family</span>
+            <?= htmlspecialchars($animal['family']) ?>
+        </div>
+
+
+        <div>
+            <span>Genus</span>
+            <?= htmlspecialchars($animal['genus']) ?>
+        </div>
+
+
+        <div>
+            <span>Species</span>
+            <?= htmlspecialchars($animal['species']) ?>
+        </div>
+
+    </div>
+
+</section>
+
 
 
 
@@ -85,7 +169,8 @@
             </span>
 
             <strong>
-                150–250 kg
+                <?= htmlspecialchars($animal['weight_min']) .
+                "–" . htmlspecialchars($animal['weight_max']) ?> kg
             </strong>
 
         </div>
@@ -100,7 +185,8 @@
             </span>
 
             <strong>
-                2.4–3.3 m
+                <?= htmlspecialchars($animal['length_min']) .
+                "–" . htmlspecialchars($animal['length_max']) ?> m
             </strong>
 
         </div>
@@ -115,7 +201,8 @@
             </span>
 
             <strong>
-                10–14 years
+                <?= htmlspecialchars($animal['lifespan_min']) .
+                "–" . htmlspecialchars($animal['lifespan_max']) ?> years
             </strong>
 
         </div>
@@ -130,7 +217,7 @@
             </span>
 
             <strong>
-                ~80 km/h
+                ~<?= htmlspecialchars($animal['max_speed']) ?> km/h
             </strong>
 
         </div>
@@ -138,68 +225,6 @@
     </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     TAXONOMY
-     ========================================================= -->
-
-<section class="animal-section">
-
-    <h2 class="section-title">
-        🧬 Taxonomy
-    </h2>
-
-
-    <div class="taxonomy">
-
-
-        <div>
-            <span>Kingdom</span>
-            <strong>Animalia</strong>
-        </div>
-
-
-        <div>
-            <span>Phylum</span>
-            <strong>Chordata</strong>
-        </div>
-
-
-        <div>
-            <span>Class</span>
-            <strong>Mammalia</strong>
-        </div>
-
-
-        <div>
-            <span>Order</span>
-            <strong>Carnivora</strong>
-        </div>
-
-
-        <div>
-            <span>Family</span>
-            <strong>Felidae</strong>
-        </div>
-
-
-        <div>
-            <span>Genus</span>
-            <strong>Panthera</strong>
-        </div>
-
-
-        <div>
-            <span>Species</span>
-            <strong>Panthera leo</strong>
-        </div>
-
-    </div>
-
-</section>
-
 
 
 
@@ -216,24 +241,9 @@
 
     <div class="animal-prose">
 
+        <!-- to allow line breaks in the description, we can use nl2br() to convert newlines to <br> tags -->
         <p>
-            The African lion is one of the world's largest members
-            of the cat family. Unlike most other big cats, lions
-            are highly social animals that live together in groups
-            known as prides.
-        </p>
-
-        <p>
-            Lions are powerful predators that play an important role
-            in their ecosystems. They primarily hunt large herbivores
-            and often cooperate with other members of their pride
-            when hunting.
-        </p>
-
-        <p>
-            Although lions once occupied much of Africa, their range
-            has declined considerably due to habitat loss, declining
-            prey populations and conflict with humans.
+            <?= nl2br(htmlspecialchars($animal['description'])) ?>
         </p>
 
     </div>
@@ -425,19 +435,7 @@
 
     <div class="animal-prose behaviour-prose">
 
-        <p>
-            Lions are primarily carnivorous predators. They hunt a
-            variety of large mammals, including zebras, wildebeest,
-            antelope and buffalo. Hunting is often cooperative,
-            particularly among lionesses within a pride.
-        </p>
-
-        <p>
-            Lions tend to be more active during cooler periods of
-            the day. Their social behaviour is unusual among cats,
-            with related females often forming the stable core of
-            a pride.
-        </p>
+        <?= nl2br(htmlspecialchars($animal['behaviour_description'])) ?>
 
     </div>
 
@@ -632,13 +630,7 @@
 
     <div class="animal-prose conservation-prose">
 
-        <p>
-            African lion populations have declined significantly
-            across much of their historical range. Conservation
-            efforts focus on protecting remaining habitat, maintaining
-            healthy prey populations and reducing conflict between
-            lions and local communities.
-        </p>
+        <?= nl2br(htmlspecialchars($animal['conservation_description'])) ?>
 
     </div>
 
