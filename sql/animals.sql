@@ -1,3 +1,9 @@
+
+
+DROP TABLE IF EXISTS favourites;
+DROP TABLE IF EXISTS animal_facts;
+DROP TABLE IF EXISTS animals;
+
 -- ============================================================
 -- ANIMALS
 -- ============================================================
@@ -147,3 +153,73 @@ VALUES (
     'AfricanLion.jpg'
 );
 
+
+
+
+
+
+
+
+-- ============================================================
+-- ANIMAL FACTS
+-- ============================================================
+
+DROP TABLE IF EXISTS animal_facts;
+
+CREATE TABLE animal_facts (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+
+    animal_id INT UNSIGNED NOT NULL,
+
+    fact_number INT UNSIGNED NOT NULL,
+
+    fact TEXT NOT NULL,
+
+    INDEX (animal_id)
+
+    UNIQUE (animal_id, fact_number)
+
+    FOREIGN KEY (animal_id)
+        REFERENCES animals(id)
+        ON DELETE CASCADE
+);
+
+
+INSERT INTO animal_facts (animal_id, fact_number, fact) VALUES
+(1, 1, 'Lions are the only big cats that regularly live in large social groups.'),
+(1, 2, 'A lion''s roar can be heard from several kilometres away under suitable conditions.'),
+(1, 3, 'Lion cubs are born with spots that usually fade as they grow older.'),
+(1, 4, 'Female lions usually do most of the hunting for their pride.'),
+(1, 5, 'Lions can spend many hours resting after feeding, often sleeping for up to 20 hours a day.');
+
+
+
+
+
+
+
+-- ============================================================
+-- FAVOURITES
+-- ============================================================
+
+DROP TABLE IF EXISTS favourites;
+
+CREATE TABLE favourites (
+
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+
+    userID INT UNSIGNED NOT NULL,
+
+    animal_id INT UNSIGNED NOT NULL,
+
+    UNIQUE (userID, animal_id),
+
+    FOREIGN KEY (userID)
+        REFERENCES users(userID)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (animal_id)
+        REFERENCES animals(id)
+        ON DELETE CASCADE
+
+);

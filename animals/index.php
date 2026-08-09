@@ -53,14 +53,14 @@
 
     <section class="animal-grid">
         
-        <a href="details.php?id=tiger" class="animal-card">
+        <a href="details.php?id=1" class="animal-card">
             <img src="tiger.jpg" alt="Tiger">
             <h3>Tiger</h3>
             <p>Mammal</p>
         </a>
 
 
-        <a href="details.php?id=orangutan" class="animal-card">
+        <a href="details.php?id=1" class="animal-card">
             <img src="orangutan.jpg" alt="Orangutan">
             <h3>Orangutan</h3>
             <p>Primate</p>

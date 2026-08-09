@@ -1,6 +1,13 @@
-<?php require_once("../includes/database.php");
+<?php
+
+session_start();
+
+require_once("../includes/database.php");
 
 $id = $_GET['id'] ?? 1;
+
+
+/* ---------------- LOAD ANIMAL ---------------- */
 
 $sql = "SELECT * FROM animals WHERE id = ?";
 $stmt = $connection->prepare($sql);
@@ -16,6 +23,117 @@ if (!$animal) {
 }
 
 
+
+
+
+/* ---------------- TOGGLE FAVOURITE ---------------- */
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["toggle_favourite"])) {
+    if (!isset($_SESSION["userID"])) {
+        header("Location: ../account/login.php");
+        exit();
+    }
+
+    $userID = $_SESSION["userID"];
+
+    /* Check whether this favourite already exists */
+
+    $sql = "
+        SELECT id
+        FROM favourites
+        WHERE userID = ?
+        AND animal_id = ?
+    ";
+
+    $stmt = $connection->prepare($sql);
+
+    $stmt->bind_param("ii", $userID, $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $alreadyFavourite = $result->num_rows > 0;
+    $stmt->close();
+
+
+    /* Remove favourite */
+
+    if ($alreadyFavourite) {
+        $sql = "
+            DELETE FROM favourites
+            WHERE userID = ?
+            AND animal_id = ?
+        ";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param(
+            "ii",
+            $userID,
+            $id
+        );
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
+    /* Add favourite */
+
+    else {
+        $sql = "
+            INSERT INTO favourites (userID, animal_id)
+            VALUES (?, ?)
+        ";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("ii", $userID, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
+    /* Reload the page */
+
+    header("Location: details.php?id=" . $id);
+    exit();
+    
+}
+
+
+
+
+
+/* ---------------- CHECK FAVOURITE ---------------- */
+
+$isFavourite = false;
+
+if (isset($_SESSION["userID"])) {
+
+    $sql = "
+        SELECT id
+        FROM favourites
+        WHERE userID = ?
+        AND animal_id = ?
+    ";
+
+    $stmt = $connection->prepare($sql);
+
+    $stmt->bind_param(
+        "ii",
+        $_SESSION["userID"],
+        $id
+    );
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $isFavourite = true;
+    }
+
+    $stmt->close();
+}
+
+
+
+/* ---------------- LOAD ANIMAL FACTS ---------------- */
+
 $fact_sql = "SELECT fact_number, fact
              FROM animal_facts
              WHERE animal_id = ?
@@ -29,6 +147,10 @@ $fact_result = $fact_stmt->get_result();
 
 
 ?>
+
+
+
+<!-- -------------------------------------------------- -->
 
 
 <!DOCTYPE html>
@@ -75,9 +197,14 @@ $fact_result = $fact_stmt->get_result();
 
         <div class="animal-actions">
 
-            <button class="favorite-button">
-                ♡ <span>Favourite</span>
-            </button>
+            <form method="post" class="favorite-form">
+
+                <button type="submit" name="toggle_favourite" class="favorite-button">
+                    <?= $isFavourite ? "♥" : "♡" ?>
+                    <span>Favourite</span>
+                </button>
+
+            </form>
 
             <div class="animal-xp">
                 ⭐ 100 XP
