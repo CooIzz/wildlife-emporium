@@ -1,0 +1,49 @@
+.admin-heading {
+    text-align: center;
+}
+
+.admin-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    gap: 100px;
+    padding: 50px;
+}
+
+.admin-card {
+    background-color: var(--card-background);
+    border: 1.7px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-card-heading {
+    text-align:center;
+}
+
+.admin-card-heading hr {
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+.admin-card-footer {
+    margin-top: auto;
+    text-align: center;
+}
+
+.admin-card-footer button{
+    margin-top: 10px;
+    background-color: var(--gold);
+    color: white; /*var(--background); ideally id use this but the scheme doesnt work*/
+    border: none;
+    border-radius: 10px;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+

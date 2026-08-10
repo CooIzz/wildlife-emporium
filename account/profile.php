@@ -1,58 +1,49 @@
 <?php
 
-/* begin the session and load the database*/
+// Start the session and load the database
 
 session_start();
 
 require_once("../includes/database.php");
+require_once("../includes/auth.php");
 
 
-/* check if user is logged in since they have to be logged in to continue*/
+// Require user to be logged in
 
-$loggedIn = false;
-
-if (isset($_SESSION["userID"])) {
-
-    $loggedIn = true;
-
-}
+requireLogin();
 
 
-/* if they are logged in gather user info from db */
+// Get user information from the database
 
-if ($loggedIn) {
+$sql = "
+SELECT
+    username,
+    email,
+    role,
+    profilePicture,
+    createdAt,
+    lastLogin
+FROM users
+WHERE userID = ?
+";
 
-    $sql = "
-    SELECT
-        username,
-        email,
-        role,
-        profilePicture,
-        createdAt,
-        lastLogin
-    FROM users
-    WHERE userID = ?
-    ";
+$statement = mysqli_prepare($connection, $sql);
 
-    $statement = mysqli_prepare($connection, $sql);
+if ($statement) {
 
-    if ($statement) {
+    mysqli_stmt_bind_param(
+        $statement,
+        "i",
+        $_SESSION["userID"]
+    );
 
-        mysqli_stmt_bind_param(
-            $statement,
-            "i",
-            $_SESSION["userID"]
-        );
+    mysqli_stmt_execute($statement);
 
-        mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
 
-        $result = mysqli_stmt_get_result($statement);
+    $user = mysqli_fetch_assoc($result);
 
-        $user = mysqli_fetch_assoc($result);
-
-        mysqli_stmt_close($statement);
-
-    }
+    mysqli_stmt_close($statement);
 
 }
 
@@ -65,9 +56,13 @@ if ($loggedIn) {
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My Profile | Wildlife Emporium</title>
+
     <link rel="stylesheet" href="../css/style.css">
+
     <link rel="stylesheet" href="../css/account.css">
 
 </head>
@@ -75,308 +70,295 @@ if ($loggedIn) {
 
 <body>
 
+
     <?php include("../includes/header.php"); ?>
+
     <?php include("../includes/navigation.php"); ?>
 
-    <main>
 
+    <main>
 
         <!-- PROFILE -->
 
         <section class="account-page">
 
-
             <div class="account-card">
 
 
-                <!-- =========================================
-                     LOGO
-                     ========================================= -->
+                <!-- LOGO -->
 
                 <div class="account-logo">
 
-                    <img src="../images/home-logo-test.svg" alt="Wildlife Emporium Logo">
+                    <img
+                        src="../images/home-logo-test.svg"
+                        alt="Wildlife Emporium Logo"
+                    >
 
                 </div>
 
 
-                <!-- =========================================
-                     PAGE TITLE
-                     ========================================= -->
+                <!-- PAGE TITLE -->
 
                 <h1 class="account-title">
+
                     My Profile
+
                 </h1>
 
 
                 <p class="account-description">
+
                     Manage your Wildlife Emporium account.
+
                 </p>
 
 
-                <!-- =================================================
-                     LOGGED OUT
-                     ================================================= -->
+                <!-- PROFILE -->
 
-                <?php
-
-                if (!$loggedIn) {
-
-                    ?>
-
-                    <div class="account-profile-guest">
-
-                        <p class="account-profile-message">
-                            You must be logged in to view your profile.
-                        </p>
+                <div class="account-profile">
 
 
-                        <a href="login.php" class="account-button">
-                            Log In
-                        </a>
+                    <!-- PROFILE PICTURE -->
 
+                    <div class="account-profile-avatar">
 
-                        <a href="register.php" class="account-secondary-button">
-                            Create Account
-                        </a>
+                        <img
+                            src="../images/<?php echo htmlspecialchars($user["profilePicture"]); ?>"
+                            alt="Profile Picture"
+                        >
 
                     </div>
 
-                    <?php
 
-                }
+                    <!-- EDIT PROFILE FORM -->
 
-                ?>
-
-
-                <!-- =================================================
-                     LOGGED IN
-                     ================================================= -->
-
-                <?php
-
-                if ($loggedIn) {
-
-                    ?>
-
-                    <div class="account-profile">
+                    <form
+                        class="account-form"
+                        action=""
+                        method="post"
+                        enctype="multipart/form-data"
+                    >
 
 
-                        <!-- =========================================
-                             PROFILE PICTURE
-                             ========================================= -->
+                        <!-- USERNAME -->
 
-                        <div class="account-profile-avatar">
+                        <div class="account-input-group">
 
-                            <img src="../images/<?php echo htmlspecialchars($user["profilePicture"]); ?>"
-                            alt="Profile Picture"
+                            <label for="username">
+
+                                Username
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                value="<?php echo htmlspecialchars($user["username"]); ?>"
+                                required
                             >
 
                         </div>
 
 
-                        <!-- =========================================
-                             EDIT PROFILE FORM
-                             ========================================= -->
+                        <!-- EMAIL -->
 
-                        <form class="account-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="account-input-group">
 
+                            <label for="email">
 
-                            <!-- =====================================
-                                 USERNAME
-                                 ===================================== -->
+                                Email Address
 
-                            <div class="account-input-group">
+                            </label>
 
-                                <label for="username">
-                                    Username
-                                </label>
-
-                                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user["username"]); ?>"
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value="<?php echo htmlspecialchars($user["email"]); ?>"
                                 required
-                                >
+                            >
+
+                        </div>
+
+
+                        <!-- PROFILE PICTURE -->
+
+                        <div class="account-input-group">
+
+                            <label for="profilePicture">
+
+                                Profile Picture
+
+                            </label>
+
+                            <input
+                                type="file"
+                                id="profilePicture"
+                                name="profilePicture"
+                                accept="image/*"
+                            >
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="account-input-group">
+
+                            <label for="password">
+
+                                New Password
+
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Leave blank to keep current password"
+                            >
+
+                        </div>
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <div class="account-input-group">
+
+                            <label for="confirm-password">
+
+                                Confirm New Password
+
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirm-password"
+                                name="confirm-password"
+                                placeholder="Confirm your new password"
+                            >
+
+                        </div>
+
+
+                        <!-- ACCOUNT INFORMATION -->
+
+                        <div class="account-profile-information">
+
+
+                            <!-- ROLE -->
+
+                            <div class="account-profile-item">
+
+                                <span class="account-profile-label">
+
+                                    Role
+
+                                </span>
+
+                                <span class="account-profile-value">
+
+                                    <?php
+
+                                    echo htmlspecialchars($user["role"]);
+
+                                    ?>
+
+                                </span>
 
                             </div>
 
 
-                            <!-- =====================================
-                                 EMAIL
-                                 ===================================== -->
+                            <!-- MEMBER SINCE -->
 
-                            <div class="account-input-group">
+                            <div class="account-profile-item">
 
-                                <label for="email">
-                                    Email Address
-                                </label>
+                                <span class="account-profile-label">
 
-                                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user["email"]); ?>"
-                                required
-                                >
+                                    Member Since
 
-                            </div>
+                                </span>
 
+                                <span class="account-profile-value">
 
-                            <!-- =====================================
-                                 PROFILE PICTURE
-                                 ===================================== -->
+                                    <?php
 
-                            <div class="account-input-group">
+                                    echo date(
+                                        "d F Y",
+                                        strtotime($user["createdAt"])
+                                    );
 
-                                <label for="profilePicture">
-                                    Profile Picture
-                                </label>
+                                    ?>
 
-                                <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                                </span>
 
                             </div>
 
 
-                            <!-- =====================================
-                                 PASSWORD
-                                 ===================================== -->
+                            <!-- LAST LOGIN -->
 
-                            <div class="account-input-group">
+                            <div class="account-profile-item">
 
-                                <label for="password">
-                                    New Password
-                                </label>
+                                <span class="account-profile-label">
 
-                                <input type="password" id="password" name="password"
-                                    placeholder="Leave blank to keep current password">
+                                    Last Login
 
-                            </div>
+                                </span>
 
+                                <span class="account-profile-value">
 
-                            <!-- =====================================
-                                 CONFIRM PASSWORD
-                                 ===================================== -->
+                                    <?php
 
-                            <div class="account-input-group">
+                                    if (!empty($user["lastLogin"])) {
 
-                                <label for="confirm-password">
-                                    Confirm New Password
-                                </label>
-
-                                <input type="password" id="confirm-password" name="confirm-password"
-                                    placeholder="Confirm your new password">
-
-                            </div>
-
-
-                            <!-- =====================================
-                                 ACCOUNT INFORMATION
-                                 These are displayed only.
-                                 They should NOT be editable.
-                                 ===================================== -->
-
-                            <div class="account-profile-information">
-
-
-                                <!-- ROLE -->
-
-                                <div class="account-profile-item">
-
-                                    <span class="account-profile-label">
-                                        Role
-                                    </span>
-
-                                    <span class="account-profile-value">
-                                        <?php
-                                        echo htmlspecialchars($user["role"]);
-                                        ?>
-                                    </span>
-
-                                </div>
-
-
-                                <!-- MEMBER SINCE -->
-
-                                <div class="account-profile-item">
-
-                                    <span class="account-profile-label">
-                                        Member Since
-                                    </span>
-
-                                    <span class="account-profile-value">
-                                        <?php
                                         echo date(
-                                            "d F Y",
-                                            strtotime($user["createdAt"])
+                                            "d F Y H:i",
+                                            strtotime($user["lastLogin"])
                                         );
-                                        ?>
-                                    </span>
 
-                                </div>
+                                    } else {
 
+                                        echo "No login recorded";
 
-                                <!-- LAST LOGIN -->
+                                    }
 
-                                <div class="account-profile-item">
+                                    ?>
 
-                                    <span class="account-profile-label">
-                                        Last Login
-                                    </span>
-
-                                    <span class="account-profile-value">
-
-                                        <?php
-
-                                        if (!empty($user["lastLogin"])) {
-
-                                            echo date(
-                                                "d F Y H:i",
-                                                strtotime($user["lastLogin"])
-                                            );
-
-                                        } else {
-
-                                            echo "No login recorded";
-
-                                        }
-
-                                        ?>
-
-                                    </span>
-
-                                </div>
-
+                                </span>
 
                             </div>
 
 
-                            <!-- =====================================
-                                 SAVE BUTTON
-                                 ===================================== -->
-
-                            <button type="submit" class="account-button">
-                                Save Changes
-                            </button>
+                        </div>
 
 
-                        </form>
+                        <!-- SAVE BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="account-button"
+                        >
+
+                            Save Changes
+
+                        </button>
 
 
-                    </div>
+                    </form>
 
-                    <?php
 
-                }
-
-                ?>
+                </div>
 
 
             </div>
 
-
         </section>
-
 
     </main>
 
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
+    <!-- FOOTER -->
 
     <?php include("../includes/footer.php"); ?>
 

@@ -72,9 +72,9 @@
 
                     ?>
 
-                    <img class="navigation-avatar" src="/wildlife-emporium/images/<?php echo htmlspecialchars($_SESSION["profilePicture"]); ?>"
-                    alt="Profile Picture"
-                    >
+                    <img class="navigation-avatar"
+                        src="/wildlife-emporium/images/<?php echo htmlspecialchars($_SESSION["profilePicture"]); ?>"
+                        alt="Profile Picture">
 
                     <?php
 
@@ -97,6 +97,22 @@
                 <?php
 
                 if (isset($_SESSION["userID"])) {
+
+                    ?>
+
+                    <?php
+
+                    if (isset($_SESSION["role"]) && $_SESSION["role"] === "admin") {
+
+                        ?>
+
+                        <a href="/wildlife-emporium/admin/index.php">
+                            Admin Panel
+                        </a>
+
+                        <?php
+
+                    }
 
                     ?>
 
