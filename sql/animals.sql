@@ -175,9 +175,9 @@ CREATE TABLE animal_facts (
 
     fact TEXT NOT NULL,
 
-    INDEX (animal_id)
+    INDEX (animal_id),
 
-    UNIQUE (animal_id, fact_number)
+    UNIQUE (animal_id, fact_number),
 
     FOREIGN KEY (animal_id)
         REFERENCES animals(id)

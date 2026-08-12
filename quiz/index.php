@@ -110,5 +110,7 @@ const quizAnimals = <?php echo json_encode($animals_array); ?>;
 <script src="../js/script.js"></script>
 <script src="../js/quiz.js"></script>
 
+<?php mysqli_close($connection); ?>
 </body>
 </html>
+

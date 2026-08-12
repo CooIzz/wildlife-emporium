@@ -1,3 +1,13 @@
+window.addEventListener("pageshow", event => {
+	
+	document.querySelectorAll("input[type='radio']").forEach(line => {
+		
+		line.checked = false;
+		
+	});
+	
+});
+
 //Calling the anchor elements from the quiz index page
 //and adding eventListeners to them for "click" events
 
@@ -45,5 +55,7 @@ quizAnimals.forEach(animal => {
 		};
 		
 	});
+	
+	
 	
 })
