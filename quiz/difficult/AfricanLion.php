@@ -76,7 +76,7 @@ questions.
 
 <li>
 <div>
-<p>What type of predator do African Lions belong to?</p>
+<p>What type of predator class do African Lions belong to?</p>
 <input type="radio" name="ambush" id="ambush">
 <label for="ambush">Ambush</label>
 <br>

@@ -1,4 +1,13 @@
+<?php 
+
+session_start();
+
+$userID = $_SESSION['userID'] ?? "";
+$loginURL = "/wildlife-emporium/account/login.php";
+
+?>
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -74,7 +83,7 @@ if(mysqli_num_rows($animal_result) > 0)
 		echo '<div id="' . $row['topic_id'] . '" class="QuizTopic">';
 		echo '<a href="javascript:void(0)" id="' . $row['js_id'] . '">';
 		echo '<img src="' . $row['image_path'] . '" alt="' . $row['image_alt'] . '" class="animal">';
-		echo '<p>' . $row['topic_id'] . $row['animal_name'] . '</p>';
+		echo '<p>' . $row['topic_id'] . ': '. $row['animal_name'] . '</p>';
 		echo '</a>';
 		echo '</div>';
 	}
@@ -104,11 +113,16 @@ mysqli_free_result($animal_result);
 
 //Passing database data to quiz.js file
 const quizAnimals = <?php echo json_encode($animals_array); ?>;
+const userID = <?php echo json_encode($userID); ?>;
+const loginURL = <?php echo json_encode($loginURL); ?>;
 
 </script>
 
 <script src="../js/script.js"></script>
 <script src="../js/quiz.js"></script>
+<?php
+
+?>
 
 <?php mysqli_close($connection); ?>
 </body>

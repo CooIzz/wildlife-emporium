@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //Forming connection to MySQL database
 include ("../includes/database.php");
@@ -59,11 +60,7 @@ if($_SERVER["REQUEST_METHOD"] !== "POST")
 		if(!empty($unanswered))
 			{
 				$unanswered_list = implode(', ', $unanswered);
-				
-				//Start a new session to temporarily store the answered questions
-				//because header() redirect loses all of $_POST data
-				session_start();
-				
+											
 				//To store the error message
 				$_SESSION['quiz_error'] = "Please answer all questions before submitting. Unanswered: Q$unanswered_list";
 				
@@ -89,9 +86,8 @@ if($_SERVER["REQUEST_METHOD"] !== "POST")
 				
 				//Storing the results of all evaluations in an array
 				//of arrays of Resource Objects
-				$results_detail[] = [
+				$results_detail[] = [				
 				
-				[
 					'question_num' => $question['id'],
 					'question_text' => $question['question_text'],
 					'option_a' => $question['option_a'],
@@ -101,9 +97,7 @@ if($_SERVER["REQUEST_METHOD"] !== "POST")
 					'correct_ans' => $question['correct_ans'],
 					'submitted_ans' => $answer,
 					'is_correct' => $question['correct_ans'] === $answer,
-				
-				]
-				
+								
 				];				
 			}			
 			
@@ -126,6 +120,93 @@ if($_SERVER["REQUEST_METHOD"] !== "POST")
 
 <body>
 
+<?php include("../includes/header.php"); ?>
+<?php include("../includes/navigation.php"); ?>
+
+<main>
+
+<!--
+To display the animal's image and the animal's text in case 
+the image fails to load
+-->
+<div class="mainAnimals">
+<img src="<?= $animal['image_path']?>" alt="<?= $animal['image_alt']?>">
+<br>
+<h1><?= $animal['animal_name']?></h1>
+<hr>
+<br>
+</div>
+
+<div id="outer_display">
+
+<?php
+
+//Printing the current results in a proper format
+foreach($results_detail as $result_detail)
+{
+	echo '<div class="result_display">';
+	
+	echo '<section>';
+	
+	echo '<p>' . $result_detail['question_num']. ' ' . $result_detail['question_text'] . '</p>';
+	echo '<br>';
+	echo '<p>Answer Choices</p>';
+	echo '<br>';
+	echo '<ol>';
+	
+	echo '<li>' . $result_detail['option_a'] . '</li>';
+	echo '<li>' . $result_detail['option_b'] . '</li>';
+	echo '<li>' . $result_detail['option_c'] . '</li>';
+	echo '<li>' . $result_detail['option_d'] . '</li>';
+	
+	echo '</ol>';
+	
+	echo '<p>Correct Answer: ' . $result_detail['correct_ans'] . '</p>';
+	echo '<p>Submitted Answer: ' . $result_detail['submitted_ans'] . '</p>';
+	
+	if($result_detail['is_correct'])
+	{
+		echo '<p style="color: green; font-weight: 900">' . '✅ Correct' . '</p>';
+	} else
+	{
+		echo '<p style="color: red; font-weight: 900">' . '❌ Wrong' . '</p>';
+	}
+	
+	echo '</section>';
+	
+	echo '</div>';
+}
+
+//Displaying the user's score
+echo '<p>Total Score: ' . $score . '</p>';
+
+$userID = $_SESSION['userID'];
+$user_score_query = "SELECT * FROM user_score WHERE userID = $userID";
+$user_score_attempt = mysqli_query($connection, $user_score_query);
+
+if(mysqli_num_rows($user_score_attempt) === 0)
+{
+    $insert_query = "INSERT INTO user_score (userID, score) VALUES ($userID, 0)";
+    mysqli_query($connection, $insert_query);
+    $updated_score = $score;
+} else {
+    $user_score_result = mysqli_fetch_assoc($user_score_attempt);
+    $updated_score = $score + $user_score_result['score'];
+}
+
+$user_score_update = "UPDATE user_score SET score = $updated_score WHERE userID = $userID";
+mysqli_query($connection, $user_score_update);
+
+?>
+
+</div>
+
+</main>
+
+
+<?php include("../includes/footer.php"); ?>
+
+<?php mysqli_close($connection); ?>
 </body>
 
 </html>

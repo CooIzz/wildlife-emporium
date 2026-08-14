@@ -1,10 +1,5 @@
 <?php
-session.start();
-
-//Authenticating the user
-require_once ("../includes/ath.php");
-
-requireLogin();
+session_start();
 
 //Forming connection to the MySQL Database
 include("../includes/database.php");
@@ -77,6 +72,8 @@ $questions_result = mysqli_query($connection, $chosen_questions);
 if(isset($_SESSION['quiz_error']) && isset($_SESSION['quiz_post']))
 {
 	echo '<p id="quiz_error">' . $_SESSION['quiz_error'] . '</p>';
+	unset($_SESSION['quiz_error']);
+	unset($_SESSION['quiz_post']);
 	
 }
 
@@ -149,6 +146,7 @@ echo '<br>';
 <?php include("../includes/footer.php"); ?>
 
 <script src="../js/quiz_page.js"></script>
+<?php mysqli_close($connection); ?>
 </body>
 
 </html>

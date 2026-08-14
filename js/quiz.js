@@ -1,10 +1,13 @@
 window.addEventListener("pageshow", event => {
 	
-	document.querySelectorAll("input[type='radio']").forEach(line => {
-		
-		line.checked = false;
-		
-	});
+	if(event.persisted)
+	{
+		document.querySelectorAll("input[type='radio']").forEach(line => {
+			
+			line.checked = false;
+			
+		});
+	}
 	
 });
 
@@ -20,7 +23,10 @@ quizAnimals.forEach(animal => {
 		return;
 	}
 	
-	element.addEventListener("click", function() {
+	//If the user has already been logged in
+	//if(userID !== "")
+	//{
+		element.addEventListener("click", function() {
 		
 		//Letting user choose difficulty level upon clicking
 		let choice = parseInt(prompt("Please choose the difficulty level:\n\n1. Easy\n2. Medium\n3. Difficult\n\nEnter 1, 2 or 3:"));
@@ -55,7 +61,16 @@ quizAnimals.forEach(animal => {
 		};
 		
 	});
-	
-	
-	
+	/*} else//If the user has not logged in yet
+	{
+		element.addEventListener("click", function() {
+			
+			alert("Please login before proceeding to partake in the quiz");
+			window.location.href = loginURL;
+			
+		});
+		
+		
+	}*/
+		
 })
