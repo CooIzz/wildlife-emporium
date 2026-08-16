@@ -122,6 +122,8 @@ const loginURL = <?php echo json_encode($loginURL); ?>;
 <script src="../js/quiz.js"></script>
 <?php
 
+echo '<a href="./leaderboard.php">Click here</a>';
+
 ?>
 
 <?php mysqli_close($connection); ?>
