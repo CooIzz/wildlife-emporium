@@ -73,7 +73,7 @@ if(!$animal_result)
 	echo mysqli_error($connection);
 }
 
-echo "<section>";
+echo "<section id='main_section'>";
 
 //Looping through the data extracted from the database
 if(mysqli_num_rows($animal_result) > 0)
@@ -105,6 +105,16 @@ mysqli_free_result($animal_result);
 
 </article>
 
+<br>
+<hr>
+<br>
+
+<aside>
+
+<p>Wish to view the existing scoreboard?<a href="./leaderboard.php">Click here</a></p>
+
+</aside>
+
 </main>
 
 <?php include("../includes/footer.php"); ?>
@@ -120,11 +130,6 @@ const loginURL = <?php echo json_encode($loginURL); ?>;
 
 <script src="../js/script.js"></script>
 <script src="../js/quiz.js"></script>
-<?php
-
-echo '<a href="./leaderboard.php">Click here</a>';
-
-?>
 
 <?php mysqli_close($connection); ?>
 </body>

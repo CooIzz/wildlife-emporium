@@ -12,6 +12,7 @@ scoreboard_expand.addEventListener("click", event => {
 	{
 		alert("Please login before proceeding!");
 		window.location.href = loginURL;
+		
 	}
 	
 });

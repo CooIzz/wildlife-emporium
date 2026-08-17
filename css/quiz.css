@@ -55,7 +55,7 @@ in the quiz index page
 This styling is to arrange all the topical boxes
 in a glass-panel like arrangement structure
 */
-section {
+#main_section {
 
     display: flex;
     flex-direction: row;
@@ -64,6 +64,16 @@ section {
     flex-wrap: wrap;
 	animation: bgColorChange 20s infinite ease-in-out alternate;
 
+}
+
+
+
+section {
+	
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	
 }
 
 /*
@@ -153,7 +163,8 @@ ol li label {
 }
 
 /*
-
+This styling is to set the font size of everything 
+within the ordered lists
 */
 
 ol * {
@@ -161,13 +172,34 @@ ol * {
 	font-size: 20px;
 	
 }
+/*
+This styling is to ensure that the indices of the
+questions is within the alloted box
+*/
+
+ol {
+	
+	list-style-position: inside;
+	
+}
 
 /*
-To style the header of the index page of quiz section
+This styling is to align the paragraphs to the center
+*/
+
+p {
+	
+	text-align: center;
+	
+}
+
+/*
+To style the headers of the quiz section
 */
 h1 {
 
     font-size:40px;
+	text-align: center;
 
 }
 
@@ -201,8 +233,34 @@ legend {
 	
 }
 
+/*
+To toggle the display property for the 
+scoreboard table
+*/
+
 .hidden {
 	
 	display: none;
+	
+}
+
+@keyframes bgColorChange2 {
+	
+	0% { background-color: #F5F5DC; }
+	25% { background-color: #FFE4C4; }
+	50% { background-color: #F0F8FF; }
+	75% { background-color: #F0FFFF; }
+	100% { background-color: #DCDCDC; }
+	
+	
+}
+
+table, tr, th, td {
+	
+	border: solid black 2px;
+	border-collapse: collapse;
+	padding: 5px;
+	text-align: center;
+	animation: bgColorChange2 infinite 20s ease-in-out;
 	
 }

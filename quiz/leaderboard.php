@@ -54,6 +54,14 @@ scoreboard? Please login before proceeding.
 
 <button id="scoreboard_expand">Expand the scoreboard</button>
 
+</section>
+
+<br>
+<hr>
+<br>
+
+<section>
+
 <table id="scoreboard" class="hidden">
 
 <thead>
@@ -80,7 +88,7 @@ while($row = mysqli_fetch_assoc($result))
 	$score = $row['score'] ?? 0;
 	
 	echo '<tr>';
-	echo '<td>' . $index++ . '</td>';
+	echo '<td>' . $index++ . '.</td>';
 	echo '<td>' . htmlspecialchars($username) . '</td>';
 	echo '<td>' . htmlspecialchars($score) . '</td>';
 	echo '</tr>';
