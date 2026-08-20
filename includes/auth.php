@@ -8,7 +8,7 @@ function requireLogin()
     if (!isset($_SESSION["userID"])) {
 
         header("Location: /wildlife-emporium/account/login.php");
-
+    
         exit();
 
     }
