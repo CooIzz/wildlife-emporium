@@ -1,14 +1,137 @@
-<?php require_once("../includes/database.php"); ?>
+<?php
+
+session_start();
+
+require_once("../includes/database.php");
+
+$search = trim($_GET["search"] ?? "");
+$class = trim($_GET["class"] ?? "");
+
+$animals = [];
+
+
+// Load animals
+
+$sql = "SELECT animalID,commonName,scientificName,kingdom,phylum,class,orderName,family,genus,species,weight,length,lifespan,speed,habitat,diet,conservationStatus,image FROM animals";
+
+$conditions = [];
+$parameters = [];
+$types = "";
+
+if ($search !== "")
+{
+    $conditions[] = "(commonName LIKE ? OR scientificName LIKE ?)";
+
+    $searchValue = "%" . $search . "%";
+    $parameters[] = $searchValue;
+    $parameters[] = $searchValue;
+    $types .= "ss";
+}
+
+if ($class !== "")
+{
+    $conditions[] = "class = ?";
+    $parameters[] = $class;
+    $types .= "s";
+}
+
+if (!empty($conditions))
+{
+    $sql .= " WHERE " . implode(" AND ",$conditions);
+}
+
+$sql .= " ORDER BY commonName ASC";
+
+$statement = mysqli_prepare($connection,$sql);
+
+if (!$statement)
+{
+    die("Failed to load animals.");
+}
+
+if (!empty($parameters))
+{
+    mysqli_stmt_bind_param($statement,$types,...$parameters);
+}
+
+mysqli_stmt_execute($statement);
+
+$result = mysqli_stmt_get_result($statement);
+
+while ($animal = mysqli_fetch_assoc($result))
+{
+    $animals[] = $animal;
+}
+
+mysqli_stmt_close($statement);
+
+
+// Load user's favourites
+
+$favourites = [];
+
+if (isset($_SESSION["userID"]))
+{
+    $userID = $_SESSION["userID"];
+
+    $statement = mysqli_prepare($connection,"SELECT animalID FROM favourites WHERE userID = ?");
+
+    if ($statement)
+    {
+        mysqli_stmt_bind_param($statement,"i",$userID);
+        mysqli_stmt_execute($statement);
+
+        $result = mysqli_stmt_get_result($statement);
+
+        while ($data = mysqli_fetch_assoc($result))
+        {
+            $favourites[] = $data["animalID"];
+        }
+
+        mysqli_stmt_close($statement);
+    }
+}
+
+
+// Load available animal classes
+
+$classes = [];
+
+$statement = mysqli_prepare($connection,"SELECT DISTINCT class FROM animals WHERE class IS NOT NULL AND class != '' ORDER BY class ASC");
+
+if (!$statement)
+{
+    die("Failed to load animal classes.");
+}
+
+mysqli_stmt_execute($statement);
+
+$result = mysqli_stmt_get_result($statement);
+
+while ($data = mysqli_fetch_assoc($result))
+{
+    $classes[] = $data["class"];
+}
+
+mysqli_stmt_close($statement);
+
+$animalCount = count($animals);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animals</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Animal Encyclopedia</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/animals.css">
+
 </head>
 
 <body>
@@ -16,101 +139,185 @@
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
-<main>
+<main class="animals-page">
 
-<!--
-    <p> Search for animals in the database using the search bar above.
-        You can enter the name of the animal or any related keywords to find relevant information.</p>
+    <!-- Search -->
 
-    <p> Search for your favourite animal and learn more about it.
-        Our database contains a wide variety of animals, from domestic pets to exotic wildlife!</p>
+    <form method="GET" class="animal-search">
 
-    
+        <div class="animal-search-input">
 
--->
+            <input type="text" name="search" value="<?php echo htmlspecialchars($search,ENT_QUOTES,'UTF-8'); ?>" placeholder="Search by common or scientific name...">
 
+            <button type="submit">Search</button>
 
+        </div>
 
-    <section class="animal-search">
+        <?php if ($search !== "") { ?>
 
-        <h2>Find Your Favourite Animal</h2>
+            <a href="index.php" class="clear-search">Clear</a>
 
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search animals..." class="animal-search_bar">
-        </form>
+        <?php } ?>
 
-    </section>
-
-    <section class="animal-filters">
-
-        <button>All</button>
-        <button>Mammals</button>
-        <button>Birds</button>
-        <button>Reptiles</button>
-        <button>Marine</button>
-
-    </section>
-
-    <section class="animal-grid">
-        
-        <a href="details.php?id=1" class="animal-card">
-            <img src="tiger.jpg" alt="Tiger">
-            <h3>Tiger</h3>
-            <p>Mammal</p>
-        </a>
+    </form>
 
 
-        <a href="details.php?id=1" class="animal-card">
-            <img src="orangutan.jpg" alt="Orangutan">
-            <h3>Orangutan</h3>
-            <p>Primate</p>
-        </a>
+    <!-- Animal filters -->
 
-        <article class="animal-card">
-            <img src="penguin.jpg" alt="Penguin">
-            <h3>Penguin</h3>
-            <p>Bird</p>
-        </article>
+    <div class="animal-filters">
 
-        <article class="animal-card">
-            <img src="elephant.jpg" alt="Elephant">
-            <h3>Elephant</h3>
-            <p>Mammal</p>
-        </article>
+        <?php
 
-        <article class="animal-card">
-            <img src="big_elephant.jpg" alt="Big Elephant">
-            <h3>Big Elephant</h3>
-            <p>Mammal</p>
-        </article>
+        $allUrl = "index.php";
 
-        <article class="animal-card">
-            <img src="small_elephant.jpg" alt="Small Elephant">
-            <h3>Small Elephant</h3>
-            <p>Mammal</p>
-        </article>
+        if ($search !== "")
+        {
+            $allUrl .= "?" . http_build_query(["search" => $search]);
+        }
 
-        <article class="animal-card">
-            <img src="medium_elephant.jpg" alt="Medium Elephant">
-            <h3>Medium Elephant</h3>
-            <p>Mammal</p>
-        </article>
+        ?>
 
-    </section>
+        <a href="<?php echo htmlspecialchars($allUrl,ENT_QUOTES,'UTF-8'); ?>" class="<?php echo $class === "" ? "active" : ""; ?>">All</a>
 
-    <p> 🏆 Favorite Animals Collected</p>
-    <p> 🌟 XP for viewing animals</p>
-    <p> ❤️ "Favorite" button on each animal</p>
-    <p> 🎖️ Badges like Bird Lover, Big Cat Fan, or Marine Explorer</p>
-    <p> 📊 Progress: "You've discovered 18 of 50 animals."
-    <p> ---- </p>
-    <p> https://www.pokemon.com/us/pokedex </p>
+        <?php foreach ($classes as $animalClass) { ?>
 
+            <?php
+
+            $filterParameters = ["class" => $animalClass];
+
+            if ($search !== "")
+            {
+                $filterParameters["search"] = $search;
+            }
+
+            $filterUrl = "index.php?" . http_build_query($filterParameters);
+
+            ?>
+
+            <a href="<?php echo htmlspecialchars($filterUrl,ENT_QUOTES,'UTF-8'); ?>" class="<?php echo $class === $animalClass ? "active" : ""; ?>"><?php echo htmlspecialchars($animalClass,ENT_QUOTES,'UTF-8'); ?></a>
+
+        <?php } ?>
+
+    </div>
+
+
+    <!-- Results heading -->
+
+    <div class="animals-results-heading">
+
+        <div>
+
+            <h2>Explore Animals</h2>
+
+            <p>
+                <?php echo $animalCount; ?>
+                animal<?php echo $animalCount === 1 ? "" : "s"; ?>
+                found
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Animal cards -->
+
+    <?php if ($animalCount > 0) { ?>
+
+        <div class="animal-grid">
+
+            <?php foreach ($animals as $animal) { ?>
+
+                <div class="animal-card">
+
+                    <div class="animal-card-inner">
+
+                        <div class="animal-card-front">
+
+                            <div class="animal-card-image">
+                                <img src="../images/animals/<?php echo htmlspecialchars($animal["image"],ENT_QUOTES,'UTF-8'); ?>" alt="<?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?>">
+                            </div>
+
+                            <div class="animal-card-content">
+
+                                <p class="animal-card-class"><?php echo htmlspecialchars($animal["class"],ENT_QUOTES,'UTF-8'); ?></p>
+
+                                <h3><?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?></h3>
+
+                                <p class="animal-card-scientific"><?php echo htmlspecialchars($animal["scientificName"],ENT_QUOTES,'UTF-8'); ?></p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="animal-card-back">
+
+                            <h3><?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?></h3>
+
+                            <div class="animal-card-details">
+
+                                <p><span>Kingdom</span><?php echo htmlspecialchars($animal["kingdom"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p><span>Phylum</span><?php echo htmlspecialchars($animal["phylum"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p><span>Class</span><?php echo htmlspecialchars($animal["class"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p><span>Order</span><?php echo htmlspecialchars($animal["orderName"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p><span>Family</span><?php echo htmlspecialchars($animal["family"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p><span>Genus</span><?php echo htmlspecialchars($animal["genus"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p><span>Species</span><?php echo htmlspecialchars($animal["species"],ENT_QUOTES,'UTF-8'); ?></p>
+
+                            </div>
+
+                            <a href="details.php?animalID=<?php echo $animal["animalID"]; ?>" class="animal-card-button">View Details</a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Favourite -->
+
+                    <form method="POST" action="favourites.php" class="animal-card-favourite">
+
+                        <input type="hidden" name="animalID" value="<?php echo $animal["animalID"]; ?>">
+
+                        <input type="hidden" name="returnPage" value="index.php">
+
+                        <button type="submit" aria-label="Add <?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?> to favourites">
+
+                            <img src="../images/animals/<?php echo in_array($animal["animalID"],$favourites) ? "favourite-filled.png" : "favourite-empty.png"; ?>" alt="">
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            <?php } ?>
+
+        </div>
+
+    <?php } else { ?>
+
+        <!-- No results -->
+
+        <div class="animals-empty">
+
+            <h2>No animals found</h2>
+
+            <p>Try a different search term or category.</p>
+
+            <a href="index.php">View all animals</a>
+
+        </div>
+
+    <?php } ?>
 
 </main>
 
 <?php include("../includes/footer.php"); ?>
 
+<script src="../js/animals-flip.js"></script>
+<script src="../js/favourites.js"></script>
 <script src="../js/script.js"></script>
 
 </body>

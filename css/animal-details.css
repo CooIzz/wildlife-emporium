@@ -1,0 +1,412 @@
+/* Animal Details */
+
+.animal-details {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 25px 70px;
+}
+
+/* Header */
+
+.animal-detail-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 65px;
+    text-align: center;
+}
+
+.animal-detail-image {
+    width: min(520px,100%);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px var(--shadow);
+}
+
+.animal-detail-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.animal-detail-heading {
+    padding-top: 24px;
+}
+
+.animal-detail-class {
+    margin-bottom: 7px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.animal-detail-heading h1 {
+    margin-bottom: 5px;
+    color: var(--text);
+    font-size: 44px;
+    line-height: 1.1;
+}
+
+.animal-detail-scientific {
+    margin: 0;
+    color: var(--text);
+    opacity: 0.6;
+    font-size: 18px;
+    font-style: italic;
+}
+
+/* Sections */
+
+.animal-detail-section {
+    margin-bottom: 60px;
+}
+
+.animal-detail-section > h2 {
+    margin-bottom: 20px;
+    color: var(--text);
+    font-size: 27px;
+}
+
+/* About */
+
+.animal-about {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.animal-about p {
+    margin: 0;
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+/* Statistics */
+
+.animal-statistics {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.animal-statistics > div {
+    padding: 20px;
+    border-right: 1px solid var(--border);
+}
+
+.animal-statistics > div:last-child {
+    border-right: none;
+}
+
+.animal-statistics span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--dark-green);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.animal-statistics p {
+    margin: 0;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Taxonomy */
+
+.animal-taxonomy-tree {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    align-items: start;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.animal-taxonomy-level {
+    position: relative;
+    min-width: 0;
+    padding: 20px 12px;
+    text-align: center;
+}
+
+.animal-taxonomy-level:not(:last-child)::after {
+    content: "›";
+    position: absolute;
+    top: 42px;
+    right: -5px;
+    color: var(--orange);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.animal-taxonomy-level span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--dark-green);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.animal-taxonomy-level p {
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* Information */
+
+.animal-information {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+}
+
+.animal-information > div {
+    padding-top: 18px;
+    border-top: 2px solid var(--border);
+}
+
+.animal-information span {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--dark-green);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.animal-information p {
+    margin: 0;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Back */
+
+.animal-detail-back {
+    margin-top: 20px;
+}
+
+.animal-detail-back a {
+    display: inline-block;
+    padding: 11px 18px;
+    background: var(--orange);
+    color: var(--card);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.animal-detail-back a:hover {
+    background: var(--gold);
+    color: var(--text);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .animal-details {
+        max-width: 850px;
+    }
+
+    .animal-statistics {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .animal-statistics > div:nth-child(2) {
+        border-right: none;
+    }
+
+    .animal-statistics > div:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .animal-taxonomy-tree {
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    .animal-taxonomy-level:nth-child(4)::after {
+        display: none;
+    }
+
+    .animal-taxonomy-level:nth-child(4) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .animal-information {
+        gap: 30px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .animal-details {
+        padding: 30px 15px 55px;
+    }
+
+    .animal-detail-header {
+        margin-bottom: 45px;
+    }
+
+    .animal-detail-image {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .animal-detail-heading {
+        padding-top: 20px;
+    }
+
+    .animal-detail-heading h1 {
+        font-size: 34px;
+    }
+
+    .animal-detail-scientific {
+        font-size: 16px;
+    }
+
+    .animal-detail-section {
+        margin-bottom: 45px;
+    }
+
+    .animal-detail-section > h2 {
+        font-size: 24px;
+    }
+
+    .animal-statistics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .animal-statistics > div {
+        padding: 17px 13px;
+    }
+
+    .animal-statistics span {
+        font-size: 10px;
+    }
+
+    .animal-statistics p {
+        font-size: 16px;
+    }
+
+    .animal-taxonomy-tree {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .animal-taxonomy-level {
+        padding: 17px 12px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .animal-taxonomy-level:not(:last-child)::after {
+        display: none;
+    }
+
+    .animal-taxonomy-level:nth-last-child(-n + 2) {
+        border-bottom: none;
+    }
+
+    .animal-taxonomy-level span {
+        font-size: 10px;
+    }
+
+    .animal-taxonomy-level p {
+        font-size: 14px;
+    }
+
+    .animal-information {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Small Mobile */
+
+@media (max-width: 420px) {
+    .animal-statistics {
+        grid-template-columns: 1fr;
+    }
+
+    .animal-statistics > div {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .animal-statistics > div:last-child {
+        border-bottom: none;
+    }
+
+    .animal-taxonomy-tree {
+        grid-template-columns: 1fr;
+    }
+
+    .animal-taxonomy-level {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 10px;
+        text-align: left;
+    }
+
+    .animal-taxonomy-level:nth-last-child(-n + 2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .animal-taxonomy-level:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Favourite Button */
+
+.animal-card-favourite {
+    position: relative;
+    z-index: 10;
+    margin-top: 18px;
+}
+
+.animal-card-favourite button {
+    width: 38px;
+    height: 38px;
+    padding: 7px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 3px 10px var(--shadow);
+    transition: transform 0.2s ease,background 0.2s ease,box-shadow 0.2s ease;
+}
+
+.animal-card-favourite button:hover {
+    transform: scale(1.12);
+    background: var(--orange);
+    border-color: var(--orange);
+    box-shadow: 0 0 14px var(--orange);
+}
+
+.animal-card-favourite img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+

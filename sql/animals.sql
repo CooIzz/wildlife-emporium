@@ -1,225 +1,76 @@
-
-
-DROP TABLE IF EXISTS favourites;
-DROP TABLE IF EXISTS animal_facts;
-DROP TABLE IF EXISTS animals;
-
--- ============================================================
--- ANIMALS
--- ============================================================
-
-DROP TABLE IF EXISTS animals;
-
-CREATE TABLE animals (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-
-    common_name VARCHAR(100) NOT NULL,
-    scientific_name VARCHAR(150) NOT NULL,
-
-    kingdom VARCHAR(50),
-    phylum VARCHAR(100),
-    tax_class VARCHAR(100),
-    tax_order VARCHAR(100),
-    family VARCHAR(100),
-    genus VARCHAR(100),
-    species VARCHAR(150),
-
-    weight_min DECIMAL(8,2),
-    weight_max DECIMAL(8,2),
-
-    length_min DECIMAL(8,2),
-    length_max DECIMAL(8,2),
-
-    lifespan_min DECIMAL(6,2),
-    lifespan_max DECIMAL(6,2),
-
-    max_speed DECIMAL(8,2),
-
-    conservation_status VARCHAR(50),
-    population VARCHAR(100),
-    population_trend VARCHAR(100),
-
-    biome VARCHAR(255),
-    climate VARCHAR(255),
-    habitat VARCHAR(255),
-    geographic_range TEXT,
-
-    diet VARCHAR(100),
-    activity VARCHAR(255),
-    social_structure VARCHAR(255),
-
-    breeding VARCHAR(255),
-    gestation VARCHAR(100),
-    litter_size VARCHAR(100),
-    young VARCHAR(255),
-
-    description TEXT,
-    behaviour_description TEXT,
-    conservation_description TEXT,
-
-    main_image VARCHAR(255)
-);
-
-
-
-INSERT INTO animals (
-    common_name,
-    scientific_name,
-    kingdom,
-    phylum,
-    tax_class,
-    tax_order,
-    family,
-    genus,
-    species,
-    weight_min,
-    weight_max,
-    length_min,
-    length_max,
-    lifespan_min,
-    lifespan_max,
-    max_speed,
-    conservation_status,
-    population,
-    population_trend,
-    biome,
-    climate,
-    habitat,
-    geographic_range,
-    diet,
-    activity,
-    social_structure,
-    breeding,
-    gestation,
-    litter_size,
-    young,
-    description,
-    behaviour_description,
-    conservation_description,
-    main_image
-)
-VALUES (
-    'African Lion',
-    'Panthera leo',
-    'Animalia',
-    'Chordata',
-    'Mammalia',
-    'Carnivora',
-    'Felidae',
-    'Panthera',
-    'Panthera leo',
-
-    150,
-    250,
-
-    2.4,
-    3.3,
-
-    10,
-    14,
-
-    80,
-
-    'Vulnerable',
-    '~20,000–25,000',
-    '↓ Population declining',
-
-    'Savanna & Grassland',
-    'Tropical & Subtropical',
-    'Savanna, Grassland & Woodland',
-    'Primarily found in sub-Saharan Africa, with populations occurring in countries including Kenya, Tanzania, Botswana and South Africa.',
-
-    'Carnivore',
-    'Mostly nocturnal',
-    'Prides',
-
-    'Year-round',
-    '~110 days',
-    '1–4 cubs',
-    'Raised within the pride',
-
-    'The African lion is one of the world''s largest members of the cat family. Unlike most other big cats, lions are highly social animals that live together in groups known as prides.
-
-        Lions are powerful predators that play an important role in their ecosystems. They primarily hunt large herbivores and often cooperate with other members of their pride when hunting.
-
-        Although lions once occupied much of Africa, their range has declined considerably due to habitat loss, declining prey populations and conflict with humans.',
-
-    'Lions are primarily carnivorous predators. They hunt a variety of large mammals, including zebras, wildebeest, antelope and buffalo. Hunting is often cooperative, particularly among lionesses within a pride.
-    
-        Lions tend to be more active during cooler periods of the day. Their social behaviour is unusual among cats, with related females often forming the stable core of a pride.',
-
-    'African lion populations have declined significantly across much of their historical range. Conservation efforts focus on protecting remaining habitat, maintaining healthy prey populations and reducing conflict between lions and local communities.',
-
-    'AfricanLion.jpg'
-);
-
-
-
-
-
-
-
-
--- ============================================================
--- ANIMAL FACTS
--- ============================================================
-
-DROP TABLE IF EXISTS animal_facts;
-
-CREATE TABLE animal_facts (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-
-    animal_id INT UNSIGNED NOT NULL,
-
-    fact_number INT UNSIGNED NOT NULL,
-
-    fact TEXT NOT NULL,
-
-    INDEX (animal_id),
-
-    UNIQUE (animal_id, fact_number),
-
-    FOREIGN KEY (animal_id)
-        REFERENCES animals(id)
-        ON DELETE CASCADE
-);
-
-
-INSERT INTO animal_facts (animal_id, fact_number, fact) VALUES
-(1, 1, 'Lions are the only big cats that regularly live in large social groups.'),
-(1, 2, 'A lion''s roar can be heard from several kilometres away under suitable conditions.'),
-(1, 3, 'Lion cubs are born with spots that usually fade as they grow older.'),
-(1, 4, 'Female lions usually do most of the hunting for their pride.'),
-(1, 5, 'Lions can spend many hours resting after feeding, often sleeping for up to 20 hours a day.');
-
-
-
-
-
-
-
--- ============================================================
--- FAVOURITES
--- ============================================================
-
-DROP TABLE IF EXISTS favourites;
-
-CREATE TABLE favourites (
-
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-
-    userID INT UNSIGNED NOT NULL,
-
-    animal_id INT UNSIGNED NOT NULL,
-
-    UNIQUE (userID, animal_id),
-
-    FOREIGN KEY (userID)
-        REFERENCES users(userID)
-        ON DELETE CASCADE,
-
-    FOREIGN KEY (animal_id)
-        REFERENCES animals(id)
-        ON DELETE CASCADE
-
-);
+-- phpMyAdmin SQL Dump
+-- version 5.2.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Aug 21, 2026 at 05:38 PM
+-- Server version: 8.4.7
+-- PHP Version: 8.3.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `wildlife_emporium`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `animals`
+--
+
+DROP TABLE IF EXISTS `animals`;
+CREATE TABLE IF NOT EXISTS `animals` (
+  `animalID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `commonName` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `scientificName` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kingdom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phylum` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `orderName` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `family` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `genus` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `species` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `weight` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `length` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lifespan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `speed` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `habitat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `distribution` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `diet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `behaviour` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `conservationStatus` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `population` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`animalID`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `animals`
+--
+
+INSERT INTO `animals` (`animalID`, `commonName`, `scientificName`, `kingdom`, `phylum`, `class`, `orderName`, `family`, `genus`, `species`, `weight`, `length`, `lifespan`, `speed`, `habitat`, `distribution`, `diet`, `behaviour`, `description`, `conservationStatus`, `population`, `image`) VALUES
+(1, 'African Lion', 'Panthera leo', 'Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Felidae', 'Panthera', 'Panthera leo', '150–250 kg', '2.4–3.3 m', '10–14 years', 'Up to 80 km/h', 'Savanna, grassland and woodland', 'Sub-Saharan Africa, including Kenya, Tanzania, Botswana and South Africa.', 'Carnivore', 'Primarily nocturnal. Lions live in social groups called prides and often cooperate when hunting.', 'The African lion is one of the largest members of the cat family. Unlike most other big cats, lions are highly social animals that live together in groups known as prides. Lions are powerful predators that play an important role in their ecosystems and primarily hunt large herbivores.', 'Vulnerable', 'Approximately 20,000–25,000', 'AfricanLion.jpg'),
+(2, 'Bengal Tiger', 'Panthera tigris tigris', 'Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Felidae', 'Panthera', 'Panthera tigris', '90–260 kg', '2.4–3.1 m', '10–15 years', '65 km/h', 'Forests, grasslands and mangrove habitats', 'India, Bangladesh, Bhutan and Nepal', 'Carnivore', 'Solitary and territorial; strong swimmer.', 'The Bengal tiger is a powerful solitary predator distinguished by its orange coat and dark vertical stripes.', 'Endangered', '2,500–3,000', 'bengal_tiger.jpg'),
+(3, 'African Elephant', 'Loxodonta africana', 'Animalia', 'Chordata', 'Mammalia', 'Proboscidea', 'Elephantidae', 'Loxodonta', 'Loxodonta africana', '2,700–6,000 kg', '3–4 m', '60–70 years', '40 km/h', 'Savanna, woodland and forest', 'Sub-Saharan Africa', 'Herbivore', 'Highly social; lives in matriarchal family groups.', 'The African elephant is the largest living terrestrial animal and plays an important ecological role in its environment.', 'Endangered', '415,000', 'african_elephant.jpg'),
+(4, 'Giant Panda', 'Ailuropoda melanoleuca', 'Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Ursidae', 'Ailuropoda', 'Ailuropoda melanoleuca', '70–120 kg', '1.2–1.9 m', '15–20 years', '32 km/h', 'Temperate mountain forests', 'Central China', 'Primarily herbivore', 'Mostly solitary; spends much of the day feeding.', 'The giant panda is a bear species adapted to a bamboo-dominated diet and temperate mountain forests.', 'Vulnerable', '1,800+', 'giant_panda.jpg'),
+(5, 'Red Fox', 'Vulpes vulpes', 'Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Canidae', 'Vulpes', 'Vulpes vulpes', '3–14 kg', '0.9–1.1 m', '3–5 years', '50 km/h', 'Forests, grasslands, farmland and urban areas', 'Northern Hemisphere', 'Omnivore', 'Generally solitary and highly adaptable.', 'The red fox is one of the most widely distributed terrestrial mammals and can adapt to many environments.', 'Least Concern', 'Unknown', 'red_fox.jpg'),
+(6, 'Giraffe', 'Giraffa camelopardalis', 'Animalia', 'Chordata', 'Mammalia', 'Artiodactyla', 'Giraffidae', 'Giraffa', 'Giraffa camelopardalis', '550–1,200 kg', '4.3–5.7 m', '20–25 years', '60 km/h', 'Savanna, grassland and woodland', 'Sub-Saharan Africa', 'Herbivore', 'Social but loosely structured; often travels in herds.', 'The giraffe is the tallest living terrestrial animal and is recognised by its exceptionally long neck and legs.', 'Vulnerable', '117,000', 'giraffe.jpg'),
+(7, 'Bald Eagle', 'Haliaeetus leucocephalus', 'Animalia', 'Chordata', 'Aves', 'Accipitriformes', 'Accipitridae', 'Haliaeetus', 'Haliaeetus leucocephalus', '3–6.3 kg', '0.7–1 m', '20–30 years', '160 km/h', 'Forests near rivers, lakes and coasts', 'North America', 'Carnivore', 'Usually solitary or paired; often nests near water.', 'The bald eagle is a large sea eagle recognised by the white head and tail of mature individuals.', 'Least Concern', '316,000+', 'bald_eagle.jpg'),
+(8, 'Emperor Penguin', 'Aptenodytes forsteri', 'Animalia', 'Chordata', 'Aves', 'Sphenisciformes', 'Spheniscidae', 'Aptenodytes', 'Aptenodytes forsteri', '22–45 kg', '1.1–1.3 m', '15–20 years', '9 km/h', 'Antarctic sea ice and surrounding ocean', 'Antarctica', 'Carnivore', 'Highly social; forms large breeding colonies.', 'The emperor penguin is the largest living penguin and breeds during the Antarctic winter.', 'Near Threatened', 'Approx. 600,000', 'emperor_penguin.jpg'),
+(9, 'Green Sea Turtle', 'Chelonia mydas', 'Animalia', 'Chordata', 'Reptilia', 'Testudines', 'Cheloniidae', 'Chelonia', 'Chelonia mydas', '65–130 kg', '1–1.2 m', '60–70 years', '35 km/h', 'Tropical and subtropical oceans', 'Tropical and subtropical oceans worldwide', 'Omnivore', 'Migratory; adults often feed in shallow coastal habitats.', 'The green sea turtle is a marine turtle that undertakes long migrations between feeding grounds and nesting beaches.', 'Endangered', 'Unknown', 'green_sea_turtle.jpg'),
+(10, 'Komodo Dragon', 'Varanus komodoensis', 'Animalia', 'Chordata', 'Reptilia', 'Squamata', 'Varanidae', 'Varanus', 'Varanus komodoensis', '70–90 kg', '2–3 m', '20–30 years', '20 km/h', 'Dry forests, savanna and scrubland', 'Indonesia', 'Carnivore', 'Mostly solitary; ambushes prey and scavenges.', 'The Komodo dragon is the largest living lizard and an apex predator within its island ecosystem.', 'Endangered', 'Approx. 3,000', 'komodo_dragon.jpg');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
