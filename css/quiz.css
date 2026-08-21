@@ -264,3 +264,10 @@ table, tr, th, td {
 	animation: bgColorChange2 infinite 20s ease-in-out;
 	
 }
+
+#quizQuestion {
+
+    width: 500px;
+    height: 75px;
+
+}
