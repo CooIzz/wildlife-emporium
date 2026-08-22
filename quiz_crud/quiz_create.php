@@ -1,21 +1,12 @@
-<?php
-
-session_start();
-
-include_once("../includes/auth.php");
-
-//requireAdmin();
-
-?>
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Update</title>
+    <title>Quiz Create</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/quiz.css">
 
@@ -25,26 +16,7 @@ include_once("../includes/auth.php");
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
-<h1>Quiz Update</h1>
-
-<form id="quizUpdateForm" method="POST" action="quiz_update.php">
-
-<label for="crudOption">Which CRUD operation would you like to perform?</label><br>
-<select id="crudOption" name="crudOption" required>
-<option value="Select the Desired CRUD Operation" disabled selected>--Select the Desired CRUD Operation--</option>
-<option value="Create">Create</option>
-<option value="Read">Read</option>
-<option value="Update">Update</option>
-<option value="Delete">Delete</option>
-</select>
-
-<br>
-<br>
-
-If you wish to insert new questions into the quiz section, then please fill up the following fields
-
-<br>
-<br>
+<form>
 
 <label for="animal">Animal:</label>
 <br>
@@ -60,8 +32,9 @@ If you wish to insert new questions into the quiz section, then please fill up t
 <option value="Polar Bear">Polar Bear</option>
 <option value="Lynx">Lynx</option>
 <option value="Cheetah">Cheetah</option>
-
 </select>
+<br>
+<div id="animalError" class="error"></div>
 
 <br>
 <br>
@@ -74,6 +47,8 @@ If you wish to insert new questions into the quiz section, then please fill up t
 <option value="medium">medium</option>
 <option value="difficult">difficult</option>
 </select>
+<br>
+<div id="difficultyError" class="error"></div>
 
 <br>
 <br>
@@ -81,6 +56,8 @@ If you wish to insert new questions into the quiz section, then please fill up t
 <label for="quizQuestion">Question:</label>
 <br>
 <textarea id="quizQuestion" name="quizQuestion" placeholder="Please enter the quiz question here"></textarea>
+<br>
+<div id="queError" class="error"></div>
 
 <br>
 <br>
@@ -90,6 +67,8 @@ Answer Choices:
 <label for="optionA">Option A:</label>
 <br>
 <input type="text" id="optionA" name="optionA">
+<br>
+<div id="aError" class="error"></div>
 
 <br>
 <br>
@@ -97,6 +76,8 @@ Answer Choices:
 <label for="optionB">Option B:</label>
 <br>
 <input type="text" id="optionB" name="optionB">
+<br>
+<div id="bError" class="error"></div>
 
 <br>
 <br>
@@ -104,6 +85,8 @@ Answer Choices:
 <label for="optionC">Option C:</label>
 <br>
 <input type="text" id="optionC" name="optionC">
+<br>
+<div id="cError" class="error"></div>
 
 <br>
 <br>
@@ -111,6 +94,8 @@ Answer Choices:
 <label for="optionD">Option D:</label>
 <br>
 <input type="text" id="optionD" name="optionD">
+<br>
+<div id="dError" class="error"></div>
 
 <br>
 <br>
@@ -124,17 +109,15 @@ Answer Choices:
 <option value="optionC">Option C</option>
 <option value="optionD">Option D</option>
 </select>
+<br>
+<div id="corAnsError" class="error"></div>
 
 <br>
 <br>
 
-<input type="submit" id="submit" name="submit" value="submit">
-
-</form>
-
+<form>
 
 <?php include("../includes/footer.php"); ?>
-<script src="../js/quiz_update.js"></script>
 </body>
 
 </html>
