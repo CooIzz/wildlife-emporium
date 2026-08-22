@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 //connect to databse
 require_once("../includes/database.php");
 
@@ -17,6 +19,61 @@ else{
         </div>"
         );
 }
+
+//Like Button for Articles 
+$isLoggedIn = isset($_SESSION["userID"]);
+$currentUserID = $isLoggedIn ? $_SESSION["userID"] : null;
+
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "like"){
+    if($isLoggedIn){
+        $checkLike = "SELECT likeID FROM article_likes WHERE articleID = ? AND userID = ?";
+        $stmt = mysqli_prepare($connection,$checkLike);
+        mysqli_stmt_bind_param($stmt, "ii", $article_id, $currentUserID);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if(mysqli_num_rows($result) > 0){
+            //Unlike, so remove record from the table
+            $deleteSql = "DELETE FROM article_likes WHERE articleID = ? AND userID = ?";
+            $delStmt = mysqli_prepare($connection, $deleteSql);
+            mysqli_stmt_bind_param($delStmt, "ii", $article_id, $currentUserID);
+            mysqli_stmt_execute($delStmt);
+            mysqli_stmt_close($delStmt);
+        }
+        else{
+            //like, add record to the table
+            $insertSql = "INSERT INTO article_likes (articleID, userID) VALUES (?,?)";
+            $insStmt = mysqli_prepare($connection, $insertSql);
+            mysqli_stmt_bind_param($insStmt, "ii", $article_id, $currentUserID);
+            mysqli_stmt_execute($insStmt);
+            mysqli_stmt_close($insStmt);
+        }
+        mysqli_stmt_close($stmt);
+
+        header("Location: details.php?id=" . $article_id . "#like-btn");
+        exit();
+    }
+}
+
+//comment section 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "comment"){
+    if($isLoggedIn){
+        $commentText = trim($_POST["comment-text"] ?? "");
+
+        if(!empty($commentText)){
+            $insertComment = "INSERT INTO article_comments (articleID, userID, commentText) VALUES (?,?,?)";
+            $stmt = mysqli_prepare($connection, $insertComment);
+            mysqli_stmt_bind_param($stmt, "iis", $article_id, $currentUserID, $commentText);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
+            //prevent duplicate coments
+            header("Location: details.php?id=" . $article_id . "#comment-form");
+            exit();
+        }
+    }
+}
+
 //query for the main article of the pg
 $query_main = "SELECT article_id, title, subheading, author,keywords, summary, content, image_name, image_caption, image_name2, image_caption2, creation_at
                FROM articles WHERE article_id = ?";
@@ -52,6 +109,44 @@ else{
     );
 }
 mysqli_stmt_close($statement_main);
+
+//take total likes number from the table
+$likeCount = "SELECT COUNT(*) as totalLikes FROM article_likes WHERE articleID = ?";
+$stmt = mysqli_prepare($connection, $likeCount);
+mysqli_stmt_bind_param($stmt, "i", $article_id);
+mysqli_stmt_execute($stmt);
+$likeResult = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+$totalLikes = $likeResult['totalLikes'] ?? 0;
+mysqli_stmt_close($stmt);
+
+//check if logged in user likes article 
+$hasLiked = false;
+if($isLoggedIn){
+    $userLike = "SELECT likeID FROM article_likes WHERE articleID = ? AND userID = ?";
+    $stmt = mysqli_prepare($connection, $userLike);
+    mysqli_stmt_bind_param($stmt, "ii", $article_id,$currentUserID);
+    mysqli_stmt_execute($stmt);
+    $hasLiked = mysqli_num_rows(mysqli_stmt_get_result($stmt)) > 0;
+    mysqli_stmt_close($stmt);
+}
+
+// get the comments for comment section
+$commentsQuery = "SELECT article_comments.commentID, article_comments.commentText, article_comments.createdAt,
+                users.username FROM article_comments
+                JOIN users ON article_comments.userID = users.userID
+                WHERE article_comments.articleID = ?
+                ORDER BY article_comments.createdAt DESC";
+
+$stmt = mysqli_prepare($connection, $commentsQuery);
+mysqli_stmt_bind_param($stmt, "i", $article_id);
+mysqli_stmt_execute($stmt);
+$commentResult = mysqli_stmt_get_result($stmt);
+
+$comments = [];
+while ($row = mysqli_fetch_assoc($commentResult)){
+    $comments[] = $row;
+}
+mysqli_stmt_close($stmt);
 
 //get suggested articles for the bottom of article page 
 $query_suggested = "SELECT article_id, title, summary, image_name, image_caption 
@@ -101,7 +196,9 @@ mysqli_stmt_close($statement_suggested);
 
     <!-- main title -->
     <header class="article-pg-header">
-        <?php if (!empty($main_article['keywords'])): ?>
+        <h1 class="article-pg-title"><?php echo htmlspecialchars($main_article['title']); ?></h1>
+        <h3 class="article-pg-subheading"><?php echo htmlspecialchars($main_article['subheading']); ?></h3>
+         <?php if (!empty($main_article['keywords'])): ?>
         <span class="article-keywords">
             <?php 
             $keywords_array = array_map('trim', explode(',', $main_article['keywords'])); 
@@ -109,9 +206,7 @@ mysqli_stmt_close($statement_suggested);
             ?>
         </span>
     <?php endif; ?>
-        <h1 class="article-pg-title"><?php echo htmlspecialchars($main_article['title']); ?></h1>
-        <h3 class="article-pg-subheading"><?php echo htmlspecialchars($main_article['subheading']); ?></h3>
-        
+    <br>
         <div class="article-details">
             <span class="article-author"><?php echo htmlspecialchars($main_article['author']); ?></span>
            <span class="details-divider">•</span>
@@ -142,7 +237,53 @@ mysqli_stmt_close($statement_suggested);
             <figcaption class="img2-caption"><?php echo htmlspecialchars($main_article['image_caption2']); ?></figcaption>
         </figure>
         <?php endif; ?>
+
+        <!-- like button -->
+         <form method="POST" action="#like-btn" class="like-form">
+            <input type="hidden" name="action" value="like">
+            <button type="submit" id="like-btn" class="like-button <?php echo $hasLiked ? 'liked' : ''; ?>">
+                ♥ <?php echo $totalLikes; ?> <?php echo ($totalLikes === 1) ? 'Like' : 'Likes'; ?>
+        </button>
+        </form>
     </article>
+
+<!-- comments section -->
+    <section class="comment-section">
+        <h2 class="comments-title">COMMENT SECTION</h2>
+
+        <form method="POST" action="#comment-form" class="comment-form" id="comment-form">
+            <input type="hidden" name="action" value="comment">
+            <textarea name="comment-text" 
+            id="comment-text" 
+            rows="3"
+            placeholder="<?php echo $isLoggedIn ? 'Write a comment...' : 'Log in to comment...'; ?>"
+            <?php echo !$isLoggedIn ? 'disabled' : '';?>
+            required></textarea>
+
+            <button type="submit" id="comment-submit-btn" class="comment-submit-btn"
+            <?php echo !$isLoggedIn ? 'disabled' : ''; ?>>
+            Post </button>
+        </form>
+
+        <!-- display comments -->
+        <div class="comments-all">
+            <?php if(empty($comments)): ?>
+                <p class="no-comments">No comments yet. Be the first to comment</p>
+            <?php else: ?>
+                <?php foreach ($comments as $comment): ?>
+                    <div class="comment-card">
+                    <div class="comment-header">
+                        <strong class="comment-author"><?php echo htmlspecialchars($comment['username']); ?></strong>
+                        <span class="comment-date"><?php echo date("M j, Y \\a\\t g:i a", strtotime($comment['createdAt'])); ?></span>
+                    </div>
+                    <p class="comment-text"><?php echo nl2br(htmlspecialchars($comment['commentText'])); ?></p>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </section>
+
+
 
 </div>
 <br>
@@ -154,7 +295,7 @@ mysqli_stmt_close($statement_suggested);
         
         <div class="suggested-articles-grid">
         <?php foreach ($suggested_articles as $suggested): ?>
-            <!-- Suggested Card 1 -->
+            <!-- Suggested Card -->
             <div class="suggested-card">
                 <div class="suggested-card-img">
                     <img src="../images/<?php echo htmlspecialchars($suggested['image_name']); ?>"
@@ -177,6 +318,10 @@ mysqli_stmt_close($statement_suggested);
 
 <?php include("../includes/footer.php"); ?>
 
+<script>
+    const IS_LOGGED_IN = <?php echo $isLoggedIn ? 'true' : 'false'; ?>;
+    </script>
+<script src="../js/articles.js"></script>
 <script src="../js/script.js"></script>
 
 </body>

@@ -59,7 +59,9 @@ else{
 
 <section class="article-header-container">
     <h1 class="article-header">WILDLIFE DAILY</h1>
-    <div class="article-logo">logo</div>
+    <div class="article-logo">
+        <img src="../images/home-logo-test.svg" alt="Logo">
+    </div>
 </section>
 <br>
 
@@ -290,7 +292,7 @@ $pattern = 'A'; //back to pattern A layout
 <?php endif; ?>
 
 <?php else: ?>
-    <p>No articles available presently.</p>
+    <p>No articles available.</p>
 <?php endif; ?>
 
 </div>
