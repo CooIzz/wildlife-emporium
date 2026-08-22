@@ -130,6 +130,10 @@ span {
 }
 
 /*
+-----Structure of all individual quiz pages-----
+*/
+
+/*
 This styling is to style the images within the animal
 pages for all the 3(easy, medium and difficult) levels
 */
@@ -170,7 +174,7 @@ within the ordered lists
 ol * {
 	
 	font-size: 20px;
-	
+
 }
 /*
 This styling is to ensure that the indices of the
@@ -234,6 +238,10 @@ legend {
 }
 
 /*
+-----Styling for the score leadership table-----
+*/
+
+/*
 To toggle the display property for the 
 scoreboard table
 */
@@ -243,6 +251,11 @@ scoreboard table
 	display: none;
 	
 }
+
+/*
+For the background color of the 
+scoreboard table
+*/
 
 @keyframes bgColorChange2 {
 	
@@ -255,6 +268,10 @@ scoreboard table
 	
 }
 
+/*
+To style the scoreboard table's borders
+*/
+
 table, tr, th, td {
 	
 	border: solid black 2px;
@@ -265,9 +282,3 @@ table, tr, th, td {
 	
 }
 
-#quizQuestion {
-
-    width: 500px;
-    height: 75px;
-
-}

@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Create</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/quiz.css">
+    <link rel="stylesheet" href="../css/quiz_crud.css">
 
 </head>
 
@@ -16,7 +22,12 @@
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
-<form>
+<form id="createForm" method="POST" action="javascript:void(0)">
+
+<strong>Please fill up following fields.<strong>
+
+<br>
+<br>
 
 <label for="animal">Animal:</label>
 <br>
@@ -115,9 +126,13 @@ Answer Choices:
 <br>
 <br>
 
-<form>
+<input type="submit" id="createSubmit" name="createSubmit" value="Create Quiz Question">
+
+</form>
 
 <?php include("../includes/footer.php"); ?>
+
+<script src="../js/quiz_crud.js"></script>
 </body>
 
 </html>
