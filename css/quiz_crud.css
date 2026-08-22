@@ -1,0 +1,29 @@
+/*
+-----Styling for the quiz_crud section-----
+*/
+
+/*
+Text color for the error messages
+*/
+
+.error {
+	
+	color: rgb(255, 0, 0);
+	
+}
+
+/*
+-----Styling for the quiz_create page-----
+*/
+
+/*
+Styling for the textbox of the quiz question
+*/
+
+#quizQuestion {
+
+    width: 500px;
+    height: 75px;
+
+}
+
