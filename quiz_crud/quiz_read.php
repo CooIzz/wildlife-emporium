@@ -16,6 +16,82 @@
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
+<h1>Quiz Display</h1>
+
+<strong>Please fill up following fields.<strong>
+
+<form id="readForm" method="POST" action="javascript:void(0)">
+
+<br>
+<br>
+
+<!--
+The animal from which the quiz questions are 
+to be displayed
+-->
+<label for="animal">Animal Choice:</label>
+<br>
+<select id="animal" name="animal">
+<option value="Select the Animal of Your Choice" disabled selected>--Select the Animal of Your Choice--</option>
+<option value="African Lion">African Lion</option>
+<option value="Orang Utan">Orang Utan</option>
+<option value="Penguin">Penguin</option>
+<option value="Tiger">Tiger</option>
+<option value="Giant Panda">Giant Panda</option>
+<option value="Raccoon">Raccoon</option>
+<option value="Snow Leopard">Snow Leopard</option>
+<option value="Polar Bear">Polar Bear</option>
+<option value="Lynx">Lynx</option>
+<option value="Cheetah">Cheetah</option>
+</select>
+<br>
+<div id="animalError" class="error"></div>
+
+<br>
+<br>
+
+<!--
+The difficulty level of the quiz questions to be
+selected from to be displayed
+-->
+<label for="difficulty">Difficulty Level:</label>
+<br>
+<select id="difficulty" name="difficulty">
+<option value="Select the Difficulty Level" disabled selected>--Select the Difficulty Level--</option>
+<option value="easy">easy</option>
+<option value="medium">medium</option>
+<option value="difficult">difficult</option>
+</select>
+<br>
+<div id="difficultyError" class="error"></div>
+
+<br>
+<br>
+
+<!--
+The number of questions to be displayed
+-->
+<label for="numOfQue">Please enter the number of questions you wish to view:</label>
+<br>
+<input type="range" id="numOfQue" name="numOfQue" placeholder="Number of questions to display:Between 1 and 10" min="1" max="10">
+
+<br>
+<br>
+
+<!--
+The first quiz question to be selected
+-->
+<label for="firstQue">Please enter the number of first question to be displayed:</label>
+<input type="number" id="firstQue" name="firstQue">
+
+<input type="submit" id="readSubmit" name="readSubmit" value="Display Quiz Question">
+
+</form>
+
+<br>
+<br>
+
+
 
 <?php include("../includes/footer.php"); ?>
 

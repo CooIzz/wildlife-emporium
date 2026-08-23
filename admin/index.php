@@ -137,7 +137,7 @@ if ($statement) {
         <div class="admin-card-footer">
             <hr>
             <button>
-                Manage
+                <a href="../quiz_crud/quiz_crud.php">Manage Quiz Section</a>
             </button>
         </div>
     </div>

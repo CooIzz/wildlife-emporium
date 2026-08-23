@@ -117,6 +117,17 @@ function validateCreateForm()
 		isValid = false;
 	}
 	
+	if(createForm['queNum'].value.trim() === "")
+	{
+		document.getElementById("queNumError").innerHTML = "Please enter the question number.";
+		isValid = false;
+	}
+	else if(parseInt(createForm['queNum'].value.trim(), 10) <= 0)
+	{
+		document.getElementById("queNumError").innerHTML = "Question number must be greater than 0.";
+		isValid = false;
+	}
+	
 	if(createForm['quizQuestion'].value.trim() === "")
 	{
 		document.getElementById("queError").innerHTML = "Please provide the question.";
@@ -167,6 +178,8 @@ function validateCreateForm()
 ---------------For quiz_read.php page---------------
 
 */
+
+
 
 
 

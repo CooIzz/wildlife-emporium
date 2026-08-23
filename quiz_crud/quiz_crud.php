@@ -2,11 +2,6 @@
 
 session_start();
 
-include_once("../includes/auth.php");
-
-//requireAdmin();
-
-
 
 ?>
 <!DOCTYPE html>
@@ -29,6 +24,10 @@ include_once("../includes/auth.php");
 
 <h1>Quiz CRUD</h1>
 
+<!--
+Form for user to input the CRUD operation he/she
+wishes to perform
+-->
 <form id="quizCrudForm" method="POST" action="javascript:void(0)">
 
 <label for="crudOption">Which CRUD operation would you like to perform?</label><br>
