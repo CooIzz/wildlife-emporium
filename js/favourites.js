@@ -14,12 +14,23 @@ document.addEventListener("DOMContentLoaded",function()
 
             button.disabled = true;
 
-            fetch("favourites.php",{
+            fetch("favourites.php",
+            {
                 method:"POST",
+                headers:
+                {
+                    "X-Requested-With":"XMLHttpRequest"
+                },
                 body:formData
             })
             .then(function(response)
             {
+                if (response.status === 401)
+                {
+                    window.location.href = "../account/login.php";
+                    return null;
+                }
+
                 if (!response.ok)
                 {
                     throw new Error("Favourite request failed.");
@@ -29,6 +40,11 @@ document.addEventListener("DOMContentLoaded",function()
             })
             .then(function(result)
             {
+                if (result === null)
+                {
+                    return;
+                }
+
                 if (result === "added")
                 {
                     image.src = "../images/animals/favourite-filled.png";
@@ -36,6 +52,10 @@ document.addEventListener("DOMContentLoaded",function()
                 else if (result === "removed")
                 {
                     image.src = "../images/animals/favourite-empty.png";
+                }
+                else
+                {
+                    throw new Error("Unexpected favourite response.");
                 }
             })
             .catch(function(error)

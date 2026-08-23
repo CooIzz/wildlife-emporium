@@ -6,133 +6,99 @@ require_once("../includes/database.php");
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST")
+{
+    $username = trim($_POST["username"] ?? "");
+    $password = $_POST["password"] ?? "";
 
-    /* ---------------- FORM DATA ---------------- */
+    /*
+     * Preserve the page the user originally requested.
+     * Only accept a local path within this application.
+     */
+    $redirect = $_POST["redirect"] ?? $_GET["redirect"] ?? "../index.php";
 
-    $username = trim($_POST["username"]);
-
-    $password = $_POST["password"];
-
-
-
-    /* ---------------- FORM VALIDATION ---------------- */
-
-    if (empty($username)) {
-
-        $error = "Please enter your username.";
-
-    } elseif (empty($password)) {
-
-        $error = "Please enter your password.";
-
+    if (
+        !is_string($redirect) ||
+        $redirect === "" ||
+        strpos($redirect, "/wildlife-emporium/") !== 0
+    )
+    {
+        $redirect = "/wildlife-emporium/index.php";
     }
 
-        /* ---------------- GET USER ---------------- */
+    /*
+     * Form validation
+     */
 
-    if (empty($error))
+    if ($username === "")
     {
+        $error = "Please enter your username.";
+    }
+    elseif ($password === "")
+    {
+        $error = "Please enter your password.";
+    }
 
-        $sql = "
-        SELECT
-            userID,
-            username,
-            passwordHash,
-            role,
-            profilePicture
-        FROM users
-        WHERE username = ?
-        ";
+    /*
+     * Get user
+     */
 
-        $statement = mysqli_prepare($connection, $sql);
+    if ($error === "")
+    {
+        $statement = mysqli_prepare(
+            $connection,
+            "SELECT userID, username, passwordHash, role, profilePicture
+             FROM users
+             WHERE username = ?"
+        );
 
-        if ($statement)
+        if (!$statement)
         {
-
-            mysqli_stmt_bind_param(
-                $statement,
-                "s",
-                $username
-            );
-
+            $error = "Database error.";
+        }
+        else
+        {
+            mysqli_stmt_bind_param($statement, "s", $username);
             mysqli_stmt_execute($statement);
 
             $result = mysqli_stmt_get_result($statement);
-
             $user = mysqli_fetch_assoc($result);
 
             mysqli_stmt_close($statement);
 
+            if (!$user || !password_verify($password, $user["passwordHash"]))
+            {
+                $error = "Invalid username or password.";
+            }
         }
-
-        else
-        {
-
-            $error = "Database error.";
-
-        }
-
     }
 
-        /* ---------------- USER EXISTS ---------------- */
+    /*
+     * Log user in
+     */
 
-    if (empty($error))
+    if ($error === "")
     {
-
-        if (!$user)
-        {
-
-            $error = "Invalid username or password.";
-
-        }
-
-    }
-
-        /* ---------------- VERIFY PASSWORD ---------------- */
-
-    if (empty($error))
-    {
-
-        if (!password_verify($password, $user["passwordHash"]))
-        {
-
-            $error = "Invalid username or password.";
-
-        }
-
-    }
-
-        /* ---------------- LOGIN USER ---------------- */
-
-    if (empty($error))
-    {
+        session_regenerate_id(true);
 
         $_SESSION["userID"] = $user["userID"];
-
         $_SESSION["username"] = $user["username"];
-
         $_SESSION["role"] = $user["role"];
-
         $_SESSION["profilePicture"] = $user["profilePicture"];
 
-    }
+        /*
+         * Update last login
+         */
 
-        /* ---------------- UPDATE LAST LOGIN ---------------- */
-
-    if (empty($error))
-    {
-
-        $sql = "
-        UPDATE users
-        SET lastLogin = CURRENT_TIMESTAMP
-        WHERE userID = ?
-        ";
-
-        $statement = mysqli_prepare($connection, $sql);
+        $statement = mysqli_prepare(
+            $connection,
+            "UPDATE users
+             SET lastLogin = CURRENT_TIMESTAMP
+             WHERE userID = ?"
+        );
 
         if ($statement)
         {
-
             mysqli_stmt_bind_param(
                 $statement,
                 "i",
@@ -140,27 +106,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
 
             mysqli_stmt_execute($statement);
-
             mysqli_stmt_close($statement);
-
         }
 
-    }
+        /*
+         * Return to the page that required login
+         */
 
-        /* ---------------- REDIRECT ---------------- */
-
-    if (empty($error))
-    {
-
-        header("Location: ../index.php");
-
+        header("Location: " . $redirect);
         exit();
-
     }
 }
 
-?>
+$redirect = $_GET["redirect"] ?? "/wildlife-emporium/index.php";
 
+if (
+    !is_string($redirect) ||
+    $redirect === "" ||
+    strpos($redirect, "/wildlife-emporium/") !== 0
+)
+{
+    $redirect = "/wildlife-emporium/index.php";
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -179,20 +148,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-
     <?php include("../includes/header.php"); ?>
     <?php include("../includes/navigation.php"); ?>
 
     <main>
-
-        <!-- Login -->
 
         <section class="account-page">
 
             <div class="account-card">
 
                 <div class="account-logo">
-                    <img src="../images/home-logo-test.svg" alt="Wildlife Emporium Logo">
+
+                    <img
+                        src="../images/home-logo-test.svg"
+                        alt="Wildlife Emporium Logo"
+                    >
+
                 </div>
 
                 <h1 class="account-title">
@@ -203,26 +174,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Sign in to continue your Wildlife Emporium adventure.
                 </p>
 
-                <!-- Login Error -->
-
-                <?php
-
-                if (!empty($error)) {
-
-                    ?>
+                <?php if ($error !== "") { ?>
 
                     <p class="account-error">
-
-                        <?php echo $error; ?>
-
+                        <?php echo htmlspecialchars($error, ENT_QUOTES, "UTF-8"); ?>
                     </p>
 
-                    <?php
+                <?php } ?>
 
-                }
-
-                ?>
                 <form class="account-form" action="" method="post">
+
+                    <input
+                        type="hidden"
+                        name="redirect"
+                        value="<?php echo htmlspecialchars($redirect, ENT_QUOTES, "UTF-8"); ?>"
+                    >
 
                     <div class="account-input-group">
 
@@ -230,7 +196,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             Username
                         </label>
 
-                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your username"
+                            value="<?php echo htmlspecialchars($username, ENT_QUOTES, "UTF-8"); ?>"
+                            required
+                        >
 
                     </div>
 
@@ -240,7 +213,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             Password
                         </label>
 
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
 
                     </div>
 
@@ -256,7 +235,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         Don't have an account?
                     </p>
 
-                    <a href="register.php" class="account-secondary-button">
+                    <a
+                        href="register.php"
+                        class="account-secondary-button"
+                    >
                         Create Account
                     </a>
 

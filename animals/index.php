@@ -3,6 +3,9 @@
 session_start();
 
 require_once("../includes/database.php");
+require_once("../includes/auth.php");
+
+requireLogin();
 
 $search = trim($_GET["search"] ?? "");
 $class = trim($_GET["class"] ?? "");
@@ -23,15 +26,19 @@ if ($search !== "")
     $conditions[] = "(commonName LIKE ? OR scientificName LIKE ?)";
 
     $searchValue = "%" . $search . "%";
+
     $parameters[] = $searchValue;
     $parameters[] = $searchValue;
+
     $types .= "ss";
 }
 
 if ($class !== "")
 {
     $conditions[] = "class = ?";
+
     $parameters[] = $class;
+
     $types .= "s";
 }
 
@@ -74,7 +81,10 @@ if (isset($_SESSION["userID"]))
 {
     $userID = $_SESSION["userID"];
 
-    $statement = mysqli_prepare($connection,"SELECT animalID FROM favourites WHERE userID = ?");
+    $statement = mysqli_prepare(
+        $connection,
+        "SELECT animalID FROM favourites WHERE userID = ?"
+    );
 
     if ($statement)
     {
@@ -97,7 +107,13 @@ if (isset($_SESSION["userID"]))
 
 $classes = [];
 
-$statement = mysqli_prepare($connection,"SELECT DISTINCT class FROM animals WHERE class IS NOT NULL AND class != '' ORDER BY class ASC");
+$statement = mysqli_prepare(
+    $connection,
+    "SELECT DISTINCT class
+     FROM animals
+     WHERE class IS NOT NULL AND class != ''
+     ORDER BY class ASC"
+);
 
 if (!$statement)
 {
@@ -147,7 +163,12 @@ $animalCount = count($animals);
 
         <div class="animal-search-input">
 
-            <input type="text" name="search" value="<?php echo htmlspecialchars($search,ENT_QUOTES,'UTF-8'); ?>" placeholder="Search by common or scientific name...">
+            <input
+                type="text"
+                name="search"
+                value="<?php echo htmlspecialchars($search,ENT_QUOTES,"UTF-8"); ?>"
+                placeholder="Search by common or scientific name..."
+            >
 
             <button type="submit">Search</button>
 
@@ -177,7 +198,12 @@ $animalCount = count($animals);
 
         ?>
 
-        <a href="<?php echo htmlspecialchars($allUrl,ENT_QUOTES,'UTF-8'); ?>" class="<?php echo $class === "" ? "active" : ""; ?>">All</a>
+        <a
+            href="<?php echo htmlspecialchars($allUrl,ENT_QUOTES,"UTF-8"); ?>"
+            class="<?php echo $class === "" ? "active" : ""; ?>"
+        >
+            All
+        </a>
 
         <?php foreach ($classes as $animalClass) { ?>
 
@@ -194,7 +220,12 @@ $animalCount = count($animals);
 
             ?>
 
-            <a href="<?php echo htmlspecialchars($filterUrl,ENT_QUOTES,'UTF-8'); ?>" class="<?php echo $class === $animalClass ? "active" : ""; ?>"><?php echo htmlspecialchars($animalClass,ENT_QUOTES,'UTF-8'); ?></a>
+            <a
+                href="<?php echo htmlspecialchars($filterUrl,ENT_QUOTES,"UTF-8"); ?>"
+                class="<?php echo $class === $animalClass ? "active" : ""; ?>"
+            >
+                <?php echo htmlspecialchars($animalClass,ENT_QUOTES,"UTF-8"); ?>
+            </a>
 
         <?php } ?>
 
@@ -228,6 +259,8 @@ $animalCount = count($animals);
 
             <?php foreach ($animals as $animal) { ?>
 
+                <?php $isFavourite = in_array($animal["animalID"],$favourites); ?>
+
                 <div class="animal-card">
 
                     <div class="animal-card-inner">
@@ -235,16 +268,27 @@ $animalCount = count($animals);
                         <div class="animal-card-front">
 
                             <div class="animal-card-image">
-                                <img src="../images/animals/<?php echo htmlspecialchars($animal["image"],ENT_QUOTES,'UTF-8'); ?>" alt="<?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?>">
+
+                                <img
+                                    src="../images/animals/<?php echo htmlspecialchars($animal["image"],ENT_QUOTES,"UTF-8"); ?>"
+                                    alt="<?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,"UTF-8"); ?>"
+                                >
+
                             </div>
 
                             <div class="animal-card-content">
 
-                                <p class="animal-card-class"><?php echo htmlspecialchars($animal["class"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p class="animal-card-class">
+                                    <?php echo htmlspecialchars($animal["class"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
 
-                                <h3><?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?></h3>
+                                <h3>
+                                    <?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,"UTF-8"); ?>
+                                </h3>
 
-                                <p class="animal-card-scientific"><?php echo htmlspecialchars($animal["scientificName"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p class="animal-card-scientific">
+                                    <?php echo htmlspecialchars($animal["scientificName"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
 
                             </div>
 
@@ -253,21 +297,55 @@ $animalCount = count($animals);
 
                         <div class="animal-card-back">
 
-                            <h3><?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?></h3>
+                            <h3>
+                                <?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,"UTF-8"); ?>
+                            </h3>
 
                             <div class="animal-card-details">
 
-                                <p><span>Kingdom</span><?php echo htmlspecialchars($animal["kingdom"],ENT_QUOTES,'UTF-8'); ?></p>
-                                <p><span>Phylum</span><?php echo htmlspecialchars($animal["phylum"],ENT_QUOTES,'UTF-8'); ?></p>
-                                <p><span>Class</span><?php echo htmlspecialchars($animal["class"],ENT_QUOTES,'UTF-8'); ?></p>
-                                <p><span>Order</span><?php echo htmlspecialchars($animal["orderName"],ENT_QUOTES,'UTF-8'); ?></p>
-                                <p><span>Family</span><?php echo htmlspecialchars($animal["family"],ENT_QUOTES,'UTF-8'); ?></p>
-                                <p><span>Genus</span><?php echo htmlspecialchars($animal["genus"],ENT_QUOTES,'UTF-8'); ?></p>
-                                <p><span>Species</span><?php echo htmlspecialchars($animal["species"],ENT_QUOTES,'UTF-8'); ?></p>
+                                <p>
+                                    <span>Kingdom</span>
+                                    <?php echo htmlspecialchars($animal["kingdom"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
+
+                                <p>
+                                    <span>Phylum</span>
+                                    <?php echo htmlspecialchars($animal["phylum"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
+
+                                <p>
+                                    <span>Class</span>
+                                    <?php echo htmlspecialchars($animal["class"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
+
+                                <p>
+                                    <span>Order</span>
+                                    <?php echo htmlspecialchars($animal["orderName"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
+
+                                <p>
+                                    <span>Family</span>
+                                    <?php echo htmlspecialchars($animal["family"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
+
+                                <p>
+                                    <span>Genus</span>
+                                    <?php echo htmlspecialchars($animal["genus"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
+
+                                <p>
+                                    <span>Species</span>
+                                    <?php echo htmlspecialchars($animal["species"],ENT_QUOTES,"UTF-8"); ?>
+                                </p>
 
                             </div>
 
-                            <a href="details.php?animalID=<?php echo $animal["animalID"]; ?>" class="animal-card-button">View Details</a>
+                            <a
+                                href="details.php?animalID=<?php echo $animal["animalID"]; ?>"
+                                class="animal-card-button"
+                            >
+                                View Details
+                            </a>
 
                         </div>
 
@@ -276,15 +354,27 @@ $animalCount = count($animals);
 
                     <!-- Favourite -->
 
-                    <form method="POST" action="favourites.php" class="animal-card-favourite">
+                    <form
+                        method="POST"
+                        action="favourites.php"
+                        class="animal-card-favourite"
+                    >
 
-                        <input type="hidden" name="animalID" value="<?php echo $animal["animalID"]; ?>">
+                        <input
+                            type="hidden"
+                            name="animalID"
+                            value="<?php echo $animal["animalID"]; ?>"
+                        >
 
-                        <input type="hidden" name="returnPage" value="index.php">
+                        <button
+                            type="submit"
+                            aria-label="<?php echo $isFavourite ? "Remove " : "Add "; ?><?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,"UTF-8"); ?><?php echo $isFavourite ? " from favourites" : " to favourites"; ?>"
+                        >
 
-                        <button type="submit" aria-label="Add <?php echo htmlspecialchars($animal["commonName"],ENT_QUOTES,'UTF-8'); ?> to favourites">
-
-                            <img src="../images/animals/<?php echo in_array($animal["animalID"],$favourites) ? "favourite-filled.png" : "favourite-empty.png"; ?>" alt="">
+                            <img
+                                src="../images/animals/<?php echo $isFavourite ? "favourite-filled.png" : "favourite-empty.png"; ?>"
+                                alt=""
+                            >
 
                         </button>
 
@@ -321,4 +411,5 @@ $animalCount = count($animals);
 <script src="../js/script.js"></script>
 
 </body>
+
 </html>

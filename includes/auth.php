@@ -4,15 +4,17 @@
 
 function requireLogin()
 {
+    if (!isset($_SESSION["userID"]))
+    {
+        $currentPage = $_SERVER["REQUEST_URI"];
 
-    if (!isset($_SESSION["userID"])) {
+        header(
+            "Location: /wildlife-emporium/account/login.php?redirect="
+            . urlencode($currentPage)
+        );
 
-        header("Location: /wildlife-emporium/account/login.php");
-    
         exit();
-
     }
-
 }
 
 
@@ -20,23 +22,23 @@ function requireLogin()
 
 function requireAdmin()
 {
+    if (!isset($_SESSION["userID"]))
+    {
+        $currentPage = $_SERVER["REQUEST_URI"];
 
-    if (!isset($_SESSION["userID"])) {
-
-        header("Location: /wildlife-emporium/account/login.php");
+        header(
+            "Location: /wildlife-emporium/account/login.php?redirect="
+            . urlencode($currentPage)
+        );
 
         exit();
-
     }
 
-    if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin") {
-
+    if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin")
+    {
         header("Location: /wildlife-emporium/account/profile.php");
-
         exit();
-
     }
-
 }
 
 ?>

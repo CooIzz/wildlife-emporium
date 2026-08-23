@@ -1,13 +1,93 @@
-<?php require_once("includes/database.php"); ?>
+<?php
+
+require_once("includes/database.php");
+
+
+// Load random featured animal
+
+$statement = mysqli_prepare(
+    $connection,
+    "SELECT animalID, commonName, scientificName, class, image
+     FROM animals
+     ORDER BY RAND()
+     LIMIT 1"
+);
+
+if (!$statement)
+{
+    die("Failed to load featured animal.");
+}
+
+mysqli_stmt_execute($statement);
+
+$result = mysqli_stmt_get_result($statement);
+
+$featuredAnimal = mysqli_fetch_assoc($result);
+
+mysqli_stmt_close($statement);
+
+if (!$featuredAnimal)
+{
+    die("No animals available.");
+}
+
+
+// Load latest articles for homepage preview
+
+$articleStatement = mysqli_prepare(
+    $connection,
+    "SELECT article_id, title, summary, image_name, image_caption, creation_at
+     FROM articles
+     ORDER BY creation_at DESC
+     LIMIT 6"
+);
+
+$articles = [];
+
+if ($articleStatement)
+{
+    mysqli_stmt_execute($articleStatement);
+
+    mysqli_stmt_bind_result(
+        $articleStatement,
+        $articleID,
+        $articleTitle,
+        $articleSummary,
+        $articleImage,
+        $articleCaption,
+        $articleCreation
+    );
+
+    while (mysqli_stmt_fetch($articleStatement))
+    {
+        $articles[] = [
+            "article_id"    => $articleID,
+            "title"         => $articleTitle,
+            "summary"       => $articleSummary,
+            "image_name"    => $articleImage,
+            "image_caption" => $articleCaption,
+            "creation_at"   => $articleCreation
+        ];
+    }
+
+    mysqli_stmt_close($articleStatement);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
     <title>Wildlife Emporium</title>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
+
 </head>
 
 <body>
@@ -15,178 +95,423 @@
     <?php include("includes/header.php"); ?>
     <?php include("includes/navigation.php"); ?>
 
+
     <main>
 
-        <section class="home-introduction">
+        <!-- Hero -->
 
-            <div class="home-logo">
-                <img src="images/home-logo-test.svg" alt="Wildlife Emporium Logo">
+        <section class="home-hero">
+
+            <div class="home-hero-visual">
+
+                <img
+                    src="images/home/logo.png"
+                    alt="Wildlife Emporium"
+                >
+
             </div>
 
-            <h1 class="home-title">
-                Wildlife Emporium
-            </h1>
 
-            <p class="home-description">
-                Welcome to Wildlife Emporium, an interactive learning environment! Learn through our expansive
-                encyclopedia and articles, or challenge yourself and others with our specially curated quizzes.
-            </p>
+            <div class="home-hero-content">
+
+                <p class="home-hero-label">
+                    WILDLIFE EMPORIUM
+                </p>
+
+                <h1>
+                    Discover. Learn. Protect.
+                </h1>
+
+                <p class="home-hero-description">
+                    Explore the animals, stories, and knowledge that make our natural world extraordinary.
+                </p>
+
+                <div class="home-hero-actions">
+
+                    <a
+                        href="animals/index.php"
+                        class="home-hero-primary"
+                    >
+                        Explore Animals
+                    </a>
+
+                    <a
+                        href="quiz/index.php"
+                        class="home-hero-secondary"
+                    >
+                        Take the Quiz
+                    </a>
+
+                </div>
+
+            </div>
 
         </section>
 
-        <section class="home-featured-animal">
 
-            <div class="home-featured-animal-image">
-                <img src="images/tiger.png" alt="Featured Tiger">
-            </div>
+        <!-- Featured Animal -->
 
-            <div class="home-featured-animal-content">
+        <section class="home-featured">
 
-                <h2>Featured Animal</h2>
+            <div class="home-section-heading">
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                <p class="home-section-label">
+                    FEATURED
                 </p>
 
-                <a href="#">
-                    Learn More
+                <h2>
+                    Meet an Animal
+                </h2>
+
+            </div>
+
+
+            <div class="home-featured-card">
+
+                <div class="home-featured-image">
+
+                    <img
+                        src="images/animals/<?php echo htmlspecialchars($featuredAnimal["image"], ENT_QUOTES, "UTF-8"); ?>"
+                        alt="<?php echo htmlspecialchars($featuredAnimal["commonName"], ENT_QUOTES, "UTF-8"); ?>"
+                    >
+
+                </div>
+
+
+                <div class="home-featured-content">
+
+                    <p class="home-featured-class">
+                        <?php echo htmlspecialchars($featuredAnimal["class"], ENT_QUOTES, "UTF-8"); ?>
+                    </p>
+
+                    <h3>
+                        <?php echo htmlspecialchars($featuredAnimal["commonName"], ENT_QUOTES, "UTF-8"); ?>
+                    </h3>
+
+                    <p class="home-featured-scientific">
+                        <?php echo htmlspecialchars($featuredAnimal["scientificName"], ENT_QUOTES, "UTF-8"); ?>
+                    </p>
+
+                    <p class="home-featured-description">
+                        Discover the characteristics, habitat, behaviour, and conservation information about this animal in our encyclopedia.
+                    </p>
+
+                    <a
+                        href="animals/details.php?animalID=<?php echo $featuredAnimal["animalID"]; ?>"
+                        class="home-featured-link"
+                    >
+                        View Animal
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Main Navigation -->
+
+        <section class="home-navigation">
+
+            <div class="home-section-heading">
+
+                <p class="home-section-label">
+                    EXPLORE
+                </p>
+
+                <h2>
+                    Explore Wildlife Emporium
+                </h2>
+
+            </div>
+
+
+            <div class="home-navigation-grid">
+
+                <!-- Animal Encyclopedia -->
+
+                <a
+                    href="animals/index.php"
+                    class="home-navigation-card"
+                >
+
+                    <div class="home-navigation-icon">
+                        AE
+                    </div>
+
+                    <div class="home-navigation-content">
+
+                        <h3>
+                            Animal Encyclopedia
+                        </h3>
+
+                        <p>
+                            Discover animals, their characteristics, habitats, and taxonomy.
+                        </p>
+
+                    </div>
+
+                    <span class="home-navigation-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- Wildlife Articles -->
+
+                <a
+                    href="articles/index.php"
+                    class="home-navigation-card"
+                >
+
+                    <div class="home-navigation-icon">
+                        AR
+                    </div>
+
+                    <div class="home-navigation-content">
+
+                        <h3>
+                            Wildlife Articles
+                        </h3>
+
+                        <p>
+                            Read stories and informative articles about the natural world.
+                        </p>
+
+                    </div>
+
+                    <span class="home-navigation-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- Wildlife Quiz -->
+
+                <a
+                    href="quiz/index.php"
+                    class="home-navigation-card"
+                >
+
+                    <div class="home-navigation-icon">
+                        QZ
+                    </div>
+
+                    <div class="home-navigation-content">
+
+                        <h3>
+                            Wildlife Quiz
+                        </h3>
+
+                        <p>
+                            Test your knowledge and challenge yourself with wildlife quizzes.
+                        </p>
+
+                    </div>
+
+                    <span class="home-navigation-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- Account -->
+
+                <a
+                    href="account/index.php"
+                    class="home-navigation-card"
+                >
+
+                    <div class="home-navigation-icon">
+                        AC
+                    </div>
+
+                    <div class="home-navigation-content">
+
+                        <h3>
+                            Your Account
+                        </h3>
+
+                        <p>
+                            Manage your account and access your Wildlife Emporium profile.
+                        </p>
+
+                    </div>
+
+                    <span class="home-navigation-arrow">
+                        →
+                    </span>
+
                 </a>
 
             </div>
 
         </section>
 
-        <section class="home-encyclopedia">
 
-            <h2>Explore Wildlife</h2>
-
-            <div class="home-encyclopedia-image">
-                <img src="https://thumbs.dreamstime.com/b/generated-image-380998003.jpg" alt="Wildlife Encyclopedia">
-            </div>
-
-            <p class="home-section-description">
-                View our vast documentation of animals through our encyclopedia.
-            </p>
-
-            <a href="#" class="home-navigation-card">
-
-                <div class="home-encyclopedia-icon">
-                    <img src="images/home-book-test2.svg" alt="Animal Encyclopedia Icon">
-                </div>
-
-                <h3>Animal Encyclopedia</h3>
-
-            </a>
-
-        </section>
+        <!-- Latest Articles -->
 
         <section class="home-articles">
 
-            <h2>Latest Articles</h2>
+            <div class="home-section-heading">
 
-            <p class="home-section-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
-            </p>
+                <p class="home-section-label">
+                    DISCOVER
+                </p>
 
-            <div class="home-card-row">
-
-                <article class="home-article-card">
-
-                    <div class="home-article-image">
-                        Image
-                    </div>
-
-                    <h3>Article Title</h3>
-
-                    <p>
-                        Short article preview...
-                    </p>
-
-                </article>
-
-                <article class="home-article-card">
-
-                    <div class="home-article-image">
-                        Image
-                    </div>
-
-                    <h3>Article Title</h3>
-
-                    <p>
-                        Short article preview...
-                    </p>
-
-                </article>
-
-                <article class="home-article-card">
-
-                    <div class="home-article-image">
-                        Image
-                    </div>
-
-                    <h3>Article Title</h3>
-
-                    <p>
-                        Short article preview...
-                    </p>
-
-                </article>
+                <h2>
+                    Latest Articles
+                </h2>
 
             </div>
 
-            <a href="#" class="home-navigation-card">
 
-                <div class="home-articles-icon">
-                    <img src="images/newspaper2.svg">
+            <?php if (!empty($articles)): ?>
+
+                <div class="home-article-carousel">
+
+                    <button
+                        type="button"
+                        class="home-article-previous"
+                        aria-label="Previous articles"
+                    >
+                        ←
+                    </button>
+
+
+                    <div class="home-article-viewport">
+
+                        <div class="home-article-row">
+
+                            <?php foreach ($articles as $article): ?>
+
+                                <article class="home-article-card">
+
+                                    <div class="home-article-image">
+
+                                        <img
+                                            src="images/<?php echo htmlspecialchars($article["image_name"], ENT_QUOTES, "UTF-8"); ?>"
+                                            alt="<?php echo htmlspecialchars($article["image_caption"], ENT_QUOTES, "UTF-8"); ?>"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="home-article-content">
+
+                                        <h3>
+                                            <?php echo htmlspecialchars($article["title"], ENT_QUOTES, "UTF-8"); ?>
+                                        </h3>
+
+                                        <p>
+                                            <?php echo htmlspecialchars($article["summary"], ENT_QUOTES, "UTF-8"); ?>
+                                        </p>
+
+                                        <a
+                                            href="articles/details.php?id=<?php echo $article["article_id"]; ?>"
+                                            class="home-article-link"
+                                        >
+                                            Read Article
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            <?php endforeach; ?>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="home-article-next"
+                        aria-label="Next articles"
+                    >
+                        →
+                    </button>
+
                 </div>
 
-                <h3>Browse Articles</h3>
+            <?php else: ?>
 
-            </a>
+                <p class="home-articles-empty">
+                    No articles available.
+                </p>
+
+            <?php endif; ?>
+
+
+            <div class="home-articles-action">
+
+                <a
+                    href="articles/index.php"
+                    class="home-section-button"
+                >
+                    Browse All Articles
+                </a>
+
+            </div>
 
         </section>
 
+
+        <!-- Quiz -->
+
         <section class="home-quiz">
 
-            <h2>Wildlife Quiz</h2>
+            <div class="home-section-heading">
 
-            <p class="home-section-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
-            </p>
+                <p class="home-section-label">
+                    CHALLENGE YOURSELF
+                </p>
 
-            <div class="home-leaderboard">
-
-                <h3>Leaderboard</h3>
-
-                <div class="home-leaderboard-content">
-                    Leaderboard
-                </div>
+                <h2>
+                    Wildlife Quiz
+                </h2>
 
             </div>
 
+
             <div class="home-quiz-card">
 
-                <a href="#" class="home-quiz-button">
+                <div class="home-quiz-content">
 
-                    <div class="home-quiz-icon">
-                        <img src="images/test67.svg">
+                    <p class="home-quiz-category">
+                        TEST YOUR KNOWLEDGE
+                    </p>
+
+                    <h3>
+                        How well do you know the wild?
+                    </h3>
+
+                    <p>
+                        Put your wildlife knowledge to the test with our curated collection of quizzes.
+                    </p>
+
+                    <a
+                        href="quiz/index.php"
+                        class="home-quiz-link"
+                    >
+                        Take the Quiz
+                    </a>
+
+                </div>
+
+
+                <div class="home-quiz-visual">
+
+                    <div class="home-quiz-visual-placeholder">
+                        Quiz
                     </div>
 
-                    <h3>Take the Quiz</h3>
-
-                </a>
+                </div>
 
             </div>
 
@@ -194,9 +519,12 @@
 
     </main>
 
+
     <?php include("includes/footer.php"); ?>
 
+
     <script src="js/script.js"></script>
+    <script src="js/home.js"></script>
 
 </body>
 
