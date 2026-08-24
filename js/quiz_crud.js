@@ -27,14 +27,14 @@ form.addEventListener("submit", e => {
 
 submit.addEventListener("click", validateForm);
 
-	//Function to validate the form
+//Function to validate the form
 
-	function validateForm()
+function validateForm()
 	{
 
 	//Clearing previous error messages
 
-	const errors = document.querySelectorAll(".error");
+	let errors = document.querySelectorAll(".error");
 
 	errors.forEach(error => {
 		
@@ -106,7 +106,7 @@ function validateCreateForm()
 {
 	//Clearing previous error messages
 
-	const errors = document.querySelectorAll(".error");
+	let errors = document.querySelectorAll(".error");
 
 	errors.forEach(error => {
 		
@@ -185,7 +185,46 @@ function validateCreateForm()
 
 */
 
+//Extract html elements from the form
 
+const readForm = document.getElementById("readForm");
+
+const readSubmit = document.getElementById("readSubmit");
+
+//Adding event listener to prevent form from being submitted
+//in case of any errors
+
+readForm.addEventListener("submit", event => {
+	
+	if(!validateReadForm())
+	{
+		event.preventDefault();
+	}
+	
+});
+
+//Addingg event listener to validate form after user clicks
+//the submit button
+
+readSubmit.addEventListener("click", validateReadForm);
+
+//Function to validate read form
+
+function validateReadForm()
+{
+	//Clearing previous error messages
+	
+	let errors = document.querySelecterAll(".error");
+	
+	errors.forEach(error => {
+		
+		error.innerHTML = "";
+		
+	});
+	
+	
+	
+}
 
 
 
