@@ -1,0 +1,337 @@
+/*this section styles the donations page*/
+.donations-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px 80px;
+}
+
+/*this section styles the page header*/
+.donations-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.donations-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+}
+
+.donations-header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.donations-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/*this section styles the section labels*/
+.donations-section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+}
+
+/*this section styles the donation campaign*/
+.donations-goal {
+    width: 100%;
+    padding: 35px;
+    margin-bottom: 60px;
+    border-radius: 16px;
+    background: var(--card-background);
+}
+
+.donations-goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.donations-goal-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.donations-goal-amount {
+    white-space: nowrap;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.donations-raised {
+    font-size: 1.8rem;
+}
+
+.donations-goal-total {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/*this section styles the donation progress bar*/
+.donations-progress {
+    width: 100%;
+    height: 18px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--border);
+}
+
+.donations-progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        var(--dark-green),
+        var(--light-green),
+        var(--gold),
+        var(--orange)
+    );
+    transition: width 0.4s ease;
+}
+
+.donations-progress-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+/*this section styles the donation selector*/
+.donations-selector {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.donations-section-heading {
+    margin-bottom: 40px;
+}
+
+.donations-section-heading h2 {
+    font-size: 2rem;
+    margin: 8px 0 12px;
+}
+
+.donations-section-heading p {
+    line-height: 1.6;
+}
+
+/*this section styles the selected donation amount*/
+.donations-selected-amount {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 45px;
+}
+
+.donations-currency {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.donations-amount {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--orange);
+}
+
+/*this section styles the donation slider*/
+.donations-slider-container {
+    width: 100%;
+}
+
+.donations-slider-wrapper {
+    width: 100%;
+    padding: 0 8px;
+}
+
+.donations-slider {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 999px;
+    background: linear-gradient(
+        to right,
+        var(--orange) 0%,
+        var(--orange) var(--slider-progress, 0%),
+        var(--border) var(--slider-progress, 0%),
+        var(--border) 100%
+    );
+    outline: none;
+}
+
+/*this section styles the slider thumb for Chrome, Edge and Safari*/
+.donations-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 3px solid var(--orange);
+    background: var(--card);
+    cursor: grab;
+    transition: transform 0.15s ease;
+}
+
+.donations-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+/*this section styles the slider thumb for Firefox*/
+.donations-slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 3px solid var(--orange);
+    background: var(--card);
+    cursor: grab;
+    transition: transform 0.15s ease;
+}
+
+.donations-slider::-moz-range-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+/*this section styles the slider labels*/
+.donations-slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    font-size: 0.75rem;
+}
+
+.donations-slider-labels span {
+    white-space: nowrap;
+}
+
+/*this section styles the slider information*/
+.donations-slider-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 0.85rem;
+}
+
+/*this section styles the donation button*/
+.donations-action {
+    margin-top: 45px;
+}
+
+.donations-button {
+    min-width: 220px;
+    padding: 16px 35px;
+    border: none;
+    border-radius: 999px;
+    background: var(--orange);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+.donations-button:hover:not(:disabled) {
+    background: var(--gold);
+    transform: translateY(-2px);
+}
+
+.donations-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/*this section styles donation result messages*/
+.donations-message {
+    min-height: 25px;
+    margin-top: 25px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.donations-message-success {
+    background: #e8f5e9;
+}
+
+.donations-message-error {
+    background: #ffebee;
+}
+
+/*this section styles the information cards*/
+.donations-information {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.donations-information-card {
+    padding: 30px;
+    border-radius: 16px;
+    background: var(--card-background);
+}
+
+.donations-information-card h3 {
+    margin-bottom: 12px;
+}
+
+.donations-information-card p {
+    line-height: 1.7;
+}
+
+/*this section styles the responsive layout*/
+@media (max-width: 800px) {
+    .donations-page {
+        padding: 40px 20px 60px;
+    }
+
+    .donations-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .donations-goal-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .donations-information {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*this section adjusts the slider for small screens*/
+@media (max-width: 600px) {
+    .donations-slider-labels span:nth-child(even) {
+        display: none;
+    }
+
+    .donations-selected-amount {
+        margin-bottom: 35px;
+    }
+
+    .donations-amount {
+        font-size: 3rem;
+    }
+
+    .donations-currency {
+        font-size: 1.4rem;
+    }
+}
