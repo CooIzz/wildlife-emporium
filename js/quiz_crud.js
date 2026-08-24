@@ -1,13 +1,3 @@
-//Clearing previous error messages
-
-const errors = document.querySelectorAll("error");
-
-errors.forEach(error => {
-	
-	error.innerHTML = "";
-	
-});
-
 /*
 
 ---------------For quiz_crud.php page---------------
@@ -37,10 +27,21 @@ form.addEventListener("submit", e => {
 
 submit.addEventListener("click", validateForm);
 
-//Function to validate the form
+	//Function to validate the form
 
-function validateForm()
-{
+	function validateForm()
+	{
+
+	//Clearing previous error messages
+
+	const errors = document.querySelectorAll(".error");
+
+	errors.forEach(error => {
+		
+		error.innerHTML = "";
+		
+	});
+
 	let isValid = true;
 	
 	if(form['crudOperation'].value.trim() === "")
@@ -103,6 +104,16 @@ createSubmit.addEventListener("click", validateCreateForm);
 
 function validateCreateForm()
 {
+	//Clearing previous error messages
+
+	const errors = document.querySelectorAll(".error");
+
+	errors.forEach(error => {
+		
+		error.innerHTML = "";
+		
+	});
+	
 	let isValid = true;
 	
 	if(createForm['animal'].value.trim() === "")
@@ -162,11 +173,6 @@ function validateCreateForm()
 	{
 		document.getElementById("corAnsError").innerHTML = "Please select the correct answer to the question.";
 		isValid = false;
-	}
-	
-	if(isValid === true)
-	{
-		createForm.setAttribute("action", "quiz_create.php");
 	}
 	
 	return isValid;

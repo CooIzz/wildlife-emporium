@@ -2,7 +2,7 @@
 
 session_start();
 
-if($_SERVER['REQUEST_METHOD'] = 'POST')
+if($_SERVER['REQUEST_METHOD'] === 'POST')
     {
         $animal = $_POST['animal'];
 
@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] = 'POST')
 
         $sql_checking = "SELECT * FROM quiz_questions WHERE animal_id=$animal_id AND difficulty='$difficulty' AND question_num=$queNum";
 
-        $sql_checking_result = mysqli_query($conn, $sql_checking);
+        $sql_checking_result = mysqli_query($connection, $sql_checking);
 
         if(mysqli_num_rows($sql_checking_result) > 0)
             {
@@ -89,16 +89,21 @@ if($_SERVER['REQUEST_METHOD'] = 'POST')
                 break;
         }
 
-        $sql = "INSERT INTO quiz_questions (id, animal_id, difficulty, question_num, question_text, option_a, option_b, option_c, option_d, correct_ans) VALUES ($queNum, $animal_id, '$difficulty', $queNum, '$quizQuestion', '$optionA', '$optionB', '$optionC', '$optionD', '$cor_ans', $score)";
+        $sql = "INSERT INTO quiz_questions (id, animal_id, difficulty, question_num, question_text, option_a, option_b, option_c, option_d, correct_ans, score) VALUES ($queNum, $animal_id, '$difficulty', $queNum, '$quizQuestion', '$optionA', '$optionB', '$optionC', '$optionD', '$cor_ans', $score)";
         
-        $sql_result = mysqli_query($conn, $sql);
+        $sql_result = mysqli_query($connection, $sql);
 
         if(!$sql_result)
             {
-                echo 'SQL query failed: ' . mysqli_error($conn);
+                echo 'SQL query failed: ' . mysqli_error($connection);
             }
+            else
+                {                    
+                    header("Location: quiz_crud.php?quizQue=created");
+                    exit();
+                }
         
-        mysqli_close($conn);
+        mysqli_close($connection);
     }
 
 ?>
@@ -124,7 +129,7 @@ if($_SERVER['REQUEST_METHOD'] = 'POST')
 <!--
 Form for user to perform the Create Operation
 -->
-<form id="createForm" method="POST" action="javascript:void(0)">
+<form id="createForm" method="POST" action="quiz_create.php">
 
 <h1>Quiz Create</h1>
 
@@ -180,7 +185,7 @@ The question number for the quiz question
 -->
 <label for="queNum">Please enter the Question Number:</label>
 <input type="number" id="queNum" name="queNum">
-<div id="queNumError" class="error"><?php echo  GET['queNumExists'] ? "The question number entered is already taken. Please select a different one." : ""; ?></div>
+<div id="queNumError" class="error"><?php echo isset($_GET['queNumExists']) ? "The question number entered is already taken. Please select a different one." : ""; ?></div>
 
 <br>
 <br>
@@ -198,6 +203,10 @@ The quiz question
 <br>
 
 Answer Choices:
+
+<br>
+<br>
+
 
 <!--
 Option A answer to the question

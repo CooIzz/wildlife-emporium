@@ -1,12 +1,6 @@
-<?php
-
-session_start();
-
-
-?>
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
 
@@ -28,11 +22,11 @@ session_start();
 Form for user to input the CRUD operation he/she
 wishes to perform
 -->
-<form id="quizCrudForm" method="POST" action="javascript:void(0)">
+<form id="quizCrudForm" method="GET">
 
-<label for="crudOption">Which CRUD operation would you like to perform?</label><br>
-<select id="crudOption" name="crudOption" required>
-<option value="Select the Desired CRUD Operation" disabled selected>--Select the Desired CRUD Operation--</option>
+<label for="crudOperation">Which CRUD operation would you like to perform?</label><br>
+<select id="crudOperation" name="crudOperation" required>
+<option value="" disabled selected>--Select the Desired CRUD Operation--</option>
 <option value="Create">Create</option>
 <option value="Read">Read</option>
 <option value="Update">Update</option>
@@ -42,11 +36,40 @@ wishes to perform
 <div id="crudError" class="error"></div>
 
 <br>
+<br>
 
 <input type="submit" id="submit" name="submit" value="submit">
 
 </form>
 
+<br>
+<hr>
+<br>
+
+<p id="crudSuccess">
+<?php
+
+if(isset($_GET['quizQue']))
+    {
+        if($_GET['quizQue'] == 'created')
+            {
+                echo 'Record inserted successfully.';
+            }
+        else if($_GET['quizQue'] == 'updated')
+            {
+                echo 'Record updated successfully.';
+            }
+        else if($_GET['quizQue'] == 'deleted')
+            {
+                echo 'Record deleted successfully.';
+            }        
+    }
+
+
+?>
+<p>
+
+<br>
 
 <?php include("../includes/footer.php"); ?>
 <script src="../js/quiz_crud.js"></script>

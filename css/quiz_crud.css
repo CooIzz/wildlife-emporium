@@ -1,5 +1,5 @@
 /*
------Styling for the quiz_crud section-----
+----------Styling for the quiz_crud section----------
 */
 
 /*
@@ -12,8 +12,14 @@ Text color for the error messages
 	
 }
 
+#crudSuccess {
+
+    color:rgb(0, 200, 0);
+
+}
+
 /*
------Styling for the quiz_create page-----
+----------Styling for the quiz_create page----------
 */
 
 /*
