@@ -1,0 +1,282 @@
+/*this section is for the main page*/
+
+.create-article-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 30px 80px;
+}
+
+
+/*this section is for the page header*/
+
+.create-article-header {
+    max-width: 800px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.create-article-label {
+    margin-bottom: 10px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.create-article-header h1 {
+    margin-bottom: 18px;
+    color: var(--text);
+    font-size: 42px;
+    line-height: 1.1;
+}
+
+.create-article-header p:last-child {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.75;
+}
+
+
+/*this section is for the error message*/
+
+.create-article-error {
+    max-width: 900px;
+    margin: 0 auto 25px;
+    padding: 15px 20px;
+    background: #ffebee;
+    border: 1px solid #ef9a9a;
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/*this section is for the article form*/
+
+.create-article-form-container {
+    width: 100%;
+}
+
+.create-article-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+/*this section is for the form sections*/
+
+.create-article-section {
+    padding: 35px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px var(--shadow);
+}
+
+.create-article-section-label {
+    margin-bottom: 7px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.create-article-section h2 {
+    margin-bottom: 30px;
+    color: var(--text);
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+
+/*this section is for form fields*/
+
+.create-form-group {
+    margin-bottom: 22px;
+}
+
+.create-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.create-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.create-form-group input,
+.create-form-group textarea {
+    width: 100%;
+    padding: 13px 15px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.create-form-group input {
+    height: 46px;
+}
+
+.create-form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.create-form-group input:focus,
+.create-form-group textarea:focus {
+    border-color: var(--dark-green);
+    box-shadow: 0 0 0 3px rgba(66, 130, 57, 0.12);
+}
+
+.create-form-group input::placeholder,
+.create-form-group textarea::placeholder {
+    color: var(--text);
+    opacity: 0.45;
+}
+
+
+/*this section is for form help text*/
+
+.create-form-help {
+    margin-top: 7px;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.6;
+}
+
+
+/*this section is for the article content field*/
+
+#content {
+    min-height: 420px;
+}
+
+
+/*this section is for the form actions*/
+
+.create-article-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+}
+
+.create-cancel-button,
+.create-save-button {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.create-cancel-button {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.create-cancel-button:hover {
+    background: var(--card-background);
+    border-color: var(--orange);
+    transform: translateY(-1px);
+}
+
+.create-save-button {
+    border: 1px solid var(--orange);
+    background: var(--orange);
+    color: var(--card);
+}
+
+.create-save-button:hover {
+    background: var(--gold);
+    color: var(--text);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for responsive layout*/
+
+@media (max-width: 800px) {
+
+    .create-article-page {
+        padding: 50px 20px 60px;
+    }
+
+    .create-article-header h1 {
+        font-size: 36px;
+    }
+
+    .create-article-section {
+        padding: 30px;
+    }
+
+    .create-article-actions {
+        justify-content: flex-start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .create-article-page {
+        padding: 40px 15px 50px;
+    }
+
+    .create-article-header {
+        margin-bottom: 35px;
+    }
+
+    .create-article-header h1 {
+        font-size: 32px;
+    }
+
+    .create-article-section {
+        padding: 25px 20px;
+        border-radius: 14px;
+    }
+
+    .create-article-section h2 {
+        margin-bottom: 25px;
+        font-size: 24px;
+    }
+
+    .create-article-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .create-cancel-button,
+    .create-save-button {
+        width: 100%;
+        text-align: center;
+    }
+
+}

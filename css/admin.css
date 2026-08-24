@@ -1,49 +1,292 @@
-.admin-heading {
+/*this section is for the main admin page*/
+
+.admin-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px 80px;
+}
+
+
+/*this section is for the page header*/
+
+.admin-header {
+    max-width: 800px;
+    margin: 0 auto 50px;
     text-align: center;
 }
+
+.admin-label {
+    margin-bottom: 10px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.admin-header h1 {
+    margin-bottom: 18px;
+    color: var(--text);
+    font-size: 42px;
+    line-height: 1.1;
+}
+
+.admin-header p:last-child {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.75;
+}
+
+
+/*this section is for the management card grid*/
 
 .admin-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 300px 300px;
-    gap: 100px;
-    padding: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
+
+
+/*this section is for each management card*/
 
 .admin-card {
-    background-color: var(--card-background);
-    border: 1.7px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-
     display: flex;
     flex-direction: column;
+    min-height: 390px;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px var(--shadow);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.admin-card-heading {
-    text-align:center;
+.admin-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(245, 128, 36, 0.45);
+    box-shadow: 0 8px 22px var(--shadow);
 }
 
-.admin-card-heading hr {
-    margin-top:15px;
-    margin-bottom:10px;
+
+/*this section is for the top of each card*/
+
+.admin-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
 }
+
+.admin-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    background: var(--card-background);
+    color: var(--dark-green);
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.admin-card-icon-purple {
+    background: rgba(153, 79, 178, 0.10);
+    color: var(--dark-purple);
+}
+
+.admin-card-label {
+    margin: 0;
+    color: var(--dark-green);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.admin-card-label-purple {
+    color: var(--dark-purple);
+}
+
+
+/*this section is for the card content*/
+
+.admin-card-content {
+    margin-bottom: 28px;
+}
+
+.admin-card-content h2 {
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.admin-card-content p {
+    max-width: 470px;
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.65;
+    opacity: 0.7;
+}
+
+
+/*this section is for the card statistics*/
+
+.admin-card-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: auto;
+    margin-bottom: 25px;
+    border-top: 1px solid var(--border);
+}
+
+.admin-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-stat span {
+    color: var(--text);
+    font-size: 13px;
+    opacity: 0.65;
+}
+
+.admin-stat strong {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/*this section is for the card footer*/
 
 .admin-card-footer {
-    margin-top: auto;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.admin-card-footer button{
-    margin-top: 10px;
-    background-color: var(--gold);
-    color: white; /*var(--background); ideally id use this but the scheme doesnt work*/
-    border: none;
-    border-radius: 10px;
-    padding: 12px 40px;
-    font-size: 16px;
+.admin-manage-button {
+    display: inline-block;
+    padding: 10px 17px;
+    background: var(--orange);
+    color: var(--card);
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 13px;
     font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-manage-button:hover {
+    background: var(--gold);
+    color: var(--text);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for the quiz management button*/
+
+.admin-manage-purple {
+    background: var(--dark-purple);
+    border-color: var(--dark-purple);
+    color: var(--card);
+}
+
+.admin-manage-purple:hover {
+    background: var(--light-purple);
+    border-color: var(--light-purple);
+    color: var(--card);
+}
+
+
+/*this section is for disabled management buttons*/
+
+.admin-manage-disabled {
+    background: var(--card-background);
+    color: var(--text);
+    border-color: var(--border);
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.admin-manage-disabled:hover {
+    background: var(--card-background);
+    color: var(--text);
+    border-color: var(--border);
+    transform: none;
+}
+
+
+/*this section is for coming soon text*/
+
+.admin-coming-soon {
+    color: var(--text);
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+
+/*this section is for responsive layout*/
+
+@media (max-width: 900px) {
+
+    .admin-page {
+        padding: 50px 20px 60px;
+    }
+
+    .admin-container {
+        grid-template-columns: 1fr;
+    }
 
 }
 
 
+@media (max-width: 600px) {
+
+    .admin-page {
+        padding: 40px 15px 50px;
+    }
+
+    .admin-header {
+        margin-bottom: 35px;
+    }
+
+    .admin-header h1 {
+        font-size: 32px;
+    }
+
+    .admin-card {
+        min-height: auto;
+        padding: 25px;
+    }
+
+    .admin-card-content h2 {
+        font-size: 25px;
+    }
+
+    .admin-card-footer {
+        flex-wrap: wrap;
+    }
+
+}

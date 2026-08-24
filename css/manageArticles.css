@@ -1,0 +1,304 @@
+/*this section is for the main page*/
+
+.manage-articles-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px 80px;
+}
+
+
+/*this section is for the page header*/
+
+.manage-articles-header {
+    max-width: 800px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.manage-articles-label {
+    margin-bottom: 10px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.manage-articles-header h1 {
+    margin-bottom: 18px;
+    color: var(--text);
+    font-size: 42px;
+    line-height: 1.1;
+}
+
+.manage-articles-header p:last-child {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.75;
+}
+
+
+/*this section is for the existing articles heading*/
+
+.existing-articles {
+    width: 100%;
+}
+
+.existing-articles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.management-section-label {
+    margin-bottom: 7px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.existing-articles-header h2 {
+    color: var(--text);
+    font-size: 34px;
+}
+
+.existing-articles-header > p {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.7;
+}
+
+
+/*this section is for the article table*/
+
+.articles-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px var(--shadow);
+}
+
+.articles-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.articles-table th {
+    padding: 18px 20px;
+    background: var(--card-background);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.articles-table td {
+    padding: 20px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.articles-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/*this section is for article row hover*/
+
+.articles-table tbody tr:not(.create-article-row) {
+    transition: background 0.2s ease;
+}
+
+.articles-table tbody tr:not(.create-article-row):hover {
+    background: var(--card-background);
+}
+
+
+/*this section is for the create article row*/
+
+.create-article-row td {
+    padding: 14px 20px;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border);
+}
+
+.create-article-button {
+    display: inline-block;
+    padding: 9px 16px;
+    background: var(--orange);
+    color: var(--card);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.create-article-button:hover {
+    background: var(--gold);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for the article title*/
+
+.article-title {
+    font-weight: 600;
+}
+
+.article-author {
+    opacity: 0.75;
+}
+
+.article-date {
+    opacity: 0.7;
+}
+
+
+/*this section is for article actions*/
+
+.article-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.article-actions form {
+    margin: 0;
+}
+
+.article-action-edit,
+.article-action-delete {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.article-action-edit {
+    background: var(--light-green);
+    color: var(--text);
+}
+
+.article-action-edit:hover {
+    background: var(--dark-green);
+    color: var(--card);
+    transform: translateY(-1px);
+}
+
+.article-action-delete {
+    border: none;
+    background: var(--orange);
+    color: var(--card);
+    cursor: pointer;
+}
+
+.article-action-delete:hover {
+    background: var(--gold);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for when there are no articles*/
+
+.no-articles {
+    padding: 50px 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px var(--shadow);
+    text-align: center;
+}
+
+.no-articles p {
+    color: var(--text);
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+
+/*this section is for responsive layout*/
+
+@media (max-width: 800px) {
+
+    .manage-articles-page {
+        padding: 50px 20px 60px;
+    }
+
+    .manage-articles-header h1 {
+        font-size: 36px;
+    }
+
+    .existing-articles-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .manage-articles-page {
+        padding: 40px 15px 50px;
+    }
+
+    .manage-articles-header {
+        margin-bottom: 35px;
+    }
+
+    .manage-articles-header h1 {
+        font-size: 32px;
+    }
+
+    .existing-articles-header h2 {
+        font-size: 28px;
+    }
+
+    .articles-table th,
+    .articles-table td {
+        padding: 14px;
+    }
+
+    .article-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .article-action-edit,
+    .article-action-delete {
+        width: 100%;
+        text-align: center;
+    }
+
+    .create-article-row td {
+        padding: 12px 14px;
+    }
+
+}
