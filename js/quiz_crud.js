@@ -211,7 +211,7 @@ readSubmit.addEventListener("click", validateReadForm);
 //Function to validate read form
 
 function validateReadForm()
-{
+{		
 	//Clearing previous error messages
 	
 	let errors = document.querySelecterAll(".error");
@@ -222,7 +222,48 @@ function validateReadForm()
 		
 	});
 	
+	let isValid = true;
 	
+	if(readForm['animal'].value.trim() === "")
+	{
+		document.getElementById("animalError").innerHTML = "Please select an animal";
+		isValid = false;
+	}
+	
+	if(readForm['difficulty'].value.trim() === "")
+	{
+		document.getElementById("difficultyError").innerHTML = "Please select the difficulty level.";
+		isValid = false;
+	}
+	
+	if(readForm['numOfQue'].value.trim() === "")
+	{
+		document.getElementById("numOfQueError").innerHTML = "Please select the number of questions you wish to be displayed.";
+		isValid = false;
+	}
+	else if(parseInt(readForm['numOfQue'].value.trim(), 10) < 1 || parseInt(readForm['numOfQue'].value.trim(), 10) > 10)
+	{
+		document.getElementById("numOfQueError").innerHTML = "The number of questions to be displayed must be between 1 and 10.";
+		isValid = false;
+	}
+	
+	if(readForm['firstQue'].value.trim() === "")
+	{
+		document.getElementById("firstQueError").innerHTML = "Please enter the number of the first question to be displayed.";
+		isValid = false;
+	}
+	else if(isNaN(parseInt(readForm['firstQue'].value.trim(), 10)))
+	{
+		document.getElementById("firstQueError").innerHTML = "Please enter a numeric value.";
+		isValid = false;
+	}
+	else if(parseInt(readForm['firstQue'].value.trim(), 10) < 1 || parseInt(readForm['firstQue'].value.trim(), 10) > 10)
+	{
+		document.getElementById("firstQueError").innerHTML = "The numeric value must be between 1 and 10.";
+		isValid = false;
+	}
+	
+	return isValid;
 	
 }
 

@@ -1,3 +1,69 @@
+<?php
+
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        include("../includes/database.php");
+        $sql = "SELECT question_num, question_text, option_a, option_b, option_c, option_d FROM quiz_questions WHERE animal_id=? AND difficulty=? AND question_num=? ORDER BY question_num ASC LIMIT ?";
+        $sql_prepared = mysqli_prepare($connection, $sql);
+
+        if($sql_prepared === false)
+            {
+                die("SQL query preparation failed: " . mysqli_error($connection));
+            }
+        mysqli_stmt_bind_param($sql_prepared, 'isii', $animal_id, $difficulty, $firstQue, $numOfQue);
+
+        $animal = $_POST['animal'];
+        $difficulty = $_POST['difficulty'];
+        $numOfQue = $_POST['numOfQue'];
+        $firstQue = $_POST['firstQue'];
+
+        switch($animal)
+        {
+            case "African Lion":
+                $animal_id = 1;
+                break;
+            
+            case "Orang Utan":
+                $animal_id = 2;
+                break;
+            
+            case "Penguin":
+                $animal_id = 3;
+                break;
+
+            case "Tiger":
+                $animal_id = 4;
+                break;
+
+            case "Giant Panda":
+                $animal_id = 5;
+                break;
+
+            case "Raccoon":
+                $animal_id = 6;
+                break;
+
+            case "Snow Leopard":
+                $animal_id = 7;
+                break;
+
+            case "Polar Bear":
+                $animal_id = 8;
+                break;
+
+            case "Lynx":
+                $animal_id = 9;
+                break;
+
+            default:
+                $animal_id = 10;
+                break;
+        }   
+        
+        mysqli_stmt_execute($connection, $sql_prepared);
+    }
+
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -20,7 +86,7 @@
 
 <strong>Please fill up following fields.<strong>
 
-<form id="readForm" method="POST" action="javascript:void(0)">
+<form id="readForm" method="POST" action="quiz_read.php">
 
 <br>
 <br>
@@ -74,6 +140,8 @@ The number of questions to be displayed
 <label for="numOfQue">Please enter the number of questions you wish to view:</label>
 <br>
 <input type="range" id="numOfQue" name="numOfQue" placeholder="Number of questions to display:Between 1 and 10" min="1" max="10">
+<br>
+<div id="numOfQueError" class="error"></div>
 
 <br>
 <br>
@@ -83,6 +151,8 @@ The first quiz question to be selected
 -->
 <label for="firstQue">Please enter the number of first question to be displayed:</label>
 <input type="number" id="firstQue" name="firstQue">
+<br>
+<div id="firstQueError" class="error"></div>
 
 <input type="submit" id="readSubmit" name="readSubmit" value="Display Quiz Question">
 
