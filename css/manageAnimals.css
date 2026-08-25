@@ -1,0 +1,310 @@
+/*this section is for the main page*/
+
+.manage-animals-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px 80px;
+}
+
+
+/*this section is for the page header*/
+
+.manage-animals-header {
+    max-width: 800px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.manage-animals-label {
+    margin-bottom: 10px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.manage-animals-header h1 {
+    margin-bottom: 18px;
+    color: var(--text);
+    font-size: 42px;
+    line-height: 1.1;
+}
+
+.manage-animals-header p:last-child {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.75;
+}
+
+
+/*this section is for the existing animals heading*/
+
+.existing-animals {
+    width: 100%;
+}
+
+.existing-animals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.management-section-label {
+    margin-bottom: 7px;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.existing-animals-header h2 {
+    color: var(--text);
+    font-size: 34px;
+}
+
+.existing-animals-header > p {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.7;
+}
+
+
+/*this section is for the animal table*/
+
+.animals-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px var(--shadow);
+}
+
+.animals-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.animals-table th {
+    padding: 18px 20px;
+    background: var(--card-background);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.animals-table td {
+    padding: 20px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.animals-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/*this section is for animal row hover*/
+
+.animals-table tbody tr:not(.create-animal-row) {
+    transition: background 0.2s ease;
+}
+
+.animals-table tbody tr:not(.create-animal-row):hover {
+    background: var(--card-background);
+}
+
+
+/*this section is for the create animal row*/
+
+.create-animal-row td {
+    padding: 14px 20px;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border);
+}
+
+.create-animal-button {
+    display: inline-block;
+    padding: 9px 16px;
+    background: var(--orange);
+    color: var(--card);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.create-animal-button:hover {
+    background: var(--gold);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for animal information*/
+
+.animal-name {
+    font-weight: 600;
+}
+
+.animal-scientific-name {
+    opacity: 0.75;
+    font-style: italic;
+}
+
+.animal-status {
+    opacity: 0.75;
+}
+
+.animal-habitat {
+    opacity: 0.7;
+}
+
+
+/*this section is for animal actions*/
+
+.animal-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.animal-actions form {
+    margin: 0;
+}
+
+.animal-action-edit,
+.animal-action-delete {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.animal-action-edit {
+    background: var(--light-green);
+    color: var(--text);
+}
+
+.animal-action-edit:hover {
+    background: var(--dark-green);
+    color: var(--card);
+    transform: translateY(-1px);
+}
+
+.animal-action-delete {
+    border: none;
+    background: var(--orange);
+    color: var(--card);
+    cursor: pointer;
+}
+
+.animal-action-delete:hover {
+    background: var(--gold);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for when there are no animals*/
+
+.no-animals {
+    padding: 50px 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px var(--shadow);
+    text-align: center;
+}
+
+.no-animals p {
+    color: var(--text);
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+
+/*this section is for responsive layout*/
+
+@media (max-width: 800px) {
+
+    .manage-animals-page {
+        padding: 50px 20px 60px;
+    }
+
+    .manage-animals-header h1 {
+        font-size: 36px;
+    }
+
+    .existing-animals-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .manage-animals-page {
+        padding: 40px 15px 50px;
+    }
+
+    .manage-animals-header {
+        margin-bottom: 35px;
+    }
+
+    .manage-animals-header h1 {
+        font-size: 32px;
+    }
+
+    .existing-animals-header h2 {
+        font-size: 28px;
+    }
+
+    .animals-table th,
+    .animals-table td {
+        padding: 14px;
+    }
+
+    .animal-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .animal-action-edit,
+    .animal-action-delete {
+        width: 100%;
+        text-align: center;
+    }
+
+    .create-animal-row td {
+        padding: 12px 14px;
+    }
+
+}
