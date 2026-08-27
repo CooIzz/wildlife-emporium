@@ -59,8 +59,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                 $animal_id = 10;
                 break;
         }   
+                
+        if(!mysqli_stmt_execute($connection, $sql_prepared))
+            {
+                echo 'SQL query failed: ' . mysqli_error($connection);
+            }
         
-        mysqli_stmt_execute($connection, $sql_prepared);
+        mysqli_stmt_close($sql_prepared);
+        mysqli_close($connection);
     }
 
 ?>
