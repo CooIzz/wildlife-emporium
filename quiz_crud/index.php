@@ -38,7 +38,7 @@ wishes to perform
 <br>
 <br>
 
-<input type="submit" id="submit" name="submit" value="submit">
+<input type="submit" id="submit" name="submit" class="submitButtons" value="submit">
 
 </form>
 

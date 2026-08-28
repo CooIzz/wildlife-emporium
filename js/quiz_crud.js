@@ -1,6 +1,6 @@
 /*
 
----------------For quiz_crud.php page---------------
+---------------For index.php page---------------
 
 */
 
@@ -267,6 +267,68 @@ function validateReadForm()
 	
 }
 
+/*
+
+---------------For quiz_update.php page---------------
+
+*/
+
+//Extract html elements from the form
+
+const updateForm = document.getElementById("updateForm");
+
+const updateSubmit = document.getElementById("updateSubmit");
+
+//Adding event listener to prevent form from being submitted
+//in case of any errors
+
+updateForm.addEventListener("submit", event => {
+	
+	if(!validateUpdateForm())
+	{
+		event.preventDefault();
+	}
+	
+});
+
+//Adding event listener to validate the form
+//upon clicking the submit button
+
+updateSubmit.addEventListener("click", validateUpdateForm);
+
+//Function to validate the Update form
+
+function validateUpdateForm()
+{
+	//Clearing all previous error messages
+	
+	let errors = document.querySelectorAll(".error");
+	errors.forEach(error => {
+		
+		error.innerHTML = "";
+		
+	});
+	
+	let isValid = true;
+	
+	if(updateForm['animal'].value.trim() === "")
+	{
+		document.getElementById("animalError").innerHTML = "Please select an animal of your choice.";
+		isValid = false;
+	}
+	
+	if(updateForm['difficulty'].value.trim() === "")
+	{
+		document.getElementById("difficultyError").innerHTML = "Please select the difficulty option.";
+		isValid = false;
+	}
+	
+	if()
+	{
+		
+	}
+	
+}
 
 
 

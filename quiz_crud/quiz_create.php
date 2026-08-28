@@ -99,7 +99,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
             }
             else
                 {                    
-                    header("Location: quiz_crud.php?quizQue=created");
+                    header("Location: index.php?quizQue=created");
                     exit();
                 }
         
@@ -274,7 +274,7 @@ Correct answer among the 4 options provided
 <br>
 <br>
 
-<input type="submit" id="createSubmit" name="createSubmit" value="Create Quiz Question">
+<input type="submit" id="createSubmit" name="createSubmit" class="submitButtons" value="Create Quiz Question">
 
 </form>
 
