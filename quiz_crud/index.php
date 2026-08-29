@@ -62,9 +62,12 @@ if(isset($_GET['quizQue']))
         else if($_GET['quizQue'] == 'deleted')
             {
                 echo 'Record deleted successfully.';
-            }        
+            } 
+        else
+            {
+                echo '';
+            }       
     }
-
 
 ?>
 <p>

@@ -2,6 +2,82 @@
 
 session_start();
 
+if($_SERVER['REQUEST_METHOD'] === 'POST' )
+{
+	include("../includes/database.php");
+	
+	$sql = "UPDATE quiz_questions SET question_text = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, correct_ans = ? WHERE animal_id = ? AND difficulty = ? AND question_num = ?";
+	$sql_stmt = mysqli_prepare($connection, $sql);
+	mysqli_stmt_bind_param($sql_stmt, 'ssssssisi', $updatedQuizQue, $optionA, $optionB, $optionC, $optionD, $cor_ans, $animal_id, $difficulty, $queNum);
+	
+	$animal = $_POST['animal'];
+
+        switch($animal)
+        {
+            case "African Lion":
+                $animal_id = 1;
+                break;
+            
+            case "Orang Utan":
+                $animal_id = 2;
+                break;
+            
+            case "Penguin":
+                $animal_id = 3;
+                break;
+
+            case "Tiger":
+                $animal_id = 4;
+                break;
+
+            case "Giant Panda":
+                $animal_id = 5;
+                break;
+
+            case "Raccoon":
+                $animal_id = 6;
+                break;
+
+            case "Snow Leopard":
+                $animal_id = 7;
+                break;
+
+            case "Polar Bear":
+                $animal_id = 8;
+                break;
+
+            case "Lynx":
+                $animal_id = 9;
+                break;
+
+            default:
+                $animal_id = 10;
+                break;
+        }
+		
+		$difficulty = $_POST['difficulty'];
+		$queNum = $_POST['queNum'];
+		$updatedQuizQue = $_POST['updatedQuizQue'];
+		$optionA = $_POST['optionA'];
+		$optionB = $_POST['optionB'];
+		$optionC = $_POST['optionC'];
+		$optionD = $_POST['optionD'];
+		$cor_ans = $_POST['cor_ans'];
+		
+		if(mysqli_stmt_execute($sql_stmt))
+		{
+			header("Location: index.php?quizQue=updated");
+			exit();
+		}
+		else
+		{
+			echo 'SQL query failed: ' . mysqli_error($connection);
+		}
+		
+		mysqli_stmt_close($sql_stmt);
+		mysqli_close($connection);
+		
+}
 
 ?>
 <!DOCTYPE html>
@@ -77,7 +153,7 @@ The question to be updated
 -->
 <label for="queNum">Please enter the question number to be updated:</label>
 <br>
-<input type="number" id="queNum" name="queNum">
+<input type="number" id="queNum" name="queNum" min="1">
 <br>
 <div id="queNumError" class="error"></div>
 

@@ -78,7 +78,7 @@ The number of questions to be displayed
 -->
 <label for="numOfQue">Please enter the number of questions you wish to view:</label>
 <br>
-<input type="number" id="numOfQue" name="numOfQue" min="1" max="10">
+<input type="number" id="numOfQue" name="numOfQue" min="1">
 <br>
 <div id="numOfQueError" class="error"></div>
 
