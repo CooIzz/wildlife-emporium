@@ -105,7 +105,7 @@ if ($articleStatement)
             <div class="home-hero-visual">
 
                 <img
-                    src="images/home/logo.png"
+                    src="images/logo.png"
                     alt="Wildlife Emporium"
                 >
 
@@ -237,7 +237,7 @@ if ($articleStatement)
                 >
 
                     <div class="home-navigation-icon">
-                        AE
+                        <img src="images/home/encyclopedia.svg" alt="Animal Encyclopedia">
                     </div>
 
                     <div class="home-navigation-content">
@@ -267,7 +267,7 @@ if ($articleStatement)
                 >
 
                     <div class="home-navigation-icon">
-                        AR
+                        <img src="images/home/articles.svg" alt="Wildlife Articles">
                     </div>
 
                     <div class="home-navigation-content">
@@ -297,7 +297,7 @@ if ($articleStatement)
                 >
 
                     <div class="home-navigation-icon">
-                        QZ
+                        <img src="images/home/quiz.svg" alt="Wildlife Quiz">
                     </div>
 
                     <div class="home-navigation-content">
@@ -327,7 +327,7 @@ if ($articleStatement)
                 >
 
                     <div class="home-navigation-icon">
-                        AC
+                        <img src="images/home/profile.svg" alt="Your Account">
                     </div>
 
                     <div class="home-navigation-content">
@@ -412,7 +412,7 @@ if ($articleStatement)
                                         </p>
 
                                         <a
-                                            href="articles/details.php?id=<?php echo $article["article_id"]; ?>"
+                                            href="/wildlife-emporium/articles/details.php?id=<?php echo $article["article_id"]; ?>"
                                             class="home-article-link"
                                         >
                                             Read Article
@@ -464,58 +464,51 @@ if ($articleStatement)
 
         <!-- Quiz -->
 
-        <section class="home-quiz">
+<section class="home-quiz">
 
-            <div class="home-section-heading">
+    <div class="home-section-heading">
 
-                <p class="home-section-label">
-                    CHALLENGE YOURSELF
-                </p>
+        <p class="home-section-label">
+            CHALLENGE YOURSELF
+        </p>
 
-                <h2>
-                    Wildlife Quiz
-                </h2>
+        <h2>
+            Wildlife Quiz
+        </h2>
 
-            </div>
-
-
-            <div class="home-quiz-card">
-
-                <div class="home-quiz-content">
-
-                    <p class="home-quiz-category">
-                        TEST YOUR KNOWLEDGE
-                    </p>
-
-                    <h3>
-                        How well do you know the wild?
-                    </h3>
-
-                    <p>
-                        Put your wildlife knowledge to the test with our curated collection of quizzes.
-                    </p>
-
-                    <a
-                        href="quiz/index.php"
-                        class="home-quiz-link"
-                    >
-                        Take the Quiz
-                    </a>
-
-                </div>
+    </div>
 
 
-                <div class="home-quiz-visual">
+    <div class="home-quiz-card">
 
-                    <div class="home-quiz-visual-placeholder">
-                        Quiz
-                    </div>
+        <div class="home-quiz-content">
 
-                </div>
+            <p class="home-quiz-category">
+                TEST YOUR KNOWLEDGE
+            </p>
 
-            </div>
+            <h3>
+                How well do you know the wild?
+            </h3>
 
-        </section>
+            <p>
+                Put your wildlife knowledge to the test with our curated collection of quizzes.
+                Challenge yourself, learn something new, and see how much you really know about
+                the animal kingdom.
+            </p>
+
+            <a
+                href="quiz/index.php"
+                class="home-quiz-link"
+            >
+                Take the Quiz
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
     </main>
 

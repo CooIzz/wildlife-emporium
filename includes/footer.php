@@ -1,5 +1,11 @@
 <footer>
 
-    <p>&copy; 2026 Wildlife Emporium</p>
+    <p>
+        &copy; <?php echo date("Y"); ?> Wildlife Emporium
+    </p>
 
+    <p>
+        Malaysia Time:
+        <span id="malaysia-time"></span>
+    </p>
 </footer>

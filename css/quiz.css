@@ -68,7 +68,7 @@ in a glass-panel like arrangement structure
 
 
 
-section {
+.quiz-page section {
 	
 	display: flex;
     flex-direction: column;
@@ -191,7 +191,7 @@ ol {
 This styling is to align the paragraphs to the center
 */
 
-p {
+.quiz-page p {
 	
 	text-align: center;
 	
@@ -200,7 +200,7 @@ p {
 /*
 To style the headers of the quiz section
 */
-h1 {
+.quiz-page h1 {
 
     font-size:40px;
 	text-align: center;

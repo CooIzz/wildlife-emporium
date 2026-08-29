@@ -4,7 +4,7 @@
 
         <a href="/wildlife-emporium/" class="header-logo">
 
-            <img src="/wildlife-emporium/images/home-logo-test.svg" alt="Wildlife Emporium Logo">
+            <img src="/wildlife-emporium/images/logo.png" alt="Wildlife Emporium Logo">
 
             <div class="header-logo-text">
 
