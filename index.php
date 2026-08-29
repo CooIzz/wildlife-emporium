@@ -105,7 +105,7 @@ if ($articleStatement)
             <div class="home-hero-visual">
 
                 <img
-                    src="images/home/logo.png"
+                    src="images/logo.png"
                     alt="Wildlife Emporium"
                 >
 

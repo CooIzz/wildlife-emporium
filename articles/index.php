@@ -60,7 +60,7 @@ else{
 <section class="article-header-container">
     <h1 class="article-header">WILDLIFE DAILY</h1>
     <div class="article-logo">
-        <img src="../images/home-logo-test.svg" alt="Logo">
+        <img src="../images/logo.png" alt="Logo">
     </div>
 </section>
 <br>
