@@ -70,6 +70,27 @@ function validateForm()
 		
 }
 
+//Extract p tag element with the id of crudSuccess
+const crudSuccess = document.getElementById("crudSuccess");
+
+//Adding event listener to clear the CRUD message in case
+//user reloads the index page---------------
+
+document.addEventListener("load", () => {
+	
+	if(crudSuccess.innerHTML.trim() !== "")
+	{
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get("quizQue") !== "") 
+		{
+		const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set("quizQue", "");
+        
+        window.location.href = currentUrl.toString();
+		}
+	}
+	
+});
 
 /*
 
@@ -241,9 +262,9 @@ function validateReadForm()
 		document.getElementById("numOfQueError").innerHTML = "Please select the number of questions you wish to be displayed.";
 		isValid = false;
 	}
-	else if(parseInt(readForm['numOfQue'].value.trim(), 10) < 1 || parseInt(readForm['numOfQue'].value.trim(), 10) > 10)
+	else if(parseInt(readForm['numOfQue'].value.trim(), 10) < 1)
 	{
-		document.getElementById("numOfQueError").innerHTML = "The number of questions to be displayed must be between 1 and 10.";
+		document.getElementById("numOfQueError").innerHTML = "The number of questions to be displayed must be greater than 0.";
 		isValid = false;
 	}
 	
@@ -323,13 +344,123 @@ function validateUpdateForm()
 		isValid = false;
 	}
 	
-	if()
+	if(updateForm['queNum'].value.trim() === "")
 	{
-		
+		document.getElementById("queNumError").innerHTML = "Please enter the question number to be updated.";
+		isValid = false;
 	}
+	else if(parseInt(updateForm['queNum'].value.trim(), 10) < 1)
+	{
+		document.getElementById("queNumError").innerHTML = "The question number must be greater than 0.";
+		isValid = false;
+	}
+	
+	if(updateForm['updatedQuizQue'].value.trim() === "")
+	{
+		document.getElementById("updatedQuizQueError").innerHTML = "Please enter the updated the updated quiz question.";
+		isValid = false;
+	}
+	
+	if(updateForm['optionA'].value.trim() === "")
+	{
+		document.getElementById("aError").innerHTML = "Please enter the optionA answer.";
+		isValid = false;
+	}
+	
+	if(updateForm['optionB'].value.trim() === "")
+	{
+		document.getElementById("bError").innerHTML = "Please enter the optionB answer..";
+		isValid = false;
+	}
+	
+	if(updateForm['optionC'].value.trim() === "")
+	{
+		document.getElementById("cError").innerHTML = "Please enter the optionC answer..";
+		isValid = false;
+	}
+	
+	if(updateForm['optionD'].value.trim() === "")
+	{
+		document.getElementById("dError").innerHTML = "Please enter the optionD answer..";
+		isValid = false;
+	}
+	
+	if(updateForm['cor_ans'].value.trim() === "")
+	{
+		document.getElementById("corAnsError").innerHTML = "Please choose the correct answer among the options you provided.";
+		isValid = false;
+	}
+	
+	return isValid;
 	
 }
 
+/*
 
+---------------For quiz_delete.php page---------------
 
+*/
+
+//Extracting HTMl elements from the document
+
+const deleteForm = document.getElementById("deleteForm");
+
+const deleteSubmit = document.getElementById("deleteSubmit");
+
+//Adding event listener to prevent form from being
+//submitted in case of any errors
+
+deleteForm.addEventListener("submit", event => {
+	
+	if(!validateDeleteForm())
+	{
+		event.preventDefault();
+	}
+	
+});
+
+//Adding event listener to validate form upon
+//clicking the submit button
+
+deleteSubmit.addEventListener("click", validateDeleteForm);
+
+//Function to validate the Delete form
+
+function validateDeleteForm()
+{
+	//Clearing previous error messages
+	let errors = document.querySelectorAll(".error");
+	errors.forEach(error => {
+		
+		error.innerHTML = "";
+		
+	});
+	
+	let isValid = true;
+	
+	if(deleteForm['animal'].value.trim() === "")
+	{
+		document.getElementById("animalError").innerHTML = "Please select the animal of your choice.";
+		isValid = false;
+	}
+	
+	if(deleteForm['difficulty'].value.trim() === "")
+	{
+		document.getElementById("difficultyError").innerHTML = "Please select the difficulty level of your choice.";
+		isValid = false;
+	}
+	
+	if(deleteForm['queNum'].value.trim() === "")
+	{
+		document.getElementById("queNumError").innerHTML = "Please enter the question number to be deleted.";
+		isValid = false;
+	}
+	else if(parseInt(deleteForm['queNum'].value.trim(), 10) < 1)
+	{
+		document.getElementById("queNumError").innerHTML = "Question number must be greater than 1.";
+		isValid = false;
+	}
+	
+	return isValid;
+}
 
