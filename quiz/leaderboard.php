@@ -37,30 +37,30 @@ if(!$result)
 <?php include("../includes/navigation.php"); ?>
 
 <main>
-<div><h1>Quiz Leaderboard</h1><div>
+<div><h1 style="text-align: center;">Quiz Leaderboard</h1><div>
 
-<article>
+<div class="leaderboardArticle">
 
-<section>
+<div>
 
 <p>
 Welcome to the Quiz Score Leaderboard. Wish to see if you have made it into the
 scoreboard? Please login before proceeding.
 </p>
 
-</section>
+</div>
 
-<section>
+<div>
 
 <button id="scoreboard_expand">Expand the scoreboard</button>
 
-</section>
+</div>
 
 <br>
 <hr>
 <br>
 
-<section>
+<div>
 
 <table id="scoreboard" class="hidden">
 
@@ -100,9 +100,9 @@ while($row = mysqli_fetch_assoc($result))
 
 </table>
 
-</section>
+</div>
 
-</article>
+</div>
 
 </main>
 <?php include("../includes/footer.php"); ?>

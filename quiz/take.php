@@ -51,8 +51,6 @@ option_d<br>
 <input type="text" id="option_d" name="option_d"><br>
 correct_ans<br>
 <input type="text" id="correct_ans" name="correct_ans"><br>
-score<br>
-<input type="number" id="score" name="score"><br>
 
 <br><br>
 <button type="submit">Submit</button>
@@ -71,7 +69,21 @@ $option_b = $_POST['option_b'];
 $option_c = $_POST['option_c'];
 $option_d = $_POST['option_d'];
 $correct_ans = $_POST['correct_ans'];
-$score = $_POST['score'];
+
+switch($difficulty)
+{
+    case 'easy':
+        $score = 10;
+        break;
+    
+    case 'medium':
+        $score = 20;
+        break;
+    
+    case 'difficult':
+        $score = 30;
+        break;
+}
 
 if (mysqli_stmt_execute($stmt)) 
 {
