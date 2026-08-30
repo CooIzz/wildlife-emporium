@@ -24,8 +24,8 @@ quizAnimals.forEach(animal => {
 	}
 	
 	//If the user has already been logged in
-	//if(userID !== "")
-	//{
+	if(userID !== "")
+	{
 		element.addEventListener("click", function() {
 		
 		//Letting user choose difficulty level upon clicking
@@ -61,7 +61,7 @@ quizAnimals.forEach(animal => {
 		};
 		
 	});
-	/*} else//If the user has not logged in yet
+	} else//If the user has not logged in yet
 	{
 		element.addEventListener("click", function() {
 			
@@ -71,6 +71,6 @@ quizAnimals.forEach(animal => {
 		});
 		
 		
-	}*/
+	}
 		
 })
