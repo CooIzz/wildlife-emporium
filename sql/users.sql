@@ -49,7 +49,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`userID`, `username`, `email`, `passwordHash`, `profilePicture`, `role`, `isActive`, `createdAt`, `lastLogin`) VALUES
 (1, 'happy123', 'happy@mail.com', '$2y$10$H588UxXMN0.tPgld2QSAOefmZJg9vQMuRb2vCF0DXzg5xT81yqoTi', 'default-avatar.png', 'user', 1, '2026-08-05 10:43:05', NULL),
-(2, 'test', 'test@test.com', '$2y$10$YNqioJRaDZP3VqIhCLDiDOTDh5OftWa8X9Y853BRE0eo0F5ozQc.O', 'default-avatar.png', 'user', 1, '2026-08-05 18:40:18', '2026-08-06 08:34:29');
+(2, 'test', 'test@test.com', '$2y$10$YNqioJRaDZP3VqIhCLDiDOTDh5OftWa8X9Y853BRE0eo0F5ozQc.O', 'default-avatar.png', 'user', 1, '2026-08-05 18:40:18', '2026-08-06 08:34:29'),
+(3, 'whatsup', 'bavan123@gmail.com', '$2y$10$dTcADVmGl6pOkq5diUDugOQeDYvW78vqAVa69P/E5MHBJ/v7UGmSi', 'default-avatar.png', 'user', 1, '2026-08-30 07:05:03', '2026-08-30 07:05:17');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
