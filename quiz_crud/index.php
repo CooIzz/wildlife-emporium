@@ -76,6 +76,29 @@ if(isset($_GET['quizQue']))
 
 <?php include("../includes/footer.php"); ?>
 <script src="../js/quiz_crud.js"></script>
+<script>
+//Extract p tag element with the id of crudSuccess
+const crudSuccess = document.getElementById("crudSuccess");
+
+//Adding event listener to clear the CRUD message in case
+//user reloads the index page---------------
+
+document.addEventListener("boforeunload", (event) => {
+	
+	if(crudSuccess.innerHTML.trim() !== "")
+	{
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get("quizQue") !== "") 
+		{
+		const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set("quizQue", "");
+        
+        window.location.href = currentUrl.toString();
+		}
+	}
+	
+});
+</script>
 </body>
 
 </html>
