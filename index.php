@@ -322,7 +322,7 @@ if ($articleStatement)
                 <!-- Account -->
 
                 <a
-                    href="account/index.php"
+                    href="account/profile.php"
                     class="home-navigation-card"
                 >
 
