@@ -1,6 +1,7 @@
 /* ---------------- PROFILE PAGE ---------------- */
 
-.profile-page {
+.profile-page
+{
     display: flex;
     justify-content: center;
     width: 100%;
@@ -10,7 +11,8 @@
 
 /* ---------------- PROFILE CARD ---------------- */
 
-.profile-card {
+.profile-card
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +24,8 @@
 
 /* ---------------- PROFILE LOGO ---------------- */
 
-.profile-logo img {
+.profile-logo img
+{
     width: 110px;
     height: 110px;
 }
@@ -30,7 +33,8 @@
 
 /* ---------------- PROFILE TITLE ---------------- */
 
-.profile-title {
+.profile-title
+{
     margin: 0;
     color: var(--dark-green);
     font-size: 42px;
@@ -41,7 +45,8 @@
 
 /* ---------------- PROFILE DESCRIPTION ---------------- */
 
-.profile-description {
+.profile-description
+{
     max-width: 650px;
     margin: 0;
     color: var(--text);
@@ -53,24 +58,26 @@
 
 /* ---------------- PROFILE MESSAGES ---------------- */
 
-.profile-message {
+.profile-message
+{
     width: 100%;
     max-width: 900px;
     padding: 14px 18px;
+    background-color: var(--card);
     border-radius: 10px;
     font-size: 14px;
     line-height: 1.5;
     text-align: center;
 }
 
-.profile-error {
-    background-color: var(--card-background);
+.profile-error
+{
     border: 1px solid var(--orange);
     color: var(--orange);
 }
 
-.profile-success {
-    background-color: var(--card-background);
+.profile-success
+{
     border: 1px solid var(--dark-green);
     color: var(--dark-green);
 }
@@ -78,16 +85,18 @@
 
 /* ---------------- PROFILE SECTION ---------------- */
 
-.profile-section {
+.profile-section
+{
     width: 100%;
     padding: 35px;
-    background-color: var(--card-background);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 18px;
     box-shadow: 0 4px 14px var(--shadow);
 }
 
-.profile-section-label {
+.profile-section-label
+{
     margin: 0 0 7px;
     color: var(--dark-green);
     font-size: 12px;
@@ -95,7 +104,8 @@
     letter-spacing: 1.5px;
 }
 
-.profile-section h2 {
+.profile-section h2
+{
     margin: 0 0 30px;
     color: var(--text);
     font-size: 28px;
@@ -105,7 +115,8 @@
 
 /* ---------------- EXPERIENCE HEADER ---------------- */
 
-.profile-xp-header {
+.profile-xp-header
+{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -114,18 +125,21 @@
 }
 
 .profile-xp-level,
-.profile-xp-total {
+.profile-xp-total
+{
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.profile-xp-total {
+.profile-xp-total
+{
     align-items: flex-end;
     text-align: right;
 }
 
-.profile-xp-label {
+.profile-xp-label
+{
     color: var(--text);
     font-size: 11px;
     font-weight: 700;
@@ -133,13 +147,15 @@
     opacity: 0.55;
 }
 
-.profile-xp-level strong {
+.profile-xp-level strong
+{
     color: var(--dark-green);
     font-size: 30px;
     line-height: 1.2;
 }
 
-.profile-xp-total strong {
+.profile-xp-total strong
+{
     color: var(--text);
     font-size: 22px;
     line-height: 1.2;
@@ -148,11 +164,13 @@
 
 /* ---------------- EXPERIENCE PROGRESS ---------------- */
 
-.profile-xp-progress {
+.profile-xp-progress
+{
     width: 100%;
 }
 
-.profile-xp-progress-info {
+.profile-xp-progress-info
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -162,16 +180,18 @@
     font-weight: 600;
 }
 
-.profile-xp-bar {
+.profile-xp-bar
+{
     width: 100%;
     height: 16px;
     overflow: hidden;
-    background-color: var(--background);
+    background-color: var(--card-background);
     border: 1px solid var(--border);
     border-radius: 999px;
 }
 
-.profile-xp-fill {
+.profile-xp-fill
+{
     height: 100%;
     min-width: 0;
     background-color: var(--dark-green);
@@ -179,7 +199,8 @@
     transition: width 0.3s ease;
 }
 
-.profile-xp-progress-footer {
+.profile-xp-progress-footer
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -193,29 +214,33 @@
 
 /* ---------------- EXPERIENCE SUMMARY ---------------- */
 
-.profile-xp-summary {
+.profile-xp-summary
+{
     margin-top: 25px;
     padding: 15px 18px;
-    background-color: var(--background);
+    background-color: var(--card-background);
     border: 1px solid var(--border);
     border-radius: 10px;
 }
 
-.profile-xp-summary p {
+.profile-xp-summary p
+{
     margin: 0;
     color: var(--text);
     font-size: 13px;
     line-height: 1.6;
 }
 
-.profile-xp-summary strong {
+.profile-xp-summary strong
+{
     color: var(--dark-green);
 }
 
 
 /* ---------------- FAVOURITES ---------------- */
 
-.profile-favourites-description {
+.profile-favourites-description
+{
     margin: -15px 0 25px;
     color: var(--text);
     font-size: 13px;
@@ -226,7 +251,8 @@
 
 /* ---------------- FAVOURITES GRID ---------------- */
 
-.profile-favourites-grid {
+.profile-favourites-grid
+{
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
@@ -236,7 +262,8 @@
 
 /* ---------------- FAVOURITE CARD ---------------- */
 
-.profile-favourite-card {
+.profile-favourite-card
+{
     width: 100%;
     min-width: 0;
 }
@@ -244,26 +271,29 @@
 
 /* ---------------- FAVOURITES EMPTY STATE ---------------- */
 
-.profile-favourites-empty {
+.profile-favourites-empty
+{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 180px;
     padding: 30px;
-    background-color: var(--background);
+    background-color: var(--card-background);
     border: 1px dashed var(--border);
     border-radius: 12px;
     text-align: center;
 }
 
-.profile-favourites-empty h3 {
+.profile-favourites-empty h3
+{
     margin: 0 0 10px;
     color: var(--text);
     font-size: 20px;
 }
 
-.profile-favourites-empty p {
+.profile-favourites-empty p
+{
     max-width: 450px;
     margin: 0 0 20px;
     color: var(--text);
@@ -272,7 +302,8 @@
     opacity: 0.6;
 }
 
-.profile-favourites-empty a {
+.profile-favourites-empty a
+{
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -290,7 +321,8 @@
         transform 0.2s ease;
 }
 
-.profile-favourites-empty a:hover {
+.profile-favourites-empty a:hover
+{
     background-color: var(--orange);
     border-color: var(--orange);
     transform: translateY(-1px);
@@ -299,7 +331,8 @@
 
 /* ---------------- PROFILE ACCOUNT ---------------- */
 
-.profile-account {
+.profile-account
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -310,17 +343,19 @@
 
 /* ---------------- PROFILE AVATAR ---------------- */
 
-.profile-avatar {
+.profile-avatar
+{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.profile-avatar img {
+.profile-avatar img
+{
     width: 140px;
     height: 140px;
     object-fit: cover;
-    background-color: var(--card-background);
+    background-color: var(--card);
     border: 2px solid var(--border);
     border-radius: 50%;
 }
@@ -328,7 +363,8 @@
 
 /* ---------------- PROFILE FORM ---------------- */
 
-.profile-form {
+.profile-form
+{
     display: flex;
     flex-direction: column;
     gap: 22px;
@@ -338,22 +374,25 @@
 
 /* ---------------- PROFILE INPUT GROUP ---------------- */
 
-.profile-input-group {
+.profile-input-group
+{
     display: flex;
     flex-direction: column;
     gap: 9px;
 }
 
-.profile-input-group label {
+.profile-input-group label
+{
     color: var(--text);
     font-size: 14px;
     font-weight: 600;
 }
 
-.profile-input-group input {
+.profile-input-group input
+{
     width: 100%;
     padding: 13px 15px;
-    background-color: var(--background);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 9px;
     color: var(--text);
@@ -366,17 +405,20 @@
         box-shadow 0.2s ease;
 }
 
-.profile-input-group input:focus {
+.profile-input-group input:focus
+{
     border-color: var(--dark-green);
     box-shadow: 0 0 0 3px rgba(66, 130, 57, 0.12);
 }
 
-.profile-input-group input::placeholder {
+.profile-input-group input::placeholder
+{
     color: var(--text);
     opacity: 0.45;
 }
 
-.profile-input-group input[type="file"] {
+.profile-input-group input[type="file"]
+{
     padding: 10px 12px;
     cursor: pointer;
 }
@@ -384,7 +426,8 @@
 
 /* ---------------- PROFILE FORM HELP ---------------- */
 
-.profile-form-help {
+.profile-form-help
+{
     margin: 0;
     color: var(--text);
     font-size: 12px;
@@ -395,7 +438,8 @@
 
 /* ---------------- PROFILE INFORMATION ---------------- */
 
-.profile-information {
+.profile-information
+{
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -403,24 +447,27 @@
     margin-top: 5px;
 }
 
-.profile-information-item {
+.profile-information-item
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     padding: 15px 18px;
-    background-color: var(--background);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
 }
 
-.profile-information-label {
+.profile-information-label
+{
     color: var(--dark-green);
     font-size: 13px;
     font-weight: 700;
 }
 
-.profile-information-value {
+.profile-information-value
+{
     color: var(--text);
     font-size: 13px;
     text-align: right;
@@ -429,7 +476,8 @@
 
 /* ---------------- PROFILE BUTTON ---------------- */
 
-.profile-button {
+.profile-button
+{
     align-self: flex-end;
     padding: 12px 22px;
     background-color: var(--orange);
@@ -447,7 +495,8 @@
         transform 0.2s ease;
 }
 
-.profile-button:hover {
+.profile-button:hover
+{
     background-color: var(--gold);
     border-color: var(--gold);
     color: var(--text);
@@ -457,105 +506,128 @@
 
 /* ---------------- RESPONSIVE LAYOUT ---------------- */
 
-@media (max-width: 900px) {
+@media (max-width: 900px)
+{
 
-    .profile-favourites-grid {
+    .profile-favourites-grid
+    {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 800px)
+{
 
-    .profile-page {
+    .profile-page
+    {
         padding: 50px 20px 60px;
     }
 
-    .profile-section {
+    .profile-section
+    {
         padding: 30px;
     }
 
-    .profile-xp-header {
+    .profile-xp-header
+    {
         align-items: flex-start;
     }
 
-    .profile-button {
+    .profile-button
+    {
         align-self: flex-start;
     }
 
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 600px)
+{
 
-    .profile-page {
+    .profile-page
+    {
         padding: 40px 15px 50px;
     }
 
-    .profile-logo img {
+    .profile-logo img
+    {
         width: 90px;
         height: 90px;
     }
 
-    .profile-title {
+    .profile-title
+    {
         font-size: 34px;
     }
 
-    .profile-section {
+    .profile-section
+    {
         padding: 25px 20px;
         border-radius: 14px;
     }
 
-    .profile-section h2 {
+    .profile-section h2
+    {
         margin-bottom: 25px;
         font-size: 24px;
     }
 
-    .profile-xp-header {
+    .profile-xp-header
+    {
         flex-direction: column;
         gap: 20px;
         align-items: flex-start;
     }
 
-    .profile-xp-total {
+    .profile-xp-total
+    {
         align-items: flex-start;
         text-align: left;
     }
 
-    .profile-xp-level strong {
+    .profile-xp-level strong
+    {
         font-size: 27px;
     }
 
-    .profile-xp-total strong {
+    .profile-xp-total strong
+    {
         font-size: 20px;
     }
 
     .profile-xp-progress-info,
-    .profile-xp-progress-footer {
+    .profile-xp-progress-footer
+    {
         font-size: 11px;
     }
 
-    .profile-favourites-grid {
+    .profile-favourites-grid
+    {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
-    .profile-favourites-description {
+    .profile-favourites-description
+    {
         margin-top: -10px;
     }
 
-    .profile-information-item {
+    .profile-information-item
+    {
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
     }
 
-    .profile-information-value {
+    .profile-information-value
+    {
         text-align: left;
     }
 
-    .profile-button {
+    .profile-button
+    {
         width: 100%;
         text-align: center;
     }

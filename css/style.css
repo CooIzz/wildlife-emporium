@@ -14,11 +14,11 @@
 
 :root {
 
-    --background: rgb(245, 240, 230);
+    --background: rgb(245, 240, 230); /* always for page bg */
 
-    --text: rgb(54, 23, 5);
+    --text: rgb(54, 23, 5); /* always for page text */
 
-    --dark-green: rgb(66, 130, 57);
+    --dark-green: rgb(66, 130, 57); 
     --light-green: rgb(123, 182, 98);
 
     --gold: rgb(251, 177, 73);
@@ -27,11 +27,11 @@
     --dark-purple: rgb(115, 51, 129);
     --light-purple: rgb(153, 79, 178);
 
-    --card: rgb(255, 255, 245);
-    --card-background: rgb(248, 238, 219);
+    --card: rgb(255, 255, 245); /* use this interchangeably with cardbg */
+    --card-background: rgb(248, 238, 219); /* used to contrast with the main card color up to u */
 
-    --border: rgb(220, 215, 205);
-    --shadow: rgba(0, 0, 0, 0.10);
+    --border: rgb(220, 215, 205); /*not a must*/
+    --shadow: rgba(0, 0, 0, 0.10); /*not a must*/
 
 }
 

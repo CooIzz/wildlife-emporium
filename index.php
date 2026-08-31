@@ -394,7 +394,7 @@ if ($articleStatement)
                                     <div class="home-article-image">
 
                                         <img
-                                            src="images/<?php echo htmlspecialchars($article["image_name"], ENT_QUOTES, "UTF-8"); ?>"
+                                            src="images/articles/<?php echo htmlspecialchars($article["image_name"], ENT_QUOTES, "UTF-8"); ?>"
                                             alt="<?php echo htmlspecialchars($article["image_caption"], ENT_QUOTES, "UTF-8"); ?>"
                                         >
 
@@ -464,51 +464,51 @@ if ($articleStatement)
 
         <!-- Quiz -->
 
-<section class="home-quiz">
+        <section class="home-quiz">
 
-    <div class="home-section-heading">
+            <div class="home-section-heading">
 
-        <p class="home-section-label">
-            CHALLENGE YOURSELF
-        </p>
+                <p class="home-section-label">
+                    CHALLENGE YOURSELF
+                </p>
 
-        <h2>
-            Wildlife Quiz
-        </h2>
+                <h2>
+                    Wildlife Quiz
+                </h2>
 
-    </div>
+            </div>
 
 
-    <div class="home-quiz-card">
+            <div class="home-quiz-card">
 
-        <div class="home-quiz-content">
+                <div class="home-quiz-content">
 
-            <p class="home-quiz-category">
-                TEST YOUR KNOWLEDGE
-            </p>
+                    <p class="home-quiz-category">
+                        TEST YOUR KNOWLEDGE
+                    </p>
 
-            <h3>
-                How well do you know the wild?
-            </h3>
+                    <h3>
+                        How well do you know the wild?
+                    </h3>
 
-            <p>
-                Put your wildlife knowledge to the test with our curated collection of quizzes.
-                Challenge yourself, learn something new, and see how much you really know about
-                the animal kingdom.
-            </p>
+                    <p>
+                        Put your wildlife knowledge to the test with our curated collection of quizzes.
+                        Challenge yourself, learn something new, and see how much you really know about
+                        the animal kingdom.
+                    </p>
 
-            <a
-                href="quiz/index.php"
-                class="home-quiz-link"
-            >
-                Take the Quiz
-            </a>
+                    <a
+                        href="quiz/index.php"
+                        class="home-quiz-link"
+                    >
+                        Take the Quiz
+                    </a>
 
-        </div>
+                </div>
 
-    </div>
+            </div>
 
-</section>
+        </section>
 
     </main>
 
