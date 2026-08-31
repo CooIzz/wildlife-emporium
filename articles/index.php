@@ -74,7 +74,7 @@ if (!empty($articles)):
 <?php if (isset($articles[0])): ?>    
 <section class="article-sec1">
     <div class="card article-card1">
-        <img src="../images/<?php echo htmlspecialchars($articles[0]['image_name']);?>"
+        <img src="../images/articles/<?php echo htmlspecialchars($articles[0]['image_name']);?>"
         alt="<?php echo htmlspecialchars($articles[0]['image_caption']); ?>">
     </div>
     <div class="article-sum1">
@@ -110,7 +110,7 @@ while ($i < $total_articles):
                     </div>
 
                     <div class="card article-card2">
-                        <img src="../images/<?php echo htmlspecialchars($articles[$i]['image_name']);?>"
+                        <img src="../images/articles/<?php echo htmlspecialchars($articles[$i]['image_name']);?>"
                         alt="<?php echo htmlspecialchars($articles[$i]['image_caption']); ?>">
                     </div>
                 </div>
@@ -119,7 +119,7 @@ while ($i < $total_articles):
             <?php if (isset($articles[$i + 1])): ?>
                 <div class="article-textR">
                     <div class="card article-card2">
-                        <img src="../images/<?php echo htmlspecialchars($articles[$i + 1]['image_name']);?>"
+                        <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 1]['image_name']);?>"
                         alt="<?php echo htmlspecialchars($articles[$i + 1]['image_caption']); ?>">
                     </div>
                         
@@ -142,7 +142,7 @@ while ($i < $total_articles):
                     </div>
 
                     <div class="card article-card2">
-                        <img src="../images/<?php echo htmlspecialchars($articles[$i + 2]['image_name']);?>"
+                        <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 2]['image_name']);?>"
                         alt="<?php echo htmlspecialchars($articles[$i + 2]['image_caption']); ?>">
                     </div>
                 </div>
@@ -152,7 +152,7 @@ while ($i < $total_articles):
         <?php if (isset($articles[$i + 3])): ?>
         <div class="article-sidebar">
             <div class="card article-card3">
-                <img src="../images/<?php echo htmlspecialchars($articles[$i + 3]['image_name']);?>"
+                <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 3]['image_name']);?>"
                 alt="<?php echo htmlspecialchars($articles[$i + 3]['image_caption']); ?>"> 
             </div>
             <div class="article-sum3">
@@ -180,7 +180,7 @@ while ($i < $total_articles):
         <div class="article-sidebar2">
             <?php if(isset($articles[$i])): ?>
                 <div class="card article-card4">
-                    <img src="../images/<?php echo htmlspecialchars($articles[$i]['image_name']);?>"
+                    <img src="../images/articles/<?php echo htmlspecialchars($articles[$i]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i]['image_caption']); ?>">
                 </div>
                 <div class="article-sum3">
@@ -193,7 +193,7 @@ while ($i < $total_articles):
 
             <?php if(isset($articles[$i + 1])): ?>
                 <div class="card article-card4">
-                    <img src="../images/<?php echo htmlspecialchars($articles[$i + 1]['image_name']);?>"
+                    <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 1]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i + 1]['image_caption']); ?>">
                 </div>
                 <div class="article-sum3">
@@ -215,7 +215,7 @@ while ($i < $total_articles):
                     <p><?php echo htmlspecialchars($articles[$i + 2]['summary']); ?></p>
                 </div>    
                 <div class="card article-card2">
-                    <img src="../images/<?php echo htmlspecialchars($articles[$i + 2]['image_name']);?>"
+                    <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 2]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i + 2]['image_caption']); ?>">
                 </div>
             </div>
@@ -224,7 +224,7 @@ while ($i < $total_articles):
             <?php if(isset($articles[$i + 3])): ?>
             <div class="article-textR">
                 <div class="card article-card2">
-                    <img src="../images/<?php echo htmlspecialchars($articles[$i + 3]['image_name']);?>"
+                    <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 3]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i + 3]['image_caption']); ?>">
                 </div>
                 <div class="article-sum2">
@@ -245,7 +245,7 @@ while ($i < $total_articles):
                     <p><?php echo htmlspecialchars($articles[$i + 4]['summary']); ?></p>
                 </div>    
                 <div class="card article-card2">
-                    <img src="../images/<?php echo htmlspecialchars($articles[$i + 4]['image_name']);?>"
+                    <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 4]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i + 4]['image_caption']); ?>">
                 </div>
             </div>
@@ -254,7 +254,7 @@ while ($i < $total_articles):
             <?php if(isset($articles[$i + 5])): ?>
             <div class="article-textR">
                 <div class="card article-card2">
-                    <img src="../images/<?php echo htmlspecialchars($articles[$i + 5]['image_name']);?>"
+                    <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 5]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i + 5]['image_caption']); ?>">
                 </div>
                 <div class="article-sum2">
@@ -279,7 +279,7 @@ $pattern = 'A'; //back to pattern A layout
 <?php if(isset($articles[$i]) && $i< $total_articles): ?>
     <section class="article-sec1">
     <div class="card article-card1">
-        <img src="../images/<?php echo htmlspecialchars($articles[$i]['image_name']);?>"
+        <img src="../images/articles/<?php echo htmlspecialchars($articles[$i]['image_name']);?>"
         alt="<?php echo htmlspecialchars($articles[$i]['image_caption']); ?>">
     </div>
     <div class="article-sum1">

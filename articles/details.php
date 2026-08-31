@@ -217,7 +217,7 @@ mysqli_stmt_close($statement_suggested);
     <!-- main article image-->
     <?php if (!empty($main_article['image_name'])): ?>
     <figure class="article-pg-img1">
-        <img src="../images/<?php echo htmlspecialchars($main_article['image_name']); ?>"
+        <img src="../images/articles/<?php echo htmlspecialchars($main_article['image_name']); ?>"
         alt="<?php echo htmlspecialchars($main_article['image_caption']); ?>">
         <?php if (!empty($main_article['image_caption'])): ?>
         <figcaption class="img1-caption"><?php echo htmlspecialchars($main_article['image_caption']); ?></figcaption>
@@ -232,7 +232,7 @@ mysqli_stmt_close($statement_suggested);
         <!-- add. image for article -->
         <?php if (!empty($main_article['image_name2'])): ?>
         <figure class="article-pg-img2">
-            <img src="../images/<?php echo htmlspecialchars($main_article['image_name2']); ?>"
+            <img src="../images/articles/<?php echo htmlspecialchars($main_article['image_name2']); ?>"
              alt="<?php echo htmlspecialchars($main_article['image_caption2']); ?>">
             <figcaption class="img2-caption"><?php echo htmlspecialchars($main_article['image_caption2']); ?></figcaption>
         </figure>
@@ -298,7 +298,7 @@ mysqli_stmt_close($statement_suggested);
             <!-- Suggested Card -->
             <div class="suggested-card">
                 <div class="suggested-card-img">
-                    <img src="../images/<?php echo htmlspecialchars($suggested['image_name']); ?>"
+                    <img src="../images/articles/<?php echo htmlspecialchars($suggested['image_name']); ?>"
                      alt="<?php echo htmlspecialchars($suggested['image_caption']); ?>">
                 </div>
                 <div class="suggested-card-body">
