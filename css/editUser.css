@@ -1,0 +1,202 @@
+/*this section is for the edit user section*/
+
+.edit-user-section {
+    width: 100%;
+}
+
+
+/*this section is for the edit user heading*/
+
+.edit-user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.edit-user-header h2 {
+    color: var(--text);
+    font-size: 34px;
+}
+
+.edit-user-header > p {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.7;
+}
+
+
+/*this section is for messages*/
+
+.user-message {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.user-message.success {
+    background: var(--light-green);
+    color: var(--text);
+}
+
+.user-message.error {
+    background: var(--orange);
+    color: var(--card);
+}
+
+
+/*this section is for the edit user form*/
+
+.edit-user-form-container {
+    width: 100%;
+    padding: 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px var(--shadow);
+    box-sizing: border-box;
+}
+
+.edit-user-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/*this section is for the form fields*/
+
+.edit-user-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.edit-user-field label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/*this section is for the input boxes*/
+
+.edit-user-field input {
+    width: 100%;
+    padding: 11px 12px;
+    background: var(--card-background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.edit-user-field input:focus {
+    outline: none;
+    border-color: var(--dark-green);
+}
+
+
+/*this section is for the disabled role box*/
+
+.edit-user-field input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/*this section is for the form actions*/
+
+.edit-user-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.user-action-cancel,
+.user-action-save {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/*this section is for the cancel button*/
+
+.user-action-cancel {
+    background: var(--light-green);
+    color: var(--text);
+}
+
+.user-action-cancel:hover {
+    background: var(--dark-green);
+    color: var(--card);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for the save button*/
+
+.user-action-save {
+    border: none;
+    background: var(--dark-green);
+    color: var(--card);
+    cursor: pointer;
+}
+
+.user-action-save:hover {
+    background: var(--light-green);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+
+/*this section is for responsive layout*/
+
+@media (max-width: 800px) {
+
+    .edit-user-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .edit-user-header h2 {
+        font-size: 28px;
+    }
+
+    .edit-user-form-container {
+        padding: 20px;
+    }
+
+    .edit-user-actions {
+        flex-direction: column;
+    }
+
+    .user-action-cancel,
+    .user-action-save {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+}

@@ -1494,13 +1494,9 @@ if ($profilePicture === "default-avatar.png") {
 
     </main>
 
-
     <?php include("../includes/footer.php"); ?>
 
-
-    <!-- Animal card flip functionality -->
-
-    <script src="../js/animals-flip.js"></script>
+    <script src="../js/script.js"></script>
 
 
     <!-- Profile validation -->

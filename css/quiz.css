@@ -1,11 +1,10 @@
 /*
-----------Structure of contents within topical box----------
+\----------Structure of contents within topical box----------
 */
 /*
 This styling is structure within each topical box
-*/
+\*/
 .QuizTopic {
-
     text-align: center;
     font-weight: 900;
     font-size: x-large;
@@ -21,34 +20,29 @@ This styling is structure within each topical box
     justify-content: center;
     align-items: center;
     transition: width 2.5s 0.5ms linear, height 2.5s 0.5ms linear;
-
 }
 
 .QuizTopic:hover {
-
     width: 30rem;
     height: 25rem;
-
 }
 
 /*
-----------Structure of all topical boxes----------
+\----------Structure of all topical boxes----------
 */
 
 /*
 This styling is for background animation
-in the quiz index page 
+in the quiz index page
 */
 
 @keyframes bgColorChange {
-	
-	0% { background-color: rgb(204, 255, 255); }
-	20% { background-color: rgb(243, 174, 190); }
-	40% { background-color: rgb(255, 189, 254); }
-	60% { background-color: rgb(255, 255, 204); }
-	80% { background-color: rgb(254, 216, 122); }
-	100% { background-color: rgb(174, 243, 183); }
-	
+    0% { background-color: rgb(204, 255, 255); }
+    20% { background-color: rgb(243, 174, 190); }
+    40% { background-color: rgb(255, 189, 254); }
+    60% { background-color: rgb(255, 255, 204); }
+    80% { background-color: rgb(254, 216, 122); }
+    100% { background-color: rgb(174, 243, 183); }
 }
 
 /*
@@ -56,24 +50,20 @@ This styling is to arrange all the topical boxes
 in a glass-panel like arrangement structure
 */
 #main_section {
-
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-	animation: bgColorChange 20s infinite ease-in-out alternate;
-
+    animation: bgColorChange 20s infinite ease-in-out alternate;
 }
 
 
 
 .quiz-page section {
-	
-	display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-	
 }
 
 /*
@@ -81,19 +71,15 @@ This is to style all the images within the index page
 of the quiz section
 */
 .animal {
-
     object-fit: contain;
     width: 350px; 
     height: 275px;
     transition: width 2.5s 0.5ms linear, height 2.5s 0.5ms linear;
-
 }
 
 .animal:hover {
-
     width: 435px;
     height: 360px;
-
 }
 
 /*
@@ -102,35 +88,28 @@ within the index page of the quiz section regardless
 of whether it has been visited or not
 */
 .QuizTopic a, .QuizTopic a:visited {
-
     text-decoration: none;
     color: rgb(0, 0, 255);
-
 }
 
 /*
 This styling is for when the user hovers the mouse
-over any of the hyperlinks within the index page 
+over any of the hyperlinks within the index page
 of the quiz section
 */
 .QuizTopic a:hover {
-
     color: rgb(255, 0, 0);
     text-decoration: underline;
-
 }
 
-
-span {
-
+.quiz-page span {
     font-weight: 900;
     font-size: 18px;
     color: rgb(0, 0, 255);
-
 }
 
 /*
-----------Structure of all individual quiz pages----------
+\----------Structure of all individual quiz pages----------
 */
 
 /*
@@ -138,7 +117,6 @@ This styling is to style the images within the animal
 pages for all the 3(easy, medium and difficult) levels
 */
 .mainAnimals {
-
     object-fit: contain;
     display: flex;
     flex-direction: row;
@@ -147,44 +125,36 @@ pages for all the 3(easy, medium and difficult) levels
 }
 
 /*
-This styling is to format the questions for all the 
+This styling is to format the questions for all the
 topics within all the 3 difficulty levels
 */
-ol li {
-
+.quiz-page ol li {
     margin: 5px 25px 10px;
-
 }
 
 /*
-This styling is to format the labeling of the answers to 
+This styling is to format the labeling of the answers to
 the questions
 */
-ol li label {
-
+.quiz-page ol li label {
     font-weight: 700;
-
 }
 
 /*
-This styling is to set the font size of everything 
+This styling is to set the font size of everything
 within the ordered lists
 */
 
-ol * {
-	
-	font-size: 20px;
-
+.quiz-page ol * {
+    font-size: 20px;
 }
 /*
 This styling is to ensure that the indices of the
 questions is within the alloted box
 */
 
-ol {
-	
-	list-style-position: inside;
-	
+.quiz-page ol {
+    list-style-position: inside;
 }
 
 /*
@@ -192,53 +162,43 @@ This styling is to align the paragraphs to the center
 */
 
 .quiz-page p {
-	
-	text-align: center;
-	
+    text-align: center;
 }
 
 /*
 To style the headers of the quiz section
 */
 .quiz-page h1 {
-
     font-size:40px;
-	text-align: center;
-
+    text-align: center;
 }
 
 .animalIntroduction {
-
     text-align: center;
     font-style: italic;
     font-size: larger;
     font-weight: 600;
-
 }
 
 /*
 To style the legend of each form
 */
 
-legend {
-	
-	text-align: center;
-	text-decoration: underline;
-	font-weight: 900;
-	font-style: italic;
-	font-size: 40px;
-	
+.quiz-page legend {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 40px;
 }
 
 #quiz_error {
-	
-	color: red;
-	font-weight: 900;
-	
+    color: red;
+    font-weight: 900;
 }
 
 /*
-----------Styling for the score leadership table----------
+\----------Styling for the score leadership table----------
 */
 
 /*
@@ -246,59 +206,49 @@ legend {
 */
 
 .leaderboardArticle {
-
     display: flex;
     flex-direction: column;
     justify-content: center;   
     border: 2px solid black;   
-
 }
 
 .leaderboardArticle * {
-
     text-align: center;
-    
-
 }
 
 /*
-To toggle the display property for the 
+To toggle the display property for the
 scoreboard table
 */
 
-.hidden {
-	
-	display: none;
-	
+.quiz-page .hidden {
+    display: none;
 }
 
 /*
-For the background color of the 
+For the background color of the
 scoreboard table
 */
 
 @keyframes bgColorChange2 {
-	
-	0% { background-color: #F5F5DC; }
-	25% { background-color: #FFE4C4; }
-	50% { background-color: #F0F8FF; }
-	75% { background-color: #F0FFFF; }
-	100% { background-color: #DCDCDC; }
-	
-	
+    0% { background-color: #F5F5DC; }
+    25% { background-color: #FFE4C4; }
+    50% { background-color: #F0F8FF; }
+    75% { background-color: #F0FFFF; }
+    100% { background-color: #DCDCDC; }
 }
 
 /*
 To style the scoreboard table's borders
 */
 
-table, tr, th, td {
-	
-	border: solid black 2px;
-	border-collapse: collapse;
-	padding: 5px;
-	text-align: center;
-	animation: bgColorChange2 infinite 20s ease-in-out;
-	
+.quiz-page table,
+.quiz-page tr,
+.quiz-page th,
+.quiz-page td {
+    border: solid black 2px;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+    animation: bgColorChange2 infinite 20s ease-in-out;
 }
-

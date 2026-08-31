@@ -2,13 +2,16 @@
 
 require_once(__DIR__ . "/database.php");
 
-// Load XP configuration
+
+// --------------------------------------------------
+// XP Configuration
+// --------------------------------------------------
 
 $statement = mysqli_prepare(
     $connection,
-    "SELECT xpBase,xpPower,maxLevel
-    FROM xp_config
-    WHERE configID = 1"
+    "SELECT xpBase, xpPower, maxLevel
+     FROM xp_config
+     WHERE configID = 1"
 );
 
 if (!$statement)
@@ -32,11 +35,14 @@ $xpBase = (int) $config["xpBase"];
 $xpPower = (float) $config["xpPower"];
 $maxLevel = (int) $config["maxLevel"];
 
+
+// --------------------------------------------------
 // Calculate XP required for a level
+// --------------------------------------------------
 
 function getXPForLevel($level)
 {
-    global $xpBase,$xpPower,$maxLevel;
+    global $xpBase, $xpPower, $maxLevel;
 
     if ($level <= 1)
     {
@@ -48,10 +54,13 @@ function getXPForLevel($level)
         $level = $maxLevel;
     }
 
-    return (int) round($xpBase * pow($level - 1,$xpPower));
+    return (int) round($xpBase * pow($level - 1, $xpPower));
 }
 
-// Calculate level from XP
+
+// --------------------------------------------------
+// Calculate user's level from XP
+// --------------------------------------------------
 
 function calculateLevel($xp)
 {
@@ -72,20 +81,26 @@ function calculateLevel($xp)
     return $level;
 }
 
+
+// --------------------------------------------------
 // Get user's XP
+// --------------------------------------------------
 
 function getUserXP($userID)
 {
     global $connection;
 
-    $statement = mysqli_prepare($connection,"SELECT xp FROM users WHERE userID = ?");
+    $statement = mysqli_prepare(
+        $connection,
+        "SELECT xp FROM users WHERE userID = ?"
+    );
 
     if (!$statement)
     {
         return false;
     }
 
-    mysqli_stmt_bind_param($statement,"i",$userID);
+    mysqli_stmt_bind_param($statement, "i", $userID);
     mysqli_stmt_execute($statement);
 
     $result = mysqli_stmt_get_result($statement);
@@ -101,7 +116,10 @@ function getUserXP($userID)
     return (int) $data["xp"];
 }
 
+
+// --------------------------------------------------
 // Get user's level
+// --------------------------------------------------
 
 function getUserLevel($userID)
 {
@@ -115,18 +133,18 @@ function getUserLevel($userID)
     return calculateLevel($xp);
 }
 
-// Give XP to a user
 
-function awardXP($userID,$amount,$reason)
+// --------------------------------------------------
+// Give XP to a user
+// --------------------------------------------------
+
+function awardXP($userID, $amount, $reason)
 {
     global $connection;
 
     if (!is_numeric($amount) || $amount <= 0)
     {
-        return [
-            "success" => false,
-            "message" => "Invalid XP amount."
-        ];
+        return false;
     }
 
     $amount = (int) $amount;
@@ -135,77 +153,47 @@ function awardXP($userID,$amount,$reason)
 
     if ($oldXP === false)
     {
-        return [
-            "success" => false,
-            "message" => "User not found."
-        ];
+        return false;
     }
 
-    $oldLevel = calculateLevel($oldXP);
     $newXP = $oldXP + $amount;
 
-    $statement = mysqli_prepare($connection,"UPDATE users SET xp = ? WHERE userID = ?");
+    $statement = mysqli_prepare(
+        $connection,
+        "UPDATE users SET xp = ? WHERE userID = ?"
+    );
 
     if (!$statement)
     {
-        return [
-            "success" => false,
-            "message" => "Failed to update XP."
-        ];
+        return false;
     }
 
-    mysqli_stmt_bind_param($statement,"ii",$newXP,$userID);
+    mysqli_stmt_bind_param(
+        $statement,
+        "ii",
+        $newXP,
+        $userID
+    );
+
     $success = mysqli_stmt_execute($statement);
 
     mysqli_stmt_close($statement);
 
-    if (!$success)
-    {
-        return [
-            "success" => false,
-            "message" => "Failed to update XP."
-        ];
-    }
-
-    $statement = mysqli_prepare($connection,"INSERT INTO xp_history (userID,amount,reason) VALUES (?,?,?)");
-
-    if (!$statement)
-    {
-        return [
-            "success" => false,
-            "message" => "XP was updated but history could not be recorded."
-        ];
-    }
-
-    mysqli_stmt_bind_param($statement,"iis",$userID,$amount,$reason);
-    mysqli_stmt_execute($statement);
-
-    mysqli_stmt_close($statement);
-
-    $newLevel = calculateLevel($newXP);
-
-    return [
-        "success" => true,
-        "oldXP" => $oldXP,
-        "newXP" => $newXP,
-        "oldLevel" => $oldLevel,
-        "newLevel" => $newLevel,
-        "levelUp" => $newLevel > $oldLevel
-    ];
+    return $success;
 }
 
-// Remove XP from a user
 
-function removeXP($userID,$amount,$reason)
+// --------------------------------------------------
+// Remove XP from a user
+// --------------------------------------------------
+
+function removeXP($userID, $amount, $reason)
 {
     global $connection;
 
     if (!is_numeric($amount) || $amount <= 0)
     {
-        return [
-            "success" => false,
-            "message" => "Invalid XP amount."
-        ];
+        return false;
     }
 
     $amount = (int) $amount;
@@ -214,77 +202,39 @@ function removeXP($userID,$amount,$reason)
 
     if ($oldXP === false)
     {
-        return [
-            "success" => false,
-            "message" => "User not found."
-        ];
+        return false;
     }
 
-    $oldLevel = calculateLevel($oldXP);
-    $newXP = max(0,$oldXP - $amount);
-    $actualAmountRemoved = $oldXP - $newXP;
+    $newXP = max(0, $oldXP - $amount);
 
-    if ($actualAmountRemoved <= 0)
-    {
-        return [
-            "success" => false,
-            "message" => "User has no XP to remove."
-        ];
-    }
-
-    $statement = mysqli_prepare($connection,"UPDATE users SET xp = ? WHERE userID = ?");
+    $statement = mysqli_prepare(
+        $connection,
+        "UPDATE users SET xp = ? WHERE userID = ?"
+    );
 
     if (!$statement)
     {
-        return [
-            "success" => false,
-            "message" => "Failed to update XP."
-        ];
+        return false;
     }
 
-    mysqli_stmt_bind_param($statement,"ii",$newXP,$userID);
+    mysqli_stmt_bind_param(
+        $statement,
+        "ii",
+        $newXP,
+        $userID
+    );
+
     $success = mysqli_stmt_execute($statement);
 
     mysqli_stmt_close($statement);
 
-    if (!$success)
-    {
-        return [
-            "success" => false,
-            "message" => "Failed to update XP."
-        ];
-    }
-
-    $historyAmount = -$actualAmountRemoved;
-
-    $statement = mysqli_prepare($connection,"INSERT INTO xp_history (userID,amount,reason) VALUES (?,?,?)");
-
-    if (!$statement)
-    {
-        return [
-            "success" => false,
-            "message" => "XP was updated but history could not be recorded."
-        ];
-    }
-
-    mysqli_stmt_bind_param($statement,"iis",$userID,$historyAmount,$reason);
-    mysqli_stmt_execute($statement);
-
-    mysqli_stmt_close($statement);
-
-    $newLevel = calculateLevel($newXP);
-
-    return [
-        "success" => true,
-        "oldXP" => $oldXP,
-        "newXP" => $newXP,
-        "oldLevel" => $oldLevel,
-        "newLevel" => $newLevel,
-        "levelDown" => $newLevel < $oldLevel
-    ];
+    return $success;
 }
 
+
+// --------------------------------------------------
 // Get user's XP progress
+// --------------------------------------------------
 
 function getXPProgress($userID)
 {
@@ -326,38 +276,9 @@ function getXPProgress($userID)
         "nextLevelXP" => $nextLevelXP,
         "progressXP" => $progressXP,
         "requiredXP" => $requiredXP,
-        "percentage" => round($percentage,2),
+        "percentage" => round($percentage, 2),
         "maxLevel" => false
     ];
-}
-
-// Get user's XP history
-
-function getXPHistory($userID)
-{
-    global $connection;
-
-    $statement = mysqli_prepare($connection,"SELECT amount,reason,createdAt FROM xp_history WHERE userID = ? ORDER BY createdAt DESC");
-
-    if (!$statement)
-    {
-        return false;
-    }
-
-    mysqli_stmt_bind_param($statement,"i",$userID);
-    mysqli_stmt_execute($statement);
-
-    $result = mysqli_stmt_get_result($statement);
-    $history = [];
-
-    while ($data = mysqli_fetch_assoc($result))
-    {
-        $history[] = $data;
-    }
-
-    mysqli_stmt_close($statement);
-
-    return $history;
 }
 
 ?>

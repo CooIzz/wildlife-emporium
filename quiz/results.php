@@ -2,8 +2,9 @@
 session_start();
 require_once("../includes/auth.php");
 requireLogin();
+require_once("../includes/xp.php");
 
-//Forming connection to MySQL database
+//Forming connection to the MySQL database
 include ("../includes/database.php");
 
 //Checking the type of HTTP request sent
@@ -42,13 +43,12 @@ if($_SERVER["REQUEST_METHOD"] !== "POST")
 	//Validating the answers
 	$unanswered = [];
 	$questions = [];
-	
 	if(mysqli_num_rows($animal_questions_result) > 0)
 	{
 		while($row = mysqli_fetch_assoc($animal_questions_result))
 		{
 			$questions[] = $row;
-			
+		
 			//In $_POST superglobal, the name of the question(which is $row['id'])
 			//in this case) is stored as the key while its value is the user's answers
 			//to the corresponding question
@@ -56,53 +56,82 @@ if($_SERVER["REQUEST_METHOD"] !== "POST")
 			{
 				$unanswered[] = $row['question_num'];
 			}
-									
+							
 		}
 		
 		if(!empty($unanswered))
+		{
+			$unanswered_list = implode(', ', $unanswered);
+									
+			//To store the error message
+			$_SESSION['quiz_error'] = "Please answer all questions before submitting. Unanswered: Q$unanswered_list";
+		
+			//To store the answered questions
+			$_SESSION['quiz_post'] = $_POST;
+			header("Location: quiz_page.php?animal_id=$animal_id&difficulty=$difficulty");
+			exit();
+		}
+		
+		//Evaluate the answers
+		$score = 0;
+		$num_of_q = count($questions);
+		$results_detail = [];
+		
+		foreach($questions as $question)
+		{
+			$answer = $_POST[$question['id']] ?? "";
+		
+			if($question['correct_ans'] === $answer)
 			{
-				$unanswered_list = implode(', ', $unanswered);
-											
-				//To store the error message
-				$_SESSION['quiz_error'] = "Please answer all questions before submitting. Unanswered: Q$unanswered_list";
-				
-				//To store the answered questions
-				$_SESSION['quiz_post'] = $_POST;
-				header("Location: quiz_page.php?animal_id=$animal_id&difficulty=$difficulty");
-				exit();
+				$score = $score + $question['score'];
 			}
-			
-			//Evaluate the answers
-			$score = 0;
-			$num_of_q = count($questions);
-			$results_detail = [];
-			
-			foreach($questions as $question)
-			{
-				$answer = $_POST[$question['id']] ?? "";
-				
-				if($question['correct_ans'] === $answer)
-				{
-					$score = $score + $question['score'];
-				}
-				
-				//Storing the results of all evaluations in an array
-				//of arrays of Resource Objects
-				$results_detail[] = [				
-				
-					'question_num' => $question['id'],
-					'question_text' => $question['question_text'],
-					'option_a' => $question['option_a'],
-					'option_b' => $question['option_b'],
-					'option_c' => $question['option_c'],
-					'option_d' => $question['option_d'],
-					'correct_ans' => $question['correct_ans'],
-					'submitted_ans' => $answer,
-					'is_correct' => $question['correct_ans'] === $answer,
-								
-				];				
-			}			
-			
+		
+			//Storing the results of all evaluations in an array
+			//of arrays of Resource Objects
+			$results_detail[] = [			
+		
+				'question_num' => $question['id'],
+				'question_text' => $question['question_text'],
+				'option_a' => $question['option_a'],
+				'option_b' => $question['option_b'],
+				'option_c' => $question['option_c'],
+				'option_d' => $question['option_d'],
+				'correct_ans' => $question['correct_ans'],
+				'submitted_ans' => $answer,
+				'is_correct' => $question['correct_ans'] === $answer,
+						
+			];			
+		}		
+
+		// --------------------------------------------------
+		// This section is for granting EXP for completing the quiz
+		// --------------------------------------------------
+
+		$userID = $_SESSION['userID'];
+
+		if($difficulty === "easy")
+		{
+			$xpReward = 10;
+		}
+		elseif($difficulty === "medium")
+		{
+			$xpReward = 20;
+		}
+		else
+		{
+			$xpReward = 30;
+		}
+
+		awardXP(
+			$userID,
+			$xpReward,
+			"Completed $difficulty quiz"
+		);
+
+		// --------------------------------------------------
+		// End of EXP granting section
+		// --------------------------------------------------
+	
 	}
 	
 }
@@ -207,6 +236,7 @@ mysqli_query($connection, $user_score_update);
 
 
 <?php include("../includes/footer.php"); ?>
+<script src="../js/script.js"></script>
 
 <?php mysqli_close($connection); ?>
 </body>

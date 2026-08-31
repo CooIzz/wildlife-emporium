@@ -108,6 +108,7 @@ while($row = mysqli_fetch_assoc($result))
 
 </main>
 <?php include("../includes/footer.php"); ?>
+<script src="../js/script.js"></script>
 
 <script>
 

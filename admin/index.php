@@ -220,6 +220,42 @@ require_once("../includes/database.php");
                 </div>
 
 
+                <!--this section is for user management-->
+
+                <div class="admin-card">
+
+                    <div class="admin-card-content">
+
+                        <p class="admin-card-label">
+                            USER MANAGEMENT
+                        </p>
+
+                        <h2>
+                            Users
+                        </h2>
+
+                        <p>
+                            Edit and manage registered user accounts
+                            and their XP progression.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-card-footer">
+
+                        <a
+                            href="../admin/manageUsers.php"
+                            class="admin-manage-button"
+                        >
+                            Manage Users
+                        </a>
+
+                    </div>
+
+                </div>
+
+
             </section>
 
         </div>

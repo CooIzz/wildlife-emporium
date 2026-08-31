@@ -47,7 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         }
         else
         {
-            mysqli_stmt_bind_param($statement, "s", $username);
+            mysqli_stmt_bind_param(
+                $statement,
+                "s",
+                $username
+            );
+
             mysqli_stmt_execute($statement);
 
             $result = mysqli_stmt_get_result($statement);
@@ -55,7 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
             mysqli_stmt_close($statement);
 
-            if (!$user || !password_verify($password, $user["passwordHash"]))
+            if (
+                !$user ||
+                !password_verify(
+                    $password,
+                    $user["passwordHash"]
+                )
+            )
             {
                 $error = "Invalid username or password.";
             }
@@ -114,185 +125,279 @@ if (
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login | Wildlife Emporium</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/account.css">
+    <title>
+        Login | Wildlife Emporium
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/account.css"
+    >
 
 </head>
 
+
 <body>
 
-<?php include("../includes/header.php"); ?>
-<?php include("../includes/navigation.php"); ?>
+    <?php include("../includes/header.php"); ?>
 
-<main>
+    <?php include("../includes/navigation.php"); ?>
 
-    <section class="account-page">
 
-        <div class="account-card">
+    <main>
 
-            <div class="account-logo">
+        <section class="account-page">
 
-                <img
-                    src="../images/logo.png"
-                    alt="Wildlife Emporium Logo"
-                >
+            <div class="account-card">
 
-            </div>
 
-            <h1 class="account-title">
-                Welcome Back
-            </h1>
+                <div class="account-logo">
 
-            <p class="account-description">
-                Sign in to continue your Wildlife Emporium adventure.
-            </p>
-
-            <?php if ($error !== "") { ?>
-
-                <p class="account-error" id="login-error">
-                    <?php echo htmlspecialchars($error, ENT_QUOTES, "UTF-8"); ?>
-                </p>
-
-            <?php } else { ?>
-
-                <p class="account-error" id="login-error" style="display: none;"></p>
-
-            <?php } ?>
-
-            <form
-                class="account-form"
-                action=""
-                method="post"
-                autocomplete="on"
-                id="login-form"
-                novalidate
-            >
-
-                <input
-                    type="hidden"
-                    name="redirect"
-                    value="<?php echo htmlspecialchars($redirect, ENT_QUOTES, "UTF-8"); ?>"
-                >
-
-                <div class="account-input-group">
-
-                    <label for="username">
-                        Username
-                    </label>
-
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder="Enter your username"
-                        value="<?php echo htmlspecialchars($username, ENT_QUOTES, "UTF-8"); ?>"
-                        autocomplete="username"
-                        required
+                    <img
+                        src="../images/logo.png"
+                        alt="Wildlife Emporium Logo"
                     >
 
                 </div>
 
-                <div class="account-input-group">
 
-                    <label for="password">
-                        Password
-                    </label>
+                <h1 class="account-title">
+                    Welcome Back
+                </h1>
+
+
+                <p class="account-description">
+                    Sign in to continue your Wildlife Emporium adventure.
+                </p>
+
+
+                <?php if ($error !== ""): ?>
+
+                    <p
+                        class="account-error"
+                        id="login-error"
+                    >
+                        <?php echo htmlspecialchars(
+                            $error,
+                            ENT_QUOTES,
+                            "UTF-8"
+                        ); ?>
+                    </p>
+
+                <?php else: ?>
+
+                    <p
+                        class="account-error"
+                        id="login-error"
+                        style="display: none;"
+                    ></p>
+
+                <?php endif; ?>
+
+
+                <form
+                    class="account-form"
+                    action=""
+                    method="post"
+                    autocomplete="on"
+                    id="login-form"
+                    novalidate
+                >
 
                     <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Enter your password"
-                        autocomplete="current-password"
-                        required
+                        type="hidden"
+                        name="redirect"
+                        value="<?php echo htmlspecialchars(
+                            $redirect,
+                            ENT_QUOTES,
+                            "UTF-8"
+                        ); ?>"
                     >
+
+
+                    <div class="account-input-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your username"
+                            value="<?php echo htmlspecialchars(
+                                $username,
+                                ENT_QUOTES,
+                                "UTF-8"
+                            ); ?>"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="account-input-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="account-button"
+                    >
+                        Log In
+                    </button>
+
+                </form>
+
+
+                <div class="account-footer">
+
+                    <p>
+                        Don't have an account?
+                    </p>
+
+                    <a
+                        href="register.php"
+                        class="account-secondary-button"
+                    >
+                        Create Account
+                    </a>
 
                 </div>
 
-                <button type="submit" class="account-button">
-                    Log In
-                </button>
-
-            </form>
-
-            <div class="account-footer">
-
-                <p>
-                    Don't have an account?
-                </p>
-
-                <a
-                    href="register.php"
-                    class="account-secondary-button"
-                >
-                    Create Account
-                </a>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+    </main>
 
-</main>
 
-<?php include("../includes/footer.php"); ?>
+    <?php include("../includes/footer.php"); ?>
 
-<script>
 
-const loginForm = document.getElementById("login-form");
-const loginError = document.getElementById("login-error");
+    <!-- Global website JavaScript -->
 
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
+    <script src="../js/script.js"></script>
 
-loginForm.addEventListener("submit", function(event)
-{
 
-    let error = "";
+    <!-- Login validation -->
 
-    const username = usernameInput.value.trim();
-    const password = passwordInput.value;
+    <script>
 
-    if (username === "")
-    {
+    const loginForm =
+        document.getElementById("login-form");
 
-        error = "Please enter your username.";
+    const loginError =
+        document.getElementById("login-error");
 
-    }
+    const usernameInput =
+        document.getElementById("username");
 
-    else if (password === "")
-    {
+    const passwordInput =
+        document.getElementById("password");
 
-        error = "Please enter your password.";
 
-    }
+    loginForm.addEventListener(
+        "submit",
+        function(event)
+        {
 
-    if (error !== "")
-    {
+            let error = "";
 
-        event.preventDefault();
+            const username =
+                usernameInput.value.trim();
 
-        loginError.textContent = error;
-        loginError.style.display = "block";
+            const password =
+                passwordInput.value;
 
-    }
 
-    else
-    {
+            // --------------------------------------------------
+            // Username validation
+            // --------------------------------------------------
 
-        loginError.textContent = "";
-        loginError.style.display = "none";
+            if (username === "")
+            {
 
-    }
+                error =
+                    "Please enter your username.";
 
-});
+            }
 
-</script>
+
+            // --------------------------------------------------
+            // Password validation
+            // --------------------------------------------------
+
+            else if (password === "")
+            {
+
+                error =
+                    "Please enter your password.";
+
+            }
+
+
+            // --------------------------------------------------
+            // Display validation result
+            // --------------------------------------------------
+
+            if (error !== "")
+            {
+
+                event.preventDefault();
+
+                loginError.textContent =
+                    error;
+
+                loginError.style.display =
+                    "block";
+
+            }
+
+            else
+            {
+
+                loginError.textContent =
+                    "";
+
+                loginError.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+    </script>
+
 
 </body>
 

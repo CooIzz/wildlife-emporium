@@ -398,6 +398,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <?php include("../includes/footer.php"); ?>
 
+<script src="js/script.js"></script>
+
 <script>
 
 const registerForm = document.getElementById("register-form");

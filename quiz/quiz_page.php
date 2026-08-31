@@ -146,6 +146,7 @@ echo '<br>';
 </main>
 
 <?php include("../includes/footer.php"); ?>
+<script src="../js/script.js"></script>
 
 <script src="../js/quiz_page.js"></script>
 <?php mysqli_close($connection); ?>
