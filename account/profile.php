@@ -697,7 +697,7 @@ $favouriteCount = count($favouriteAnimals);
                 <div class="profile-logo">
 
                     <img
-                        src="../images/home-logo-test.svg"
+                        src="../images/logo.png"
                         alt="Wildlife Emporium Logo"
                     >
 
@@ -719,7 +719,10 @@ $favouriteCount = count($favouriteAnimals);
 
                 <?php if ($errorMessage !== ""): ?>
 
-                    <div class="profile-message profile-error">
+                    <div
+                        class="profile-message profile-error"
+                        id="profile-error"
+                    >
 
                         <?php echo htmlspecialchars(
                             $errorMessage,
@@ -728,6 +731,14 @@ $favouriteCount = count($favouriteAnimals);
                         ); ?>
 
                     </div>
+
+                <?php else: ?>
+
+                    <div
+                        class="profile-message profile-error"
+                        id="profile-error"
+                        style="display: none;"
+                    ></div>
 
                 <?php endif; ?>
 
@@ -1232,6 +1243,8 @@ $favouriteCount = count($favouriteAnimals);
                             action="profile.php"
                             method="POST"
                             enctype="multipart/form-data"
+                            id="profile-form"
+                            novalidate
                         >
 
 
@@ -1317,6 +1330,7 @@ $favouriteCount = count($favouriteAnimals);
                                     id="currentPassword"
                                     name="currentPassword"
                                     placeholder="Required when changing your password"
+                                    autocomplete="current-password"
                                 >
 
                             </div>
@@ -1335,6 +1349,7 @@ $favouriteCount = count($favouriteAnimals);
                                     placeholder="Leave blank to keep current password"
                                     minlength="8"
                                     maxlength="72"
+                                    autocomplete="new-password"
                                 >
 
                                 <p class="profile-form-help">
@@ -1356,6 +1371,7 @@ $favouriteCount = count($favouriteAnimals);
                                     id="confirmPassword"
                                     name="confirmPassword"
                                     placeholder="Confirm your new password"
+                                    autocomplete="new-password"
                                 >
 
                             </div>
@@ -1458,6 +1474,245 @@ $favouriteCount = count($favouriteAnimals);
     <!-- Animal card flip functionality -->
 
     <script src="../js/animals-flip.js"></script>
+
+
+    <!-- Profile validation -->
+
+    <script>
+
+    const profileForm = document.getElementById("profile-form");
+    const profileError = document.getElementById("profile-error");
+
+    const usernameInput = document.getElementById("username");
+    const emailInput = document.getElementById("email");
+
+    const profilePictureInput =
+        document.getElementById("profilePicture");
+
+    const currentPasswordInput =
+        document.getElementById("currentPassword");
+
+    const newPasswordInput =
+        document.getElementById("password");
+
+    const confirmPasswordInput =
+        document.getElementById("confirmPassword");
+
+
+    profileForm.addEventListener("submit", function(event)
+    {
+
+        let error = "";
+
+        const username = usernameInput.value.trim();
+        const email = emailInput.value.trim();
+
+        const currentPassword =
+            currentPasswordInput.value;
+
+        const newPassword =
+            newPasswordInput.value;
+
+        const confirmPassword =
+            confirmPasswordInput.value;
+
+
+        // --------------------------------------------------
+        // Username validation
+        // --------------------------------------------------
+
+        if (username === "")
+        {
+
+            error = "Username is required.";
+
+        }
+
+        else if (
+            username.length < 3 ||
+            username.length > 30
+        )
+        {
+
+            error =
+                "Username must be between 3 and 30 characters.";
+
+        }
+
+        else if (!/^[a-zA-Z0-9_]+$/.test(username))
+        {
+
+            error =
+                "Username can only contain letters, numbers, and underscores.";
+
+        }
+
+
+        // --------------------------------------------------
+        // Email validation
+        // --------------------------------------------------
+
+        else if (email === "")
+        {
+
+            error =
+                "Please enter an email address.";
+
+        }
+
+        else
+        {
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email))
+            {
+
+                error =
+                    "Please enter a valid email address.";
+
+            }
+
+        }
+
+
+        // --------------------------------------------------
+        // Password validation
+        // --------------------------------------------------
+
+        if (error === "")
+        {
+
+            if (
+                newPassword !== "" ||
+                confirmPassword !== ""
+            )
+            {
+
+                if (currentPassword === "")
+                {
+
+                    error =
+                        "Please enter your current password before changing your password.";
+
+                }
+
+                else if (newPassword.length < 8)
+                {
+
+                    error =
+                        "New password must be at least 8 characters long.";
+
+                }
+
+                else if (newPassword.length > 72)
+                {
+
+                    error =
+                        "New password must not be longer than 72 characters.";
+
+                }
+
+                else if (
+                    newPassword !== confirmPassword
+                )
+                {
+
+                    error =
+                        "The new passwords do not match.";
+
+                }
+
+            }
+
+        }
+
+
+        // --------------------------------------------------
+        // Profile picture validation
+        // --------------------------------------------------
+
+        if (
+            error === "" &&
+            profilePictureInput.files.length > 0
+        )
+        {
+
+            const file =
+                profilePictureInput.files[0];
+
+            const maxFileSize =
+                5 * 1024 * 1024;
+
+            const allowedExtensions = [
+                "jpg",
+                "jpeg",
+                "png",
+                "gif",
+                "webp"
+            ];
+
+            const fileName =
+                file.name.toLowerCase();
+
+            const fileExtension =
+                fileName.split(".").pop();
+
+
+            if (file.size > maxFileSize)
+            {
+
+                error =
+                    "Profile picture must be smaller than 5 MB.";
+
+            }
+
+            else if (
+                !allowedExtensions.includes(
+                    fileExtension
+                )
+            )
+            {
+
+                error =
+                    "Only JPG, PNG, GIF, and WEBP images are allowed.";
+
+            }
+
+        }
+
+
+        // --------------------------------------------------
+        // Display validation result
+        // --------------------------------------------------
+
+        if (error !== "")
+        {
+
+            event.preventDefault();
+
+            profileError.textContent = error;
+            profileError.style.display = "block";
+
+            profileError.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+        else
+        {
+
+            profileError.textContent = "";
+            profileError.style.display = "none";
+
+        }
+
+    });
+
+    </script>
 
 </body>
 

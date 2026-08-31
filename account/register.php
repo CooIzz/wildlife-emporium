@@ -1,27 +1,26 @@
-<?php require_once("../includes/database.php"); ?>
-<!DOCTYPE html>
 <?php
 
+session_start();
 
+require_once("../includes/database.php");
 
 $error = "";
+$username = "";
+$email = "";
+$password = "";
+$confirmPassword = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
-    /* ---------------- FORM DATA ---------------- */
+    $username = trim($_POST["username"] ?? "");
 
-    $username = trim($_POST["username"]);
+    $email = trim($_POST["email"] ?? "");
 
-    $email = trim($_POST["email"]);
+    $password = $_POST["password"] ?? "";
 
-    $password = $_POST["password"];
+    $confirmPassword = $_POST["confirm-password"] ?? "";
 
-    $confirmPassword = $_POST["confirm-password"];
-
-
-
-    /* ---------------- FORM VALIDATION ---------------- */
 
     if (empty($username))
     {
@@ -65,9 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     }
 
-
-
-    /* ---------------- USERNAME CHECK ---------------- */
 
     if (empty($error))
     {
@@ -114,9 +110,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
 
 
-
-    /* ---------------- EMAIL CHECK ---------------- */
-
     if (empty($error))
     {
 
@@ -162,9 +155,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
 
 
-
-    /* ---------------- PASSWORD HASH ---------------- */
-
     if (empty($error))
     {
 
@@ -175,9 +165,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     }
 
-
-
-    /* ---------------- CREATE ACCOUNT ---------------- */
 
     if (empty($error))
     {
@@ -242,6 +229,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 }
 
 ?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -272,7 +261,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             <div class="account-logo">
 
-                <img src="../images/home-logo-test.svg" alt="Wildlife Emporium Logo">
+                <img src="../images/logo.png" alt="Wildlife Emporium Logo">
 
             </div>
 
@@ -291,9 +280,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             ?>
 
-                <p class="account-error">
-                    <?php echo $error; ?>
+                <p class="account-error" id="register-error">
+                    <?php echo htmlspecialchars($error, ENT_QUOTES, "UTF-8"); ?>
                 </p>
+
+            <?php
+
+            }
+            else
+            {
+
+            ?>
+
+                <p class="account-error" id="register-error" style="display: none;"></p>
 
             <?php
 
@@ -301,7 +300,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             ?>
 
-            <form class="account-form" action="" method="post">
+            <form class="account-form" action="" method="post" autocomplete="on" id="register-form" novalidate>
 
                 <div class="account-input-group">
 
@@ -314,7 +313,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         id="username"
                         name="username"
                         placeholder="Choose a username"
-                        value="<?php echo isset($username) ? htmlspecialchars($username) : ""; ?>"
+                        value="<?php echo htmlspecialchars($username, ENT_QUOTES, "UTF-8"); ?>"
+                        autocomplete="username"
                         required
                     >
 
@@ -331,7 +331,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         id="email"
                         name="email"
                         placeholder="Enter your email address"
-                        value="<?php echo isset($email) ? htmlspecialchars($email) : ""; ?>"
+                        value="<?php echo htmlspecialchars($email, ENT_QUOTES, "UTF-8"); ?>"
+                        autocomplete="email"
                         required
                     >
 
@@ -348,6 +349,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         id="password"
                         name="password"
                         placeholder="Create a password"
+                        autocomplete="new-password"
                         required
                     >
 
@@ -364,6 +366,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         id="confirm-password"
                         name="confirm-password"
                         placeholder="Confirm your password"
+                        autocomplete="new-password"
                         required
                     >
 
@@ -394,6 +397,100 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 </main>
 
 <?php include("../includes/footer.php"); ?>
+
+<script>
+
+const registerForm = document.getElementById("register-form");
+const registerError = document.getElementById("register-error");
+
+const usernameInput = document.getElementById("username");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const confirmPasswordInput = document.getElementById("confirm-password");
+
+registerForm.addEventListener("submit", function(event)
+{
+
+    let error = "";
+
+    const username = usernameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    if (username === "")
+    {
+
+        error = "Please enter a username.";
+
+    }
+
+    else if (email === "")
+    {
+
+        error = "Please enter an email address.";
+
+    }
+
+    else if (!isValidEmail(email))
+    {
+
+        error = "Please enter a valid email address.";
+
+    }
+
+    else if (password === "")
+    {
+
+        error = "Please enter a password.";
+
+    }
+
+    else if (password.length < 8)
+    {
+
+        error = "Password must be at least 8 characters long.";
+
+    }
+
+    else if (password !== confirmPassword)
+    {
+
+        error = "Passwords do not match.";
+
+    }
+
+    if (error !== "")
+    {
+
+        event.preventDefault();
+
+        registerError.textContent = error;
+        registerError.style.display = "block";
+
+    }
+
+    else
+    {
+
+        registerError.textContent = "";
+        registerError.style.display = "none";
+
+    }
+
+});
+
+
+function isValidEmail(email)
+{
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return emailPattern.test(email);
+
+}
+
+</script>
 
 </body>
 
