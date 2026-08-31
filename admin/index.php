@@ -7,87 +7,6 @@ requireAdmin();
 
 require_once("../includes/database.php");
 
-
-//this section is for retrieving total users
-
-$totalUsers = 0;
-
-$statement = mysqli_prepare(
-    $connection,
-    "SELECT COUNT(*) AS totalUsers FROM users"
-);
-
-if ($statement) {
-
-    mysqli_stmt_execute($statement);
-
-    $result = mysqli_stmt_get_result($statement);
-
-    $data = mysqli_fetch_assoc($result);
-
-    $totalUsers = $data["totalUsers"];
-
-    mysqli_stmt_close($statement);
-}
-
-
-//this section is for retrieving total administrators
-
-$totalAdmins = 0;
-
-$role = "admin";
-
-$statement = mysqli_prepare(
-    $connection,
-    "SELECT COUNT(*) AS totalAdmins
-     FROM users
-     WHERE role = ?"
-);
-
-if ($statement) {
-
-    mysqli_stmt_bind_param(
-        $statement,
-        "s",
-        $role
-    );
-
-    mysqli_stmt_execute($statement);
-
-    $result = mysqli_stmt_get_result($statement);
-
-    $data = mysqli_fetch_assoc($result);
-
-    $totalAdmins = $data["totalAdmins"];
-
-    mysqli_stmt_close($statement);
-}
-
-
-//this section is for retrieving new users this month
-
-$newUsers = 0;
-
-$statement = mysqli_prepare(
-    $connection,
-    "SELECT COUNT(*) AS newUsers
-     FROM users
-     WHERE createdAt >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')"
-);
-
-if ($statement) {
-
-    mysqli_stmt_execute($statement);
-
-    $result = mysqli_stmt_get_result($statement);
-
-    $data = mysqli_fetch_assoc($result);
-
-    $newUsers = $data["newUsers"];
-
-    mysqli_stmt_close($statement);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -118,259 +37,200 @@ if ($statement) {
 
 </head>
 
+
 <body>
 
-<?php include("../includes/header.php"); ?>
+    <?php include("../includes/header.php"); ?>
 
-<?php include("../includes/navigation.php"); ?>
-
-
-<main>
-
-    <!--this section is for the admin panel-->
-
-    <div class="admin-page">
-
-        <!--this section is for the page header-->
-
-        <section class="admin-header">
-
-            <p class="admin-label">
-                ADMINISTRATION
-            </p>
-
-            <h1>
-                Admin Panel
-            </h1>
-
-            <p>
-                Manage the content and users of Wildlife Emporium.
-            </p>
-
-        </section>
+    <?php include("../includes/navigation.php"); ?>
 
 
-        <!--this section is for the management cards-->
+    <main>
 
-        <section class="admin-container">
+        <!--this section is for the admin panel-->
 
-
-            <!--this section is for animal management-->
-
-            <div class="admin-card">
-
-                <div class="admin-card-heading">
-
-                    <h2>
-                        Animals
-                    </h2>
-
-                    <hr>
-
-                </div>
+        <div class="admin-page">
 
 
-                <div class="admin-card-data">
+            <!--this section is for the page header-->
 
-                    <p>
-                        Total:
-                    </p>
+            <section class="admin-header">
 
-                    <p>
-                        Most Favorited:
-                    </p>
+                <p class="admin-label">
+                    ADMINISTRATION
+                </p>
 
-                    <p>
-                        Latest:
-                    </p>
+                <h1>
+                    Admin Panel
+                </h1>
 
-                </div>
+                <p>
+                    Manage the content and enquiries of Wildlife Emporium.
+                </p>
 
-
-                <div class="admin-card-footer">
-
-                    <hr>
-
-                    <!--this button is temporarily disabled-->
-
-                    <button
-                        type="button"
-                        class="admin-manage-button admin-manage-disabled"
-                        disabled
-                    >
-                        Manage Animals
-                    </button>
-
-                </div>
-
-            </div>
+            </section>
 
 
-            <!--this section is for article management-->
+            <!--this section is for the management cards-->
 
-            <div class="admin-card">
+            <section class="admin-container">
 
-                <div class="admin-card-heading">
 
-                    <h2>
-                        Articles
-                    </h2>
+                <!--this section is for animal management-->
 
-                    <hr>
+                <div class="admin-card">
+
+                    <div class="admin-card-content">
+
+                        <p class="admin-card-label">
+                            CONTENT MANAGEMENT
+                        </p>
+
+                        <h2>
+                            Animals
+                        </h2>
+
+                        <p>
+                            Add, edit and manage the animals available
+                            in the Wildlife Emporium.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-card-footer">
+
+                        <a
+                            href="../animals/manageAnimals.php"
+                            class="admin-manage-button"
+                        >
+                            Manage Animals
+                        </a>
+
+                    </div>
 
                 </div>
 
 
-                <div class="admin-card-data">
+                <!--this section is for article management-->
 
-                    <p>
-                        Total:
-                    </p>
+                <div class="admin-card">
 
-                    <p>
-                        Published:
-                    </p>
+                    <div class="admin-card-content">
 
-                    <p>
-                        Drafts:
-                    </p>
+                        <p class="admin-card-label">
+                            CONTENT MANAGEMENT
+                        </p>
 
-                    <p>
-                        Latest:
-                    </p>
+                        <h2>
+                            Articles
+                        </h2>
 
-                </div>
+                        <p>
+                            Create, edit and manage wildlife articles
+                            published on the website.
+                        </p>
 
-
-                <div class="admin-card-footer">
-
-                    <hr>
-
-                    <a
-                        href="../articles/manageArticles.php"
-                        class="admin-manage-button"
-                    >
-                        Manage Articles
-                    </a>
-
-                </div>
-
-            </div>
+                    </div>
 
 
-            <!--this section is for quiz management-->
+                    <div class="admin-card-footer">
 
-            <div class="admin-card">
+                        <a
+                            href="../articles/manageArticles.php"
+                            class="admin-manage-button"
+                        >
+                            Manage Articles
+                        </a>
 
-                <div class="admin-card-heading">
-
-                    <h2>
-                        Quiz
-                    </h2>
-
-                    <hr>
+                    </div>
 
                 </div>
 
 
-                <div class="admin-card-data">
+                <!--this section is for quiz management-->
 
-                    <p>
-                        Total:
-                    </p>
+                <div class="admin-card">
 
-                    <p>
-                        Attempts:
-                    </p>
+                    <div class="admin-card-content">
 
-                    <p>
-                        Most Popular:
-                    </p>
+                        <p class="admin-card-label">
+                            QUIZ MANAGEMENT
+                        </p>
 
-                </div>
+                        <h2>
+                            Quiz
+                        </h2>
 
+                        <p>
+                            Create, edit and manage the wildlife quiz
+                            questions and content.
+                        </p>
 
-                <div class="admin-card-footer">
-
-                    <hr>
-
-                    <a
-                        href="../quiz_crud/quiz_crud.php"
-                        class="admin-manage-button"
-                    >
-                        Manage Quiz
-                    </a>
-
-                </div>
-
-            </div>
+                    </div>
 
 
-            <!--this section is for account management-->
+                    <div class="admin-card-footer">
 
-            <div class="admin-card">
+                        <a
+                            href="../quiz_crud/index.php"
+                            class="admin-manage-button"
+                        >
+                            Manage Quiz
+                        </a>
 
-                <div class="admin-card-heading">
-
-                    <h2>
-                        Accounts
-                    </h2>
-
-                    <hr>
+                    </div>
 
                 </div>
 
 
-                <div class="admin-card-data">
+                <!--this section is for contact enquiry management-->
 
-                    <p>
-                        Users:
-                        <?php echo $totalUsers; ?>
-                    </p>
+                <div class="admin-card">
 
-                    <p>
-                        Administrators:
-                        <?php echo $totalAdmins; ?>
-                    </p>
+                    <div class="admin-card-content">
 
-                    <p>
-                        New Users:
-                        <?php echo $newUsers; ?>
-                    </p>
+                        <p class="admin-card-label">
+                            CONTACT MANAGEMENT
+                        </p>
+
+                        <h2>
+                            Enquiries
+                        </h2>
+
+                        <p>
+                            View and manage enquiries submitted
+                            through the Contact Us page.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-card-footer">
+
+                        <a
+                            href="../contact/manageEnquiries.php"
+                            class="admin-manage-button"
+                        >
+                            Manage Enquiries
+                        </a>
+
+                    </div>
 
                 </div>
 
 
-                <div class="admin-card-footer">
+            </section>
 
-                    <hr>
+        </div>
 
-                    <!--this button is temporarily disabled-->
-
-                    <button
-                        type="button"
-                        class="admin-manage-button admin-manage-disabled"
-                        disabled
-                    >
-                        Manage Accounts
-                    </button>
-
-                </div>
-
-            </div>
+    </main>
 
 
-        </section>
-
-    </div>
-
-</main>
+    <?php include("../includes/footer.php"); ?>
 
 
-<?php include("../includes/footer.php"); ?>
-
-
-<script src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 
 
 </body>
