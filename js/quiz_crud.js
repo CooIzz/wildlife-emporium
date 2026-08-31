@@ -70,28 +70,6 @@ function validateForm()
 		
 }
 
-//Extract p tag element with the id of crudSuccess
-const crudSuccess = document.getElementById("crudSuccess");
-
-//Adding event listener to clear the CRUD message in case
-//user reloads the index page---------------
-
-document.addEventListener("load", () => {
-	
-	if(crudSuccess.innerHTML.trim() !== "")
-	{
-		const urlParams = new URLSearchParams(window.location.search);
-		if (urlParams.get("quizQue") !== "") 
-		{
-		const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.set("quizQue", "");
-        
-        window.location.href = currentUrl.toString();
-		}
-	}
-	
-});
-
 /*
 
 ---------------For quiz_create.php page---------------
