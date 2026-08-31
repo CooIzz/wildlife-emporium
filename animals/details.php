@@ -2,7 +2,10 @@
 
 session_start();
 
+require_once("../includes/auth.php");
 require_once("../includes/database.php");
+
+requireLogin();
 
 $animalID = filter_input(INPUT_GET,"animalID",FILTER_VALIDATE_INT);
 

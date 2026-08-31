@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("../includes/auth.php");
+requireLogin();
 
 //Forming connection to MySQL database
 include ("../includes/database.php");

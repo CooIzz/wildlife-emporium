@@ -1,6 +1,12 @@
-<?php 
-//connect to wildlife emporium database
-require_once("../includes/database.php"); 
+<?php
+
+session_start();
+
+require_once("../includes/auth.php");
+require_once("../includes/database.php");
+
+requireLogin();
+
 
 //query for all articles from the articles table from latest-oldest
 $query = "SELECT article_id, title, summary, image_name, image_caption, creation_at FROM articles ORDER BY creation_at DESC";
@@ -65,13 +71,13 @@ else{
 </section>
 <br>
 
-<?php 
+<?php
 //make sure the $articles not empty first
 if (!empty($articles)): 
 ?> 
 
 <!--latest article at the top section -->
-<?php if (isset($articles[0])): ?>    
+<?php if (isset($articles[0])): ?>   
 <section class="article-sec1">
     <div class="card article-card1">
         <img src="../images/articles/<?php echo htmlspecialchars($articles[0]['image_name']);?>"
@@ -80,7 +86,7 @@ if (!empty($articles)):
     <div class="article-sum1">
         <a href="/wildlife-emporium/articles/details.php?id=<?php echo $articles[0]['article_id']; ?>">
             <?php echo htmlspecialchars($articles[0]['title']); ?>
-        </a>        
+        </a>       
         <p><?php echo htmlspecialchars($articles[0]['summary']); ?></p>
     </div>
 </section>
@@ -122,7 +128,7 @@ while ($i < $total_articles):
                         <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 1]['image_name']);?>"
                         alt="<?php echo htmlspecialchars($articles[$i + 1]['image_caption']); ?>">
                     </div>
-                        
+                    
                     <div class="article-sum2">
                         <a href="/wildlife-emporium/articles/details.php?id=<?php echo $articles[$i + 1]['article_id']; ?>">
                         <h2><?php echo htmlspecialchars($articles[$i + 1]['title']); ?></h2>
@@ -213,7 +219,7 @@ while ($i < $total_articles):
                     <h2><?php echo htmlspecialchars($articles[$i + 2]['title']); ?></h2>
                     </a> 
                     <p><?php echo htmlspecialchars($articles[$i + 2]['summary']); ?></p>
-                </div>    
+                </div>   
                 <div class="card article-card2">
                     <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 2]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i + 2]['image_caption']); ?>">
@@ -241,9 +247,9 @@ while ($i < $total_articles):
                 <div class="article-sum2">
                     <a href="/wildlife-emporium/articles/details.php?id=<?php echo $articles[$i + 4]['article_id']; ?>">
                     <h2><?php echo htmlspecialchars($articles[$i + 4]['title']); ?></h2>
-                    </a> 
+                    </a>   
                     <p><?php echo htmlspecialchars($articles[$i + 4]['summary']); ?></p>
-                </div>    
+                </div>   
                 <div class="card article-card2">
                     <img src="../images/articles/<?php echo htmlspecialchars($articles[$i + 4]['image_name']);?>"
                     alt="<?php echo htmlspecialchars($articles[$i + 4]['image_caption']); ?>">
@@ -285,7 +291,7 @@ $pattern = 'A'; //back to pattern A layout
     <div class="article-sum1">
         <a href="/wildlife-emporium/articles/details.php?id=<?php echo $articles[$i]['article_id']; ?>">
             <?php echo htmlspecialchars($articles[$i]['title']); ?>
-        </a>        
+        </a>       
         <p><?php echo htmlspecialchars($articles[$i]['summary']); ?></p>
     </div>
 </section>

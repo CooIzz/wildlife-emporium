@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+require_once("../includes/auth.php");
+requireLogin();
 
 $user_id = $_SESSION['userID'] ?? 0;
 

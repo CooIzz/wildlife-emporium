@@ -1,7 +1,10 @@
 <?php
 
 //connect to wildlife emporium database
+require_once("../includes/auth.php");
 require_once("../includes/database.php");
+
+requireAdmin();
 
 
 //this section is for deleting an article

@@ -2,8 +2,10 @@
 
 session_start();
 
-//connect to databse
+require_once("../includes/auth.php");
 require_once("../includes/database.php");
+
+requireLogin();
 
 //see if article_ID in url 
 if(isset($_GET['id']) && is_numeric($_GET['id'])){
@@ -132,10 +134,10 @@ if($isLoggedIn){
 
 // get the comments for comment section
 $commentsQuery = "SELECT article_comments.commentID, article_comments.commentText, article_comments.createdAt,
-                users.username FROM article_comments
-                JOIN users ON article_comments.userID = users.userID
-                WHERE article_comments.articleID = ?
-                ORDER BY article_comments.createdAt DESC";
+               users.username FROM article_comments
+               JOIN users ON article_comments.userID = users.userID
+               WHERE article_comments.articleID = ?
+               ORDER BY article_comments.createdAt DESC";
 
 $stmt = mysqli_prepare($connection, $commentsQuery);
 mysqli_stmt_bind_param($stmt, "i", $article_id);
@@ -274,7 +276,7 @@ mysqli_stmt_close($statement_suggested);
                     <div class="comment-card">
                     <div class="comment-header">
                         <strong class="comment-author"><?php echo htmlspecialchars($comment['username']); ?></strong>
-                        <span class="comment-date"><?php echo date("M j, Y \\a\\t g:i a", strtotime($comment['createdAt'])); ?></span>
+                        <span class="comment-date"><?php echo date("M j, Y \a\t g:i a", strtotime($comment['createdAt'])); ?></span>
                     </div>
                     <p class="comment-text"><?php echo nl2br(htmlspecialchars($comment['commentText'])); ?></p>
                 </div>
@@ -292,7 +294,7 @@ mysqli_stmt_close($statement_suggested);
     <?php if (!empty($suggested_articles)): ?>
     <section class="suggested-articles-container">
         <h2 class="suggested-articles-title">SUGGESTED ARTICLES</h2>
-        
+       
         <div class="suggested-articles-grid">
         <?php foreach ($suggested_articles as $suggested): ?>
             <!-- Suggested Card -->

@@ -1,6 +1,8 @@
 <?php 
 
 session_start();
+require_once("../includes/auth.php");
+requireLogin();
 
 $userID = $_SESSION['userID'] ?? "";
 $loginURL = "/wildlife-emporium/account/login.php";

@@ -2,7 +2,10 @@
 
 session_start();
 
+require_once("../includes/auth.php");
 require_once("../includes/database.php");
+
+requireAdmin();
 
 //this section is for checking the article ID
 

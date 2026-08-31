@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html>
 
 <head>
@@ -17,6 +18,8 @@
 
 //Forming connection to MySQL database
 include ("../includes/database.php");
+require_once("../includes/auth.php");
+requireLogin();
 
 $sql_statement = "INSERT INTO quiz_questions (id, animal_id, difficulty, question_num, question_text, option_a, option_b, option_c, option_d, correct_ans, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
