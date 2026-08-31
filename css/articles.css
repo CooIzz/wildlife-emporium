@@ -28,7 +28,7 @@ body{
 
 .article-header{
     font-family: "Cambria";
-    font-size: 90px;
+    font-size: 120px;
     color: var(--text);
     letter-spacing: -1px;
     font-weight:bolder;
@@ -36,8 +36,8 @@ body{
 }
 
 .article-logo{
-    width: 124px;
-    height: 100px;
+    width: 300px;
+    height: 200px;
     flex-shrink: 0;
 }
 
