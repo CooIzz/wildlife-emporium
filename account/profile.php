@@ -415,7 +415,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ) . "." . $fileExtension;
 
             $newProfilePicturePath =
-                "../images/" . $newProfilePicture;
+                "../images/account/profiles/" . $newProfilePicture;
 
             $updateFields .= ",
                 profilePicture = ?
@@ -525,6 +525,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
                 // --------------------------------------------------
+                // Update session profile picture
+                // --------------------------------------------------
+
+                if ($newProfilePicture !== $profilePicture) {
+
+                    $_SESSION["profilePicture"] =
+                        $newProfilePicture;
+                }
+
+
+                // --------------------------------------------------
                 // Remove old profile picture
                 // --------------------------------------------------
 
@@ -532,12 +543,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $newProfilePicture !== $profilePicture &&
                     $profilePicture !== "default-avatar.png" &&
                     file_exists(
-                        "../images/" . $profilePicture
+                        "../images/account/profiles/" . $profilePicture
                     )
                 ) {
 
                     unlink(
-                        "../images/" . $profilePicture
+                        "../images/account/profiles/" . $profilePicture
                     );
                 }
 
@@ -641,6 +652,22 @@ while (
 mysqli_stmt_close($favouriteStatement);
 
 $favouriteCount = count($favouriteAnimals);
+
+
+// --------------------------------------------------
+// Prepare profile picture source
+// --------------------------------------------------
+
+if ($profilePicture === "default-avatar.png") {
+
+    $profilePictureSource =
+        "../images/default-avatar.png";
+
+} else {
+
+    $profilePictureSource =
+        "../images/account/profiles/" . $profilePicture;
+}
 
 ?>
 
@@ -1225,8 +1252,8 @@ $favouriteCount = count($favouriteAnimals);
                         <div class="profile-avatar">
 
                             <img
-                                src="../images/<?php echo htmlspecialchars(
-                                    $profilePicture,
+                                src="<?php echo htmlspecialchars(
+                                    $profilePictureSource,
                                     ENT_QUOTES,
                                     "UTF-8"
                                 ); ?>"

@@ -8,8 +8,27 @@
 
     }
 
-    ?>
+    $isLoggedIn = isset($_SESSION["userID"]);
 
+    if (
+        $isLoggedIn &&
+        isset($_SESSION["profilePicture"]) &&
+        $_SESSION["profilePicture"] !== "" &&
+        $_SESSION["profilePicture"] !== "default-avatar.png"
+    ) {
+
+        $navigationProfilePicture =
+            "/wildlife-emporium/images/account/profiles/" .
+            $_SESSION["profilePicture"];
+
+    } else {
+
+        $navigationProfilePicture =
+            "/wildlife-emporium/images/default-avatar.png";
+
+    }
+
+    ?>
 
 
     <div class="navigation-container">
@@ -48,15 +67,23 @@
 
         </ul>
 
+
         <div class="navigation-dropdown">
 
-            <button class="navigation-account-button">
+            <button
+                class="navigation-account-button"
+                type="button"
+            >
 
                 <?php
 
-                if (isset($_SESSION["username"])) {
+                if ($isLoggedIn && isset($_SESSION["username"])) {
 
-                    echo htmlspecialchars($_SESSION["username"]);
+                    echo htmlspecialchars(
+                        $_SESSION["username"],
+                        ENT_QUOTES,
+                        "UTF-8"
+                    );
 
                 } else {
 
@@ -66,55 +93,35 @@
 
                 ?>
 
-                <?php
 
-                if (isset($_SESSION["userID"])) {
-
-                    ?>
-
-                    <img class="navigation-avatar"
-                        src="/wildlife-emporium/images/<?php echo htmlspecialchars($_SESSION["profilePicture"]); ?>"
-                        alt="Profile Picture">
-
-                    <?php
-
-                } else {
-
-                    ?>
-
-                    <img class="navigation-avatar" src="/wildlife-emporium/images/defaultpfp.svg" alt="Profile Picture">
-
-                    <?php
-
-                }
-
-                ?>
+                <img
+                    class="navigation-avatar"
+                    src="<?php echo htmlspecialchars(
+                        $navigationProfilePicture,
+                        ENT_QUOTES,
+                        "UTF-8"
+                    ); ?>"
+                    alt="Profile Picture"
+                >
 
             </button>
 
+
             <div class="navigation-dropdown-menu">
 
-                <?php
+                <?php if ($isLoggedIn): ?>
 
-                if (isset($_SESSION["userID"])) {
-
-                    ?>
-
-                    <?php
-
-                    if (isset($_SESSION["role"]) && $_SESSION["role"] === "admin") {
-
-                        ?>
+                    <?php if (
+                        isset($_SESSION["role"]) &&
+                        $_SESSION["role"] === "admin"
+                    ): ?>
 
                         <a href="/wildlife-emporium/admin/index.php">
                             Admin Panel
                         </a>
 
-                        <?php
+                    <?php endif; ?>
 
-                    }
-
-                    ?>
 
                     <a href="/wildlife-emporium/account/profile.php">
                         Profile
@@ -124,11 +131,8 @@
                         Logout
                     </a>
 
-                    <?php
 
-                } else {
-
-                    ?>
+                <?php else: ?>
 
                     <a href="/wildlife-emporium/account/login.php">
                         Login
@@ -138,11 +142,7 @@
                         Register
                     </a>
 
-                    <?php
-
-                }
-
-                ?>
+                <?php endif; ?>
 
             </div>
 
