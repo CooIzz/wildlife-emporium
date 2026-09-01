@@ -39,18 +39,14 @@ if(!$result)
 <?php include("../includes/navigation.php"); ?>
 
 <main>
-<div><h1 style="text-align: center;">Quiz Leaderboard</h1><div>
+<div><h1 style="text-align: center;">Quiz Leaderboard</h1></div>
 
 <div class="leaderboardArticle">
-
-<div>
 
 <p>
 Welcome to the Quiz Score Leaderboard. Wish to see if you have made it into the
 scoreboard? Please login before proceeding.
 </p>
-
-</div>
 
 <div>
 
@@ -62,7 +58,7 @@ scoreboard? Please login before proceeding.
 <hr>
 <br>
 
-<div>
+<div id="tableAlignment">
 
 <table id="scoreboard" class="hidden">
 

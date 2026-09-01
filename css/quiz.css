@@ -202,27 +202,20 @@ To style the legend of each form
 */
 
 /*
-
+Styling for the all the elements of the scoreboard
+table(excluding the heading)
 */
 
 .leaderboardArticle {
     display: flex;
     flex-direction: column;
     justify-content: center;   
-    border: 2px solid black;   
+    border: 2px solid black;
+    padding: 10px;   
 }
 
 .leaderboardArticle * {
     text-align: center;
-}
-
-/*
-To toggle the display property for the
-scoreboard table
-*/
-
-.quiz-page .hidden {
-    display: none;
 }
 
 /*
@@ -242,6 +235,38 @@ scoreboard table
 To style the scoreboard table's borders
 */
 
+#scoreboard, #scoreboard * {
+
+    border: solid black 2px;
+    border-collapse: collapse;
+    padding: 5px;
+    animation: bgColorChange2 infinite 20s ease-in-out;
+
+}
+
+/*
+To toggle the display property for the
+scoreboard table
+*/
+
+.hidden {
+    display: none;
+}
+
+
+/*
+To align the table to the center of the page
+*/
+
+#tableAlignment {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
 .quiz-page table,
 .quiz-page tr,
 .quiz-page th,
@@ -252,3 +277,10 @@ To style the scoreboard table's borders
     text-align: center;
     animation: bgColorChange2 infinite 20s ease-in-out;
 }
+
+
+
+.quiz-page .hidden {
+    display: none;
+}
+
