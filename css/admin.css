@@ -14,6 +14,7 @@ Main Admin Page
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 30px 80px;
+    box-sizing: border-box;
 }
 
 
@@ -44,6 +45,7 @@ Page Header
     color: var(--text);
     font-size: 42px;
     line-height: 1.1;
+    overflow-wrap: break-word;
 }
 
 .admin-header p:last-child
@@ -53,6 +55,7 @@ Page Header
     font-size: 16px;
     line-height: 1.7;
     opacity: 0.75;
+    overflow-wrap: break-word;
 }
 
 
@@ -63,7 +66,7 @@ Management Cards
 .admin-container
 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
@@ -71,8 +74,10 @@ Management Cards
 {
     display: flex;
     flex-direction: column;
+    min-width: 0;
     min-height: 260px;
     padding: 30px;
+    box-sizing: border-box;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
@@ -98,6 +103,7 @@ Card Content
 .admin-card-content
 {
     margin-bottom: 30px;
+    min-width: 0;
 }
 
 .admin-card-label
@@ -116,6 +122,7 @@ Card Content
     color: var(--text);
     font-size: 28px;
     line-height: 1.2;
+    overflow-wrap: break-word;
 }
 
 .admin-card-content p
@@ -126,6 +133,7 @@ Card Content
     font-size: 14px;
     line-height: 1.65;
     opacity: 0.7;
+    overflow-wrap: break-word;
 }
 
 
@@ -148,7 +156,9 @@ Management Button
 .admin-manage-button
 {
     display: inline-block;
+    max-width: 100%;
     padding: 11px 18px;
+    box-sizing: border-box;
     background: var(--orange);
     color: var(--card);
     border: 1px solid var(--orange);
@@ -157,6 +167,7 @@ Management Button
     font-family: inherit;
     font-size: 14px;
     font-weight: 600;
+    text-align: center;
     cursor: pointer;
     transition:
         background 0.2s ease,
@@ -188,11 +199,15 @@ Responsive Design
 
     .admin-container
     {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
 }
 
+
+/* ==================================================
+Mobile
+================================================== */
 
 @media (max-width: 600px)
 {
@@ -212,10 +227,20 @@ Responsive Design
         font-size: 32px;
     }
 
+    .admin-header p:last-child
+    {
+        font-size: 15px;
+    }
+
     .admin-card
     {
         min-height: auto;
         padding: 25px;
+    }
+
+    .admin-card-content
+    {
+        margin-bottom: 25px;
     }
 
     .admin-card-content h2
@@ -226,6 +251,53 @@ Responsive Design
     .admin-card-footer
     {
         flex-wrap: wrap;
+    }
+
+    .admin-manage-button
+    {
+        width: 100%;
+    }
+
+}
+
+
+/* ==================================================
+Small Mobile
+================================================== */
+
+@media (max-width: 400px)
+{
+
+    .admin-page
+    {
+        padding: 30px 12px 40px;
+    }
+
+    .admin-header
+    {
+        margin-bottom: 30px;
+    }
+
+    .admin-header h1
+    {
+        font-size: 28px;
+    }
+
+    .admin-header p:last-child
+    {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .admin-card
+    {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .admin-card-content h2
+    {
+        font-size: 23px;
     }
 
 }

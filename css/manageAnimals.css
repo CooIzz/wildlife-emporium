@@ -1,14 +1,15 @@
-/*this section is for the main page*/
+/* this section is for the main page */
 
 .manage-animals-page {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 30px 80px;
+    box-sizing: border-box;
 }
 
 
-/*this section is for the page header*/
+/* this section is for the page header */
 
 .manage-animals-header {
     max-width: 800px;
@@ -39,7 +40,7 @@
 }
 
 
-/*this section is for the existing animals heading*/
+/* this section is for the existing animals heading */
 
 .existing-animals {
     width: 100%;
@@ -64,6 +65,7 @@
 .existing-animals-header h2 {
     color: var(--text);
     font-size: 34px;
+    line-height: 1.2;
 }
 
 .existing-animals-header > p {
@@ -75,7 +77,7 @@
 }
 
 
-/*this section is for the animal table*/
+/* this section is for the animal table */
 
 .animals-table-container {
     width: 100%;
@@ -84,10 +86,12 @@
     border: 1px solid var(--border);
     border-radius: 14px;
     box-shadow: 0 4px 14px var(--shadow);
+    -webkit-overflow-scrolling: touch;
 }
 
 .animals-table {
     width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
     text-align: left;
 }
@@ -101,6 +105,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .animals-table td {
@@ -116,7 +121,7 @@
 }
 
 
-/*this section is for animal row hover*/
+/* this section is for animal row hover */
 
 .animals-table tbody tr:not(.create-animal-row) {
     transition: background 0.2s ease;
@@ -127,7 +132,7 @@
 }
 
 
-/*this section is for the create animal row*/
+/* this section is for the create animal row */
 
 .create-animal-row td {
     padding: 14px 20px;
@@ -157,7 +162,7 @@
 }
 
 
-/*this section is for animal information*/
+/* this section is for animal information */
 
 .animal-name {
     font-weight: 600;
@@ -177,7 +182,7 @@
 }
 
 
-/*this section is for animal actions*/
+/* this section is for animal actions */
 
 .animal-actions {
     display: flex;
@@ -230,7 +235,7 @@
 }
 
 
-/*this section is for when there are no animals*/
+/* this section is for when there are no animals */
 
 .no-animals {
     padding: 50px 30px;
@@ -248,7 +253,7 @@
 }
 
 
-/*this section is for responsive layout*/
+/* this section is for responsive layout */
 
 @media (max-width: 800px) {
 
@@ -287,24 +292,65 @@
         font-size: 28px;
     }
 
+    .animals-table {
+        min-width: 650px;
+    }
+
     .animals-table th,
     .animals-table td {
         padding: 14px;
     }
 
-    .animal-actions {
-        flex-direction: column;
-        align-items: stretch;
+    .create-animal-row td {
+        padding: 12px 14px;
+    }
+
+    .no-animals {
+        padding: 40px 20px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .manage-animals-page {
+        padding: 35px 12px 45px;
+    }
+
+    .manage-animals-header h1 {
+        font-size: 29px;
+    }
+
+    .manage-animals-header p:last-child {
+        font-size: 15px;
+    }
+
+    .existing-animals-header h2 {
+        font-size: 25px;
+    }
+
+    .animals-table {
+        min-width: 620px;
+    }
+
+    .animals-table th,
+    .animals-table td {
+        padding: 12px;
+    }
+
+    .animals-table th {
+        font-size: 11px;
+    }
+
+    .animals-table td {
+        font-size: 13px;
     }
 
     .animal-action-edit,
     .animal-action-delete {
-        width: 100%;
-        text-align: center;
-    }
-
-    .create-animal-row td {
-        padding: 12px 14px;
+        padding: 8px 12px;
+        font-size: 12px;
     }
 
 }

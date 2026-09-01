@@ -16,8 +16,10 @@
 }
 
 .edit-user-header h2 {
+    margin: 0;
     color: var(--text);
     font-size: 34px;
+    line-height: 1.2;
 }
 
 .edit-user-header > p {
@@ -36,6 +38,8 @@
     padding: 12px 15px;
     border-radius: 8px;
     font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
 }
 
 .user-message.success {
@@ -175,13 +179,25 @@
         gap: 10px;
     }
 
+    .edit-user-header h2 {
+        font-size: 30px;
+    }
+
 }
 
 
 @media (max-width: 600px) {
 
+    .edit-user-header {
+        margin-bottom: 20px;
+    }
+
     .edit-user-header h2 {
         font-size: 28px;
+    }
+
+    .edit-user-header > p {
+        font-size: 13px;
     }
 
     .edit-user-form-container {
@@ -197,6 +213,31 @@
         width: 100%;
         text-align: center;
         box-sizing: border-box;
+    }
+
+}
+
+
+/*this section is for small mobile devices*/
+
+@media (max-width: 400px) {
+
+    .edit-user-header h2 {
+        font-size: 25px;
+    }
+
+    .edit-user-form-container {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .edit-user-form-container form {
+        gap: 16px;
+    }
+
+    .edit-user-field input {
+        padding: 10px;
+        font-size: 14px;
     }
 
 }

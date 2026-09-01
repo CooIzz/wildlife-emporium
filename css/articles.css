@@ -500,3 +500,57 @@ background-color: var(--dark-purple);
 .comment-text{
     margin:0;
 }
+
+@media (max-width: 600px) {
+
+.article-frame{
+padding: 10px;
+}
+
+.article-header{
+font-size: 50px;
+}
+
+.article-logo{
+width: 120px;
+height: 100px;
+}
+
+.article-sec1{
+grid-template-columns: 1fr;
+}
+
+.article-textR,
+.article-textL{
+grid-template-columns: 1fr;
+}
+
+.suggested-articles-grid{
+grid-template-columns: 1fr;
+}
+
+.article-pg-frame{
+padding: 20px;
+}
+
+.article-pg-title{
+font-size: 36px;
+}
+
+.article-pg-subheading{
+font-size: 24px;
+}
+
+.suggested-articles-container h2,
+.comments-title{
+font-size: 36px;
+}
+
+.article-pg-content{
+font-size: 16px;
+}
+
+.article-details{
+flex-wrap: wrap;
+}
+}

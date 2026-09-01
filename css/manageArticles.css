@@ -1,14 +1,15 @@
-/*this section is for the main page*/
+/* this section is for the main page */
 
 .manage-articles-page {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 30px 80px;
+    box-sizing: border-box;
 }
 
 
-/*this section is for the page header*/
+/* this section is for the page header */
 
 .manage-articles-header {
     max-width: 800px;
@@ -39,7 +40,7 @@
 }
 
 
-/*this section is for the existing articles heading*/
+/* this section is for the existing articles heading */
 
 .existing-articles {
     width: 100%;
@@ -64,6 +65,7 @@
 .existing-articles-header h2 {
     color: var(--text);
     font-size: 34px;
+    line-height: 1.2;
 }
 
 .existing-articles-header > p {
@@ -75,7 +77,7 @@
 }
 
 
-/*this section is for the article table*/
+/* this section is for the article table */
 
 .articles-table-container {
     width: 100%;
@@ -84,10 +86,12 @@
     border: 1px solid var(--border);
     border-radius: 14px;
     box-shadow: 0 4px 14px var(--shadow);
+    -webkit-overflow-scrolling: touch;
 }
 
 .articles-table {
     width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
     text-align: left;
 }
@@ -101,6 +105,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .articles-table td {
@@ -116,7 +121,7 @@
 }
 
 
-/*this section is for article row hover*/
+/* this section is for article row hover */
 
 .articles-table tbody tr:not(.create-article-row) {
     transition: background 0.2s ease;
@@ -127,7 +132,7 @@
 }
 
 
-/*this section is for the create article row*/
+/* this section is for the create article row */
 
 .create-article-row td {
     padding: 14px 20px;
@@ -157,7 +162,7 @@
 }
 
 
-/*this section is for the article title*/
+/* this section is for the article title */
 
 .article-title {
     font-weight: 600;
@@ -172,7 +177,7 @@
 }
 
 
-/*this section is for article actions*/
+/* this section is for article actions */
 
 .article-actions {
     display: flex;
@@ -225,7 +230,7 @@
 }
 
 
-/*this section is for when there are no articles*/
+/* this section is for when there are no articles */
 
 .no-articles {
     padding: 50px 30px;
@@ -243,7 +248,7 @@
 }
 
 
-/*this section is for responsive layout*/
+/* this section is for responsive layout */
 
 @media (max-width: 800px) {
 
@@ -263,6 +268,7 @@
 
 }
 
+
 @media (max-width: 600px) {
 
     .manage-articles-page {
@@ -281,24 +287,65 @@
         font-size: 28px;
     }
 
+    .articles-table {
+        min-width: 650px;
+    }
+
     .articles-table th,
     .articles-table td {
         padding: 14px;
     }
 
-    .article-actions {
-        flex-direction: column;
-        align-items: stretch;
+    .create-article-row td {
+        padding: 12px 14px;
+    }
+
+    .no-articles {
+        padding: 40px 20px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .manage-articles-page {
+        padding: 35px 12px 45px;
+    }
+
+    .manage-articles-header h1 {
+        font-size: 29px;
+    }
+
+    .manage-articles-header p:last-child {
+        font-size: 15px;
+    }
+
+    .existing-articles-header h2 {
+        font-size: 25px;
+    }
+
+    .articles-table {
+        min-width: 620px;
+    }
+
+    .articles-table th,
+    .articles-table td {
+        padding: 12px;
+    }
+
+    .articles-table th {
+        font-size: 11px;
+    }
+
+    .articles-table td {
+        font-size: 13px;
     }
 
     .article-action-edit,
     .article-action-delete {
-        width: 100%;
-        text-align: center;
-    }
-
-    .create-article-row td {
-        padding: 12px 14px;
+        padding: 8px 12px;
+        font-size: 12px;
     }
 
 }

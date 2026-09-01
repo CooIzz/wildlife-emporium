@@ -1,12 +1,19 @@
-/* Animal Details */
+/* ==================================================
+Animal Details
+================================================== */
 
 .animal-details {
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto;
     padding: 45px 25px 70px;
+    box-sizing: border-box;
 }
 
-/* Header */
+
+/* ==================================================
+Header
+================================================== */
 
 .animal-detail-header {
     display: flex;
@@ -17,9 +24,10 @@
 }
 
 .animal-detail-image {
-    width: min(520px,100%);
+    width: min(520px, 100%);
     aspect-ratio: 4 / 3;
     overflow: hidden;
+    box-sizing: border-box;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
@@ -27,13 +35,15 @@
 }
 
 .animal-detail-image img {
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: cover;
 }
 
 .animal-detail-heading {
+    width: 100%;
+    max-width: 100%;
     padding-top: 24px;
 }
 
@@ -44,6 +54,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
+    overflow-wrap: break-word;
 }
 
 .animal-detail-heading h1 {
@@ -51,6 +62,7 @@
     color: var(--text);
     font-size: 44px;
     line-height: 1.1;
+    overflow-wrap: break-word;
 }
 
 .animal-detail-scientific {
@@ -59,9 +71,13 @@
     opacity: 0.6;
     font-size: 18px;
     font-style: italic;
+    overflow-wrap: break-word;
 }
 
-/* Sections */
+
+/* ==================================================
+Sections
+================================================== */
 
 .animal-detail-section {
     margin-bottom: 60px;
@@ -71,9 +87,14 @@
     margin-bottom: 20px;
     color: var(--text);
     font-size: 27px;
+    line-height: 1.2;
+    overflow-wrap: break-word;
 }
 
-/* About */
+
+/* ==================================================
+About
+================================================== */
 
 .animal-about {
     max-width: 900px;
@@ -86,19 +107,25 @@
     color: var(--text);
     font-size: 18px;
     line-height: 1.9;
+    overflow-wrap: break-word;
 }
 
-/* Statistics */
+
+/* ==================================================
+Statistics
+================================================== */
 
 .animal-statistics {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
 
 .animal-statistics > div {
+    min-width: 0;
     padding: 20px;
+    box-sizing: border-box;
     border-right: 1px solid var(--border);
 }
 
@@ -114,6 +141,7 @@
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
+    overflow-wrap: break-word;
 }
 
 .animal-statistics p {
@@ -121,13 +149,17 @@
     color: var(--text);
     font-size: 18px;
     font-weight: 600;
+    overflow-wrap: break-word;
 }
 
-/* Taxonomy */
+
+/* ==================================================
+Taxonomy
+================================================== */
 
 .animal-taxonomy-tree {
     display: grid;
-    grid-template-columns: repeat(7,1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: start;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -137,6 +169,7 @@
     position: relative;
     min-width: 0;
     padding: 20px 12px;
+    box-sizing: border-box;
     text-align: center;
 }
 
@@ -158,6 +191,7 @@
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
+    overflow-wrap: break-word;
 }
 
 .animal-taxonomy-level p {
@@ -168,15 +202,19 @@
     overflow-wrap: anywhere;
 }
 
-/* Information */
+
+/* ==================================================
+Information
+================================================== */
 
 .animal-information {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 45px;
 }
 
 .animal-information > div {
+    min-width: 0;
     padding-top: 18px;
     border-top: 2px solid var(--border);
 }
@@ -189,6 +227,7 @@
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
+    overflow-wrap: break-word;
 }
 
 .animal-information p {
@@ -196,9 +235,13 @@
     color: var(--text);
     font-size: 16px;
     line-height: 1.8;
+    overflow-wrap: break-word;
 }
 
-/* Back */
+
+/* ==================================================
+Back
+================================================== */
 
 .animal-detail-back {
     margin-top: 20px;
@@ -206,12 +249,15 @@
 
 .animal-detail-back a {
     display: inline-block;
+    max-width: 100%;
     padding: 11px 18px;
+    box-sizing: border-box;
     background: var(--orange);
     color: var(--card);
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
+    text-align: center;
 }
 
 .animal-detail-back a:hover {
@@ -219,15 +265,19 @@
     color: var(--text);
 }
 
-/* Tablet */
+
+/* ==================================================
+Tablet
+================================================== */
 
 @media (max-width: 900px) {
+
     .animal-details {
         max-width: 850px;
     }
 
     .animal-statistics {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .animal-statistics > div:nth-child(2) {
@@ -239,7 +289,7 @@
     }
 
     .animal-taxonomy-tree {
-        grid-template-columns: repeat(4,1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .animal-taxonomy-level:nth-child(4)::after {
@@ -253,11 +303,16 @@
     .animal-information {
         gap: 30px;
     }
+
 }
 
-/* Mobile */
+
+/* ==================================================
+Mobile
+================================================== */
 
 @media (max-width: 600px) {
+
     .animal-details {
         padding: 30px 15px 55px;
     }
@@ -291,8 +346,13 @@
         font-size: 24px;
     }
 
+    .animal-about p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
     .animal-statistics {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .animal-statistics > div {
@@ -308,7 +368,7 @@
     }
 
     .animal-taxonomy-tree {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .animal-taxonomy-level {
@@ -333,16 +393,34 @@
     }
 
     .animal-information {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 25px;
     }
+
 }
 
-/* Small Mobile */
+
+/* ==================================================
+Small Mobile
+================================================== */
 
 @media (max-width: 420px) {
+
+    .animal-details {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .animal-detail-heading h1 {
+        font-size: 30px;
+    }
+
+    .animal-detail-scientific {
+        font-size: 15px;
+    }
+
     .animal-statistics {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .animal-statistics > div {
@@ -355,12 +433,12 @@
     }
 
     .animal-taxonomy-tree {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .animal-taxonomy-level {
         display: grid;
-        grid-template-columns: 90px 1fr;
+        grid-template-columns: minmax(75px, 90px) minmax(0, 1fr);
         align-items: center;
         gap: 10px;
         padding: 13px 10px;
@@ -374,9 +452,13 @@
     .animal-taxonomy-level:last-child {
         border-bottom: none;
     }
+
 }
 
-/* Favourite Button */
+
+/* ==================================================
+Favourite Button
+================================================== */
 
 .animal-card-favourite {
     position: relative;
@@ -388,12 +470,16 @@
     width: 38px;
     height: 38px;
     padding: 7px;
+    box-sizing: border-box;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 3px 10px var(--shadow);
-    transition: transform 0.2s ease,background 0.2s ease,box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .animal-card-favourite button:hover {
@@ -404,9 +490,8 @@
 }
 
 .animal-card-favourite img {
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: contain;
 }
-

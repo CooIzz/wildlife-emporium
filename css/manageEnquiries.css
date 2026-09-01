@@ -1,14 +1,15 @@
-/*this section is for the main page*/
+/* this section is for the main page */
 
 .manage-enquiries-page {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 30px 80px;
+    box-sizing: border-box;
 }
 
 
-/*this section is for the page header*/
+/* this section is for the page header */
 
 .manage-enquiries-header {
     max-width: 800px;
@@ -39,7 +40,7 @@
 }
 
 
-/*this section is for the existing enquiries heading*/
+/* this section is for the existing enquiries heading */
 
 .existing-enquiries {
     width: 100%;
@@ -64,6 +65,7 @@
 .existing-enquiries-header h2 {
     color: var(--text);
     font-size: 34px;
+    line-height: 1.2;
 }
 
 .existing-enquiries-header > p {
@@ -75,7 +77,7 @@
 }
 
 
-/*this section is for the enquiry table*/
+/* this section is for the enquiry table */
 
 .enquiries-table-container {
     width: 100%;
@@ -84,6 +86,7 @@
     border: 1px solid var(--border);
     border-radius: 14px;
     box-shadow: 0 4px 14px var(--shadow);
+    -webkit-overflow-scrolling: touch;
 }
 
 .enquiries-table {
@@ -102,6 +105,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .enquiries-table td {
@@ -117,7 +121,7 @@
 }
 
 
-/*this section is for enquiry row hover*/
+/* this section is for enquiry row hover */
 
 .enquiries-table tbody tr {
     transition: background 0.2s ease;
@@ -128,7 +132,7 @@
 }
 
 
-/*this section is for enquiry information*/
+/* this section is for enquiry information */
 
 .enquiry-user {
     min-width: 150px;
@@ -173,7 +177,7 @@
 }
 
 
-/*this section is for enquiry actions*/
+/* this section is for enquiry actions */
 
 .enquiry-actions {
     min-width: 90px;
@@ -208,7 +212,7 @@
 }
 
 
-/*this section is for when there are no enquiries*/
+/* this section is for when there are no enquiries */
 
 .no-enquiries {
     padding: 50px 30px;
@@ -226,7 +230,7 @@
 }
 
 
-/*this section is for responsive layout*/
+/* this section is for responsive layout */
 
 @media (max-width: 800px) {
 
@@ -265,6 +269,10 @@
         font-size: 28px;
     }
 
+    .enquiries-table {
+        min-width: 950px;
+    }
+
     .enquiries-table th,
     .enquiries-table td {
         padding: 14px;
@@ -274,9 +282,51 @@
         min-width: 250px;
     }
 
+}
+
+
+@media (max-width: 400px) {
+
+    .manage-enquiries-page {
+        padding: 35px 12px 45px;
+    }
+
+    .manage-enquiries-header h1 {
+        font-size: 29px;
+    }
+
+    .manage-enquiries-header p:last-child {
+        font-size: 15px;
+    }
+
+    .existing-enquiries-header h2 {
+        font-size: 25px;
+    }
+
+    .enquiries-table {
+        min-width: 900px;
+    }
+
+    .enquiries-table th,
+    .enquiries-table td {
+        padding: 12px;
+    }
+
+    .enquiries-table th {
+        font-size: 11px;
+    }
+
+    .enquiries-table td {
+        font-size: 13px;
+    }
+
+    .enquiry-message {
+        min-width: 230px;
+    }
+
     .enquiry-action-delete {
-        width: 100%;
-        text-align: center;
+        padding: 8px 12px;
+        font-size: 12px;
     }
 
 }

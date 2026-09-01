@@ -1,22 +1,35 @@
-/*this section is for the main page*/
+/* ==================================================
+   CREATE ANIMAL PAGE
+================================================== */
 
-.create-animal-page {
+
+/* ==================================================
+   Main Page
+================================================== */
+
+.create-animal-page
+{
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     padding: 60px 30px 80px;
+    box-sizing: border-box;
 }
 
 
-/*this section is for the page header*/
+/* ==================================================
+   Page Header
+================================================== */
 
-.create-animal-header {
+.create-animal-header
+{
     max-width: 800px;
     margin: 0 auto 45px;
     text-align: center;
 }
 
-.create-animal-label {
+.create-animal-label
+{
     margin-bottom: 10px;
     color: var(--dark-green);
     font-size: 12px;
@@ -24,14 +37,18 @@
     letter-spacing: 1.5px;
 }
 
-.create-animal-header h1 {
+.create-animal-header h1
+{
     margin-bottom: 18px;
     color: var(--text);
-    font-size: 42px;
+    font-size: clamp(32px, 5vw, 42px);
     line-height: 1.1;
+    overflow-wrap: break-word;
 }
 
-.create-animal-header p:last-child {
+.create-animal-header p:last-child
+{
+    margin: 0;
     color: var(--text);
     font-size: 16px;
     line-height: 1.7;
@@ -39,45 +56,61 @@
 }
 
 
-/*this section is for the error message*/
+/* ==================================================
+   Error Message
+================================================== */
 
-.create-animal-error {
+.create-animal-error
+{
+    width: 100%;
     max-width: 900px;
     margin: 0 auto 25px;
     padding: 15px 20px;
+    box-sizing: border-box;
     background: #ffebee;
     border: 1px solid #ef9a9a;
     border-radius: 10px;
     color: var(--text);
     font-size: 14px;
     line-height: 1.5;
+    overflow-wrap: break-word;
 }
 
 
-/*this section is for the animal form*/
+/* ==================================================
+   Animal Form
+================================================== */
 
-.create-animal-form-container {
+.create-animal-form-container
+{
     width: 100%;
 }
 
-.create-animal-form {
+.create-animal-form
+{
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
 
-/*this section is for the form sections*/
+/* ==================================================
+   Form Sections
+================================================== */
 
-.create-animal-section {
+.create-animal-section
+{
+    min-width: 0;
     padding: 35px;
+    box-sizing: border-box;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
     box-shadow: 0 4px 14px var(--shadow);
 }
 
-.create-animal-section-label {
+.create-animal-section-label
+{
     margin-bottom: 7px;
     color: var(--dark-green);
     font-size: 12px;
@@ -85,25 +118,33 @@
     letter-spacing: 1.5px;
 }
 
-.create-animal-section h2 {
+.create-animal-section h2
+{
     margin-bottom: 30px;
     color: var(--text);
     font-size: 28px;
     line-height: 1.2;
+    overflow-wrap: break-word;
 }
 
 
-/*this section is for form fields*/
+/* ==================================================
+   Form Fields
+================================================== */
 
-.create-form-group {
+.create-form-group
+{
+    min-width: 0;
     margin-bottom: 22px;
 }
 
-.create-form-group:last-child {
+.create-form-group:last-child
+{
     margin-bottom: 0;
 }
 
-.create-form-group label {
+.create-form-group label
+{
     display: block;
     margin-bottom: 8px;
     color: var(--text);
@@ -112,8 +153,10 @@
 }
 
 .create-form-group input,
-.create-form-group textarea {
+.create-form-group textarea
+{
     width: 100%;
+    box-sizing: border-box;
     padding: 13px 15px;
     background: var(--card);
     color: var(--text);
@@ -128,37 +171,46 @@
         box-shadow 0.2s ease;
 }
 
-.create-form-group input {
+.create-form-group input
+{
     height: 46px;
 }
 
-.create-form-group textarea {
+.create-form-group textarea
+{
     min-height: 110px;
     resize: vertical;
 }
 
 .create-form-group input:focus,
-.create-form-group textarea:focus {
+.create-form-group textarea:focus
+{
     border-color: var(--dark-green);
     box-shadow: 0 0 0 3px rgba(66, 130, 57, 0.12);
 }
 
 .create-form-group input::placeholder,
-.create-form-group textarea::placeholder {
+.create-form-group textarea::placeholder
+{
     color: var(--text);
     opacity: 0.45;
 }
 
 
-/*this section is for the file upload*/
+/* ==================================================
+   File Upload
+================================================== */
 
-.create-form-group input[type="file"] {
+.create-form-group input[type="file"]
+{
     height: auto;
+    min-height: 46px;
     padding: 10px 12px;
     cursor: pointer;
 }
 
-.create-form-group input[type="file"]::file-selector-button {
+.create-form-group input[type="file"]::file-selector-button
+{
     margin-right: 10px;
     padding: 8px 12px;
     background: var(--light-green);
@@ -171,15 +223,19 @@
     cursor: pointer;
 }
 
-.create-form-group input[type="file"]::file-selector-button:hover {
+.create-form-group input[type="file"]::file-selector-button:hover
+{
     background: var(--dark-green);
     color: var(--card);
 }
 
 
-/*this section is for form help text*/
+/* ==================================================
+   Form Help Text
+================================================== */
 
-.create-form-help {
+.create-form-help
+{
     margin-top: 7px;
     color: var(--text);
     font-size: 12px;
@@ -188,9 +244,12 @@
 }
 
 
-/*this section is for the form actions*/
+/* ==================================================
+   Form Actions
+================================================== */
 
-.create-animal-actions {
+.create-animal-actions
+{
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -199,8 +258,10 @@
 }
 
 .create-cancel-button,
-.create-save-button {
+.create-save-button
+{
     display: inline-block;
+    box-sizing: border-box;
     padding: 11px 20px;
     border-radius: 8px;
     font-family: inherit;
@@ -215,25 +276,29 @@
         transform 0.2s ease;
 }
 
-.create-cancel-button {
+.create-cancel-button
+{
     background: var(--card);
     color: var(--text);
     border: 1px solid var(--border);
 }
 
-.create-cancel-button:hover {
+.create-cancel-button:hover
+{
     background: var(--card-background);
     border-color: var(--orange);
     transform: translateY(-1px);
 }
 
-.create-save-button {
+.create-save-button
+{
     border: 1px solid var(--orange);
     background: var(--orange);
     color: var(--card);
 }
 
-.create-save-button:hover {
+.create-save-button:hover
+{
     background: var(--gold);
     color: var(--text);
     border-color: var(--gold);
@@ -241,62 +306,150 @@
 }
 
 
-/*this section is for responsive layout*/
+/* ==================================================
+   Tablet
+================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 800px)
+{
 
-    .create-animal-page {
+    .create-animal-page
+    {
         padding: 50px 20px 60px;
     }
 
-    .create-animal-header h1 {
+    .create-animal-header
+    {
+        margin-bottom: 40px;
+    }
+
+    .create-animal-header h1
+    {
         font-size: 36px;
     }
 
-    .create-animal-section {
+    .create-animal-section
+    {
         padding: 30px;
     }
 
-    .create-animal-actions {
+    .create-animal-actions
+    {
         justify-content: flex-start;
     }
 
 }
 
 
-@media (max-width: 600px) {
+/* ==================================================
+   Mobile
+================================================== */
 
-    .create-animal-page {
+@media (max-width: 600px)
+{
+
+    .create-animal-page
+    {
         padding: 40px 15px 50px;
     }
 
-    .create-animal-header {
+    .create-animal-header
+    {
         margin-bottom: 35px;
     }
 
-    .create-animal-header h1 {
+    .create-animal-header h1
+    {
         font-size: 32px;
     }
 
-    .create-animal-section {
+    .create-animal-header p:last-child
+    {
+        font-size: 15px;
+    }
+
+    .create-animal-section
+    {
         padding: 25px 20px;
         border-radius: 14px;
     }
 
-    .create-animal-section h2 {
+    .create-animal-section h2
+    {
         margin-bottom: 25px;
         font-size: 24px;
     }
 
-    .create-animal-actions {
+    .create-animal-actions
+    {
         flex-direction: column-reverse;
         align-items: stretch;
     }
 
     .create-cancel-button,
-    .create-save-button {
+    .create-save-button
+    {
         width: 100%;
         text-align: center;
+    }
+
+}
+
+
+/* ==================================================
+   Small Mobile
+================================================== */
+
+@media (max-width: 400px)
+{
+
+    .create-animal-page
+    {
+        padding: 30px 12px 40px;
+    }
+
+    .create-animal-header
+    {
+        margin-bottom: 30px;
+    }
+
+    .create-animal-header h1
+    {
+        font-size: 29px;
+    }
+
+    .create-animal-header p:last-child
+    {
+        font-size: 14px;
+    }
+
+    .create-animal-section
+    {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
+    .create-animal-section h2
+    {
+        font-size: 22px;
+    }
+
+    .create-form-group input,
+    .create-form-group textarea
+    {
+        font-size: 14px;
+    }
+
+    .create-form-group input[type="file"]
+    {
+        padding: 8px;
+    }
+
+    .create-form-group input[type="file"]::file-selector-button
+    {
+        margin-right: 6px;
+        padding: 7px 9px;
+        font-size: 12px;
     }
 
 }

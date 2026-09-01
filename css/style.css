@@ -1,24 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900&display=swap');
 
-* {
 
+/* ---------------- GLOBAL RESET ---------------- */
+
+*
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
-
 
 
 /* ---------------- THEME ---------------- */
 
-:root {
+:root
+{
+    --background: rgb(245, 240, 230);
 
-    --background: rgb(245, 240, 230); /* always for page bg */
+    --text: rgb(54, 23, 5);
 
-    --text: rgb(54, 23, 5); /* always for page text */
-
-    --dark-green: rgb(66, 130, 57); 
+    --dark-green: rgb(66, 130, 57);
     --light-green: rgb(123, 182, 98);
 
     --gold: rgb(251, 177, 73);
@@ -27,54 +28,46 @@
     --dark-purple: rgb(115, 51, 129);
     --light-purple: rgb(153, 79, 178);
 
-    --card: rgb(255, 255, 245); /* use this interchangeably with cardbg */
-    --card-background: rgb(248, 238, 219); /* used to contrast with the main card color up to u */
+    --card: rgb(255, 255, 245);
+    --card-background: rgb(248, 238, 219);
 
-    --border: rgb(220, 215, 205); /*not a must*/
-    --shadow: rgba(0, 0, 0, 0.10); /*not a must*/
-
+    --border: rgb(220, 215, 205);
+    --shadow: rgba(0, 0, 0, 0.10);
 }
-
 
 
 /* ---------------- BODY ---------------- */
 
-body {
-
+body
+{
     font-family: "Work Sans", sans-serif;
-
     background-color: var(--background);
-
     color: var(--text);
-
+    overflow-x: hidden;
 }
-
 
 
 /* ---------------- HEADER ---------------- */
 
-header {
-
+header
+{
     background-color: var(--dark-green);
-
     color: var(--card);
-
 }
 
-.header-container {
-
+.header-container
+{
     display: flex;
     align-items: center;
 
     max-width: 1400px;
 
-    margin: 0px auto;
+    margin: 0 auto;
     padding: 20px 30px;
-
 }
 
-.header-logo {
-
+.header-logo
+{
     display: flex;
     align-items: center;
 
@@ -83,79 +76,78 @@ header {
     color: var(--card);
 
     text-decoration: none;
-
 }
 
-.header-logo img {
-
+.header-logo img
+{
     width: 100px;
     height: 100px;
 
+    flex-shrink: 0;
 }
 
-.header-logo-text {
-
+.header-logo-text
+{
     display: flex;
     flex-direction: column;
 
     gap: 4px;
 
+    min-width: 0;
 }
 
-.header-logo-text h1 {
-
+.header-logo-text h1
+{
     font-size: 34px;
-
 }
 
-.header-logo-text p {
-
+.header-logo-text p
+{
     font-size: 16px;
-
 }
-
 
 
 /* ---------------- NAVIGATION ---------------- */
 
-nav {
-
+nav
+{
     background-color: var(--card);
 
     border-bottom: 1px solid var(--border);
 
-    box-shadow: 0px 3px 10px var(--shadow);
-
+    box-shadow: 0 3px 10px var(--shadow);
 }
 
-.navigation-container {
-
+.navigation-container
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     max-width: 1400px;
 
-    margin: 0px auto;
-    padding: 0px 30px;
+    margin: 0 auto;
+    padding: 0 30px;
 
+    min-width: 0;
 }
 
-.navigation-links {
-
+.navigation-links
+{
     display: flex;
 
     gap: 50px;
 
     list-style: none;
 
+    min-width: 0;
 }
 
-.navigation-links a {
-
+.navigation-links a
+{
     display: block;
 
-    padding: 22px 0px;
+    padding: 22px 0;
 
     color: var(--text);
 
@@ -164,39 +156,37 @@ nav {
     font-weight: 600;
 
     border-bottom: 3px solid transparent;
-
 }
 
-.navigation-links a:hover {
-
+.navigation-links a:hover
+{
     color: var(--dark-green);
 
     border-bottom-color: var(--dark-green);
-
 }
-
 
 
 /* ---------------- ACCOUNT ---------------- */
 
-.navigation-dropdown {
-
+.navigation-dropdown
+{
     position: relative;
 
     padding-bottom: 12px;
 
     margin-bottom: -12px;
 
+    flex-shrink: 0;
 }
 
-.navigation-account-button {
-
+.navigation-account-button
+{
     display: flex;
     align-items: center;
 
     gap: 14px;
 
-    padding: 10px 0px;
+    padding: 10px 0;
 
     background-color: transparent;
 
@@ -208,11 +198,10 @@ nav {
     font-weight: 600;
 
     color: var(--text);
-
 }
 
-.navigation-avatar {
-
+.navigation-avatar
+{
     width: 46px;
     height: 46px;
 
@@ -222,17 +211,16 @@ nav {
     object-fit: cover;
 
     flex-shrink: 0;
-
 }
 
-.navigation-dropdown-menu {
-
+.navigation-dropdown-menu
+{
     display: none;
 
     position: absolute;
 
     top: calc(100% - 20px);
-    right: 0px;
+    right: 0;
 
     min-width: 220px;
 
@@ -241,22 +229,20 @@ nav {
     border: 1px solid var(--border);
     border-radius: 16px;
 
-    box-shadow: 0px 10px 25px var(--shadow);
+    box-shadow: 0 10px 25px var(--shadow);
 
     overflow: hidden;
 
     z-index: 1000;
-
 }
 
-.navigation-dropdown:hover .navigation-dropdown-menu {
-
+.navigation-dropdown:hover .navigation-dropdown-menu
+{
     display: block;
-
 }
 
-.navigation-dropdown-menu a {
-
+.navigation-dropdown-menu a
+{
     display: block;
 
     padding: 16px 20px;
@@ -264,35 +250,32 @@ nav {
     color: var(--text);
 
     text-decoration: none;
-
 }
 
-.navigation-dropdown-menu a:hover {
-
+.navigation-dropdown-menu a:hover
+{
     background-color: var(--card-background);
 
     color: var(--dark-green);
-
 }
-
 
 
 /* ---------------- MAIN ---------------- */
 
-main {
-
+main
+{
     min-height: 600px;
 
     padding: 30px;
 
+    width: 100%;
 }
-
 
 
 /* ---------------- FOOTER ---------------- */
 
-footer {
-
+footer
+{
     padding: 20px;
 
     background-color: var(--dark-green);
@@ -300,5 +283,238 @@ footer {
     color: var(--card);
 
     text-align: center;
+}
 
+
+/* ==================================================
+   RESPONSIVE DESIGN
+================================================== */
+
+
+/* ---------------- TABLET ---------------- */
+
+@media (max-width: 1000px)
+{
+    .header-container
+    {
+        padding: 18px 25px;
+    }
+
+    .header-logo
+    {
+        gap: 15px;
+    }
+
+    .header-logo img
+    {
+        width: 85px;
+        height: 85px;
+    }
+
+    .header-logo-text h1
+    {
+        font-size: 30px;
+    }
+
+    .header-logo-text p
+    {
+        font-size: 14px;
+    }
+
+    .navigation-container
+    {
+        padding: 0 25px;
+    }
+
+    .navigation-links
+    {
+        gap: 30px;
+    }
+
+    .navigation-links a
+    {
+        padding: 20px 0;
+    }
+
+    main
+    {
+        padding: 25px;
+    }
+}
+
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 700px)
+{
+    .header-container
+    {
+        justify-content: center;
+
+        padding: 20px 15px;
+
+        text-align: center;
+    }
+
+    .header-logo
+    {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .header-logo img
+    {
+        width: 70px;
+        height: 70px;
+    }
+
+    .header-logo-text h1
+    {
+        font-size: 26px;
+    }
+
+    .header-logo-text p
+    {
+        font-size: 13px;
+    }
+
+
+    /* Mobile navigation */
+
+    .navigation-container
+    {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 0 15px;
+    }
+
+    .navigation-links
+    {
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 0 25px;
+    }
+
+    .navigation-links a
+    {
+        padding: 15px 0;
+
+        font-size: 14px;
+    }
+
+    .navigation-dropdown
+    {
+        display: flex;
+        justify-content: center;
+
+        padding: 10px 0;
+        margin: 0;
+
+        border-top: 1px solid var(--border);
+    }
+
+    .navigation-account-button
+    {
+        justify-content: center;
+    }
+
+    .navigation-dropdown-menu
+    {
+        top: calc(100% - 5px);
+        right: 0;
+    }
+
+
+    /* Main */
+
+    main
+    {
+        padding: 20px 15px;
+    }
+}
+
+
+/* ---------------- SMALL MOBILE ---------------- */
+
+@media (max-width: 420px)
+{
+    .header-container
+    {
+        padding: 18px 12px;
+    }
+
+    .header-logo
+    {
+        gap: 10px;
+    }
+
+    .header-logo img
+    {
+        width: 60px;
+        height: 60px;
+    }
+
+    .header-logo-text h1
+    {
+        font-size: 22px;
+    }
+
+    .header-logo-text p
+    {
+        font-size: 12px;
+    }
+
+
+    .navigation-container
+    {
+        padding: 0 12px;
+    }
+
+    .navigation-links
+    {
+        gap: 0 18px;
+    }
+
+    .navigation-links a
+    {
+        padding: 13px 0;
+
+        font-size: 13px;
+    }
+
+    .navigation-account-button
+    {
+        font-size: 14px;
+    }
+
+    .navigation-avatar
+    {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navigation-dropdown-menu
+    {
+        min-width: 190px;
+    }
+
+    .navigation-dropdown-menu a
+    {
+        padding: 14px 16px;
+    }
+
+
+    main
+    {
+        padding: 15px 12px;
+    }
+
+    footer
+    {
+        padding: 18px 12px;
+    }
 }

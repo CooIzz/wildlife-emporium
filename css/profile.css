@@ -6,6 +6,7 @@
     justify-content: center;
     width: 100%;
     padding: 60px 30px 80px;
+    box-sizing: border-box;
 }
 
 
@@ -19,6 +20,7 @@
     gap: 30px;
     width: 100%;
     max-width: 1000px;
+    box-sizing: border-box;
 }
 
 
@@ -68,6 +70,7 @@
     font-size: 14px;
     line-height: 1.5;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .profile-error
@@ -93,6 +96,7 @@
     border: 1px solid var(--border);
     border-radius: 18px;
     box-shadow: 0 4px 14px var(--shadow);
+    box-sizing: border-box;
 }
 
 .profile-section-label
@@ -174,6 +178,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     margin-bottom: 9px;
     color: var(--text);
     font-size: 13px;
@@ -188,6 +193,7 @@
     background-color: var(--card-background);
     border: 1px solid var(--border);
     border-radius: 999px;
+    box-sizing: border-box;
 }
 
 .profile-xp-fill
@@ -221,6 +227,7 @@
     background-color: var(--card-background);
     border: 1px solid var(--border);
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .profile-xp-summary p
@@ -283,6 +290,7 @@
     border: 1px dashed var(--border);
     border-radius: 12px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .profile-favourites-empty h3
@@ -400,6 +408,7 @@
     font-size: 15px;
     line-height: 1.5;
     outline: none;
+    box-sizing: border-box;
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
@@ -457,6 +466,7 @@
     background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .profile-information-label
@@ -471,6 +481,7 @@
     color: var(--text);
     font-size: 13px;
     text-align: right;
+    overflow-wrap: anywhere;
 }
 
 
@@ -508,18 +519,15 @@
 
 @media (max-width: 900px)
 {
-
     .profile-favourites-grid
     {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
 }
 
 
 @media (max-width: 800px)
 {
-
     .profile-page
     {
         padding: 50px 20px 60px;
@@ -540,15 +548,23 @@
         align-self: flex-start;
     }
 
+    .profile-information-value
+    {
+        overflow-wrap: anywhere;
+    }
 }
 
 
 @media (max-width: 600px)
 {
-
     .profile-page
     {
         padding: 40px 15px 50px;
+    }
+
+    .profile-card
+    {
+        gap: 25px;
     }
 
     .profile-logo img
@@ -560,6 +576,11 @@
     .profile-title
     {
         font-size: 34px;
+    }
+
+    .profile-description
+    {
+        font-size: 15px;
     }
 
     .profile-section
@@ -597,6 +618,17 @@
         font-size: 20px;
     }
 
+    .profile-xp-progress-info
+    {
+        gap: 10px;
+    }
+
+    .profile-xp-progress-footer
+    {
+        flex-wrap: wrap;
+        gap: 6px 15px;
+    }
+
     .profile-xp-progress-info,
     .profile-xp-progress-footer
     {
@@ -614,6 +646,17 @@
         margin-top: -10px;
     }
 
+    .profile-account
+    {
+        gap: 25px;
+    }
+
+    .profile-avatar img
+    {
+        width: 120px;
+        height: 120px;
+    }
+
     .profile-information-item
     {
         flex-direction: column;
@@ -623,13 +666,76 @@
 
     .profile-information-value
     {
+        width: 100%;
         text-align: left;
+        overflow-wrap: anywhere;
     }
 
     .profile-button
     {
         width: 100%;
+        align-self: stretch;
         text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+
+@media (max-width: 420px)
+{
+    .profile-page
+    {
+        padding: 35px 12px 45px;
     }
 
+    .profile-title
+    {
+        font-size: 30px;
+    }
+
+    .profile-description
+    {
+        font-size: 14px;
+    }
+
+    .profile-section
+    {
+        padding: 22px 16px;
+    }
+
+    .profile-section h2
+    {
+        font-size: 22px;
+    }
+
+    .profile-xp-level strong
+    {
+        font-size: 25px;
+    }
+
+    .profile-xp-total strong
+    {
+        font-size: 19px;
+    }
+
+    .profile-xp-bar
+    {
+        height: 14px;
+    }
+
+    .profile-favourites-empty
+    {
+        padding: 25px 18px;
+    }
+
+    .profile-avatar img
+    {
+        width: 105px;
+        height: 105px;
+    }
+
+    .profile-information-item
+    {
+        padding: 13px 15px;
+    }
 }

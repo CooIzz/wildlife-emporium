@@ -6,6 +6,7 @@
     align-items: center;
     min-height: 700px;
     padding: 60px;
+    box-sizing: border-box;
 }
 
 
@@ -17,7 +18,9 @@
     align-items: center;
     gap: 30px;
     width: 500px;
+    max-width: 100%;
     padding: 50px;
+    box-sizing: border-box;
     background-color: var(--card-background);
     border: 1px solid var(--border);
     border-radius: 24px;
@@ -27,8 +30,10 @@
 /* ---------------- ACCOUNT LOGO ---------------- */
 
 .account-logo img {
+    display: block;
     width: 120px;
     height: 120px;
+    max-width: 100%;
 }
 
 
@@ -39,6 +44,7 @@
     font-size: 42px;
     font-weight: 700;
     text-align: center;
+    overflow-wrap: break-word;
 }
 
 
@@ -48,6 +54,7 @@
     color: var(--text);
     line-height: 1.7;
     text-align: center;
+    overflow-wrap: break-word;
 }
 
 
@@ -75,6 +82,8 @@
 }
 
 .account-input-group input {
+    width: 100%;
+    box-sizing: border-box;
     padding: 14px 18px;
     background-color: var(--background);
     border: 1px solid var(--border);
@@ -87,6 +96,8 @@
 /* ---------------- ACCOUNT BUTTON ---------------- */
 
 .account-button {
+    width: 100%;
+    box-sizing: border-box;
     padding: 16px;
     background-color: var(--dark-purple);
     border: none;
@@ -110,6 +121,8 @@
 
 .account-footer p {
     color: var(--text);
+    text-align: center;
+    overflow-wrap: break-word;
 }
 
 
@@ -120,6 +133,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    box-sizing: border-box;
     padding: 16px;
     background-color: var(--card-background);
     border: 1px solid var(--border);
@@ -127,6 +141,7 @@
     color: var(--dark-purple);
     font-weight: 600;
     text-decoration: none;
+    text-align: center;
 }
 
 
@@ -134,16 +149,34 @@
 
 .account-error {
     width: 100%;
+    box-sizing: border-box;
     padding: 14px;
     background-color: var(--card-background);
     border: 1px solid var(--orange);
     border-radius: 12px;
     color: var(--orange);
     text-align: center;
+    overflow-wrap: break-word;
 }
 
 
-/* ---------------- RESPONSIVE ---------------- */
+/* ---------------- TABLET ---------------- */
+
+@media (max-width: 900px) {
+
+    .account-page {
+        padding: 50px 30px;
+    }
+
+    .account-card {
+        width: 100%;
+        max-width: 500px;
+    }
+
+}
+
+
+/* ---------------- MOBILE ---------------- */
 
 @media (max-width: 767px) {
 
