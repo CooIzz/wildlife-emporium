@@ -35,6 +35,5 @@ CREATE TABLE IF NOT EXISTS `user_score` (
 
 INSERT INTO `user_score` (`userID`, `username`, `score`) VALUES
 (1, 'happy123', 0),
-(2, 'test', 0),
-(3, 'whatsup', 0);
+(2, 'test', 0);
 COMMIT;
