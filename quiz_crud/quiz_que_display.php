@@ -5,7 +5,7 @@ session_start();
 if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         include("../includes/database.php");
-        $sql = "SELECT question_num, question_text, option_a, option_b, option_c, option_d FROM quiz_questions WHERE animal_id=? AND difficulty=? AND question_num=? ORDER BY question_num ASC LIMIT ?";
+        $sql = "SELECT question_num, question_text, option_a, option_b, option_c, option_d FROM quiz_questions WHERE animal_id=? AND difficulty=? AND question_num>=? ORDER BY question_num ASC LIMIT ?";
         $sql_stmt = mysqli_prepare($connection, $sql);
 
         if($sql_stmt === false)
