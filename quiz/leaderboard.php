@@ -114,7 +114,7 @@ const user_id = <?php echo json_encode($user_id); ?>;
 
 </script>
 
-<script src="../js/quiz_leaderboard.js"></script>
+<script src="../js/quiz.js"></script>
 
 </body>
 

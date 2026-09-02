@@ -11,10 +11,18 @@ window.addEventListener("pageshow", event => {
 	
 });
 
+
+/*
+---------------For quiz/index.php page---------------
+*/
+
+
 //Calling the anchor elements from the quiz index page
 //and adding eventListeners to them for "click" events
 
-quizAnimals.forEach(animal => {
+if(typeof quizAnimals !== "undefined")
+{
+	quizAnimals.forEach(animal => {
 	
 	const element = document.getElementById(animal['js_id']);
 	
@@ -74,3 +82,29 @@ quizAnimals.forEach(animal => {
 	}
 		
 })
+
+}
+
+
+/*
+---------------For quiz/leaderboard.php page---------------
+*/
+
+const scoreboard_expand = document.getElementById('scoreboard_expand');
+
+//Function to toggle CSS display property of table
+//based on whether user is logged in or not
+scoreboard_expand.addEventListener("click", event => {
+	
+	if(user_id !== 0)
+	{		
+		const scoreboard = document.getElementById('scoreboard');
+		scoreboard.classList.toggle('hidden');
+	}else
+	{
+		alert("Please login before proceeding!");
+		window.location.href = loginURL;
+		
+	}
+	
+});

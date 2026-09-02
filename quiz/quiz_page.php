@@ -148,7 +148,7 @@ echo '<br>';
 <?php include("../includes/footer.php"); ?>
 <script src="../js/script.js"></script>
 
-<script src="../js/quiz_page.js"></script>
+<script src="../js/quiz.js"></script>
 <?php mysqli_close($connection); ?>
 </body>
 
