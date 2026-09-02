@@ -238,7 +238,11 @@ mysqli_query($connection, $user_score_update);
 <?php include("../includes/footer.php"); ?>
 <script src="../js/script.js"></script>
 
-<?php mysqli_close($connection); ?>
+<?php mysqli_close($connection); 
+
+echo '<p>Wish to view the quiz scoreboard?<a href="leaderboard.php">Click Here!</a></p>';
+
+?>
 </body>
 
 </html>
