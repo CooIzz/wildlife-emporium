@@ -242,6 +242,9 @@ mysqli_query($connection, $user_score_update);
 <?php mysqli_close($connection); 
 
 echo '<p>Wish to view the quiz scoreboard?<a href="leaderboard.php">Click Here!</a></p>';
+echo '<br><br>';
+echo '<p>Or do you wish to go back to the main quiz page?<a href="index.php">Click Here!</a></p>';
+
 
 ?>
 </body>
