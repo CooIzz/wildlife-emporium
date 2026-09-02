@@ -181,7 +181,7 @@ foreach($results_detail as $result_detail)
 	
 	echo '<p>' . $result_detail['question_num']. ' ' . $result_detail['question_text'] . '</p>';
 	echo '<br>';
-	echo '<p>Answer Choices</p>';
+	echo '<p>Answer Choices:</p>';
 	echo '<br>';
 	echo '<ol>';
 	
@@ -211,6 +211,7 @@ foreach($results_detail as $result_detail)
 //Displaying the user's score
 echo '<p>Total Score: ' . $score . '</p>';
 
+//To update the user's total score in the user's score table of the database
 $userID = $_SESSION['userID'];
 $user_score_query = "SELECT * FROM user_score WHERE userID = $userID";
 $user_score_attempt = mysqli_query($connection, $user_score_query);
