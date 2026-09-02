@@ -32,6 +32,15 @@ Styling for the form submit buttons
 
 }
 
+/*
+To toggle the display property for the
+CRUD form
+*/
+
+.hidden {
+    display: none;
+}
+
 
 
 /*

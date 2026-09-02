@@ -173,7 +173,7 @@ require_once("../includes/database.php");
                     <div class="admin-card-footer">
 
                         <a
-                            href="../quiz_crud/index.php"
+                            href="../quiz/manageQuiz.php"
                             class="admin-manage-button"
                         >
                             Manage Quiz
