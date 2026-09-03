@@ -257,12 +257,11 @@ mysqli_stmt_close($statement_suggested);
             id="comment-text" 
             rows="3"
             placeholder="<?php echo $isLoggedIn ? 'Write a comment...' : 'Log in to comment...'; ?>"
-            <?php echo !$isLoggedIn ? 'disabled' : '';?>
             required></textarea>
 
-            <button type="submit" id="comment-submit-btn" class="comment-submit-btn"
-            <?php echo !$isLoggedIn ? 'disabled' : ''; ?>>
-            Post </button>
+            <button type="submit" id="comment-submit-btn" class="comment-submit-btn">
+            Post 
+        </button>
         </form>
 
         <!-- display comments -->

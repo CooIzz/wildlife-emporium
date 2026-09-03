@@ -3,6 +3,7 @@
 document.addEventListener ('DOMContentLoaded', () =>{
     const likeBtn = document.getElementById('like-btn');
     const commentText = document.getElementById('comment-text');
+    const commentSubmitBtn = document.getElementById('comment-submit-btn');
 
     //like button
     if(likeBtn){
@@ -16,15 +17,20 @@ document.addEventListener ('DOMContentLoaded', () =>{
         });
     }
 
-    //comment section
+    //comment section interaction handler
+    const handleCommentAuth = (e) => {
+        if(typeof IS_LOGGED_IN !== 'undefined' && !IS_LOGGED_IN){
+            e.preventDefault(); // Stop click/focus default behavior
+            alert("Please log in to leave a comment");
+            window.location.href = "../account/login.php";
+        }
+    };
+
     if (commentText){
-        commentText.addEventListener('click',(e) =>{
-            if(typeof IS_LOGGED_IN !== 'undefined' && !IS_LOGGED_IN){
-                alert("Please log in to leave a comment");
-                window.location.href = "../account/login.php";
-            }
-        });
+        commentText.addEventListener('click', handleCommentAuth);
+    }
+    if (commentSubmitBtn){
+        commentSubmitBtn.addEventListener('click', handleCommentAuth);
     }
 });
-
 
