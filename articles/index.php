@@ -5,9 +5,6 @@ session_start();
 require_once("../includes/auth.php");
 require_once("../includes/database.php");
 
-requireLogin();
-
-
 //query for all articles from the articles table from latest-oldest
 $query = "SELECT article_id, title, summary, image_name, image_caption, creation_at FROM articles ORDER BY creation_at DESC";
 

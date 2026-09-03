@@ -5,8 +5,6 @@ session_start();
 require_once("../includes/auth.php");
 require_once("../includes/database.php");
 
-requireLogin();
-
 //see if article_ID in url 
 if(isset($_GET['id']) && is_numeric($_GET['id'])){
     $article_id = (int)$_GET['id'];

@@ -11,17 +11,17 @@ document.addEventListener ('DOMContentLoaded', () =>{
             if(typeof IS_LOGGED_IN !== 'undefined' && !IS_LOGGED_IN){
                 e.preventDefault();
                 alert("Please log in to like the article");
-                window.location.href = "account/login.php";
+                window.location.href = "../account/login.php";
             }
         });
     }
 
     //comment section
     if (commentText){
-        commentText.addEventListener('click',() =>{
+        commentText.addEventListener('click',(e) =>{
             if(typeof IS_LOGGED_IN !== 'undefined' && !IS_LOGGED_IN){
                 alert("Please log in to leave a comment");
-                window.location.href = "account/login.php";
+                window.location.href = "../account/login.php";
             }
         });
     }
