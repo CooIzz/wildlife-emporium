@@ -6,7 +6,7 @@ body{
 /* newspaper frame */
 .article-frame{
     padding:20px;
-    max-width:1600px;
+    max-width:1000px;
     margin: 0 auto;
     width: 100%;
     background-color: var(--card);
@@ -28,7 +28,7 @@ body{
 
 .article-header{
     font-family: "Cambria";
-    font-size: 120px;
+    font-size: 80px;
     color: var(--text);
     letter-spacing: -1px;
     font-weight:bolder;
@@ -36,8 +36,8 @@ body{
 }
 
 .article-logo{
-    width: 300px;
-    height: 200px;
+    width: 200px;
+    height: 150px;
     flex-shrink: 0;
 }
 
@@ -79,7 +79,7 @@ body{
 }
 
 .article-sum1 a{
-    font-size: 32px;
+    font-size: 22px;
     margin-bottom: 12px;
 }
 
@@ -94,14 +94,14 @@ body{
 
 .article-sum2 h2, 
 .article-sum3 h2{
-    font-size: 30px;
+    font-size: 22px;
     margin-bottom: 6px;
 }
 
 .article-sum1 p, 
 .article-sum2 p, 
 .article-sum3 p{
-    font-size: 20px;
+    font-size: 14px;
     color:var(--text);
     margin-bottom: 10px;
     margin-top: 10px;
@@ -209,7 +209,7 @@ body{
 /* ---------- details.php ---------- */
 
 .article-pg-frame{
-    max-width:1600px;
+    max-width:1000px;
     width: 100%;
     margin: 0 auto;
     padding: 40px;
@@ -221,7 +221,7 @@ body{
 }
 
 .article-main-column{
-    max-width: 1600px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -236,29 +236,30 @@ body{
 
 .article-pg-title {
     padding: 5px 5px;
-    font-size: 56px;
+    font-size: 45px;
     font-weight: 800px;
     line-height: 1.25;
     margin-bottom: 15px;
 }
 
 .article-pg-subheading {
-    font-size: 35px;
+    font-size: 20px;
     opacity: 0.85;
     line-height: 1;
     margin-bottom: 20px;
+    padding: 5px 5px;
 }
 
 .article-keywords {
     display: inline-block;
-    font-size:18px;
+    font-size:16px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-bottom: 12px;
 }
 
 .article-details {
-    font-size: 17px;
+    font-size: 14px;
     color: var(--card);
     display: flex;
     justify-content: center;
@@ -332,7 +333,7 @@ body{
 }
 
 .suggested-articles-container h2{
-    font-size:48px;
+    font-size:35px;
     font-weight: 800;
     color: var(--dark-green);
     margin-bottom: 25px;
@@ -373,7 +374,7 @@ body{
 .suggested-card-body h3 {
     padding: 15px;
     margin: auto;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     line-height: 1.4;
     text-align:left;
@@ -390,7 +391,7 @@ body{
 }
 
 .suggested-card p {
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
 }
 
@@ -430,7 +431,7 @@ background-color: var(--dark-purple);
 .comments-title{
     margin-bottom: 15px;
     color: var(--dark-purple);
-    font-size:48px;
+    font-size:35px;
     font-weight: 800;
 
 }
@@ -489,7 +490,7 @@ background-color: var(--dark-purple);
     display:flex;
     justify-content: space-between;
     margin-bottom: 6px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .comment-date{
@@ -501,56 +502,87 @@ background-color: var(--dark-purple);
     margin:0;
 }
 
+/* ==================================================
+Tablet (max-width: 900px)
+================================================== */
+@media (max-width: 900px) {
+
+    /* Stack left content and right sidebar vertically */
+    .article-sec2 {
+        flex-direction: column;
+    }
+
+    .article-sidebar,
+    .article-sidebar2 {
+        border-left: none;
+        border-right: none;
+        padding: 20px 0 0 0;
+        margin-top: 20px;
+    }
+
+    .article-dr {
+        padding: 0;
+    }
+}
+
+
+/* ==================================================
+Mobile (max-width: 600px)
+================================================== */
 @media (max-width: 600px) {
 
-.article-frame{
-padding: 10px;
-}
+    .article-frame {
+        padding: 12px;
+        border-radius: 0;
+    }
 
-.article-header{
-font-size: 50px;
-}
+    /* Stack Wildlife Daily header & logo */
+    .article-header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
 
-.article-logo{
-width: 120px;
-height: 100px;
-}
+    .article-header {
+        font-size: 38px; /* Stops "WILDLIFE DAILY" from clipping off-screen */
+        letter-spacing: 0;
+    }
 
-.article-sec1{
-grid-template-columns: 1fr;
-}
+    .article-logo {
+        width: 100px;
+        height: auto;
+    }
 
-.article-textR,
-.article-textL{
-grid-template-columns: 1fr;
-}
+    /* Convert 2-column article rows into a single column */
+    .article-sec1,
+    .article-textR,
+    .article-textL {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 
-.suggested-articles-grid{
-grid-template-columns: 1fr;
-}
+    /* Put photo above summary text on mobile */
+    .article-textL {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 
-.article-pg-frame{
-padding: 20px;
-}
+    .article-card1,
+    .article-card2,
+    .article-card3,
+    .article-card4 {
+        height: 200px;
+        min-height: auto;
+    }
 
-.article-pg-title{
-font-size: 36px;
-}
-
-.article-pg-subheading{
-font-size: 24px;
-}
-
-.suggested-articles-container h2,
-.comments-title{
-font-size: 36px;
-}
-
-.article-pg-content{
-font-size: 16px;
-}
-
-.article-details{
-flex-wrap: wrap;
-}
+    /* Scaling fonts for readability */
+    .article-sum1 a { font-size: 20px; }
+    .article-sum2 h2, .article-sum3 h2 { font-size: 18px; }
+    .article-sum1 p, .article-sum2 p, .article-sum3 p { font-size: 14px; }
+    
+    /* Details Page Fixes */
+    .suggested-articles-grid { grid-template-columns: 1fr; }
+    .article-pg-frame { padding: 15px; }
+    .article-pg-title { font-size: 28px; }
+    .article-pg-subheading { font-size: 18px; }
 }

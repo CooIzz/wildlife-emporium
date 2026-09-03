@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 23, 2026 at 07:03 PM
+-- Generation Time: Sep 03, 2026 at 04:13 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,9 @@ CREATE TABLE `article_comments` (
 
 INSERT INTO `article_comments` (`commentID`, `articleID`, `userID`, `commentText`, `createdAt`) VALUES
 (1, 1, 3, 'Amazing!', '2026-08-22 14:02:23'),
-(2, 1, 3, 'very good', '2026-08-22 15:06:24');
+(2, 1, 3, 'very good', '2026-08-22 15:06:24'),
+(3, 29, 3, 'WOW!', '2026-09-03 02:07:41'),
+(4, 24, 3, 'monkey :(', '2026-09-03 02:10:55');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +63,7 @@ ALTER TABLE `article_comments`
 -- AUTO_INCREMENT for table `article_comments`
 --
 ALTER TABLE `article_comments`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 23, 2026 at 07:04 PM
+-- Generation Time: Sep 03, 2026 at 04:14 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,7 +39,8 @@ CREATE TABLE `article_likes` (
 --
 
 INSERT INTO `article_likes` (`likeID`, `articleID`, `userID`, `createdAt`) VALUES
-(12, 1, 3, '2026-08-22 14:56:53');
+(12, 1, 3, '2026-08-22 14:56:53'),
+(13, 5, 3, '2026-09-03 02:10:37');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +61,7 @@ ALTER TABLE `article_likes`
 -- AUTO_INCREMENT for table `article_likes`
 --
 ALTER TABLE `article_likes`
-  MODIFY `likeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `likeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
