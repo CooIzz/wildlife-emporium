@@ -35,6 +35,9 @@ CREATE TABLE IF NOT EXISTS `quiz_questions` (
   `correct_ans` enum('A','B','C','D') COLLATE utf8mb4_unicode_ci NOT NULL,
   `score` int NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`,`animal_id`,`difficulty`),
+  FOREIGN KEY (`animal_id`) REFERENCES quiz_animals (`id`)
+  ON UPDATE CASCADE 
+  ON DELETE CASCADE,
   KEY `animal_id` (`animal_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

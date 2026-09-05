@@ -26,7 +26,11 @@ CREATE TABLE IF NOT EXISTS `user_score` (
   `userID` int NOT NULL,
   `username` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `score` int DEFAULT '0',
-  PRIMARY KEY (`userID`)
+  PRIMARY KEY (`userID`),
+  FOREIGN KEY (`userID`) REFERENCES users (`userID`)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE,
+  KEY `userID` (`userID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
