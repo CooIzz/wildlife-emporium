@@ -16,12 +16,16 @@
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
+<main>
+<div class="contentAlignment">
+
 <h1>Manage Quiz</h1>
 
 <!--
 Form for user to input the CRUD operation he/she
 wishes to perform
 -->
+<div class="contentAlignmentChildren">
 <form id="quizCrudForm" method="GET" action="quiz_crud.php">
 
 <label for="crudOperation">Which CRUD operation would you like to perform?</label><br><br>
@@ -41,8 +45,12 @@ wishes to perform
 <input type="submit" id="submit" name="submit" class="submitButtons" value="submit">
 
 </form>
+</div>
 
-<strong>Wish to abort any operation and go back to the admin page?<a href="../admin/index.php">Click here</a></strong>
+
+<strong>Wish to abort any operation and go back to the admin page?<a class="links" href="../admin/index.php">Click here</a></strong>
+
+
 
 <br>
 <hr>
@@ -72,9 +80,11 @@ if(isset($_GET['quizQue']))
     }
 
 ?>
-<p>
+</p>
+</div>
 
 <br>
+</main>
 
 <?php include("../includes/footer.php"); ?>
 <script src="../js/quiz_crud.js"></script>

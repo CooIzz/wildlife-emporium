@@ -67,6 +67,7 @@ echo '<h1>' . $animal['animal_name'] . '</h1>';
 echo '<hr>';
 echo '<br>';
 
+
 //Fetch questions based on chosen topic and difficulty level
 $chosen_questions = "SELECT * FROM quiz_questions WHERE animal_id=$animal_id AND difficulty='$difficulty' ORDER BY question_num ASC";
 $questions_result = mysqli_query($connection, $chosen_questions);
@@ -77,6 +78,23 @@ if(isset($_SESSION['quiz_error']) && isset($_SESSION['quiz_post']))
 	unset($_SESSION['quiz_error']);
 	unset($_SESSION['quiz_post']);
 	
+}
+switch($difficulty)
+{
+	case 'easy':
+		echo '<p class="difficultySpanner">You have chosen the easy level to test your knowledge on ' . $animal['animal_name'] . '</p>';
+		break;
+
+	case 'medium':
+		echo '<p class="difficultySpanner">You have chosen the medium level to test your knowledge on ' . $animal['animal_name'] . '</p>';
+		break;
+
+	case 'difficult':
+		echo '<p class="difficultySpanner">You have chosen the difficult level to test your knowledge on ' . $animal['animal_name'] . '</p>';
+		break;
+
+	default:
+		break;
 }
 
 //Setting up the form for the questions
@@ -135,7 +153,7 @@ if(mysqli_num_rows($questions_result) > 0)
 
 echo '</ol>';
 
-echo '<button type="submit">Submit Quiz</button>';
+echo '<button id ="quizSubmitButton" type="submit">Submit Quiz</button>';
 
 echo '</fieldset>';
 echo '</form>';

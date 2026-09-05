@@ -113,7 +113,7 @@ mysqli_free_result($animal_result);
 
 <aside>
 
-<p>Wish to view the existing scoreboard?<a href="./leaderboard.php">Click here</a></p>
+<p  style="text-align: center;">Wish to view the existing scoreboard?<a href="./leaderboard.php">Click here</a></p>
 
 </aside>
 

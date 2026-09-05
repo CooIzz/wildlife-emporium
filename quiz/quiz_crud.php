@@ -102,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
                 break;
 
             case "Read":
-                $sql = "SELECT question_num, question_text, option_a, option_b, option_c, option_d FROM quiz_questions WHERE animal_id=? AND difficulty=? AND question_num>=? ORDER BY question_num ASC LIMIT ?";
+                $sql = "SELECT question_num, question_text, option_a, option_b, option_c, option_d, correct_ans FROM quiz_questions WHERE animal_id=? AND difficulty=? AND question_num>=? ORDER BY question_num ASC LIMIT ?";
                 $sql_stmt = mysqli_prepare($connection, $sql);
                 if($sql_stmt === false)
                     {
@@ -189,8 +189,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
-
+<main>
 <!-- Main Wrapper Container Area -->
+<div class="contentAlignment">
 <?php
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && $crudInput === "Read")
@@ -208,18 +209,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 				echo '<strong>' . htmlspecialchars($question['question_num']) . '. </strong>';				
 				echo htmlspecialchars($question['question_text']);
 				echo '<br><br>';
-				echo '<ul">';
+				echo '<ol type="A">';
 				echo '<li>' . htmlspecialchars($question['option_a']) . '</li>';
 				echo '<li>' . htmlspecialchars($question['option_b']) . '</li>';
 				echo '<li>' . htmlspecialchars($question['option_c']) . '</li>';
 				echo '<li>' . htmlspecialchars($question['option_d']) . '</li>';
-				echo '</ul>';
+				echo '</ol>';
+                echo '<br>';
+                echo '<p>Correct Answer: <strong>' . htmlspecialchars($question['correct_ans']) . '</strong><p>';
 				echo '</div>';
 				echo '<br>';
 			}
 			echo '</div>';
 			
-			echo '<strong>Wish to go back to the manageQuiz page?<a href="manageQuiz.php">Click here</a></strong>';
+			echo '<strong>Wish to go back to the manageQuiz page?<a class="links" href="manageQuiz.php">Click here</a></strong>';
 		}
 		else
 		{
@@ -232,7 +235,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 	}		
 
 ?>
-
+</div>
+</main>
 <script src="../js/quiz_crud_form.js"></script>
 <script src="../js/quiz_crud_validate.js"></script>
 <?php include("../includes/footer.php"); ?>

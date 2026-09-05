@@ -3,6 +3,30 @@
 */
 
 /*
+Styling to adjust the footer to the bottom of the window
+*/
+
+body {
+
+    display: flex;
+    flex-direction: column;    
+    min-height: xx-small;  /* Takes up the full height of the window */
+    margin: 0;  /* Removes default browser spacing */
+
+}
+
+/*
+Styling to target the container consisting of the main content
+(excluding header, navigation and footer)
+*/
+
+main {
+
+    flex: 1;    /* Expands to fill all remaining vertical space */
+
+}
+
+/*
 Text color for the error messages
 */
 
@@ -29,7 +53,122 @@ Styling for the form submit buttons
 .submitButtons {
 
     background-color: rgb(0, 175, 0);
+    color: rgb(55, 55, 55);
+    width: 70px;
+    height: 30px;
 
+}
+
+.submitButtons:hover {
+
+    background-color: rgb(0, 250, 0);
+    color: rgb(0, 0, 0);
+
+}
+
+.submitButtons:visited {
+
+    background-color: rgb(0, 175, 0);
+    color: rgb(55, 55, 55);
+    width: 70px;
+    height: 30px;
+
+}
+
+/*
+Styling for the crudForm and quizCrudForm as a whole
+*/
+
+#crudForm , #quizCrudForm{
+
+    border: 3px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: rgb(250, 250, 250);
+    text-align: center;
+    width: 750px;
+
+}
+
+/*
+Modifying margins of all elements within quizCrudForm
+*/
+
+#quizCrudForm * {
+
+    margin: 5px;
+
+}
+
+
+/*
+Styling for the crudForm's textarea element
+*/
+
+#crudForm textarea {
+
+    width: 500px;    
+    height: 100px;
+
+}
+
+/*
+Styling for the crudForm's input elements
+*/
+
+#crudForm input[type="text"] {
+
+    width: 350px;
+    height: 60px;
+
+}
+
+/*
+Styling for h1 tag
+*/
+h1 {
+
+    text-decoration: underline;
+    font-weight: 900;
+
+}
+
+.contentAlignmentChildren {
+
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 25px;
+    
+    
+}
+
+/*
+Styling for the parent div element in 
+the manageQuiz page
+*/
+.contentAlignment {
+
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+
+}
+
+/*
+Styling for the children div elements within 
+the parent div element
+*/
+
+.contentAlignmentChildren {
+
+    
+    border: 1px solid black;
+    border-radius: 3px;
+    
 }
 
 /*
@@ -45,6 +184,7 @@ Styling for the div element containing all the displayed questions
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+    border: 3px solid black;
 	
 }
 
@@ -56,11 +196,43 @@ Styling for the displayed questions
 	
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
-	
+	justify-content: space-around;	
 	
 }
 
+/* 
+Ensure the list retains its 
+uppercase alphabetical markers 
+*/
+.quizSelectedItems ol {
+    list-style-type: upper-alpha !important; /* Forces A, B, C, D styling */    
+    margin-left: 25px;                       /* Pushes list right so markers are visible */
+    padding-left: 10px;
+}
+
+/* 
+Ensure individual list items look 
+uniform and spaced 
+*/
+.quizSelectedItems li {
+    margin-bottom: 8px;
+    display: list-item; /* Safeguards the bullet/letter rendering */
+}
+
+/* 
+Styling for the links
+*/
+.links:visited {
+
+    color: rgb(0, 0, 255);
+
+}
+
+.links:hover {
+
+    color: rgb(255, 0, 0);
+
+}
 
 
 

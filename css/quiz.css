@@ -167,14 +167,18 @@ questions is within the alloted box
 This styling is to align the paragraphs to the center
 */
 
-.quiz-page p {
+.difficultySpanner {
+   
     text-align: center;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 25px;
 }
 
 /*
 To style the headers of the quiz section
 */
-.quiz-page h1 {
+h1 {
     font-size:40px;
     text-align: center;
 }
@@ -190,7 +194,7 @@ To style the headers of the quiz section
 To style the legend of each form
 */
 
-.quiz-page legend {
+legend {
     text-align: center;
     text-decoration: underline;
     font-weight: 900;
@@ -201,6 +205,16 @@ To style the legend of each form
 #quiz_error {
     color: red;
     font-weight: 900;
+}
+
+/*
+To style the submit buttons
+*/
+
+#quizSubmitButton {
+
+    background-color: rgb(0, 175, 0);
+
 }
 
 /*
