@@ -17,7 +17,7 @@ Wildlife Emporium is a dynamic web application developed using HTML, CSS, JavaSc
 
 ## Database Setup
 
-1. Create a MySQL database named `wildlife_emporium`.
+1. Create a MySQL database named `wildlife_emporium` of type `utf8mb4_unicode_ci`.
 2. Import the provided SQL database file into the `wildlife_emporium` database.
 
 ## Running the Project
@@ -25,5 +25,5 @@ Wildlife Emporium is a dynamic web application developed using HTML, CSS, JavaSc
 1. Open a web browser.
 2. Access the project through the local WAMP server using its localhost address.
 3. Register or log in to use the application's user-specific features.
-4. Predefined user account has been created with the username: user and password: password
-5. Predefined admin account has been created with the username: admin and password: password
+4. Predefined user account has been created with the username: `user` and password: `password`
+5. Predefined admin account has been created with the username: `admin` and password: `password`
