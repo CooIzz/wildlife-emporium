@@ -1,6 +1,12 @@
 /*
+\---------------For index.php---------------
+*/
+
+
+/*
 \----------Structure of contents within topical box----------
 */
+
 /*
 This styling is structure within each topical box
 \*/
@@ -109,7 +115,7 @@ of the quiz section
 }
 
 /*
-\----------Structure of all individual quiz pages----------
+\---------------For quiz_page.php---------------
 */
 
 /*
@@ -198,8 +204,8 @@ To style the legend of each form
 }
 
 /*
-\----------Styling for the score leadership table----------
-*/
+\----------Styling for leadership.php----------
+*/ 
 
 /*
 Styling for the all the elements of the scoreboard

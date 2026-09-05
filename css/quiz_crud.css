@@ -1,5 +1,5 @@
 /*
-----------Styling for the quiz_crud section----------
+----------Styling for the manageQuiz.php and quiz_crud.php pages----------
 */
 
 /*
@@ -13,7 +13,7 @@ Text color for the error messages
 }
 
 /*
-Styling for the CRUD success message in the index page
+Styling for the CRUD success message in the manageQuiz.php page
 */
 
 #crudSuccess {
@@ -33,60 +33,35 @@ Styling for the form submit buttons
 }
 
 /*
-To toggle the display property for the
-CRUD form
+----------Styling for READ operation----------
 */
 
-.hidden {
-    display: none;
+/*
+Styling for the div element containing all the displayed questions
+*/
+
+.quizDisplaySection {
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+}
+
+/*
+Styling for the displayed questions
+*/
+
+.quizSelectedItems {
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	
+	
 }
 
 
 
-/*
-----------Styling for the quiz_create page----------
-*/
 
-/*
-Styling for the textbox of the quiz question
-*/
-
-#quizQuestion {
-
-    width: 500px;
-    height: 75px;
-
-}
-
-
-
-/*
-----------Styling for the quiz_read and quiz_que_display pages----------
-*/
-
-/*
-Styling for the Animal name and difficulty level
-in the quiz_que_display page
-*/
-
-#titleAndDifficulty {
-    
-	text-align: center;
-    text-decoration: underline;
-    font-weight: 900;
-
-}
-
-
-
-/*
-----------Styling for the quiz_update page----------
-*/
-
-#updatedQuizQue {
-
-    width: 500px;
-    height: 75px;
-
-}
 

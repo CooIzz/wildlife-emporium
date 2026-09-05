@@ -22,7 +22,7 @@
 Form for user to input the CRUD operation he/she
 wishes to perform
 -->
-<form id="quizCrudForm" method="GET">
+<form id="quizCrudForm" method="GET" action="quiz_crud.php">
 
 <label for="crudOperation">Which CRUD operation would you like to perform?</label><br><br>
 <select id="crudOperation" name="crudOperation" required>
@@ -42,15 +42,11 @@ wishes to perform
 
 </form>
 
+<strong>Wish to abort any operation and go back to the admin page?<a href="../admin/index.php">Click here</a></strong>
+
 <br>
 <hr>
 <br>
-
-<form class="hidden" method="POST">
-
-
-
-</form>
 
 <p id="crudSuccess">
 <?php
@@ -82,29 +78,7 @@ if(isset($_GET['quizQue']))
 
 <?php include("../includes/footer.php"); ?>
 <script src="../js/quiz_crud.js"></script>
-<script>
-//Extract p tag element with the id of crudSuccess
-const crudSuccess = document.getElementById("crudSuccess");
 
-//Adding event listener to clear the CRUD message in case
-//user reloads the index page---------------
-
-document.addEventListener("boforeunload", (event) => {
-	
-	if(crudSuccess.innerHTML.trim() !== "")
-	{
-		const urlParams = new URLSearchParams(window.location.search);
-		if (urlParams.get("quizQue") !== "") 
-		{
-		const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.set("quizQue", "");
-        
-        window.location.href = currentUrl.toString();
-		}
-	}
-	
-});
-</script>
 </body>
 
-</html>
+</html> 

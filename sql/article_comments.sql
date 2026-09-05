@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `article_comments`
 --
-
+DROP TABLE IF EXISTS `article_comments`;
 CREATE TABLE `article_comments` (
   `commentID` int(11) NOT NULL,
   `articleID` int(11) NOT NULL,

@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `article_likes`
 --
 
+DROP TABLE IF EXISTS `article_likes`;
 CREATE TABLE `article_likes` (
   `likeID` int(11) NOT NULL,
   `articleID` int(11) NOT NULL,
