@@ -1,7 +1,35 @@
 /*
-\---------------For index.php---------------
+\---------------For All---------------
 */
 
+/*
+Styling to adjust the footer to the bottom of the window
+*/
+
+body {
+
+    display: flex;
+    flex-direction: column;    
+    min-height: xx-small;  /* Takes up the full height of the window */
+    margin: 0;  /* Removes default browser spacing */
+
+}
+
+/*
+Styling to target the container consisting of the main content
+(excluding header, navigation and footer)
+*/
+
+main {
+
+    flex: 1;    /* Expands to fill all remaining vertical space */
+
+}
+
+
+/*
+\---------------For index.php---------------
+*/
 
 /*
 \----------Structure of contents within topical box----------
@@ -131,18 +159,32 @@ pages for all the 3(easy, medium and difficult) levels
 }
 
 /*
+This styling is to format the form as a whole
+*/
+form {
+
+    background-color: rgb(255, 255, 255);
+    border: 5px solid black;
+    border-radius: 5px;
+
+}
+
+/*
 This styling is to format the questions for all the
 topics within all the 3 difficulty levels
 */
-.quiz-page ol li {
-    margin: 5px 25px 10px;
+form ol li {    
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    display: list-item; /* Safeguards the bullet/letter rendering */
 }
 
 /*
 This styling is to format the labeling of the answers to
 the questions
 */
-.quiz-page ol li label {
+form ol li label {
     font-weight: 700;
 }
 
@@ -151,7 +193,7 @@ This styling is to set the font size of everything
 within the ordered lists
 */
 
-.quiz-page ol * {
+form ol * {
     font-size: 20px;
 }
 /*
@@ -159,8 +201,9 @@ This styling is to ensure that the indices of the
 questions is within the alloted box
 */
 
-.quiz-page ol {
+form ol {
     list-style-position: inside;
+    margin-left: 25px;
 }
 
 /*
@@ -213,7 +256,37 @@ To style the submit buttons
 
 #quizSubmitButton {
 
-    background-color: rgb(0, 175, 0);
+    background-color: rgb(0, 200, 0);
+    width: 105px;
+    height: 30px;
+    padding: 0;
+   
+
+}
+
+#quizSubmitButton:visited {
+
+    background-color: rgb(0, 200, 0);
+    width: 105px;
+    height: 30px;
+    padding: 0;
+
+}
+
+#quizSubmitButton:hover {
+
+    background-color: rgb(0, 250, 0);
+    width: 105px;
+    height: 30px;
+    padding: 0;
+
+}
+
+.quizSubmitButton {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
 }
 
@@ -231,7 +304,9 @@ table(excluding the heading)
     flex-direction: column;
     justify-content: center;   
     border: 2px solid black;
-    padding: 10px;   
+    border-radius: 5px;
+    padding: 10px;  
+    background-color: rgb(255, 255, 255); 
 }
 
 .leaderboardArticle * {
@@ -287,20 +362,4 @@ To align the table to the center of the page
 }
 
 
-.quiz-page table,
-.quiz-page tr,
-.quiz-page th,
-.quiz-page td {
-    border: solid black 2px;
-    border-collapse: collapse;
-    padding: 5px;
-    text-align: center;
-    animation: bgColorChange2 infinite 20s ease-in-out;
-}
-
-
-
-.quiz-page .hidden {
-    display: none;
-}
 

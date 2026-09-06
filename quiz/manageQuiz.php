@@ -18,7 +18,8 @@
 
 <main>
 <div class="contentAlignment">
-
+<p style="color: #006400;">Quiz Management User Interface</p>
+<br>
 <h1>Manage Quiz</h1>
 
 <!--

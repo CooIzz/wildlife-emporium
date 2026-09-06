@@ -4,6 +4,18 @@
 
 */
 
+window.addEventListener("pageshow", event => {
+	
+	if(event.persisted)
+	{
+		const quizCrudForm = document.getElementById("quizCrudForm");
+        if (quizCrudForm) {
+            quizCrudForm.reset();
+        }
+	}
+	
+});
+
 //Extract html elements from the document
 
 const form = document.getElementById("quizCrudForm");

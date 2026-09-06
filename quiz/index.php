@@ -26,7 +26,7 @@ $loginURL = "/wildlife-emporium/account/login.php";
 <?php include("../includes/header.php"); ?>
 <?php include("../includes/navigation.php"); ?>
 
-<main class="quiz-page">
+<main>
 <div><h1>Quiz Domain</h1></div>
 
 <!--

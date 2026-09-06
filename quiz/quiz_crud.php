@@ -5,6 +5,7 @@ session_start();
 // Initialize data view array variable safely
 $read_results = [];
 $crudInput = "";
+$taken_que_num_string = "";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST')
     {
@@ -88,17 +89,41 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
         $numOfQue = $_POST['numOfQue'] ?? 1;
         $firstQue = $_POST['firstQue'] ?? 1;
 
+        //Explicit declaration to prevent "Undefined variable" warning crashes
+        $sql_stmt = null; 
+
+        //Checking if entered question number is already taken or not
+                $sql_checking = "SELECT question_num FROM quiz_questions WHERE animal_id = ? AND difficulty = ?";
+                $check_stmt = mysqli_prepare($connection, $sql_checking);
+                if($check_stmt === false) {
+                    die('SQL query preparation failed: ' . mysqli_error($connection));
+                    }
+                mysqli_stmt_bind_param($check_stmt, 'is', $animal_id, $difficulty);
+                mysqli_stmt_execute($check_stmt);
+                $check_res = mysqli_stmt_get_result($check_stmt);
+                $result = mysqli_fetch_all($check_res, MYSQLI_ASSOC);
+                $taken_que_num = array_column($result, 'question_num');
+                mysqli_stmt_close($check_stmt);
+
         switch($crudInput)
         {
-            case "Create":
-                $sql = "INSERT INTO quiz_questions (id, animal_id, difficulty, question_num, question_text, option_a, option_b, option_c, option_d, correct_ans, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $sql_stmt = mysqli_prepare($connection, $sql);
-
-                if($sql_stmt === false)
+            case "Create":                
+                if(in_array($queNum, $taken_que_num))
                     {
-                        die('SQL query preparation failed: ' . mysqli_error($connection));
+                        $taken_que_num_string = implode(', ', $taken_que_num);
+                        $_POST['taken'] = $taken_que_num_string;
                     }
-                mysqli_stmt_bind_param($sql_stmt, 'iisissssssi', $queNum, $animal_id, $difficulty, $queNum, $quizQuestion, $optionA, $optionB, $optionC, $optionD, $cor_ans, $score);
+                else
+                    {
+                        $sql = "INSERT INTO quiz_questions (id, animal_id, difficulty, question_num, question_text, option_a, option_b, option_c, option_d, correct_ans, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        $sql_stmt = mysqli_prepare($connection, $sql);
+
+                        if($sql_stmt === false)
+                            {
+                                die('SQL query preparation failed: ' . mysqli_error($connection));
+                            }
+                        mysqli_stmt_bind_param($sql_stmt, 'iisissssssi', $queNum, $animal_id, $difficulty, $queNum, $quizQuestion, $optionA, $optionB, $optionC, $optionD, $cor_ans, $score);
+                    }                
                 break;
 
             case "Read":
@@ -112,61 +137,82 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
                 break;
 
             case "Update":
-                $sql = "UPDATE quiz_questions SET question_text = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, correct_ans = ? WHERE animal_id = ? AND difficulty = ? AND question_num = ?";
-                $sql_stmt = mysqli_prepare($connection, $sql);
-                if($sql_stmt === false)
+                if(!in_array($queNum, $taken_que_num))
                     {
-                        die("SQL query preparation failed: " . mysqli_error($connection));
+                        $taken_que_num_string = implode(', ', $taken_que_num);
+                        $_POST['taken'] = $taken_que_num_string;
                     }
-                mysqli_stmt_bind_param($sql_stmt, 'ssssssisi', $quizQuestion, $optionA, $optionB, $optionC, $optionD, $cor_ans, $animal_id, $difficulty, $queNum);
+                else
+                    {
+                        $sql = "UPDATE quiz_questions SET question_text = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, correct_ans = ? WHERE animal_id = ? AND difficulty = ? AND question_num = ?";
+                        $sql_stmt = mysqli_prepare($connection, $sql);
+                        if($sql_stmt === false)
+                            {
+                                die("SQL query preparation failed: " . mysqli_error($connection));
+                            }
+                        mysqli_stmt_bind_param($sql_stmt, 'ssssssisi', $quizQuestion, $optionA, $optionB, $optionC, $optionD, $cor_ans, $animal_id, $difficulty, $queNum);
+                    }
                 break;
 
-            case "Delete":
-                $sql = "DELETE FROM quiz_questions WHERE animal_id = ? AND difficulty = ? AND question_num = ?";
-                $sql_stmt = mysqli_prepare($connection, $sql);
-                if($sql_stmt === false)
+            case "Delete":               
+                if(!in_array($queNum, $taken_que_num))
                     {
-                        die("SQL query preparation failed: " . mysqli_error($connection));
+                        $taken_que_num_string = implode(', ', $taken_que_num);
+                        $_POST['taken'] = $taken_que_num_string;
                     }
-                mysqli_stmt_bind_param($sql_stmt, 'isi', $animal_id, $difficulty, $queNum);
+                else
+                    {
+                        $sql = "DELETE FROM quiz_questions WHERE animal_id = ? AND difficulty = ? AND question_num = ?";
+                        $sql_stmt = mysqli_prepare($connection, $sql);
+                        if($sql_stmt === false)
+                            {
+                                die("SQL query preparation failed: " . mysqli_error($connection));
+                            }
+                        mysqli_stmt_bind_param($sql_stmt, 'isi', $animal_id, $difficulty, $queNum);
+                    }   
                 break;
 
             default:
                 exit("Invalid Action Requested.");
         }        
 
-        if(mysqli_stmt_execute($sql_stmt))
+        if($sql_stmt !== null)
             {
-                if($crudInput === "Create")
+                if(mysqli_stmt_execute($sql_stmt))
                     {
-                        header("Location: manageQuiz.php?quizQue=created");
-                        exit();
-                    }                
-                else if($crudInput === "Update")
-                    {
-                        header("Location: manageQuiz.php?quizQue=updated");
-                        exit();
+                        if($crudInput === "Create")
+                            {
+                                header("Location: manageQuiz.php?quizQue=created");
+                                exit();
+                            }                
+                        else if($crudInput === "Update")
+                            {
+                                header("Location: manageQuiz.php?quizQue=updated");
+                                exit();
+                            }
+                        else if($crudInput === "Delete")
+                            {
+                                header("Location: manageQuiz.php?quizQue=deleted");
+                                exit();
+                            }
+                        else if($crudInput === "Read")
+                            {
+                                // Fetch records into a storage buffer to display down inside the HTML
+                                $result_set = mysqli_stmt_get_result($sql_stmt);
+                                while ($row = mysqli_fetch_assoc($result_set)) {
+                                $read_results[] = $row;
+                                }
+                            }
                     }
-                else if($crudInput === "Delete")
+                    else
                     {
-                        header("Location: manageQuiz.php?quizQue=deleted");
-                        exit();
+                        echo 'SQL query failed: ' . mysqli_error($connection);
                     }
-				else if($crudInput === "Read")
-                    {
-						// Fetch records into a storage buffer to display down inside the HTML
-                        $result_set = mysqli_stmt_get_result($sql_stmt);
-                        while ($row = mysqli_fetch_assoc($result_set)) {
-						$read_results[] = $row;
-						}
-                    }
+                    
+                mysqli_stmt_close($sql_stmt);
             }
-            else
-            {
-                echo 'SQL query failed: ' . mysqli_error($connection);
-            }
-            
-        mysqli_stmt_close($sql_stmt);
+        
+        
         mysqli_close($connection);
 
     }
@@ -196,9 +242,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && $crudInput === "Read")
 	{
-		echo '<h1>' . 'Displaying Requested Quiz Records' . '</h1>';
-		echo '<h2>Animal: ' . $animal . '</h2>';
-		echo '<h2>Difficulty Level: ' . $difficulty . '</h2>';
+		echo '<p style="color: #006400;">Quiz Management User Interface</p>';
+        echo '<br>';
+        echo '<h1>' . 'Displaying Requested Quiz Records' . '</h1>';
+		echo '<h2>Animal: ' . htmlspecialchars($animal) . '</h2>';
+		echo '<h2>Difficulty Level: ' . htmlspecialchars($difficulty) . '</h2>';
 		echo '<hr><br>';
 		if(!empty($read_results))
 		{
@@ -206,9 +254,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 			foreach ($read_results as $question)
 			{	
 				echo '<div class="quizSelectedItems">';
-				echo '<strong>' . htmlspecialchars($question['question_num']) . '. </strong>';				
-				echo htmlspecialchars($question['question_text']);
-				echo '<br><br>';
+				echo '<p><strong>' . htmlspecialchars($question['question_num']) . '. </strong>' . htmlspecialchars($question['question_text']) . '</p>';				
+				echo '<br>';
 				echo '<ol type="A">';
 				echo '<li>' . htmlspecialchars($question['option_a']) . '</li>';
 				echo '<li>' . htmlspecialchars($question['option_b']) . '</li>';
@@ -221,6 +268,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 				echo '<br>';
 			}
 			echo '</div>';
+
+            echo '<br>';
 			
 			echo '<strong>Wish to go back to the manageQuiz page?<a class="links" href="manageQuiz.php">Click here</a></strong>';
 		}
@@ -230,8 +279,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 		}
 	}else
 	{
-		//Dynamic JS Generation Target Placeholder Form 
-		echo '<form id="crudForm" name="crudForm" method="POST"></form>';
+		echo '<p style="color: #006400;">Quiz Management User Interface</p>';
+        echo '<br>';
+        
+        if(isset($_POST['taken']) && $_SERVER['REQUEST_METHOD'] === 'POST')
+            {
+                if($crudInput === "Create")
+                    {
+                        echo '<h4>Question number entered is already taken.Unavailable question numbers: ' . $_POST['taken'] . '</h4>';
+                    } 
+                else
+                    {
+                        echo '<h4>Question number entered does not exist.Available question numbers: ' . $_POST['taken'] . '</h4>';
+                    }       
+        
+            }
+        //Dynamic JS Generation Target Placeholder Form 
+		echo '<form id="crudForm" name="crudForm" method="POST"></form>';  
 	}		
 
 ?>

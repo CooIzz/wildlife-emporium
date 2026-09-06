@@ -3,6 +3,40 @@
 --------------------For quiz_crud.php page--------------------
 
 */
+window.addEventListener("pageshow", event => {
+	
+	if(event.persisted)
+	{
+		//Reset standard dropdown selections
+		document.querySelectorAll('option').forEach(option => {
+            if (option.value !== "") {
+                option.selected = false;
+            } else {
+                option.selected = true;
+            }
+        });
+
+		//Clear out textual and numerical inputs
+		document.querySelectorAll('input').forEach(input => {
+			//Exclude hidden tokens or action identifiers
+			if (input.type !== "hidden" && input.type !== "submit") {
+                input.value = "";
+            }
+        });
+
+		// Clear out textareas
+		document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.value = ""; 
+        });
+
+		//Erase lingering validation error remnants
+		document.querySelectorAll('.error').forEach(error => {
+            error.innerHTML = "";
+        });
+
+	}
+	
+});
 
 //Extract html elements from document
 
@@ -17,6 +51,9 @@ const crudOperation = urlParams.get('crudOperation');
 
 if(crudOperation !== null)
 {
+	//Prevents duplication when hitting Back andForward buttons
+	crudForm.innerHTML = "";
+	
 	switch(crudOperation)
 	{
 		case "Create":

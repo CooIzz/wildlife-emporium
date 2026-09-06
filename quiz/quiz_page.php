@@ -126,10 +126,10 @@ if(mysqli_num_rows($questions_result) > 0)
 {
 	while($row = mysqli_fetch_assoc($questions_result))
 	{
-		echo '<li>';
-		echo '<div>';
-		
-		echo '<p>' . $row['question_text'] . '</p>';
+		echo '<li> ' . $row['question_text'];
+		echo '<br>';
+
+		echo '<div>';		
 		echo '<input type="radio" name="' . $row['id'] . '" id="' . $row['option_a'] . '" value="A">';
 		echo '<label for="' . $row['option_a'] . '">' . $row['option_a'] . '</label>';
 		echo '<br>';
@@ -147,13 +147,16 @@ if(mysqli_num_rows($questions_result) > 0)
 		
 		echo '</div>';
 		echo '</li>';
+		echo '<br>';
 	}
 	
 }
 
 echo '</ol>';
 
+echo '<div class="quizSubmitButton">';
 echo '<button id ="quizSubmitButton" type="submit">Submit Quiz</button>';
+echo '</div>';
 
 echo '</fieldset>';
 echo '</form>';
