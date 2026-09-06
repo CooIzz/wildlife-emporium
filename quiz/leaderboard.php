@@ -102,6 +102,11 @@ while($row = mysqli_fetch_assoc($result))
 
 </div>
 
+<br>
+<hr>
+<br>
+<h3 style="text-align: center;">Wish to go back to the quiz main page?<a href="index.php">Click Here</a></h3>
+
 </main>
 <?php include("../includes/footer.php"); ?>
 <script src="../js/script.js"></script>

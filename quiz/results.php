@@ -211,7 +211,7 @@ echo '<hr>';
 echo '<br>';
 
 //Displaying the user's score
-echo '<p><strong>Total Score: ' . $score . '</strong></p>';
+echo '<h3 style="text-align: center;"><strong>Total Score: ' . $score . '</strong></h3>';
 
 //To update the user's total score in the user's score table of the database
 $userID = $_SESSION['userID'];
@@ -235,20 +235,20 @@ mysqli_query($connection, $user_score_update);
 
 </div>
 
+<?php mysqli_close($connection); 
+
+echo '<p style="text-align: center;">Wish to view the quiz scoreboard?<a href="leaderboard.php">Click Here!</a></p>';
+echo '<br>';
+echo '<p style="text-align: center;">Or do you wish to go back to the main quiz page?<a href="index.php">Click Here!</a></p>';
+
+?>
+
 </main>
 
 
 <?php include("../includes/footer.php"); ?>
 <script src="../js/script.js"></script>
 
-<?php mysqli_close($connection); 
-
-echo '<p>Wish to view the quiz scoreboard?<a href="leaderboard.php">Click Here!</a></p>';
-echo '<br><br>';
-echo '<p>Or do you wish to go back to the main quiz page?<a href="index.php">Click Here!</a></p>';
-
-
-?>
 </body>
 
 </html>
