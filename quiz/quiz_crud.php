@@ -296,9 +296,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
             }
         //Dynamic JS Generation Target Placeholder Form 
 		echo '<form id="crudForm" name="crudForm" method="POST"></form>';  
+        echo '<strong>Wish to go back to the manageQuiz page?<a class="links" href="manageQuiz.php">Click here</a></strong>';        
 	}		
 
 ?>
+
 </div>
 </main>
 <script src="../js/quiz_crud_form.js"></script>
