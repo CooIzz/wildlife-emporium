@@ -291,6 +291,74 @@ To style the submit buttons
 }
 
 /*
+\----------Styling for results.php----------
+*/ 
+
+/*
+Styling for the image and header
+*/
+
+.quizResultsAnimal {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+/*
+Styling for the entire results section
+*/
+
+.outer_display {
+
+    background-color: rgb(225, 225, 225);
+    border: 4px solid black;
+    border-radius: 5px;
+    display: flex;
+	flex-direction: column;
+
+}
+
+/*
+Styling for each individual question results
+*/
+
+.result_display {
+
+    display: flex;
+	flex-direction: column;
+	justify-content: space-around;	
+	align-items: flex-start;
+
+}
+
+/*
+Styling for the ordered list within each individual question results
+*/
+
+.result_display ol {
+
+    list-style-type: upper-alpha !important; /* Forces A, B, C, D styling */    
+    margin-left: 25px;                       /* Pushes list right so markers are visible */
+
+}
+
+/*
+Styling for the list items within each individual question results
+*/
+
+.result_display li {
+
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    display: list-item; /* Safeguards the bullet/letter rendering */
+
+}
+
+
+/*
 \----------Styling for leadership.php----------
 */ 
 

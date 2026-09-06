@@ -155,20 +155,19 @@ if($_SERVER["REQUEST_METHOD"] !== "POST")
 <?php include("../includes/navigation.php"); ?>
 
 <main>
-
+<h1>Quiz Results</h1>
 <!--
 To display the animal's image and the animal's text in case 
 the image fails to load
 -->
-<div class="mainAnimals">
+<div class="quizResultsAnimals">
 <img src="<?= $animal['image_path']?>" alt="<?= $animal['image_alt']?>">
-<br>
-<h1><?= $animal['animal_name']?></h1>
+<h2><?= $animal['animal_name']?></h2>
 <hr>
 <br>
 </div>
 
-<div id="outer_display">
+<div class="outer_display">
 
 <?php
 
@@ -183,7 +182,7 @@ foreach($results_detail as $result_detail)
 	echo '<br>';
 	echo '<p>Answer Choices:</p>';
 	echo '<br>';
-	echo '<ol>';
+	echo '<ol type="A">';
 	
 	echo '<li>' . $result_detail['option_a'] . '</li>';
 	echo '<li>' . $result_detail['option_b'] . '</li>';
@@ -206,10 +205,14 @@ foreach($results_detail as $result_detail)
 	echo '</section>';
 	
 	echo '</div>';
+	echo '<br>';
 }
+echo '<br>';
+echo '<hr>';
+echo '<br>';
 
 //Displaying the user's score
-echo '<p>Total Score: ' . $score . '</p>';
+echo '<p><strong>Total Score: ' . $score . '</strong></p>';
 
 //To update the user's total score in the user's score table of the database
 $userID = $_SESSION['userID'];

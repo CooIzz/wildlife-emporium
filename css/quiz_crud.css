@@ -134,15 +134,6 @@ h1 {
 
 }
 
-.contentAlignmentChildren {
-
-    border: 1px solid black;
-    border-radius: 3px;
-    margin: 25px;
-    
-    
-}
-
 /*
 Styling for the parent div element in 
 the manageQuiz page
@@ -169,6 +160,7 @@ the parent div element
     
     border: 1px solid black;
     border-radius: 3px;
+    margin: 25px;
     
 }
 

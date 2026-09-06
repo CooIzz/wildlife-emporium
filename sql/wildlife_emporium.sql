@@ -660,6 +660,27 @@ INSERT INTO `user_score` (`userID`, `username`, `score`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Trigger structure for trigger `after_new_user_creation`
+--
+
+DROP TRIGGER IF EXISTS `after_new_user_creation`
+
+DELIMITER $$
+
+CREATE TRIGGER `after_new_user_creation`
+AFTER INSERT ON `users`
+FOR EACH ROW
+BEGIN
+
+      INSERT INTO `user_score` (`userID`, `username`, `score`) VALUES
+      (NEW.userID, NEW.username, 0);
+END$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `xp_config`
 --
 
