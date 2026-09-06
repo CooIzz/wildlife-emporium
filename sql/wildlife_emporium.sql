@@ -632,7 +632,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`userID`, `username`, `email`, `passwordHash`, `profilePicture`, `role`, `createdAt`, `lastLogin`, `xp`) VALUES
 (4, 'user', 'user@mail.com', '$2y$10$R0kbsnW/Omi8Vd4YulMMSOhcKiXkOynoscTYtQZD.hO0uE9Rlns5S', 'default-avatar.png', 'user', '2026-08-10 05:09:30', '2026-09-01 04:24:02', 0),
-(5, 'admin', 'admin@mail.com', '$2y$10$kwlCT7VmqBVlm7xYF6qco.fSXF618POmCDMwovFbZclhYy25cdgeq', 'profile_6a9570de0968d6.16285352.jpg', 'admin', '2026-08-10 05:09:43', '2026-08-31 15:47:30', 50);
+(5, 'admin', 'admin@mail.com', '$2y$10$kwlCT7VmqBVlm7xYF6qco.fSXF618POmCDMwovFbZclhYy25cdgeq', 'profile_6a9570de0968d6.16285352.jpg', 'admin', '2026-08-10 05:09:43', '2026-08-31 15:47:30', 50)
+(7, 'whatsup', '123example@gmail.com', '$2y$10$kfjb3kBNbBE2NuHynF148uq.Uui/Ls8LYLaryk.Arl5dtenmgUTFu', 'default-avatar.png', 'user', '2026-09-06 13:19:42', '2026-09-06 13:19:53', 210);
 
 -- --------------------------------------------------------
 
@@ -655,7 +656,8 @@ CREATE TABLE IF NOT EXISTS `user_score` (
 
 INSERT INTO `user_score` (`userID`, `username`, `score`) VALUES
 (1, 'happy123', 0),
-(2, 'test', 0);
+(2, 'test', 0)
+(7, 'whatsup', 0);
 
 -- --------------------------------------------------------
 
