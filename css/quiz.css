@@ -295,14 +295,36 @@ To style the submit buttons
 */ 
 
 /*
-Styling for the image and header
+Styling for the division containing the image and header
 */
 
-.quizResultsAnimal {
+.quizResultsAnimals {
 
+    background-color: rgb(150, 175, 125);
+    border: 2px dashed black;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 10px;
+
+}
+
+/*
+Styling for the image 
+*/
+
+.quizResultsAnimals img {
+
+    max-width: 50%;
+    max-height: 50%;
+    margin: auto;
+
+}
+
+.quizResultsAnimals h2 {
+   
+    margin: auto;
 
 }
 

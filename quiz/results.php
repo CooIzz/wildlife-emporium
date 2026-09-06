@@ -164,7 +164,6 @@ the image fails to load
 <img src="<?= $animal['image_path']?>" alt="<?= $animal['image_alt']?>">
 <h2><?= $animal['animal_name']?></h2>
 <hr>
-<br>
 </div>
 
 <div class="outer_display">
